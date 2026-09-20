@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "upstream": "https://github.com/NiREvil/vless",
+  "branch": "main",
+  "policy": "Resolve main once; required daily, all country TXT, 02 CSV, 03 TXT, last_update and legacy CSV at that SHA. No endpoint probes or DNS expansion.",
+  "dynamic_hosts": [
+    {"host": "bpb.yousef.isegaro.com", "configured_port": 443},
+    {"host": "nima.nscl.ir", "configured_port": 443},
+    {"host": "turk.diam4.ggff.net", "configured_port": 443}
+  ]
+}
