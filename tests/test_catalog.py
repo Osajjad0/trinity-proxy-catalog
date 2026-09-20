@@ -1,4 +1,5 @@
 import importlib.util
+import json
 import pathlib
 import unittest
 
@@ -204,6 +205,112 @@ class RefreshTests(unittest.TestCase):
         self.assertEqual(m.archive_files(output.getvalue(), 'a'*40), fixture())
         with self.assertRaises(ValueError):
             m.archive_files(output.getvalue(), 'b'*40)
+
+
+class FeedTests(unittest.TestCase):
+    def build(self, m, **changes):
+        data = fixture()
+        data.update(changes)
+        return m.build(data, 'a' * 40, {'dynamic_hosts': [{'host': 'turk.diam4.ggff.net', 'configured_port': 443}]})
+
+    def pairs(self, docs, prefix):
+        return {p[len(prefix):-5]: sorted([r['address'], r['port']] for r in docs[p]['endpoints'])
+                for p in docs if p.startswith(prefix)}
+
+    def test_feed_schema_matches_catalog_documents(self):
+        m = module()
+        docs = self.build(m)
+        feed, idx = docs['feed.json'], docs['index.json']
+        self.assertEqual(set(feed), {'schema_version', 'upstream_revision', 'content_revision',
+                                     'counts', 'countries', 'unassigned', 'auto'})
+        self.assertEqual(feed['schema_version'], 1)
+        self.assertEqual(feed['upstream_revision'], 'a' * 40)
+        self.assertEqual(feed['content_revision'], idx['content_revision'])
+        self.assertEqual(feed['counts'], idx['counts'])
+        self.assertEqual(feed['countries'], self.pairs(docs, 'countries/'))
+        self.assertEqual(feed['unassigned'], sorted(sum(self.pairs(docs, 'unassigned.').values(), [])))
+        expected_auto = []
+        for cc in sorted(feed['countries']):
+            expected_auto += feed['countries'][cc][:2]
+        self.assertEqual(feed['auto'], expected_auto[:48])
+        self.assertEqual(docs, m.build(fixture(), 'a' * 40, {'dynamic_hosts': [{'host': 'turk.diam4.ggff.net', 'configured_port': 443}]}))
+
+    def test_feed_excludes_conflicts_unresolved_and_rejected(self):
+        m = module()
+        docs = self.build(m)
+        feed = docs['feed.json']
+        pairs = {tuple(pair) for array in [feed['unassigned'], feed['auto']] for pair in array}
+        pairs |= {tuple(pair) for arr in feed['countries'].values() for pair in arr}
+        self.assertNotIn(('8.8.8.8', 2053), pairs)  # conflict: claimed GB and US
+        self.assertNotIn(('9.9.9.9', 443), pairs)   # conflict: claimed DE and US
+        self.assertNotIn(('4.2.2.2', 443), pairs)   # unresolved daily row, no public port
+        for rejected in [('1.2.3.999', 443), ('10.0.0.1', 443)]:
+            self.assertNotIn(rejected, pairs)
+        self.assertIn(['8.8.8.8', 443], feed['countries']['US'])      # same IP, non-conflicting port stays assigned
+        self.assertIn(['1.1.1.1', 443], feed['unassigned'])
+        self.assertIn(['turk.diam4.ggff.net', 443], feed['unassigned'])
+
+    def test_feed_addresses_are_bare_including_ipv6(self):
+        m = module()
+        data = fixture()
+        data['sub/country_proxies/AZ.txt'] += b'2606:4700::1111 8443\n'
+        docs = self.build(m, **data)
+        self.assertIn(['2606:4700::1111', 8443], docs['feed.json']['countries']['AZ'])
+        feed = docs['feed.json']
+        addresses = ([pair[0] for arr in feed['countries'].values() for pair in arr] +
+                     [pair[0] for pair in feed['unassigned']] + [pair[0] for pair in feed['auto']])
+        self.assertTrue(addresses)
+        self.assertTrue(all('[' not in a and ']' not in a for a in addresses))
+
+    def test_feed_auto_spread_cap_and_determinism(self):
+        m = module()
+        data = fixture()
+        codes = [cc for cc in sorted(m.COUNTRIES) if cc not in {'AZ', 'US', 'DE'}][:30]
+        for i, cc in enumerate(codes):
+            data['sub/country_proxies/' + cc + '.txt'] = ''.join('101.%d.%d.1 443' % (i, j) + '\n' for j in range(3)).encode()
+        docs = m.build(data, 'a' * 40, {'dynamic_hosts': []})
+        feed = docs['feed.json']
+        self.assertEqual(len(feed['auto']), 48)
+        owner = {(pair[0], pair[1]): cc for cc, arr in feed['countries'].items() for pair in arr}
+        per = {}
+        for pair in feed['auto']:
+            cc = owner[(pair[0], pair[1])]
+            per[cc] = per.get(cc, 0) + 1
+            self.assertLessEqual(per[cc], 2)
+        codes = list(dict.fromkeys(owner[(pair[0], pair[1])] for pair in feed['auto']))
+        self.assertEqual(codes, sorted(codes))
+
+    def test_feed_validated_and_published_with_generated_at(self):
+        m = module()
+        import copy
+        import tempfile
+        docs = self.build(m)
+        def bump_counts(feed):
+            feed['counts'] = dict(feed['counts'], endpoints=feed['counts']['endpoints'] + 1)
+        for corrupt in [lambda f: f['countries'].popitem(), lambda f: f['countries']['AZ'].pop(),
+                        bump_counts, lambda f: f['auto'].append(['8.8.8.8', 2053]),
+                        lambda f: f.__setitem__('schema_version', 2)]:
+            broken = copy.deepcopy(docs)
+            corrupt(broken['feed.json'])
+            with self.assertRaises(ValueError):
+                m.validate(broken)
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            (root / 'sources.json').write_text(json.dumps({'dynamic_hosts': []}))
+            self.assertTrue(m.refresh(root, lambda: (fixture(), 'a' * 40)))
+            feed = json.loads((root / 'catalog/feed.json').read_text())
+            idx = json.loads((root / 'catalog/index.json').read_text())
+            self.assertRegex(feed['generated_at'], r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$')
+            self.assertEqual(feed['generated_at'], idx['generated_at'])
+            before = {p.relative_to(root): p.read_bytes() for p in (root / 'catalog').rglob('*') if p.is_file()}
+            self.assertFalse(m.refresh(root, lambda: (fixture(), 'a' * 40)))
+            self.assertEqual(before, {p.relative_to(root): p.read_bytes() for p in (root / 'catalog').rglob('*') if p.is_file()})
+            # Poisoned on-disk feed fails offline validation.
+            poisoned = json.loads((root / 'catalog/feed.json').read_text())
+            poisoned['countries'].popitem()
+            (root / 'catalog/feed.json').write_text(json.dumps(poisoned))
+            with self.assertRaises(ValueError):
+                m.validate(m.read_catalog(root / 'catalog'))
 
 
 if __name__ == '__main__':

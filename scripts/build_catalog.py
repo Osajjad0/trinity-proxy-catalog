@@ -185,6 +185,14 @@ def build(files, revision, config):
                  files={p: dict(sha256=digest(encoded(d)), count=len(d.get('endpoints', d.get('rows')))) for p, d in sorted(docs.items())})
     index['content_revision'] = digest(encoded(index))
     docs['index.json'] = index
+    # Feed mirrors published docs; content_revision copies index (feed bytes can't hash into index without a cycle).
+    countries_feed = {p[10:-5]: sorted(([r['address'], r['port']] for r in d['endpoints']), key=lambda pair: (pair[0], pair[1]))
+                      for p, d in docs.items() if p.startswith('countries/')}
+    docs['feed.json'] = dict(
+        schema_version=1, upstream_revision=revision, content_revision=index['content_revision'], counts=counts,
+        countries=countries_feed,
+        unassigned=sorted(([r['address'], r['port']] for r in docs['unassigned.json']['endpoints']), key=lambda pair: (pair[0], pair[1])),
+        auto=[pair for cc in sorted(countries_feed) for pair in countries_feed[cc][:2]][:48])
     validate(docs)
     return docs
 
@@ -198,7 +206,8 @@ def validate(docs):
     require(re.fullmatch('[0-9a-f]{40}', idx['upstream_revision']), 'invalid revision')
     unhashed = {k: v for k, v in idx.items() if k not in {'content_revision', 'generated_at'}}
     require(digest(encoded(unhashed)) == idx['content_revision'], 'content revision mismatch')
-    require(set(idx['files']) == set(docs) - {'index.json'}, 'file manifest mismatch')
+    # feed.json is derived and not manifest-hashed: its bytes embed content_revision, which hashes index.files.
+    require(set(idx['files']) == set(docs) - {'index.json'} - {'feed.json'}, 'file manifest mismatch')
     seen, evidence_count, assigned, countries = set(), 0, 0, 0
     for path, meta in idx['sources'].items():
         require(re.fullmatch('[0-9a-f]{64}', meta['sha256']) and meta['bytes'] > 0, 'invalid source hash/size')
@@ -206,7 +215,7 @@ def validate(docs):
         if path != 'sources.json':
             require(meta['revision'] == idx['upstream_revision'] and meta['url'] == BASE + idx['upstream_revision'] + '/' + path, 'source revision/URL mismatch')
     for path, doc in docs.items():
-        if path == 'index.json':
+        if path in ('index.json', 'feed.json'):
             continue
         require(doc['schema_version'] == 1, 'invalid document schema')
         require(digest(encoded(doc)) == idx['files'][path]['sha256'], 'file hash mismatch')
@@ -234,6 +243,21 @@ def validate(docs):
     counts = idx['counts']
     expected = dict(endpoints=len(seen), countries=countries, assigned=assigned, conflicts=len(docs['conflicts.json']['endpoints']), unassigned=len(docs['unassigned.json']['endpoints']), rejected=len(docs['rejected.json']['rows']), unresolved=len(docs['unresolved.json']['rows']), healthy=0, evidence=evidence_count)
     require(all(counts[k] == v for k, v in expected.items()), 'aggregate count mismatch')
+    feed = docs.get('feed.json')
+    if feed is not None:
+        # Feed is derived, not manifest-hashed (its bytes depend on content_revision); recompute from docs + index.
+        countries_feed = {p[10:-5]: sorted([r['address'], r['port']] for r in d['endpoints'])
+                          for p, d in docs.items() if p.startswith('countries/')}
+        rebuilt = dict(
+            schema_version=1, upstream_revision=idx['upstream_revision'], content_revision=idx['content_revision'],
+            counts=counts, countries=countries_feed,
+            unassigned=sorted(([r['address'], r['port']] for r in docs['unassigned.json']['endpoints']), key=lambda pair: (pair[0], pair[1])),
+            auto=[pair for cc in sorted(countries_feed) for pair in countries_feed[cc][:2]][:48])
+        if {k: v for k, v in docs['feed.json'].items() if k != 'generated_at'} != rebuilt:
+            raise ValueError('feed does not match catalog documents')
+        if 'generated_at' in feed:
+            require(isinstance(feed['generated_at'], str) and
+                    re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z', feed['generated_at']), 'invalid feed generated_at')
     audit_rows = docs['rejected.json']['rows'] + docs['unresolved.json']['rows']
     for row in audit_rows:
         require(row['runtime_health'] == 'unknown' and row['trinity_verified'] is False and row['checked_at'] is None, 'audit health claim forbidden')
@@ -421,10 +445,11 @@ def refresh(root, loader=snapshot):
     docs = build(files, revision, config)
     if target.exists():
         previous = read_catalog(target)
-        if previous['index.json']['content_revision'] == docs['index.json']['content_revision']:
+        if previous['index.json']['content_revision'] == docs['index.json']['content_revision'] and 'feed.json' in previous:
             validate(previous)
             return False
-    docs['index.json']['generated_at'] = dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
+    now = dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
+    docs['index.json']['generated_at'] = docs['feed.json']['generated_at'] = now
     stage = Path(tempfile.mkdtemp(prefix='.catalog-stage-', dir=root))
     try:
         for path, content in docs.items():
@@ -457,6 +482,8 @@ def main():
     try:
         changed = False if args.validate else refresh(root)
         docs = read_catalog(root / 'catalog')
+        if 'feed.json' in docs:
+            docs['feed.json'] = {k: v for k, v in docs['feed.json'].items() if k != 'generated_at'}
         validate(docs)
         print(json.dumps(dict(changed=changed, revision=docs['index.json']['upstream_revision'], content_revision=docs['index.json']['content_revision'], counts=docs['index.json']['counts']), sort_keys=True))
         return 0
