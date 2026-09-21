@@ -333,6 +333,22 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
     return pools, {"stale": stale}
 
 
+def _upstream_revision() -> str:
+    """40-hex identity of the scanner inputs. Git SHA in CI; local fallback
+    hashes the sources + evidence state, which changes whenever they do."""
+    import hashlib, subprocess
+    try:
+        out = subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO,
+                             capture_output=True, text=True, timeout=10)
+        sha = out.stdout.strip()
+        if len(sha) == 40:
+            return sha
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+    blob = (SOURCES.read_bytes() + (REPO / "scanner" / "state.json").read_bytes())
+    return hashlib.sha1(blob).hexdigest()
+
+
 def _parse_iso(s: str) -> float:
     return datetime.fromisoformat(s.replace("Z", "+00:00")).timestamp()
 
@@ -358,9 +374,10 @@ def publish(pools: dict, state: dict, report: dict, stats: dict) -> None:
     content_rev = hashlib.sha256(body).hexdigest()
     feed = {
         "schema_version": 1,
-        # Trinity's client validates these two fields; the upstream of a
-        # VERIFIED feed is this scanner run itself.
-        "upstream_revision": report.get("scanner_revision", "v1").ljust(40, "0")[:40],
+        # Trinity's client validates these two fields. The upstream of a
+        # VERIFIED feed is the scanner's own evidence state + sources; in CI
+        # this equals the commit SHA of the run's checkout.
+        "upstream_revision": _upstream_revision(),
         "content_revision": content_rev,
         "generated_at": now_iso(),
         "scanner_revision": report.get("scanner_revision"),
