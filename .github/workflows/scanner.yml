@@ -2,7 +2,7 @@ name: refresh-verified
 
 on:
   schedule:
-    - cron: '3 3 * * *'   # 03:03 UTC daily; Trinity cron syncs after
+    - cron: '4 11 * * *'  # 11:04 UTC daily — same time as the first manual scan
   workflow_dispatch:
 
 permissions:
