@@ -351,8 +351,17 @@ def publish(pools: dict, state: dict, report: dict, stats: dict) -> None:
             json.dumps({"schema_version": 1, "endpoints": entries}, indent=1),
             encoding="utf-8")
         total += len(entries)
+    import hashlib
+    body = json.dumps({cc: [[e["address"], e["port"]] for e in v]
+                       for cc, v in sorted(pools.items())},
+                      sort_keys=True).encode()
+    content_rev = hashlib.sha256(body).hexdigest()
     feed = {
         "schema_version": 1,
+        # Trinity's client validates these two fields; the upstream of a
+        # VERIFIED feed is this scanner run itself.
+        "upstream_revision": report.get("scanner_revision", "v1").ljust(40, "0")[:40],
+        "content_revision": content_rev,
         "generated_at": now_iso(),
         "scanner_revision": report.get("scanner_revision"),
         "counts": {"verified": total, "countries": len(pools)},
