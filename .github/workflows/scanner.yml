@@ -1,0 +1,51 @@
+name: refresh-verified
+
+on:
+  schedule:
+    - cron: '3 3 * * *'   # 03:03 UTC daily; Trinity cron syncs after
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verified-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run scanner (bounded, rotating sample windows)
+        run: |
+          python scanner/scan.py --publish --skip $((RANDOM % 4 * 600)) --limit 600 --state scanner/state.json
+
+      - name: Validate verified feed
+        run: |
+          python - <<'EOF'
+          import json, pathlib
+          out = pathlib.Path('catalog/verified')
+          feed = json.loads((out / 'feed.json').read_text())
+          assert feed['schema_version'] == 1
+          assert all(len(cc) == 2 and cc.isupper() for cc in feed['countries'])
+          total = sum(len(v) for v in feed['countries'].values())
+          assert feed['counts']['verified'] == total, 'feed count mismatch'
+          for cc, entries in feed['countries'].items():
+              for addr, port in entries:
+                  assert isinstance(port, int) and 0 < port < 65536
+          print('validated:', total, 'verified across', len(feed['countries']), 'countries')
+          EOF
+
+      - name: Commit verified results
+        if: success()
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'scanner: verified catalog refresh [skip ci]'
+          file_pattern: 'catalog/verified/** scanner/state.json'

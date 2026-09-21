@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "deny": [
+    {
+      "match": "Oracle",
+      "field": "any"
+    }
+  ],
+  "warn": [
+    {
+      "match": "DigitalOcean",
+      "field": "any"
+    },
+    {
+      "match": "Vultr",
+      "field": "any"
+    }
+  ]
+}
