@@ -409,6 +409,9 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--publish", action="store_true")
+    ap.add_argument("--emit-discovery", action="store_true",
+                    help="publish the deduped candidate queue (with provenance) "
+                         "for Workers-side verification instead of scanning")
     ap.add_argument("--limit", type=int, default=200,
                     help="max candidates to test this run (bounded)")
     ap.add_argument("--skip", type=int, default=0,
@@ -433,6 +436,27 @@ def main() -> int:
         m["source_countries"] = sorted(set(m["source_countries"] + rec["source_countries"]))
     candidates = list(merged.values())
     print(f"queue: {n_dom} from domains + {len(cat)} from catalog = {len(candidates)} unique")
+
+    if args.emit_discovery:
+        candidates = candidates[args.skip:]
+        out = REPO / "catalog" / "discovery"
+        out.mkdir(parents=True, exist_ok=True)
+        feed = {
+            "schema_version": 1,
+            "generated_at": now_iso(),
+            "upstream_revision": _upstream_revision(),
+            "content_revision": __import__("hashlib").sha256(
+                json.dumps([[c["address"], c["port"]] for c in candidates],
+                           sort_keys=True).encode()).hexdigest(),
+            "counts": {"candidates": len(candidates)},
+            "candidates": [[c["address"], c["port"]] for c in candidates],
+            "provenance": {f"{c['address']}:{c['port']}": c["sources"]
+                           for c in candidates},
+        }
+        (out / "queue.json").write_text(json.dumps(feed, indent=1), encoding="utf-8")
+        print(f"published catalog/discovery/queue.json: {len(candidates)} candidates")
+        return 0
+
     candidates = candidates[args.skip: args.skip + args.limit]
     print(f"testing {len(candidates)} (limit {args.limit}), concurrency {MAX_CONCURRENCY}")
 
