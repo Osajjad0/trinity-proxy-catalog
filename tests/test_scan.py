@@ -30,11 +30,12 @@ class TestDiscovery(unittest.TestCase):
             {"domain": "a.example", "enabled": True, "ports": [443]},
             {"domain": "b.example", "enabled": True, "ports": [443]},
         ]}
-        real = scan.socket.getaddrinfo
         def fake(host, *a, **k):
-            infos = real(host, *a, **k)
-            # Pretend every domain resolves to the same public IP.
-            return [(infos[0][0], None, 6, "", ("93.184.216.34", 0))] if infos else []
+            # Pretend every domain resolves to the same public IP. No real DNS:
+            # CI resolvers return different failures for invalid TLDs, which made
+            # this test flake on the shape of the failure rather than the logic.
+            return [(2, None, 6, "", ("93.184.216.34", 0))]
+        real = scan.socket.getaddrinfo
         scan.socket.getaddrinfo = fake
         try:
             queue = scan.discover_from_domains(sources)
