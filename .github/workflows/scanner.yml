@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run scanner (country-fair: every source country daily, V24.6)
+      - name: Run scanner (country-fair, every source country daily)
         run: |
           python scanner/scan.py --per-country --publish --state scanner/state.json
 
