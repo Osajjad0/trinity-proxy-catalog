@@ -442,7 +442,12 @@ def snapshot():
 
 
 def read_catalog(directory):
-    return {p.relative_to(directory).as_posix(): json.loads(p.read_bytes()) for p in directory.rglob('*.json')}
+    # catalog/verified/ (scan.py's published tree) and catalog/discovery/ (its live
+    # work queue) live inside catalog/ but are not the raw build: they must not enter
+    # the manifest, or every scanner run invalidates raw-catalog validation.
+    return {p.relative_to(directory).as_posix(): json.loads(p.read_bytes())
+            for p in directory.rglob('*.json')
+            if not {'verified', 'discovery'} & set(p.relative_to(directory).parts)}
 
 
 def refresh(root, loader=snapshot):
