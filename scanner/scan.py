@@ -248,7 +248,18 @@ def provider_exclusion(rec: dict, policy: dict) -> str | None:
     return None
 
 
-def score(rec: dict) -> int:
+def score(rec: dict, now_ts: float | None = None) -> int:
+    """Evidence-weighted quality score (V24.6.1 §16/20/21).
+
+    Weights, justified: full-chain success dominates (app 30 + verified 20 >
+    transport 20+20) because a TCP-only candidate can never serve traffic;
+    latency contributes up to 20 on a 0-500ms scale; stability uses the
+    success/failure ratio (repeated success compounds, repeated failure
+    penalizes without ever deleting the candidate); freshness decays the whole
+    score — fresh (<24h) full, stale (24-48h) 25% off, so an old "healthy"
+    record cannot outrank a fresh one forever. All inputs are measured
+    evidence; nothing is invented from source listings.
+    """
     s = 0
     if rec.get("tcp_ok"):
         s += 20
@@ -261,7 +272,24 @@ def score(rec: dict) -> int:
     rtt = rec.get("last_rtt_ms")
     if rtt is not None:
         s += max(0, 20 - int(rtt / 25))  # 0 ms -> +20, 500 ms -> 0
-    s -= min(10, rec.get("failure_count", 0))
+    # Stability: success ratio across attempts (evidence-based, not binary).
+    ok_n = rec.get("success_count", 0)
+    fail_n = rec.get("failure_count", 0)
+    total = ok_n + fail_n
+    if total:
+        s += int(15 * ok_n / total) - int(10 * fail_n / total)
+    s -= min(10, fail_n)
+    # Freshness decay: last_success age (spec §20).
+    last = rec.get("last_success")
+    if now_ts is not None and last:
+        try:
+            age_h = (now_ts - _parse_iso(last)) / 3600
+        except Exception:
+            age_h = 1e9
+        if age_h >= 24:
+            s = int(s * 0.75)
+        if age_h >= 48:
+            s = int(s * 0.5)
     return max(0, min(100, s))
 
 
@@ -324,16 +352,28 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
             "observed_country": country,
             "source_countries": rec.get("source_countries", []),
             "sources": rec.get("sources", []),
-            "score": score(rec),
+            "score": score(rec, time.time()),
             "last_rtt_ms": rec.get("last_rtt_ms"),
             "last_success": last,
             "success_count": rec.get("success_count", 0),
             "failure_count": rec.get("failure_count", 0),
             "status": "verified",
         }
+        # V24.6.1 §17/23: compact per-endpoint quality metadata. success_ratio
+        # is measured (successes / attempts); nothing derived from source lists.
+        total_attempts = entry["success_count"] + entry["failure_count"]
+        entry["success_ratio"] = round(
+            entry["success_count"] / total_attempts, 2) if total_attempts else 1.0
         pools.setdefault(country, []).append(entry)
     for country in pools:
-        pools[country].sort(key=lambda e: (-e["score"], e["last_rtt_ms"] or 9999))
+        # §19: quality descending, then recent success, then latency, then a
+        # stable endpoint tie-break. Deterministic; no random reordering.
+        pools[country].sort(key=lambda e: (-e["score"],
+                                           e["last_success"],
+                                           e["last_rtt_ms"] or 9999,
+                                           f'{e["address"]}:{e["port"]}'))
+        for rank, e in enumerate(pools[country], 1):
+            e["quality_rank"] = rank
         del pools[country][PER_COUNTRY_PUBLISH_CAP:]
     return pools, {"stale": stale}
 
