@@ -452,7 +452,9 @@ def read_catalog(directory):
 
 def refresh(root, loader=snapshot):
     root = Path(root)
-    target, backup = root / 'catalog', root / '.catalog-backup'
+    # Raw discovery build lives in catalog/raw/ — catalog/verified/ is scan.py's
+    # exclusive published tree (Trinity's runtime feed), never to be clobbered here.
+    target, backup = root / 'catalog' / 'raw', root / '.catalog-backup'
     if backup.exists():
         raise ValueError('interrupted publish backup exists; recover/review it before refresh')
     files, revision = loader()
@@ -476,6 +478,7 @@ def refresh(root, loader=snapshot):
         if target.exists():
             os.replace(target, backup)
         try:
+            target.parent.mkdir(parents=True, exist_ok=True)
             os.replace(stage, target)
         except BaseException:
             if backup.exists():
@@ -496,7 +499,7 @@ def main():
     root = Path(__file__).resolve().parents[1]
     try:
         changed = False if args.validate else refresh(root)
-        docs = read_catalog(root / 'catalog')
+        docs = read_catalog(root / 'catalog' / 'raw')
         if 'feed.json' in docs:
             docs['feed.json'] = {k: v for k, v in docs['feed.json'].items() if k != 'generated_at'}
         validate(docs)

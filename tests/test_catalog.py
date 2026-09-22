@@ -128,7 +128,7 @@ class RefreshTests(unittest.TestCase):
             (root / 'sources.json').write_text(json.dumps({'dynamic_hosts': []}))
             source = lambda: (fixture(), 'a' * 40)
             self.assertTrue(m.refresh(root, source))
-            before = {p.relative_to(root): p.read_bytes() for p in (root / 'catalog').rglob('*') if p.is_file()}
+            before = {p.relative_to(root): p.read_bytes() for p in (root / 'catalog' / 'raw').rglob('*') if p.is_file()}
             self.assertFalse(m.refresh(root, source))
             def broken():
                 raise OSError('required upstream failure')
@@ -142,7 +142,7 @@ class RefreshTests(unittest.TestCase):
                 raise ValueError('schema failure')
             with patch.object(m, 'validate', failing_validation), self.assertRaises(ValueError):
                 m.refresh(root, source)
-            self.assertEqual(before, {p.relative_to(root): p.read_bytes() for p in (root / 'catalog').rglob('*') if p.is_file()})
+            self.assertEqual(before, {p.relative_to(root): p.read_bytes() for p in (root / 'catalog' / 'raw').rglob('*') if p.is_file()})
             changed = fixture()
             changed['sub/country_proxies/AZ.txt'] += b'8.8.4.4 443\n'
             real_replace = m.os.replace
@@ -152,7 +152,7 @@ class RefreshTests(unittest.TestCase):
                 return real_replace(src, dst)
             with patch.object(m.os, 'replace', fail_install), self.assertRaises(OSError):
                 m.refresh(root, lambda: (changed, 'b' * 40))
-            self.assertEqual(before, {p.relative_to(root): p.read_bytes() for p in (root / 'catalog').rglob('*') if p.is_file()})
+            self.assertEqual(before, {p.relative_to(root): p.read_bytes() for p in (root / 'catalog' / 'raw').rglob('*') if p.is_file()})
 
     def test_fetch_redirect_limits_and_retry_are_bounded(self):
         m = module()
@@ -298,19 +298,19 @@ class FeedTests(unittest.TestCase):
             root = pathlib.Path(directory)
             (root / 'sources.json').write_text(json.dumps({'dynamic_hosts': []}))
             self.assertTrue(m.refresh(root, lambda: (fixture(), 'a' * 40)))
-            feed = json.loads((root / 'catalog/feed.json').read_text())
-            idx = json.loads((root / 'catalog/index.json').read_text())
+            feed = json.loads((root / 'catalog' / 'raw' / 'feed.json').read_text())
+            idx = json.loads((root / 'catalog' / 'raw' / 'index.json').read_text())
             self.assertRegex(feed['generated_at'], r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$')
             self.assertEqual(feed['generated_at'], idx['generated_at'])
-            before = {p.relative_to(root): p.read_bytes() for p in (root / 'catalog').rglob('*') if p.is_file()}
+            before = {p.relative_to(root): p.read_bytes() for p in (root / 'catalog' / 'raw').rglob('*') if p.is_file()}
             self.assertFalse(m.refresh(root, lambda: (fixture(), 'a' * 40)))
-            self.assertEqual(before, {p.relative_to(root): p.read_bytes() for p in (root / 'catalog').rglob('*') if p.is_file()})
+            self.assertEqual(before, {p.relative_to(root): p.read_bytes() for p in (root / 'catalog' / 'raw').rglob('*') if p.is_file()})
             # Poisoned on-disk feed fails offline validation.
-            poisoned = json.loads((root / 'catalog/feed.json').read_text())
+            poisoned = json.loads((root / 'catalog' / 'raw' / 'feed.json').read_text())
             poisoned['countries'].popitem()
-            (root / 'catalog/feed.json').write_text(json.dumps(poisoned))
+            (root / 'catalog' / 'raw' / 'feed.json').write_text(json.dumps(poisoned))
             with self.assertRaises(ValueError):
-                m.validate(m.read_catalog(root / 'catalog'))
+                m.validate(m.read_catalog(root / 'catalog' / 'raw'))
 
 
 if __name__ == '__main__':
