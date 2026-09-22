@@ -279,6 +279,13 @@ def score(rec: dict, now_ts: float | None = None) -> int:
     if total:
         s += int(15 * ok_n / total) - int(10 * fail_n / total)
     s -= min(10, fail_n)
+    # Country consistency (V24.6.6 §6): a candidate whose observed exit country
+    # is outside its claimed source countries is mislabeled inventory. Bounded
+    # penalty — evidence for ranking, never a deletion.
+    observed = rec.get("observed_country")
+    claimed = rec.get("source_countries") or []
+    if observed and claimed and observed not in claimed:
+        s -= 5
     # Freshness decay: last_success age (spec §20).
     last = rec.get("last_success")
     if now_ts is not None and last:

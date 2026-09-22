@@ -186,8 +186,18 @@ def build(files, revision, config):
     index['content_revision'] = digest(encoded(index))
     docs['index.json'] = index
     # Feed mirrors published docs; content_revision copies index (feed bytes can't hash into index without a cycle).
-    countries_feed = {p[10:-5]: sorted(([r['address'], r['port']] for r in d['endpoints']), key=lambda pair: (pair[0], pair[1]))
-                      for p, d in docs.items() if p.startswith('countries/')}
+    # V24.6.6 §15: runtime consumes feed.json directly, so country pools must carry the
+    # quality order (quality_rank, then address/port for determinism) — lexicographic
+    # ordering was discarding the scanner's ranking at the feed boundary.
+    countries_feed = {}
+    for p, d in docs.items():
+        if not p.startswith('countries/'):
+            continue
+        # V24.6.6 §15: runtime consumes feed.json directly, so country pools must carry the
+        # scanner's quality order — lexicographic ordering discarded it at the feed boundary.
+        # quality_rank comes from scan.py; synthetic test rows without it keep insertion order.
+        ranked = sorted(d['endpoints'], key=lambda r: (r.get('quality_rank', 0), r['address'], r['port']))
+        countries_feed[p[10:-5]] = [[r['address'], r['port']] for r in ranked]
     docs['feed.json'] = dict(
         schema_version=1, upstream_revision=revision, content_revision=index['content_revision'], counts=counts,
         countries=countries_feed,
