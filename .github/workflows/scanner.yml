@@ -23,9 +23,9 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run scanner (bounded, rotating sample windows)
+      - name: Run scanner (country-fair: every source country daily, V24.6)
         run: |
-          python scanner/scan.py --publish --skip $((RANDOM % 4 * 600)) --limit 600 --state scanner/state.json
+          python scanner/scan.py --per-country --publish --state scanner/state.json
 
       - name: Validate verified feed
         run: |

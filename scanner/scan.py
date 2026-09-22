@@ -44,6 +44,11 @@ CF_TEST_SNI = "speed.cloudflare.com"
 SCAN_DEADLINE_S = 1500
 PER_COUNTRY_PUBLISH_CAP = 64
 VERIFIED_TTL_H = 48
+# V24.6 country-fair scheduling: every source country gets a verification
+# opportunity daily. Budget per country per run; countries below target are
+# prioritized (§10-11).
+DAILY_BUDGET_PER_COUNTRY = 16
+MIN_VERIFIED_PER_COUNTRY = 8
 
 
 def now_iso() -> str:
@@ -353,6 +358,16 @@ def _parse_iso(s: str) -> float:
     return datetime.fromisoformat(s.replace("Z", "+00:00")).timestamp()
 
 
+def _age_hours(iso_when: str) -> float:
+    """Hours since an ISO timestamp; 1e9 for missing (never fresh)."""
+    if not iso_when:
+        return 1e9
+    try:
+        return max(0.0, (time.time() - _parse_iso(iso_when)) / 3600)
+    except Exception:
+        return 1e9
+
+
 def publish(pools: dict, state: dict, report: dict, stats: dict) -> None:
     """Transactional: write everything into a temp dir, validate, then move."""
     OUT = REPO / "catalog" / "verified"
@@ -384,6 +399,24 @@ def publish(pools: dict, state: dict, report: dict, stats: dict) -> None:
         "counts": {"verified": total, "countries": len(pools)},
         "countries": {cc: [[e["address"], e["port"]] for e in entries]
                       for cc, entries in sorted(pools.items())},
+        # V24.6 §13: per-country freshness metadata so the panel can show
+        # "Germany · 64 verified · updated 2h ago" without lying about age.
+        "country_metadata": {
+            cc: {
+                "verified_count": len(entries),
+                "fresh_count": sum(
+                    1 for e in entries
+                    if _age_hours(e.get("last_success")) < 24),
+                "stale_count": sum(
+                    1 for e in entries
+                    if 24 <= _age_hours(e.get("last_success")) < 48),
+                "last_success_at": max((e.get("last_success") or "" for e in entries),
+                                       default=""),
+                "source_candidate_count": (state.get("countries", {}).get(cc, {})
+                                           .get("source_candidate_count", 0)),
+            }
+            for cc, entries in sorted(pools.items())
+        },
     }
     (tmp / "feed.json").write_text(json.dumps(feed, indent=1), encoding="utf-8")
     (tmp / "index.json").write_text(json.dumps({
@@ -403,6 +436,40 @@ def publish(pools: dict, state: dict, report: dict, stats: dict) -> None:
     state_path.write_text(json.dumps(state, indent=1), encoding="utf-8")
 
 
+
+# ---------------------------------------------- country-fair scheduling (V24.6)
+
+def country_batches(
+    candidates: list[dict], state: dict, now: str,
+) -> tuple[list[dict], dict]:
+    """Pick a bounded verification batch per source country (V24.6 §9-11).
+
+    Every country in the source catalog receives an opportunity every run —
+    no global random window. Per-country cursor state lives in
+    state["countries"][cc]; each country scans up to DAILY_BUDGET_PER_COUNTRY
+    candidates, rotated by its cursor so coverage advances daily.
+    """
+    by_cc: dict[str, list[dict]] = {}
+    for c in candidates:
+        for cc in c.get("source_countries") or []:
+            if len(cc) == 2 and cc.isupper():
+                by_cc.setdefault(cc, []).append(c)
+    cstate = state.setdefault("countries", {})
+    picked: list[dict] = []
+    meta: dict[str, dict] = {}
+    for cc in sorted(by_cc):
+        pool = by_cc[cc]
+        st = cstate.setdefault(cc, {"cursor": 0})
+        cursor = int(st.get("cursor", 0)) % max(len(pool), 1)
+        budget = min(DAILY_BUDGET_PER_COUNTRY, len(pool))
+        window = [pool[(cursor + k) % len(pool)] for k in range(budget)]
+        st["cursor"] = (cursor + budget) % max(len(pool), 1)
+        st["last_scan_at"] = now
+        st["source_candidate_count"] = len(pool)
+        meta[cc] = {"source": len(pool), "scanned": budget}
+        picked.extend(window)
+    return picked, meta
+
 # ---------------------------------------------------------------- main
 
 def main() -> int:
@@ -416,6 +483,9 @@ def main() -> int:
                     help="max candidates to test this run (bounded)")
     ap.add_argument("--skip", type=int, default=0,
                     help="skip the first N candidates (rotate the sample window)")
+    ap.add_argument("--per-country", action="store_true",
+                    help="V24.6 country-fair mode: every source country gets a "
+                         "bounded verification batch per run (no global window)")
     ap.add_argument("--state", default=str(REPO / "scanner" / "state.json"))
     ap.add_argument("--trinity-host", default="trinity-fresh3.tmplbertohr.workers.dev")
     args = ap.parse_args()
@@ -457,7 +527,14 @@ def main() -> int:
         print(f"published catalog/discovery/queue.json: {len(candidates)} candidates")
         return 0
 
-    candidates = candidates[args.skip: args.skip + args.limit]
+    persistent_state = load_state(Path(args.state))
+    if args.per_country:
+        candidates, country_meta = country_batches(candidates, persistent_state, now_iso())
+        print(f"country-fair window: {len(candidates)} candidates across "
+              f"{len(country_meta)} countries: "
+              f"{json.dumps(country_meta, sort_keys=True)}")
+    else:
+        candidates = candidates[args.skip: args.skip + args.limit]
     print(f"testing {len(candidates)} (limit {args.limit}), concurrency {MAX_CONCURRENCY}")
 
     results = []
@@ -492,8 +569,7 @@ def main() -> int:
     print(f"by country: {json.dumps(by_country, sort_keys=True)}")
 
     now = now_iso()
-    state = load_state(Path(args.state))
-    state = merge_state(state, results, now)
+    state = merge_state(persistent_state, results, now)
     pools, stale_info = build_verified(state, now)
     report = {
         "scan_started_at": now,
