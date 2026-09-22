@@ -503,6 +503,10 @@ def main():
     root = Path(__file__).resolve().parents[1]
     try:
         changed = False if args.validate else refresh(root)
+        if args.validate and not (root / 'catalog' / 'raw' / 'index.json').exists():
+            # Fresh checkout: no raw build yet — the publish job builds + validates it.
+            print('nothing to validate: no raw catalog build present')
+            return 0
         docs = read_catalog(root / 'catalog' / 'raw')
         if 'feed.json' in docs:
             docs['feed.json'] = {k: v for k, v in docs['feed.json'].items() if k != 'generated_at'}
