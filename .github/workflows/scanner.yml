@@ -50,9 +50,20 @@ jobs:
           TRINITY_PANEL_PASSWORD: ${{ secrets.TRINITY_PANEL_PASSWORD }}
         run: |
           python - <<'EOF'
+          # V24.6.1 §13 idempotency: sync only when the feed content changed.
           import json, os, urllib.request
           base = os.environ["TRINITY_PANEL_URL"].rstrip("/")
           pw = os.environ["TRINITY_PANEL_PASSWORD"]
+          new_rev = json.load(open("catalog/verified/feed.json"))["content_revision"]
+          old_meta = {}
+          try:
+              old_meta = json.load(urllib.request.urlopen(
+                  base + "/api/catalog-meta", timeout=30))
+          except Exception:
+              pass  # first sync or meta endpoint absent — proceed
+          if old_meta.get("contentRevision") == new_rev:
+              print("trinity sync skipped: feed unchanged (", new_rev[:12], ")")
+              raise SystemExit(0)
           login = urllib.request.Request(base + "/api/login",
               data=json.dumps({"password": pw}).encode(),
               headers={"Content-Type": "application/json"}, method="POST")
