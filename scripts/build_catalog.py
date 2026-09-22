@@ -460,11 +460,15 @@ def refresh(root, loader=snapshot):
     files, revision = loader()
     config = json.loads((root / 'sources.json').read_bytes())
     docs = build(files, revision, config)
+    if target.exists() and not (target / 'index.json').exists():
+        shutil.rmtree(target)  # partial/legacy layout — rebuild from scratch
     if target.exists():
         previous = read_catalog(target)
         if previous['index.json']['content_revision'] == docs['index.json']['content_revision'] and 'feed.json' in previous:
             validate(previous)
             return False
+    # No previous build at the new layout: always install (the early-return above only
+    # applies when a comparable raw/ tree already exists).
     now = dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
     docs['index.json']['generated_at'] = docs['feed.json']['generated_at'] = now
     stage = Path(tempfile.mkdtemp(prefix='.catalog-stage-', dir=root))
