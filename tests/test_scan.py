@@ -140,5 +140,96 @@ class TestStateAndVerified(unittest.TestCase):
         self.assertEqual(len(pools["DE"]), scan.PER_COUNTRY_PUBLISH_CAP)
 
 
+class TestFeedValidation(unittest.TestCase):
+    def _feed(self, **over):
+        feed = {
+            "schema_version": 1,
+            "upstream_revision": "a" * 64,
+            "content_revision": "b" * 64,
+            "generated_at": "2026-09-23T00:00:00Z",
+            "counts": {"verified": 1, "countries": 1},
+            "countries": {"DE": [["93.184.216.34", 443]]},
+        }
+        feed.update(over)
+        return feed
+
+    def test_valid_feed_passes(self):
+        scan.validate_feed(self._feed())
+
+    def test_bad_schema_rejected(self):
+        with self.assertRaises(ValueError):
+            scan.validate_feed(self._feed(schema_version=2))
+
+    def test_bad_country_code_rejected(self):
+        with self.assertRaises(ValueError):
+            scan.validate_feed(self._feed(countries={"de": [["93.184.216.34", 443]]}))
+        with self.assertRaises(ValueError):
+            scan.validate_feed(self._feed(countries={"D1": [["93.184.216.34", 443]]}))
+
+    def test_malformed_endpoint_rejected(self):
+        with self.assertRaises(ValueError):
+            scan.validate_feed(self._feed(countries={"DE": [["10.0.0.1", 443]]}))
+        with self.assertRaises(ValueError):
+            scan.validate_feed(self._feed(countries={"DE": [["93.184.216.34", 99999]]}))
+        with self.assertRaises(ValueError):
+            scan.validate_feed(self._feed(countries={"DE": [["93.184.216.34", "443"]]}))
+
+    def test_duplicate_endpoint_rejected(self):
+        with self.assertRaises(ValueError):
+            scan.validate_feed(self._feed(countries={
+                "DE": [["93.184.216.34", 443]],
+                "FR": [["93.184.216.34", 443]]}))
+
+    def test_ipv6_literal_accepted(self):
+        feed = self._feed(countries={"DE": [["2606:2800:220:1:248:1893:25c8:1946", 443]]})
+        scan.validate_feed(feed)
+
+    def test_count_mismatch_rejected(self):
+        with self.assertRaises(ValueError):
+            scan.validate_feed(self._feed(counts={"verified": 2, "countries": 1}))
+
+    def test_anomaly_guard_keeps_previous_feed(self, ):
+        # Simulate: previous healthy feed present; new pools near-zero.
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "verified"
+            out.mkdir()
+            prev = {"schema_version": 1, "counts": {"verified": 500}}
+            (out / "feed.json").write_text(json.dumps(prev), encoding="utf-8")
+            try:
+                pools = {"DE": []}  # total = 0 → collapse
+                state = {"candidates": {}}
+                report = {"scanner_revision": "t", "pool_sizes": {}}
+                with self.assertRaises(SystemExit):
+                    scan.publish(pools, state, report, {}, out_dir=out)
+                # previous feed retained
+                self.assertEqual(
+                    json.loads((out / "feed.json").read_text())["counts"]["verified"], 500)
+            finally:
+                pass
+
+    def test_anomaly_guard_allows_growth(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "verified"
+            out.mkdir()
+            (out / "feed.json").write_text(json.dumps({"counts": {"verified": 10}}), encoding="utf-8")
+            scan.OUT = out
+            try:
+                pools = {"DE": [{"address": "93.184.216.34", "port": 443,
+                                 "observed_country": "DE", "source_countries": [],
+                                 "sources": [], "score": 1, "last_rtt_ms": 10,
+                                 "last_success": "2026-09-23T00:00:00Z",
+                                 "success_count": 1, "failure_count": 0,
+                                 "status": "verified", "success_ratio": 1.0,
+                                 "quality_rank": 1}]}
+                report = {"scanner_revision": "t"}
+                scan.publish(pools, {"candidates": {}}, report, {}, out_dir=out)
+                self.assertEqual(
+                    json.loads((out / "feed.json").read_text())["counts"]["verified"], 1)
+            finally:
+                pass
+
+
 if __name__ == "__main__":
     unittest.main()

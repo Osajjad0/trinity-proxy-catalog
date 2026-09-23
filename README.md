@@ -70,6 +70,60 @@ revision ⇒ no write. `--validate` checks the existing catalog offline.
 repository `GITHUB_TOKEN` only, no PAT, no proxy connections. Action pins were
 resolved from the public GitHub API at authoring time.
 
+## Scanner (verified Proxy-IP feed)
+
+`.github/workflows/scanner.yml` runs `scanner/scan.py` **once daily at 11:04 UTC**
+(plus manual `workflow_dispatch`). GitHub cron is best-effort — runs may be
+delayed a few minutes under load, but there is exactly one scheduled scan
+opportunity per day.
+
+The scanner tests candidates **from the GitHub Actions runner egress** in two
+stages; a candidate is *verified* only with evidence from both:
+
+- **Stage A** — TCP connect, TLS handshake with SNI `speed.cloudflare.com`,
+  HTTP `/cdn-cgi/trace` via that TLS session.
+- **Stage B** — same candidate IP, TLS with SNI/Host = the Trinity Worker
+  hostname, `/cdn-cgi/trace` through it.
+
+`catalog/verified/feed.json` is the **only** artifact Trinity consumes. It
+carries `schema_version`, `content_revision` (deterministic sha256 over the
+sorted verified set), `generated_at`, per-country metadata, and the compact
+runtime map `countries: CC -> [[address, port], ...]` (IPv4 and IPv6 literals
+preserved). Entries older than the freshness TTL drop out of the feed.
+
+**source country vs observed country:** source country is what the upstream
+catalog claims; observed country is what the Cloudflare trace reported. Both
+are recorded; neither silently overwrites the other, and a mismatch is
+penalized in quality ranking, not hidden.
+
+**Safety:** results are validated (schema, revisions, country codes, public
+IPs/v6 literals, ports, duplicates, count consistency) inside a transactional
+publish; a collapsed scan (near-total loss vs the previous healthy feed) is
+refused — the previous feed is retained and the run fails loudly. An invalid
+scan never deletes the last-known-good feed.
+
+**Trinity sync (automatic when secrets are configured):** the workflow compares
+the feed's `content_revision` with the Trinity TEST panel's `/api/catalog-meta`.
+Identical ⇒ sync skipped (idempotent — reruns cause zero writes). Changed ⇒
+authenticate and `POST /api/catalog-sync`, then re-fetch metadata and require
+the panel revision and country/endpoint counts to match before declaring
+success; any mismatch fails the run. One-time setup (secrets, never committed):
+
+```
+gh secret set TRINITY_PANEL_URL
+gh secret set TRINITY_PANEL_PASSWORD
+```
+
+**Limits (scanner):**
+- Verification reflects GitHub runner egress at scan time, not Cloudflare
+  Worker egress, not your client's network, and not future health.
+- Verified does not mean every website works through it (no universal
+  site-compatibility claim), and a country present upstream can legitimately
+  have zero verified endpoints on a given day.
+- Gemini/non-CF-origin architectural limits are unchanged by this feed.
+- Quality ranking is deterministic (evidence-weighted with stable tie-break);
+  no random ordering anywhere in publish.
+
 ## Limits
 
 - Source-reported checks only; unauthenticated geo metadata; runtime health of

@@ -415,10 +415,46 @@ def _age_hours(iso_when: str) -> float:
         return 1e9
 
 
-def publish(pools: dict, state: dict, report: dict, stats: dict) -> None:
+def validate_feed(feed: dict) -> None:
+    """Feed contract validation (spec Phase 3/8). Raises on ANY violation."""
+    if feed.get("schema_version") != 1:
+        raise ValueError("schema_version must be 1")
+    for field in ("upstream_revision", "content_revision", "generated_at",
+                  "counts", "countries"):
+        if field not in feed:
+            raise ValueError(f"feed missing field: {field}")
+    rev = feed["content_revision"]
+    if not (isinstance(rev, str) and len(rev) == 64):
+        raise ValueError("content_revision must be sha256 hex")
+    countries = feed["countries"]
+    if not isinstance(countries, dict):
+        raise ValueError("countries must be an object")
+    total = 0
+    seen: set[tuple[str, int]] = set()
+    for cc, entries in countries.items():
+        if not (isinstance(cc, str) and len(cc) == 2 and cc.isupper() and cc.isalpha()):
+            raise ValueError(f"bad country code: {cc!r}")
+        for pair in entries:
+            addr, port = pair
+            if not isinstance(port, int) or not 0 < port < 65536:
+                raise ValueError(f"bad port {port!r} in {cc}")
+            if not is_public(str(addr)):
+                raise ValueError(f"bad address {addr!r} in {cc}")
+            if (addr, port) in seen:
+                raise ValueError(f"duplicate endpoint {addr}:{port} across countries")
+            seen.add((addr, port))
+            total += 1
+    if feed["counts"].get("verified") != total:
+        raise ValueError("counts.verified mismatch")
+    if feed["counts"].get("countries") != len(countries):
+        raise ValueError("counts.countries mismatch")
+
+
+def publish(pools: dict, state: dict, report: dict, stats: dict,
+            out_dir=None) -> None:
     """Transactional: write everything into a temp dir, validate, then move."""
-    OUT = REPO / "catalog" / "verified"
-    tmp = REPO / "catalog" / ".verified-tmp"
+    OUT = Path(out_dir) if out_dir else REPO / "catalog" / "verified"
+    tmp = (OUT.parent / ".verified-tmp")
     import shutil
     if tmp.exists():
         shutil.rmtree(tmp)
@@ -475,11 +511,23 @@ def publish(pools: dict, state: dict, report: dict, stats: dict) -> None:
                                           encoding="utf-8")
     # Validate before swap (transactional publish).
     loaded = json.loads((tmp / "feed.json").read_text(encoding="utf-8"))
-    assert loaded["counts"]["verified"] == total
+    validate_feed(loaded)
+    # Anomaly guard (spec Phase 3): a collapsed scan must not replace a
+    # healthy feed. Relative check, no invented absolute threshold: if the
+    # previous feed had a real population and this scan lost most of it
+    # AND would publish near-nothing, keep the previous feed and fail loudly.
+    prev_path = OUT / "feed.json"
+    if prev_path.exists():
+        prev = json.loads(prev_path.read_text(encoding="utf-8"))
+        prev_total = prev.get("counts", {}).get("verified", 0)
+        if prev_total >= 100 and total * 4 < prev_total and total < 50:
+            raise SystemExit(
+                f"anomaly guard: refusing to publish {total} verified "
+                f"(previous feed had {prev_total}); previous feed retained")
     if OUT.exists():
         shutil.rmtree(OUT)
     tmp.rename(OUT)
-    state_path = REPO / "scanner" / "state.json"
+    state_path = (OUT.parent / "state.json") if out_dir else REPO / "scanner" / "state.json"
     state_path.write_text(json.dumps(state, indent=1), encoding="utf-8")
 
 
@@ -610,6 +658,22 @@ def main() -> int:
     by_country: dict[str, int] = {}
     for r in verified:
         by_country[r.get("country") or "??"] = by_country.get(r.get("country") or "??", 0) + 1
+    # Per-country funnel (spec Phase 4): source -> tested -> tcp -> tls -> app -> verified.
+    # Observed-country attribution for tested stages; country_meta carries the
+    # source-side counts from country_batches.
+    funnel: dict[str, dict] = {}
+    for cc, m in sorted((country_meta or {}).items()):
+        funnel[cc] = {"source": m["source"], "tested": m["scanned"],
+                      "tcp_ok": 0, "tls_ok": 0, "app_ok": 0, "verified": 0}
+    for r in results:
+        cc = r.get("country") or "??"
+        f = funnel.setdefault(cc, {"source": 0, "tested": 0,
+                                   "tcp_ok": 0, "tls_ok": 0, "app_ok": 0, "verified": 0})
+        f["tested"] = f.get("tested", 0) + 1
+        if r.get("tcp_ok"): f["tcp_ok"] += 1
+        if r.get("tls_ok"): f["tls_ok"] += 1
+        if r.get("app_ok"): f["app_ok"] += 1
+        if r.get("verified"): f["verified"] += 1
     elapsed = int(time.monotonic() - started)
     print(f"tested={len(results)} tcp={tcp_ok} tls={tls_ok} app={app_ok} "
           f"trinity_verified={len(verified)} in {elapsed}s")
@@ -627,6 +691,7 @@ def main() -> int:
         "tcp_ok": tcp_ok, "tls_ok": tls_ok, "application_ok": app_ok,
         "trinity_verified": len(verified),
         "countries": by_country,
+        "country_funnel": funnel,
         "duration_s": elapsed,
         "pool_sizes": {cc: len(v) for cc, v in sorted(pools.items())},
     }

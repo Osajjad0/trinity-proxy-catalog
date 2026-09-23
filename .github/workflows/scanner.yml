@@ -44,23 +44,26 @@ jobs:
           EOF
 
       - name: Trinity sync (drive the TEST panel's operator API)
-        if: success() && env.TRINITY_PANEL_URL != ''
         env:
           TRINITY_PANEL_URL: ${{ secrets.TRINITY_PANEL_URL }}
           TRINITY_PANEL_PASSWORD: ${{ secrets.TRINITY_PANEL_PASSWORD }}
         run: |
           python - <<'EOF'
-          # V24.6.1 §13 idempotency: sync only when the feed content changed.
+          # V24.6.1 §13 idempotency + Phase 9 post-verification.
           import json, os, urllib.request
-          base = os.environ["TRINITY_PANEL_URL"].rstrip("/")
-          pw = os.environ["TRINITY_PANEL_PASSWORD"]
+          base = (os.environ.get("TRINITY_PANEL_URL") or "").rstrip("/")
+          pw = os.environ.get("TRINITY_PANEL_PASSWORD") or ""
+          if not base or not pw:
+              print("trinity sync SKIPPED: TRINITY_PANEL_URL / TRINITY_PANEL_PASSWORD secrets not configured")
+              print("one-time setup: gh secret set TRINITY_PANEL_URL ; gh secret set TRINITY_PANEL_PASSWORD")
+              raise SystemExit(0)  # secrets absent: leave pipeline safe, fail only in operator onboarding
           new_rev = json.load(open("catalog/verified/feed.json"))["content_revision"]
-          old_meta = {}
-          try:
-              old_meta = json.load(urllib.request.urlopen(
-                  base + "/api/catalog-meta", timeout=30))
-          except Exception:
-              pass  # first sync or meta endpoint absent — proceed
+          def meta():
+              try:
+                  return json.load(urllib.request.urlopen(base + "/api/catalog-meta", timeout=30))
+              except Exception:
+                  return {}  # first sync or meta endpoint absent — proceed
+          old_meta = meta()
           if old_meta.get("contentRevision") == new_rev:
               print("trinity sync skipped: feed unchanged (", new_rev[:12], ")")
               raise SystemExit(0)
@@ -78,6 +81,20 @@ jobs:
                 "| endpoints:", report.get("endpointCount"))
           if not report.get("ok"):
               raise SystemExit(1)
+          # Post-sync verification: Trinity revision must equal GitHub feed revision.
+          after = meta()
+          if after.get("contentRevision") != new_rev:
+              raise SystemExit(f"post-sync revision mismatch: trinity="
+                               f"{after.get('contentRevision')!r} feed={new_rev!r}")
+          # Counts must match the feed we just published.
+          feed = json.load(open("catalog/verified/feed.json"))
+          exp_ep = sum(len(v) for v in feed["countries"].values())
+          if (after.get("countryCount") != len(feed["countries"])
+                  or after.get("endpointCount") != exp_ep):
+              raise SystemExit(f"post-sync count mismatch: trinity="
+                               f"{after.get('countryCount')}c/{after.get('endpointCount')}e "
+                               f"feed={len(feed['countries'])}c/{exp_ep}e")
+          print("post-sync verified: revision + counts match")
           EOF
 
       - name: Commit verified results
