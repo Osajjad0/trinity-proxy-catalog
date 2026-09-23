@@ -104,7 +104,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # The scan step just wrote the new feed into the worktree; stash it
+          # around the rebase and restore so auto-commit still publishes it.
+          git stash push -m "scan results" || true
           git pull --rebase origin main
+          git stash pop || true
 
       - name: Commit verified results
         if: success()
