@@ -102,17 +102,13 @@ publish; a collapsed scan (near-total loss vs the previous healthy feed) is
 refused — the previous feed is retained and the run fails loudly. An invalid
 scan never deletes the last-known-good feed.
 
-**Trinity sync (automatic when secrets are configured):** the workflow compares
-the feed's `content_revision` with the Trinity TEST panel's `/api/catalog-meta`.
-Identical ⇒ sync skipped (idempotent — reruns cause zero writes). Changed ⇒
-authenticate and `POST /api/catalog-sync`, then re-fetch metadata and require
-the panel revision and country/endpoint counts to match before declaring
-success; any mismatch fails the run. One-time setup (secrets, never committed):
-
-```
-gh secret set TRINITY_PANEL_URL
-gh secret set TRINITY_PANEL_PASSWORD
-```
+**Trinity sync (automatic, OIDC — nothing to configure):** the workflow posts
+`/api/catalog-sync-github` with its GitHub-issued OIDC identity (audience
+`trinity-catalog-sync`); the Worker verifies the token against GitHub's JWKS
+and runs the same fail-closed sync. The sync report's revision and
+country/endpoint counts must match the feed or the run fails — identical
+revision ⇒ zero writes (idempotent — reruns are no-ops). No panel password is
+stored in GitHub (see SECRETS_SETUP.md).
 
 **Limits (scanner):**
 - Verification reflects GitHub runner egress at scan time, not Cloudflare
