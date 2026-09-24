@@ -9,6 +9,11 @@ Pipeline (all bounded):
   Stage B: same socket path, SNI/Host = Trinity Worker hostname (TRINITY_HOST)
   verified = Stage A ok AND Stage B ok, country from probe observation
 
+  Capability (v1.9.5): Stage A+B prove CF-RELAY capability only (the
+  candidate forwards TLS for Cloudflare-fronted SNIs). It is NOT proof of
+  generic TCP forwarding; the feed carries capability="cf-relay" so
+  consumers cannot advertise these endpoints as universal relays.
+
 Dial IP, SNI, and Host stay separate: the candidate IP:port is always the
 TCP destination; SNI/Host are the test hostname. A candidate is "verified"
 only on full Stage A+B evidence — never because a source listed it.
@@ -472,6 +477,12 @@ def publish(pools: dict, state: dict, report: dict, stats: dict,
     content_rev = hashlib.sha256(body).hexdigest()
     feed = {
         "schema_version": 1,
+        # v1.9.5 capability semantics: Stage A+B prove the candidate forwards
+        # TLS for Cloudflare-fronted SNIs — a CF-relay, NOT a generic TCP
+        # forward proxy. Consumers must not advertise these endpoints as
+        # universal relays; generic-forward capability would need a Stage C
+        # probe against non-CF destinations and a source that provides it.
+        "capability": "cf-relay",
         # Trinity's client validates these two fields. The upstream of a
         # VERIFIED feed is the scanner's own evidence state + sources; in CI
         # this equals the commit SHA of the run's checkout.
@@ -690,6 +701,9 @@ def main() -> int:
         "tested_count": len(results),
         "tcp_ok": tcp_ok, "tls_ok": tls_ok, "application_ok": app_ok,
         "trinity_verified": len(verified),
+        "capability": "cf-relay",
+        "capability_note": ("Stage A+B verify Cloudflare-relay capability only; "
+                            "generic TCP forwarding is NOT verified by this feed"),
         "countries": by_country,
         "country_funnel": funnel,
         "duration_s": elapsed,
