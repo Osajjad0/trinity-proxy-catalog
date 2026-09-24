@@ -2,13 +2,15 @@ name: refresh-verified
 
 on:
   schedule:
-    - cron: '4 11 * * *'  # 11:04 UTC daily — same time as the first manual scan
+    - cron: '23 0-22/2 * * *'  # every 2 hours at :23 UTC — sync + worker-vantage verify
   workflow_dispatch:
 
 permissions:
   contents: write   # the scan publishes verified results to the repo
-  id-token: write   # the Trinity sync authenticates as this workflow (OIDC)
+  id-token: write   # the Trinity sync/verify authenticate as this workflow (OIDC)
 
+# One scan at a time: a second scheduled run supersedes any queued one
+# instead of racing it (no overlapping full scans).
 concurrency:
   group: verified-scan
   cancel-in-progress: false
@@ -16,7 +18,8 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # scan (up to 45) + sync + worker-vantage verify loop (~15) with headroom
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
 
@@ -120,4 +123,50 @@ jobs:
                                f"feed={exp_cc}c/{exp_ep}e")
           print("post-sync verified: revision + counts match"
                 + ("" if report.get("changed") else " (no-op: same revision)"))
+          EOF
+
+      - name: Trinity worker-vantage verify (bounded loop, every 2h)
+        run: |
+          python - <<'EOF'
+          # The scanner's health is SOURCE evidence only. The decisive
+          # verdict is a TCP connect FROM the Worker's own egress — the
+          # vantage that will dial the candidate at runtime. Bounded passes
+          # (40 probes each, stateless cursor) until every catalog candidate
+          # carries a fresh verdict: this is what stops "GitHub says healthy,
+          # Trinity says unreachable" from ever producing an active pool.
+          import json, os, time, urllib.parse, urllib.request
+          base = "https://trinity-fresh3.tmplbertohr.workers.dev/90418d70acf87f56"
+          tok_url = (os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"] + "&audience="
+                     + urllib.parse.quote("trinity-catalog-sync"))
+          tok_req = urllib.request.Request(tok_url, headers={
+              "Authorization": "Bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
+          oidc = json.loads(urllib.request.urlopen(tok_req, timeout=30).read())["value"]
+          cursor, probed, reachable, total, report = 0, 0, 0, 0, {}
+          for i in range(15):
+              req = urllib.request.Request(
+                  base + f"/api/verify-catalog?cursor={cursor}&budget=40",
+                  data=b"{}", headers={
+                      "Authorization": "Bearer " + oidc,
+                      "Content-Type": "application/json",
+                      "User-Agent": "trinity-catalog-sync/1.0 (github-actions)"},
+                  method="POST")
+              report = json.loads(urllib.request.urlopen(req, timeout=180).read())
+              if not report.get("ok"):
+                  raise SystemExit("verify pass refused: " + str(report))
+              cursor = report["cursor"]
+              probed += report["probed"]
+              reachable += report["reachable"]
+              total = report["total"]
+              if report.get("done"):
+                  break
+              time.sleep(1)
+          else:
+              raise SystemExit("verify loop hit 15 passes without finishing")
+          print(f"worker-vantage verify ok: {probed} probed ({reachable} reachable)"
+                f" of {total} candidates")
+          counts = report.get("counts", {})
+          for cc in ("US", "DE", "SG"):
+              c = counts.get(cc, {})
+              print(f"  {cc}: discovered={c.get('discovered')} trinityReachable="
+                    f"{c.get('trinityReachable')} quarantined={c.get('quarantined')}")
           EOF
