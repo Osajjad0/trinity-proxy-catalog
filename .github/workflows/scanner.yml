@@ -142,7 +142,7 @@ jobs:
               "Authorization": "Bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
           oidc = json.loads(urllib.request.urlopen(tok_req, timeout=30).read())["value"]
           cursor, probed, reachable, total, report = 0, 0, 0, 0, {}
-          for i in range(60):
+          for i in range(120):
               req = urllib.request.Request(
                   base + f"/api/verify-catalog?cursor={cursor}&budget=40",
                   data=b"{}", headers={
@@ -161,7 +161,7 @@ jobs:
                   break
               time.sleep(1)
           else:
-              raise SystemExit("verify loop hit 60 passes without finishing")
+              raise SystemExit("verify loop hit 120 passes without finishing")
           print(f"worker-vantage verify ok: {probed} probed ({reachable} reachable)"
                 f" of {total} candidates")
           counts = report.get("counts", {})
