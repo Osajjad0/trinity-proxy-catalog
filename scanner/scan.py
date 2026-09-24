@@ -25,6 +25,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import collections
 import ipaddress
 import json
 import socket
@@ -220,6 +221,62 @@ def probe_stage(address: str, port: int, sni: str, host: str) -> dict:
             pass
 
 
+# ---------------------------------------------------------------- Stage C: relay capability
+# A foreign-SNI TLS probe classifies the candidate's front by BEHAVIOR, not by
+# hostname or ASN knowledge:
+#   CF edge (cf-relay)          -> rejects a non-Cloudflare SNI with a TLS alert
+#   terminating front (sni-terminate) -> completes TLS with its OWN certificate
+#   true passthrough            -> completes TLS with a VALID certificate for
+#                                  the tested hostname and relays the request
+# The tested hostname must be a real, non-Cloudflare-fronted HTTPS host with no
+# Trinity relationship. www.rfc-editor.org: independent operator, plain CDN.
+FOREIGN_SNI = "www.postgresql.org"
+
+
+def classify_capability(address: str, port: int) -> str:
+    """Stage C: one TLS probe with a foreign SNI, verifying certificates."""
+    try:
+        raw = socket.create_connection((address, port), timeout=TCP_TIMEOUT_S)
+    except OSError:
+        return "unreachable"
+    try:
+        ctx = ssl.create_default_context()
+        try:
+            sock = ctx.wrap_socket(raw, server_hostname=FOREIGN_SNI)
+        except ssl.SSLCertVerificationError:
+            # TLS completed but the front presented its own certificate:
+            # a terminating sni-front, not a transparent relay.
+            return "sni-terminate"
+        except ssl.SSLError as e:
+            if "ALERT" in str(e):
+                return "cf-relay"
+            return "tls-error"
+        except OSError:
+            return "tls-error"
+        # Handshake verified for the foreign hostname — prove the relay by
+        # actually fetching through it.
+        try:
+            req = (f"GET / HTTP/1.1\r\nHost: {FOREIGN_SNI}\r\n"
+                   f"User-Agent: trinity-scan/1.0\r\nAccept: */*\r\n"
+                   f"Connection: close\r\n\r\n")
+            sock.sendall(req.encode())
+            n, text = _recv_response(sock)
+            status = text.split(" ", 2)[1] if text.startswith("HTTP/") else ""
+            return "passthrough" if status.startswith(("2", "3")) else "sni-terminate"
+        except (OSError, ssl.SSLError):
+            return "sni-terminate"
+        finally:
+            try:
+                sock.close()
+            except OSError:
+                pass
+    finally:
+        try:
+            raw.close()
+        except OSError:
+            pass
+
+
 def probe_candidate(c: dict, trinity_host: str) -> dict:
     """Stage A (generic CF compatibility) then Stage B (Trinity host)."""
     a = probe_stage(c["address"], c["port"], CF_TEST_SNI, CF_TEST_SNI)
@@ -227,8 +284,13 @@ def probe_candidate(c: dict, trinity_host: str) -> dict:
         return {**c, **a, "stage": "A", "verified": False}
     b = probe_stage(c["address"], c["port"], trinity_host, trinity_host)
     ok = b["app_ok"]
+    # Stage C only for source-verified candidates: classification costs one
+    # TLS handshake and is meaningless for a candidate that cannot even serve
+    # its own edge.
+    capability = classify_capability(c["address"], c["port"]) if ok else "unverified"
     return {
         **c, **b, "stage": "B", "verified": ok,
+        "capability": capability,
         "cf_country": a["country"], "cf_colo": a["colo"],
         "cf_tcp_ms": a["tcp_ms"], "cf_app_ms": a["app_ms"],
         "error": None if ok else (b["error"] or "trinity stage failed"),
@@ -302,6 +364,17 @@ def score(rec: dict, now_ts: float | None = None) -> int:
             s = int(s * 0.75)
         if age_h >= 48:
             s = int(s * 0.5)
+    # Relay capability (Stage C): passthrough carries arbitrary destination
+    # TLS and ranks above cf-relay for generic traffic. Bounded bonus — it
+    # reorders within a country, never manufactures health (only verified
+    # records even have a capability).
+    if rec.get("capability") == "passthrough":
+        s += 25
+    elif rec.get("capability") == "sni-terminate":
+        # Terminates TLS with its own certificate: the inner client's
+        # certificate check fails for every destination it fronts. Rank it
+        # below everything that can actually relay.
+        s -= 15
     return max(0, min(100, s))
 
 
@@ -332,6 +405,11 @@ def merge_state(state: dict, results: list[dict], now: str) -> dict:
             rec["last_rtt_ms"] = r.get("total_ms")
             rec["observed_country"] = r.get("country")
             rec["observed_provider"] = rec.get("observed_provider") or r.get("observed_provider")
+            # Relay capability is re-measured every scan (Stage C); keep the
+            # freshest verdict on the record.
+            if r.get("capability"):
+                rec["capability"] = r["capability"]
+                rec["capability_checked_at"] = now
         else:
             rec["failure_count"] += 1
             rec["last_failure"] = now
@@ -370,6 +448,9 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
             "success_count": rec.get("success_count", 0),
             "failure_count": rec.get("failure_count", 0),
             "status": "verified",
+            # Stage C classification (may be absent on records classified
+            # before this field existed — readers must default).
+            "capability": rec.get("capability", "unverified"),
         }
         # V24.6.1 §17/23: compact per-endpoint quality metadata. success_ratio
         # is measured (successes / attempts); nothing derived from source lists.
@@ -393,6 +474,7 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
 def _upstream_revision() -> str:
     """40-hex identity of the scanner inputs. Git SHA in CI; local fallback
     hashes the sources + evidence state, which changes whenever they do."""
+    import collections
     import hashlib, subprocess
     try:
         out = subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO,
@@ -508,9 +590,18 @@ def publish(pools: dict, state: dict, report: dict, stats: dict,
                                        default=""),
                 "source_candidate_count": (state.get("countries", {}).get(cc, {})
                                            .get("source_candidate_count", 0)),
+                # Stage C relay-capability census for this country's pool.
+                "capability_counts": dict(collections.Counter(
+                    e.get("capability", "unverified") for e in entries)),
             }
             for cc, entries in sorted(pools.items())
         },
+        # The feed-wide verdict. Entries are CF-relay-dominated by source
+        # construction; per-country counts carry the detail.
+        "capability_note": ("Stage A+B verify Cloudflare-relay behavior; "
+                            "Stage C classifies cf-relay / sni-terminate / "
+                            "passthrough per candidate. Only 'passthrough' "
+                            "proves generic TCP forwarding."),
     }
     (tmp / "feed.json").write_text(json.dumps(feed, indent=1), encoding="utf-8")
     (tmp / "index.json").write_text(json.dumps({
