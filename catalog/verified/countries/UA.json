@@ -2,6 +2,26 @@
  "schema_version": 1,
  "endpoints": [
   {
+   "address": "31.41.221.121",
+   "port": 443,
+   "observed_country": "UA",
+   "source_countries": [
+    "UA"
+   ],
+   "sources": [
+    "catalog:UA"
+   ],
+   "score": 40,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 14,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "passthrough",
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
    "address": "141.105.130.102",
    "port": 443,
    "observed_country": "UA",
@@ -13,12 +33,13 @@
    ],
    "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 13,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 14,
    "failure_count": 0,
    "status": "verified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
-   "quality_rank": 1
+   "quality_rank": 2
   },
   {
    "address": "173.242.63.235",
@@ -32,12 +53,13 @@
    ],
    "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 13,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 14,
    "failure_count": 0,
    "status": "verified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
-   "quality_rank": 2
+   "quality_rank": 3
   },
   {
    "address": "185.86.77.181",
@@ -51,12 +73,13 @@
    ],
    "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 13,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 14,
    "failure_count": 0,
    "status": "verified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
-   "quality_rank": 3
+   "quality_rank": 4
   },
   {
    "address": "193.110.163.10",
@@ -70,29 +93,11 @@
    ],
    "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 13,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 14,
    "failure_count": 0,
    "status": "verified",
-   "success_ratio": 1.0,
-   "quality_rank": 4
-  },
-  {
-   "address": "31.41.221.121",
-   "port": 443,
-   "observed_country": "UA",
-   "source_countries": [
-    "UA"
-   ],
-   "sources": [
-    "catalog:UA"
-   ],
-   "score": 15,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 13,
-   "failure_count": 0,
-   "status": "verified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
    "quality_rank": 5
   },
@@ -108,10 +113,11 @@
    ],
    "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 13,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 14,
    "failure_count": 0,
    "status": "verified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
    "quality_rank": 6
   },
@@ -127,10 +133,11 @@
    ],
    "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 13,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 14,
    "failure_count": 0,
    "status": "verified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
    "quality_rank": 7
   },
@@ -144,13 +151,14 @@
    "sources": [
     "catalog:UA"
    ],
-   "score": 9,
+   "score": 6,
    "last_rtt_ms": null,
    "last_success": "2026-09-23T22:17:10Z",
    "success_count": 11,
-   "failure_count": 2,
+   "failure_count": 3,
    "status": "verified",
-   "success_ratio": 0.85,
+   "capability": "unverified",
+   "success_ratio": 0.79,
    "quality_rank": 8
   }
  ]

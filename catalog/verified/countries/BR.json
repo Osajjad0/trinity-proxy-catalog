@@ -2,6 +2,46 @@
  "schema_version": 1,
  "endpoints": [
   {
+   "address": "152.67.41.217",
+   "port": 443,
+   "observed_country": "BR",
+   "source_countries": [
+    "BR"
+   ],
+   "sources": [
+    "catalog:BR"
+   ],
+   "score": 40,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 15,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "passthrough",
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
+   "address": "201.16.130.6",
+   "port": 443,
+   "observed_country": "BR",
+   "source_countries": [
+    "BR"
+   ],
+   "sources": [
+    "catalog:BR"
+   ],
+   "score": 40,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 15,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "passthrough",
+   "success_ratio": 1.0,
+   "quality_rank": 2
+  },
+  {
    "address": "144.22.204.102",
    "port": 50317,
    "observed_country": "BR",
@@ -13,12 +53,13 @@
    ],
    "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 14,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 15,
    "failure_count": 0,
    "status": "verified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
-   "quality_rank": 1
+   "quality_rank": 3
   },
   {
    "address": "146.235.59.153",
@@ -32,12 +73,13 @@
    ],
    "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 14,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 15,
    "failure_count": 0,
    "status": "verified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
-   "quality_rank": 2
+   "quality_rank": 4
   },
   {
    "address": "146.235.59.153",
@@ -51,48 +93,11 @@
    ],
    "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 14,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 15,
    "failure_count": 0,
    "status": "verified",
-   "success_ratio": 1.0,
-   "quality_rank": 3
-  },
-  {
-   "address": "152.67.41.217",
-   "port": 443,
-   "observed_country": "BR",
-   "source_countries": [
-    "BR"
-   ],
-   "sources": [
-    "catalog:BR"
-   ],
-   "score": 15,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 14,
-   "failure_count": 0,
-   "status": "verified",
-   "success_ratio": 1.0,
-   "quality_rank": 4
-  },
-  {
-   "address": "201.16.130.6",
-   "port": 443,
-   "observed_country": "BR",
-   "source_countries": [
-    "BR"
-   ],
-   "sources": [
-    "catalog:BR"
-   ],
-   "score": 15,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 14,
-   "failure_count": 0,
-   "status": "verified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
    "quality_rank": 5
   },
@@ -108,10 +113,11 @@
    ],
    "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 14,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 15,
    "failure_count": 0,
    "status": "verified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
    "quality_rank": 6
   },
@@ -127,10 +133,11 @@
    ],
    "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 14,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 15,
    "failure_count": 0,
    "status": "verified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
    "quality_rank": 7
   },
@@ -144,13 +151,14 @@
    "sources": [
     "catalog:BR"
    ],
-   "score": 15,
+   "score": 13,
    "last_rtt_ms": null,
    "last_success": "2026-09-24T20:44:54Z",
    "success_count": 14,
-   "failure_count": 0,
+   "failure_count": 1,
    "status": "verified",
-   "success_ratio": 1.0,
+   "capability": "unverified",
+   "success_ratio": 0.93,
    "quality_rank": 8
   },
   {
@@ -163,13 +171,14 @@
    "sources": [
     "catalog:BR"
    ],
-   "score": 4,
+   "score": 5,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 10,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 11,
    "failure_count": 4,
    "status": "verified",
-   "success_ratio": 0.71,
+   "capability": "cf-relay",
+   "success_ratio": 0.73,
    "quality_rank": 9
   }
  ]
