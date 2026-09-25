@@ -150,7 +150,24 @@ jobs:
                       "Content-Type": "application/json",
                       "User-Agent": "trinity-catalog-sync/1.0 (github-actions)"},
                   method="POST")
-              report = json.loads(urllib.request.urlopen(req, timeout=180).read())
+              try:
+                  resp = urllib.request.urlopen(req, timeout=180)
+                  report = json.loads(resp.read())
+              except urllib.error.HTTPError as exc:
+                  body = exc.read().decode(errors="replace")[:300]
+                  # A stale/rejected identity: remint once and retry this pass.
+                  print(f"verify pass HTTP {exc.code}: {body}")
+                  tok_req = urllib.request.Request(tok_url, headers={
+                      "Authorization": "Bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
+                  oidc = json.loads(urllib.request.urlopen(tok_req, timeout=30).read())["value"]
+                  req = urllib.request.Request(
+                      base + f"/api/verify-catalog?cursor={cursor}&budget=40",
+                      data=b"{}", headers={
+                          "Authorization": "Bearer " + oidc,
+                          "Content-Type": "application/json",
+                          "User-Agent": "trinity-catalog-sync/1.0 (github-actions)"},
+                      method="POST")
+                  report = json.loads(urllib.request.urlopen(req, timeout=180).read())
               if not report.get("ok"):
                   raise SystemExit("verify pass refused: " + str(report))
               cursor = report["cursor"]
