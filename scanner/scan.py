@@ -261,7 +261,8 @@ def classify_capability(address: str, port: int) -> str:
                    f"Connection: close\r\n\r\n")
             sock.sendall(req.encode())
             n, text = _recv_response(sock)
-            status = text.split(" ", 2)[1] if text.startswith("HTTP/") else ""
+            parts = text.split(" ", 2)
+            status = parts[1] if len(parts) > 1 else ""
             return "passthrough" if status.startswith(("2", "3")) else "sni-terminate"
         except (OSError, ssl.SSLError):
             return "sni-terminate"

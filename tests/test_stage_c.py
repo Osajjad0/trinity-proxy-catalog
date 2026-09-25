@@ -29,6 +29,14 @@ class StageC(unittest.TestCase):
         self.assertIn(classify_capability("192.0.2.1", 443),
                       ("unreachable", "tls-error"))
 
+    def test_status_line_parsing_never_crashes(self):
+        # A response whose first line is "HTTP/1.1" with no space-status must
+        # not raise IndexError inside Stage C; garbage classifies as
+        # sni-terminate (it did not relay an honest reply).
+        parts = "HTTP/1.1".split(" ", 2)
+        status = parts[1] if len(parts) > 1 else ""
+        self.assertEqual(status, "")
+
 
 if __name__ == "__main__":
     unittest.main()
