@@ -596,6 +596,14 @@ def publish(pools: dict, state: dict, report: dict, stats: dict,
             }
             for cc, entries in sorted(pools.items())
         },
+        # PHASE 5: per-entry Stage-C class so the runtime can rank
+        # passthrough above cf-relay without a feed schema break. Absent
+        # class = unclassified (the runtime treats it like cf-relay-neutral).
+        "capability_by_endpoint": {
+            f'{e["address"]}:{e["port"]}': e["capability"]
+            for entries in pools.values() for e in entries
+            if e.get("capability") in ("passthrough", "cf-relay", "sni-terminate")
+        },
         # The feed-wide verdict. Entries are CF-relay-dominated by source
         # construction; per-country counts carry the detail.
         "capability_note": ("Stage A+B verify Cloudflare-relay behavior; "
