@@ -315,3 +315,41 @@ class FeedTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class GenericRelaySourceTests(unittest.TestCase):
+    """sub/generic_relays/CC.txt optional source files (spec v1.9.5 #5, #27)."""
+
+    def fixture_with_generic(self, generic=b'138.68.78.187 443\nbadline\n'):
+        data = fixture()
+        data['sub/generic_relays/JO.txt'] = generic
+        return data
+
+    def test_generic_relay_ingests_as_country_claim_with_class_evidence(self):
+        m = module()
+        docs = m.build(self.fixture_with_generic(), 'a' * 40, {'dynamic_hosts': []})
+        countries = {r['endpoint']: r for r in docs['countries/JO.json']['endpoints']}
+        self.assertIn('138.68.78.187:443', countries)
+        row = countries['138.68.78.187:443']
+        self.assertEqual(row['country_claims'], ['JO'])
+        self.assertTrue(any(e.get('source_class') == 'generic-relay'
+                            for e in row['evidence']))
+        # malformed generic line is rejected like any other source line
+        rejected = {r.get('original'): r for r in docs['rejected.json']['rows']}
+        self.assertIn('badline', rejected)
+
+    def test_generic_relay_unknown_label_goes_unassigned(self):
+        m = module()
+        data = self.fixture_with_generic(b'138.68.78.187 443\n')
+        data['sub/generic_relays/T9.txt'] = b'196.202.1.2 443\n'
+        docs = m.build(data, 'a' * 40, {'dynamic_hosts': []})
+        unassigned = {r['endpoint']: r for r in docs['unassigned.json']['endpoints']}
+        self.assertIn('196.202.1.2:443', unassigned)
+        self.assertEqual(unassigned['196.202.1.2:443']['unrecognized_labels'], ['T9'])
+
+    def test_relevant_accepts_generic_relay_paths(self):
+        m = module()
+        self.assertTrue(m.relevant('sub/generic_relays/JO.txt'))
+        self.assertFalse(m.relevant('sub/generic_relays/jo.txt'))
+        self.assertFalse(m.relevant('sub/generic_relays/JOH.txt'))
+        self.assertFalse(m.relevant('sub/generic_relays/JO.json'))

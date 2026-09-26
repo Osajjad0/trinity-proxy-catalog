@@ -127,6 +127,22 @@ def build(files, revision, config):
                 reject(ev, 'expected address and port')
             else:
                 add(*parts, label, ev)
+    # Optional generic-relay source files (sub/generic_relays/CC.txt, "address port"
+    # lines). Same format and validation as country files; entries join the same
+    # country_claims -> catalog:CC -> runtime flow. Stage-C still decides the actual
+    # capability class — a source claim is never a capability grant.
+    generic_files = sorted(p for p in files if re.fullmatch(r'sub/generic_relays/[A-Z0-9]{2}\.txt', p))
+    for path in generic_files:
+        label = path.rsplit('/', 1)[1][:-4]
+        for line_no, original in enumerate(text[path].splitlines(), 1):
+            if not original.strip():
+                continue
+            ev = evidence(path, line_no, original, label, source_class='generic-relay')
+            parts = original.split()
+            if len(parts) != 2:
+                reject(ev, 'expected address and port')
+            else:
+                add(*parts, label, ev)
     label, section, daily_rows = None, None, 0
     for line_no, original in enumerate(text[DAILY].splitlines(), 1):
         if original.startswith('## '):
@@ -324,7 +340,9 @@ API = 'https://api.github.com/repos/NiREvil/vless/'
 
 
 def relevant(path):
-    return path in REQUIRED or bool(re.fullmatch(r'sub/country_proxies/[A-Z0-9]{2}\.txt', path))
+    return (path in REQUIRED
+            or bool(re.fullmatch(r'sub/country_proxies/[A-Z0-9]{2}\.txt', path))
+            or bool(re.fullmatch(r'sub/generic_relays/[A-Z0-9]{2}\.txt', path)))
 
 
 def allowed_url(url):

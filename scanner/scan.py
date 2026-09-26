@@ -231,41 +231,45 @@ def probe_stage(address: str, port: int, sni: str, host: str) -> dict:
 # The tested hostname must be a real, non-Cloudflare-fronted HTTPS host with no
 # Trinity relationship. www.rfc-editor.org: independent operator, plain CDN.
 FOREIGN_SNI = "www.postgresql.org"
+# A claimed passthrough must confirm on a SECOND independent destination
+# before the class is granted. One destination can coincide with a front's
+# allowlist (its own upstream); two unrelated operators agreeing is the
+# behavior of a true relay, not a filtering front. False-positive generic
+# capability is worse than "unclassified" (spec v1.9.5 §10).
+FOREIGN_SNI_CONFIRM = "www.rfc-editor.org"
 
 
-def classify_capability(address: str, port: int) -> str:
-    """Stage C: one TLS probe with a foreign SNI, verifying certificates."""
-    try:
-        raw = socket.create_connection((address, port), timeout=TCP_TIMEOUT_S)
-    except OSError:
-        return "unreachable"
+def _foreign_probe(address: str, port: int, sni: str) -> tuple[str, str]:
+    """One foreign-SNI TLS+HTTP probe. Returns (class, evidence-status)."""
+    raw = socket.create_connection((address, port), timeout=TCP_TIMEOUT_S)
     try:
         ctx = ssl.create_default_context()
         try:
-            sock = ctx.wrap_socket(raw, server_hostname=FOREIGN_SNI)
+            sock = ctx.wrap_socket(raw, server_hostname=sni)
         except ssl.SSLCertVerificationError:
             # TLS completed but the front presented its own certificate:
             # a terminating sni-front, not a transparent relay.
-            return "sni-terminate"
+            return "sni-terminate", ""
         except ssl.SSLError as e:
             if "ALERT" in str(e):
-                return "cf-relay"
-            return "tls-error"
+                return "cf-relay", ""
+            return "tls-error", ""
         except OSError:
-            return "tls-error"
+            return "tls-error", ""
         # Handshake verified for the foreign hostname — prove the relay by
         # actually fetching through it.
         try:
-            req = (f"GET / HTTP/1.1\r\nHost: {FOREIGN_SNI}\r\n"
+            req = (f"GET / HTTP/1.1\r\nHost: {sni}\r\n"
                    f"User-Agent: trinity-scan/1.0\r\nAccept: */*\r\n"
                    f"Connection: close\r\n\r\n")
             sock.sendall(req.encode())
             n, text = _recv_response(sock)
             parts = text.split(" ", 2)
             status = parts[1] if len(parts) > 1 else ""
-            return "passthrough" if status.startswith(("2", "3")) else "sni-terminate"
+            return ("passthrough" if status.startswith(("2", "3"))
+                    else "sni-terminate"), status
         except (OSError, ssl.SSLError):
-            return "sni-terminate"
+            return "sni-terminate", ""
         finally:
             try:
                 sock.close()
@@ -276,6 +280,29 @@ def classify_capability(address: str, port: int) -> str:
             raw.close()
         except OSError:
             pass
+
+
+def classify_capability(address: str, port: int) -> str:
+    """Stage C: foreign-SNI TLS probe, certificate-verified, double-confirmed.
+
+    A candidate is only called passthrough when TWO independent non-Trinity
+    destinations both complete with valid certificates and honest HTTP
+    statuses. Anything less keeps the conservative lower class.
+    """
+    try:
+        cls, _ = _foreign_probe(address, port, FOREIGN_SNI)
+    except OSError:
+        return "unreachable"
+    if cls != "passthrough":
+        return cls
+    try:
+        confirm, _ = _foreign_probe(address, port, FOREIGN_SNI_CONFIRM)
+    except OSError:
+        # First probe relayed honestly; the confirmation connection failed to
+        # even establish. That is churn, not evidence of a filter — keep the
+        # first verdict but do not upgrade anything.
+        return "passthrough"
+    return "passthrough" if confirm == "passthrough" else confirm
 
 
 def probe_candidate(c: dict, trinity_host: str) -> dict:
