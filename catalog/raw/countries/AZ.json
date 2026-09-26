@@ -10,7 +10,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 205,
+          "line": 204,
           "original": "180.149.44.124,8443,AZ,GCore Labs SA",
           "source_country_label": "AZ",
           "source_path": "edge/assets/p-legacies.csv"
@@ -46,13 +46,6 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 206,
-          "original": "31.58.237.197,2096,AZ,Leased IPv4 Blocks",
-          "source_country_label": "AZ",
-          "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
           "line": 205,
           "original": "31.58.237.197 2096",
           "source_country_label": null,
@@ -73,114 +66,6 @@
       "unrecognized_labels": []
     },
     {
-      "address": "31.58.237.198",
-      "checked_at": null,
-      "country_claims": [
-        "AZ"
-      ],
-      "endpoint": "31.58.237.198:2096",
-      "evidence": [
-        {
-          "checked_at": null,
-          "line": 207,
-          "original": "31.58.237.198,2096,AZ,Leased IPv4 Blocks",
-          "source_country_label": "AZ",
-          "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 206,
-          "original": "31.58.237.198 2096",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 3,
-          "original": "31.58.237.198 2096",
-          "source_country_label": "AZ",
-          "source_path": "sub/country_proxies/AZ.txt"
-        }
-      ],
-      "kind": "IPV4",
-      "port": 2096,
-      "runtime_health": "unknown",
-      "trinity_verified": false,
-      "unrecognized_labels": []
-    },
-    {
-      "address": "31.58.237.199",
-      "checked_at": null,
-      "country_claims": [
-        "AZ"
-      ],
-      "endpoint": "31.58.237.199:2096",
-      "evidence": [
-        {
-          "checked_at": null,
-          "line": 208,
-          "original": "31.58.237.199,2096,AZ,Leased IPv4 Blocks",
-          "source_country_label": "AZ",
-          "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 207,
-          "original": "31.58.237.199 2096",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 4,
-          "original": "31.58.237.199 2096",
-          "source_country_label": "AZ",
-          "source_path": "sub/country_proxies/AZ.txt"
-        }
-      ],
-      "kind": "IPV4",
-      "port": 2096,
-      "runtime_health": "unknown",
-      "trinity_verified": false,
-      "unrecognized_labels": []
-    },
-    {
-      "address": "31.58.237.200",
-      "checked_at": null,
-      "country_claims": [
-        "AZ"
-      ],
-      "endpoint": "31.58.237.200:2096",
-      "evidence": [
-        {
-          "checked_at": null,
-          "line": 209,
-          "original": "31.58.237.200,2096,AZ,Leased IPv4 Blocks",
-          "source_country_label": "AZ",
-          "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 208,
-          "original": "31.58.237.200 2096",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 5,
-          "original": "31.58.237.200 2096",
-          "source_country_label": "AZ",
-          "source_path": "sub/country_proxies/AZ.txt"
-        }
-      ],
-      "kind": "IPV4",
-      "port": 2096,
-      "runtime_health": "unknown",
-      "trinity_verified": false,
-      "unrecognized_labels": []
-    },
-    {
       "address": "85.185.86.111",
       "checked_at": null,
       "country_claims": [
@@ -190,7 +75,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 210,
+          "line": 205,
           "original": "85.185.86.111,2053,AZ,Leased IPv4 Blocks",
           "source_country_label": "AZ",
           "source_path": "edge/assets/p-legacies.csv"
@@ -233,7 +118,7 @@
         },
         {
           "checked_at": null,
-          "line": 211,
+          "line": 206,
           "original": "94.20.154.66,443,AZ,Leased IPv4 Blocks",
           "source_country_label": "AZ",
           "source_path": "edge/assets/p-legacies.csv"
@@ -251,6 +136,20 @@
           "original": "94.20.154.66 443",
           "source_country_label": "AZ",
           "source_path": "sub/country_proxies/AZ.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 462,
+          "original": "| <pre><code>94.20.154.66</code></pre> | Leased IPv4 Blocks | Baki, Baku | <img src=\"https://img.shields.io/badge/-50-AA6022\" /> |",
+          "port_resolution": {
+            "line": 106,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇦🇿 Azerbaijan (1 proxies)",
+          "source_country_label": "AZ",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
         }
       ],
       "kind": "IPV4",
