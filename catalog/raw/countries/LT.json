@@ -1,49 +1,6 @@
 {
   "endpoints": [
     {
-      "address": "130.12.171.173",
-      "checked_at": null,
-      "country_claims": [
-        "LT"
-      ],
-      "endpoint": "130.12.171.173:443",
-      "evidence": [
-        {
-          "checked_at": null,
-          "line": 4680,
-          "original": "130.12.171.173,443,true,LT,N/A,-,SOLID Lithuania,-",
-          "source_country_label": "LT",
-          "source_path": "sub/country_proxies/02_proxies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 8103,
-          "original": "130.12.171.173,443,LT,SOLID Lithuania",
-          "source_country_label": "LT",
-          "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 8102,
-          "original": "130.12.171.173 443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 1,
-          "original": "130.12.171.173 443",
-          "source_country_label": "LT",
-          "source_path": "sub/country_proxies/LT.txt"
-        }
-      ],
-      "kind": "IPV4",
-      "port": 443,
-      "runtime_health": "unknown",
-      "trinity_verified": false,
-      "unrecognized_labels": []
-    },
-    {
       "address": "130.12.171.63",
       "checked_at": null,
       "country_claims": [
@@ -53,42 +10,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4681,
+          "line": 5565,
           "original": "130.12.171.63,443,true,LT,N/A,-,SOLID Lithuania,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8104,
+          "line": 9378,
           "original": "130.12.171.63,443,LT,SOLID Lithuania",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8103,
+          "line": 9377,
           "original": "130.12.171.63 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 2,
+          "line": 1,
           "original": "130.12.171.63 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5496,
-          "original": "| <pre><code>130.12.171.63</code></pre> | SOLID Lithuania | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6787,
+          "original": "| <pre><code>130.12.171.63</code></pre> | SOLID Lithuania | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4681,
+            "line": 5565,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -96,6 +53,42 @@
       ],
       "kind": "IPV4",
       "port": 443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "144.31.243.120",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "144.31.243.120:8443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 9379,
+          "original": "144.31.243.120,8443,LT,SERVHOST GROUP LTD",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9378,
+          "original": "144.31.243.120 8443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 2,
+          "original": "144.31.243.120 8443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        }
+      ],
+      "kind": "IPV4",
+      "port": 8443,
       "runtime_health": "unknown",
       "trinity_verified": false,
       "unrecognized_labels": []
@@ -110,21 +103,21 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4682,
+          "line": 5566,
           "original": "144.31.243.69,443,true,LT,N/A,-,SERVHOST GROUP LTD,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8105,
+          "line": 9380,
           "original": "144.31.243.69,443,LT,SERVHOST GROUP LTD",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8104,
+          "line": 9379,
           "original": "144.31.243.69 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
@@ -138,14 +131,14 @@
         },
         {
           "checked_at": null,
-          "line": 5497,
-          "original": "| <pre><code>144.31.243.69</code></pre> | SERV.HOST GROUP LTD | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6788,
+          "original": "| <pre><code>144.31.243.69</code></pre> | SERV.HOST GROUP LTD | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4682,
+            "line": 5566,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -167,14 +160,14 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8106,
+          "line": 9381,
           "original": "176.118.198.175,8443,LT,PROGRESYVUS SPRENDIMAI UAB",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8105,
+          "line": 9380,
           "original": "176.118.198.175 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
@@ -203,14 +196,14 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8107,
+          "line": 9382,
           "original": "176.118.198.24,8443,LT,PROGRESYVUS SPRENDIMAI UAB",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8106,
+          "line": 9381,
           "original": "176.118.198.24 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
@@ -230,109 +223,265 @@
       "unrecognized_labels": []
     },
     {
-      "address": "185.237.185.110",
+      "address": "176.223.140.204",
       "checked_at": null,
       "country_claims": [
         "LT"
       ],
-      "endpoint": "185.237.185.110:2053",
+      "endpoint": "176.223.140.204:443",
       "evidence": [
         {
           "checked_at": null,
-          "line": 8108,
-          "original": "185.237.185.110,2053,LT,oneprovidercom  Vilnius Infrastructure",
+          "line": 5567,
+          "original": "176.223.140.204,443,true,LT,N/A,-,UAB Interneto vizija,-",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9383,
+          "original": "176.223.140.204,443,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8107,
-          "original": "185.237.185.110 2053",
+          "line": 9382,
+          "original": "176.223.140.204 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
           "line": 6,
-          "original": "185.237.185.110 2053",
+          "original": "176.223.140.204 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 6786,
+          "original": "| <pre><code>176.223.140.204</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
+          "port_resolution": {
+            "line": 5567,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇱🇹 Lithuania (30 proxies)",
+          "source_country_label": "LT",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
         }
       ],
       "kind": "IPV4",
-      "port": 2053,
+      "port": 443,
       "runtime_health": "unknown",
       "trinity_verified": false,
       "unrecognized_labels": []
     },
     {
-      "address": "185.237.185.182",
+      "address": "185.34.52.147",
       "checked_at": null,
       "country_claims": [
         "LT"
       ],
-      "endpoint": "185.237.185.182:2053",
+      "endpoint": "185.34.52.147:443",
       "evidence": [
         {
           "checked_at": null,
-          "line": 8110,
-          "original": "185.237.185.182,2053,LT,Oneprovidercom  Vilnius Infrastructure",
+          "line": 5568,
+          "original": "185.34.52.147,443,true,LT,N/A,-,UAB ESNET,-",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9384,
+          "original": "185.34.52.147,443,LT,UAB ESNET",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8109,
-          "original": "185.237.185.182 2053",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 8,
-          "original": "185.237.185.182 2053",
-          "source_country_label": "LT",
-          "source_path": "sub/country_proxies/LT.txt"
-        }
-      ],
-      "kind": "IPV4",
-      "port": 2053,
-      "runtime_health": "unknown",
-      "trinity_verified": false,
-      "unrecognized_labels": []
-    },
-    {
-      "address": "185.237.185.182",
-      "checked_at": null,
-      "country_claims": [
-        "LT"
-      ],
-      "endpoint": "185.237.185.182:8443",
-      "evidence": [
-        {
-          "checked_at": null,
-          "line": 8109,
-          "original": "185.237.185.182,8443,LT,Oneprovidercom  Vilnius Infrastructure",
-          "source_country_label": "LT",
-          "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 8108,
-          "original": "185.237.185.182 8443",
+          "line": 9383,
+          "original": "185.34.52.147 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
           "line": 7,
-          "original": "185.237.185.182 8443",
+          "original": "185.34.52.147 443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 6807,
+          "original": "| <pre><code>185.34.52.147</code></pre> | UAB ESNET | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
+          "port_resolution": {
+            "line": 5568,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇱🇹 Lithuania (30 proxies)",
+          "source_country_label": "LT",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
+        }
+      ],
+      "kind": "IPV4",
+      "port": 443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "185.80.128.20",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "185.80.128.20:443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 5569,
+          "original": "185.80.128.20,443,true,LT,N/A,-,UAB ESNET,-",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9385,
+          "original": "185.80.128.20,443,LT,UAB ESNET",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9384,
+          "original": "185.80.128.20 443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 8,
+          "original": "185.80.128.20 443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 6790,
+          "original": "| <pre><code>185.80.128.20</code></pre> | UAB ESNET | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
+          "port_resolution": {
+            "line": 5569,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇱🇹 Lithuania (30 proxies)",
+          "source_country_label": "LT",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
+        }
+      ],
+      "kind": "IPV4",
+      "port": 443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "185.80.128.24",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "185.80.128.24:8443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 9386,
+          "original": "185.80.128.24,8443,LT,UAB ESNET",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9385,
+          "original": "185.80.128.24 8443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 9,
+          "original": "185.80.128.24 8443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         }
       ],
       "kind": "IPV4",
       "port": 8443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "185.80.128.80",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "185.80.128.80:443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 5570,
+          "original": "185.80.128.80,443,true,LT,N/A,-,UAB ESNET,-",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9387,
+          "original": "185.80.128.80,443,LT,UAB ESNET",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9386,
+          "original": "185.80.128.80 443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 10,
+          "original": "185.80.128.80 443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 6811,
+          "original": "| <pre><code>185.80.128.80</code></pre> | UAB ESNET | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
+          "port_resolution": {
+            "line": 5570,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇱🇹 Lithuania (30 proxies)",
+          "source_country_label": "LT",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
+        }
+      ],
+      "kind": "IPV4",
+      "port": 443,
       "runtime_health": "unknown",
       "trinity_verified": false,
       "unrecognized_labels": []
@@ -347,42 +496,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4683,
+          "line": 5571,
           "original": "185.80.129.84,443,true,LT,N/A,-,UAB ESNET,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8111,
+          "line": 9388,
           "original": "185.80.129.84,443,LT,UAB ESNET",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8110,
+          "line": 9387,
           "original": "185.80.129.84 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 9,
+          "line": 11,
           "original": "185.80.129.84 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5495,
-          "original": "| <pre><code>185.80.129.84</code></pre> | UAB ESNET | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6789,
+          "original": "| <pre><code>185.80.129.84</code></pre> | UAB ESNET | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4683,
+            "line": 5571,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -404,42 +553,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4684,
+          "line": 5572,
           "original": "188.190.3.42,443,true,LT,N/A,-,EDIS IPv6 Infrastructure in Lithuania,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8112,
+          "line": 9389,
           "original": "188.190.3.42,443,LT,EDIS IPv6 Infrastructure in Lithuania",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8111,
+          "line": 9388,
           "original": "188.190.3.42 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 10,
+          "line": 12,
           "original": "188.190.3.42 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5513,
-          "original": "| <pre><code>188.190.3.42</code></pre> | EDIS IPv6 Infrastructure in Lithuania | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6792,
+          "original": "| <pre><code>188.190.3.42</code></pre> | EDIS IPv6 Infrastructure in Lithuania | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4684,
+            "line": 5572,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -461,21 +610,21 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8113,
+          "line": 9390,
           "original": "194.135.83.166,8443,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8112,
+          "line": 9389,
           "original": "194.135.83.166 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 11,
+          "line": 13,
           "original": "194.135.83.166 8443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
@@ -497,42 +646,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4685,
+          "line": 5573,
           "original": "194.135.91.96,443,true,LT,N/A,-,UAB Interneto vizija,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8114,
+          "line": 9391,
           "original": "194.135.91.96,443,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8113,
+          "line": 9390,
           "original": "194.135.91.96 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 12,
+          "line": 14,
           "original": "194.135.91.96 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5499,
-          "original": "| <pre><code>194.135.91.96</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6797,
+          "original": "| <pre><code>194.135.91.96</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4685,
+            "line": 5573,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -554,21 +703,21 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8115,
+          "line": 9392,
           "original": "194.87.106.196,8443,LT,Baxet Group Inc",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8114,
+          "line": 9391,
           "original": "194.87.106.196 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 13,
+          "line": 15,
           "original": "194.87.106.196 8443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
@@ -576,49 +725,6 @@
       ],
       "kind": "IPV4",
       "port": 8443,
-      "runtime_health": "unknown",
-      "trinity_verified": false,
-      "unrecognized_labels": []
-    },
-    {
-      "address": "195.181.244.107",
-      "checked_at": null,
-      "country_claims": [
-        "LT"
-      ],
-      "endpoint": "195.181.244.107:443",
-      "evidence": [
-        {
-          "checked_at": null,
-          "line": 4686,
-          "original": "195.181.244.107,443,true,LT,N/A,-,UAB Interneto vizija,-",
-          "source_country_label": "LT",
-          "source_path": "sub/country_proxies/02_proxies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 8116,
-          "original": "195.181.244.107,443,LT,UAB Interneto vizija",
-          "source_country_label": "LT",
-          "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 8115,
-          "original": "195.181.244.107 443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 14,
-          "original": "195.181.244.107 443",
-          "source_country_label": "LT",
-          "source_path": "sub/country_proxies/LT.txt"
-        }
-      ],
-      "kind": "IPV4",
-      "port": 443,
       "runtime_health": "unknown",
       "trinity_verified": false,
       "unrecognized_labels": []
@@ -633,42 +739,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4687,
+          "line": 5574,
           "original": "195.181.244.216,443,true,LT,N/A,-,UAB Interneto vizija,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8117,
+          "line": 9393,
           "original": "195.181.244.216,443,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8116,
+          "line": 9392,
           "original": "195.181.244.216 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 15,
+          "line": 16,
           "original": "195.181.244.216 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5502,
-          "original": "| <pre><code>195.181.244.216</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6808,
+          "original": "| <pre><code>195.181.244.216</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4687,
+            "line": 5574,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -690,42 +796,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4688,
+          "line": 5575,
           "original": "195.238.126.11,443,true,LT,N/A,-,Melbikomas UAB,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8118,
+          "line": 9394,
           "original": "195.238.126.11,443,LT,Melbikomas UAB",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8117,
+          "line": 9393,
           "original": "195.238.126.11 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 16,
+          "line": 17,
           "original": "195.238.126.11 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5500,
-          "original": "| <pre><code>195.238.126.11</code></pre> | Melbikomas UAB | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6796,
+          "original": "| <pre><code>195.238.126.11</code></pre> | Melbikomas UAB | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4688,
+            "line": 5575,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -747,42 +853,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4689,
+          "line": 5576,
           "original": "195.238.126.150,443,true,LT,N/A,-,Melbikomas UAB,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8119,
+          "line": 9395,
           "original": "195.238.126.150,443,LT,Melbikomas UAB",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8118,
+          "line": 9394,
           "original": "195.238.126.150 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 17,
+          "line": 18,
           "original": "195.238.126.150 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5498,
-          "original": "| <pre><code>195.238.126.150</code></pre> | Melbikomas UAB | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6802,
+          "original": "| <pre><code>195.238.126.150</code></pre> | Melbikomas UAB | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4689,
+            "line": 5576,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -795,76 +901,168 @@
       "unrecognized_labels": []
     },
     {
-      "address": "212.192.23.136",
+      "address": "2.59.162.27",
       "checked_at": null,
       "country_claims": [
         "LT"
       ],
-      "endpoint": "212.192.23.136:8443",
+      "endpoint": "2.59.162.27:443",
       "evidence": [
         {
           "checked_at": null,
-          "line": 8120,
-          "original": "212.192.23.136,8443,LT,Baxet Group Inc",
-          "source_country_label": "LT",
-          "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 8119,
-          "original": "212.192.23.136 8443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 18,
-          "original": "212.192.23.136 8443",
-          "source_country_label": "LT",
-          "source_path": "sub/country_proxies/LT.txt"
-        }
-      ],
-      "kind": "IPV4",
-      "port": 8443,
-      "runtime_health": "unknown",
-      "trinity_verified": false,
-      "unrecognized_labels": []
-    },
-    {
-      "address": "212.192.23.56",
-      "checked_at": null,
-      "country_claims": [
-        "LT"
-      ],
-      "endpoint": "212.192.23.56:443",
-      "evidence": [
-        {
-          "checked_at": null,
-          "line": 4690,
-          "original": "212.192.23.56,443,true,LT,N/A,-,Baxet Group Inc,-",
+          "line": 5577,
+          "original": "2.59.162.27,443,true,LT,N/A,-,GLOBAL CONNECTIVITY SOLUTIONS LLP,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8121,
-          "original": "212.192.23.56,443,LT,Baxet Group Inc",
+          "line": 9396,
+          "original": "2.59.162.27,443,LT,GLOBAL CONNECTIVITY SOLUTIONS LLP",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8120,
-          "original": "212.192.23.56 443",
+          "line": 9395,
+          "original": "2.59.162.27 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
           "line": 19,
-          "original": "212.192.23.56 443",
+          "original": "2.59.162.27 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 6791,
+          "original": "| <pre><code>2.59.162.27</code></pre> | GLOBAL CONNECTIVITY SOLUTIONS LLP | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
+          "port_resolution": {
+            "line": 5577,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇱🇹 Lithuania (30 proxies)",
+          "source_country_label": "LT",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
+        }
+      ],
+      "kind": "IPV4",
+      "port": 443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "212.192.23.30",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "212.192.23.30:443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 5578,
+          "original": "212.192.23.30,443,true,LT,N/A,-,Baxet Group Inc,-",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9397,
+          "original": "212.192.23.30,443,LT,Baxet Group Inc",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9396,
+          "original": "212.192.23.30 443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 20,
+          "original": "212.192.23.30 443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 6810,
+          "original": "| <pre><code>212.192.23.30</code></pre> | Baxet Group Inc. | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
+          "port_resolution": {
+            "line": 5578,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇱🇹 Lithuania (30 proxies)",
+          "source_country_label": "LT",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
+        }
+      ],
+      "kind": "IPV4",
+      "port": 443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "212.192.23.91",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "212.192.23.91:443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 5579,
+          "original": "212.192.23.91,443,true,LT,N/A,-,Baxet Group Inc,-",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9398,
+          "original": "212.192.23.91,443,LT,Baxet Group Inc",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9397,
+          "original": "212.192.23.91 443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 21,
+          "original": "212.192.23.91 443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 6809,
+          "original": "| <pre><code>212.192.23.91</code></pre> | Baxet Group Inc. | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
+          "port_resolution": {
+            "line": 5579,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇱🇹 Lithuania (30 proxies)",
+          "source_country_label": "LT",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
         }
       ],
       "kind": "IPV4",
@@ -883,21 +1081,21 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8123,
+          "line": 9399,
           "original": "212.24.104.79,2053,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8122,
+          "line": 9398,
           "original": "212.24.104.79 2053",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 21,
+          "line": 22,
           "original": "212.24.104.79 2053",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
@@ -919,21 +1117,21 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8122,
+          "line": 9400,
           "original": "212.24.104.79,8443,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8121,
+          "line": 9399,
           "original": "212.24.104.79 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 20,
+          "line": 23,
           "original": "212.24.104.79 8443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
@@ -955,22 +1153,94 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8124,
+          "line": 9401,
           "original": "213.183.55.153,8443,LT,EDIS IPv6 Infrastructure in Lithuania",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8123,
+          "line": 9400,
           "original": "213.183.55.153 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 22,
+          "line": 24,
           "original": "213.183.55.153 8443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        }
+      ],
+      "kind": "IPV4",
+      "port": 8443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "213.189.221.242",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "213.189.221.242:8443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 9402,
+          "original": "213.189.221.242,8443,LT,Baxet Group Inc",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9401,
+          "original": "213.189.221.242 8443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 25,
+          "original": "213.189.221.242 8443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        }
+      ],
+      "kind": "IPV4",
+      "port": 8443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "213.252.246.17",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "213.252.246.17:8443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 9403,
+          "original": "213.252.246.17,8443,LT,SolusVM priskirti adresai",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9402,
+          "original": "213.252.246.17 8443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 26,
+          "original": "213.252.246.17 8443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         }
@@ -991,42 +1261,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4691,
+          "line": 5580,
           "original": "45.93.137.149,443,true,LT,N/A,-,Hostinger International Limited,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8125,
+          "line": 9404,
           "original": "45.93.137.149,443,LT,Hostinger International Limited",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8124,
+          "line": 9403,
           "original": "45.93.137.149 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 23,
+          "line": 27,
           "original": "45.93.137.149 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5501,
-          "original": "| <pre><code>45.93.137.149</code></pre> | Hostinger International Limited | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6794,
+          "original": "| <pre><code>45.93.137.149</code></pre> | Hostinger International Limited | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4691,
+            "line": 5580,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -1048,21 +1318,21 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8126,
+          "line": 9405,
           "original": "46.29.234.91,8443,LT,GLOBAL CONNECTIVITY SOLUTIONS LLP",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8125,
+          "line": 9404,
           "original": "46.29.234.91 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 24,
+          "line": 28,
           "original": "46.29.234.91 8443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
@@ -1084,42 +1354,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4692,
+          "line": 5581,
           "original": "5.199.162.130,443,true,LT,N/A,-,UAB Cherry Servers,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8127,
+          "line": 9406,
           "original": "5.199.162.130,443,LT,UAB Cherry Servers",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8126,
+          "line": 9405,
           "original": "5.199.162.130 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 25,
+          "line": 29,
           "original": "5.199.162.130 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5507,
-          "original": "| <pre><code>5.199.162.130</code></pre> | UAB Cherry Servers | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6813,
+          "original": "| <pre><code>5.199.162.130</code></pre> | UAB Cherry Servers | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4692,
+            "line": 5581,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -1141,99 +1411,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4693,
+          "line": 5582,
           "original": "5.199.173.195,443,true,LT,N/A,-,UAB Cherry Servers,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8128,
+          "line": 9407,
           "original": "5.199.173.195,443,LT,UAB Cherry Servers",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8127,
+          "line": 9406,
           "original": "5.199.173.195 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 26,
+          "line": 30,
           "original": "5.199.173.195 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5493,
-          "original": "| <pre><code>5.199.173.195</code></pre> | UAB Cherry Servers | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6814,
+          "original": "| <pre><code>5.199.173.195</code></pre> | UAB Cherry Servers | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4693,
+            "line": 5582,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
-          "source_country_label": "LT",
-          "source_path": "sub/ProxyIP-Daily.md",
-          "source_reported_check": true
-        }
-      ],
-      "kind": "IPV4",
-      "port": 443,
-      "runtime_health": "unknown",
-      "trinity_verified": false,
-      "unrecognized_labels": []
-    },
-    {
-      "address": "72.56.5.222",
-      "checked_at": null,
-      "country_claims": [
-        "LT"
-      ],
-      "endpoint": "72.56.5.222:443",
-      "evidence": [
-        {
-          "checked_at": null,
-          "line": 4694,
-          "original": "72.56.5.222,443,true,LT,N/A,-,UAB Interneto vizija,-",
-          "source_country_label": "LT",
-          "source_path": "sub/country_proxies/02_proxies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 8129,
-          "original": "72.56.5.222,443,LT,UAB Interneto vizija",
-          "source_country_label": "LT",
-          "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 8128,
-          "original": "72.56.5.222 443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 27,
-          "original": "72.56.5.222 443",
-          "source_country_label": "LT",
-          "source_path": "sub/country_proxies/LT.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 5503,
-          "original": "| <pre><code>72.56.5.222</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
-          "port_resolution": {
-            "line": 4694,
-            "port": 443,
-            "source_path": "sub/country_proxies/02_proxies.csv"
-          },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -1255,21 +1468,21 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8130,
+          "line": 9408,
           "original": "78.153.131.199,8443,LT,GLOBAL CONNECTIVITY SOLUTIONS LLP",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8129,
+          "line": 9407,
           "original": "78.153.131.199 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 28,
+          "line": 31,
           "original": "78.153.131.199 8443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
@@ -1291,42 +1504,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4695,
+          "line": 5583,
           "original": "80.208.227.162,443,true,LT,N/A,-,UAB Interneto vizija,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8131,
+          "line": 9409,
           "original": "80.208.227.162,443,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8130,
+          "line": 9408,
           "original": "80.208.227.162 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 29,
+          "line": 32,
           "original": "80.208.227.162 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5504,
-          "original": "| <pre><code>80.208.227.162</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6798,
+          "original": "| <pre><code>80.208.227.162</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4695,
+            "line": 5583,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -1348,42 +1561,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4696,
+          "line": 5584,
           "original": "80.209.231.51,443,true,LT,N/A,-,UAB Interneto vizija,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8132,
+          "line": 9410,
           "original": "80.209.231.51,443,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8131,
+          "line": 9409,
           "original": "80.209.231.51 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 30,
+          "line": 33,
           "original": "80.209.231.51 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5494,
-          "original": "| <pre><code>80.209.231.51</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6795,
+          "original": "| <pre><code>80.209.231.51</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4696,
+            "line": 5584,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -1405,42 +1618,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4697,
+          "line": 5585,
           "original": "80.209.232.78,443,true,LT,N/A,-,UAB Interneto vizija,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8133,
+          "line": 9411,
           "original": "80.209.232.78,443,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8132,
+          "line": 9410,
           "original": "80.209.232.78 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 31,
+          "line": 34,
           "original": "80.209.232.78 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5505,
-          "original": "| <pre><code>80.209.232.78</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6815,
+          "original": "| <pre><code>80.209.232.78</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4697,
+            "line": 5585,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -1462,21 +1675,21 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8134,
+          "line": 9412,
           "original": "80.209.237.38,2053,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8133,
+          "line": 9411,
           "original": "80.209.237.38 2053",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 32,
+          "line": 35,
           "original": "80.209.237.38 2053",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
@@ -1484,6 +1697,213 @@
       ],
       "kind": "IPV4",
       "port": 2053,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "84.32.149.158",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "84.32.149.158:443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 5586,
+          "original": "84.32.149.158,443,true,LT,N/A,-,Private Customer,-",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9414,
+          "original": "84.32.149.158,443,LT,Private Customer",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9413,
+          "original": "84.32.149.158 443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 37,
+          "original": "84.32.149.158 443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 6801,
+          "original": "| <pre><code>84.32.149.158</code></pre> | Private Customer | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
+          "port_resolution": {
+            "line": 5586,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇱🇹 Lithuania (30 proxies)",
+          "source_country_label": "LT",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
+        }
+      ],
+      "kind": "IPV4",
+      "port": 443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "84.32.149.158",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "84.32.149.158:8443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 9413,
+          "original": "84.32.149.158,8443,LT,Private Customer",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9412,
+          "original": "84.32.149.158 8443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 36,
+          "original": "84.32.149.158 8443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        }
+      ],
+      "kind": "IPV4",
+      "port": 8443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "84.32.209.76",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "84.32.209.76:443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 5587,
+          "original": "84.32.209.76,443,true,LT,N/A,-,Private Customer,-",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9415,
+          "original": "84.32.209.76,443,LT,Private Customer",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9414,
+          "original": "84.32.209.76 443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 38,
+          "original": "84.32.209.76 443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 6793,
+          "original": "| <pre><code>84.32.209.76</code></pre> | Private Customer | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
+          "port_resolution": {
+            "line": 5587,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇱🇹 Lithuania (30 proxies)",
+          "source_country_label": "LT",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
+        }
+      ],
+      "kind": "IPV4",
+      "port": 443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
+      "address": "84.32.97.162",
+      "checked_at": null,
+      "country_claims": [
+        "LT"
+      ],
+      "endpoint": "84.32.97.162:443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 5588,
+          "original": "84.32.97.162,443,true,LT,N/A,-,Private Customer,-",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9416,
+          "original": "84.32.97.162,443,LT,Private Customer",
+          "source_country_label": "LT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 9415,
+          "original": "84.32.97.162 443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 39,
+          "original": "84.32.97.162 443",
+          "source_country_label": "LT",
+          "source_path": "sub/country_proxies/LT.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 6812,
+          "original": "| <pre><code>84.32.97.162</code></pre> | Private Customer | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
+          "port_resolution": {
+            "line": 5588,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇱🇹 Lithuania (30 proxies)",
+          "source_country_label": "LT",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
+        }
+      ],
+      "kind": "IPV4",
+      "port": 443,
       "runtime_health": "unknown",
       "trinity_verified": false,
       "unrecognized_labels": []
@@ -1498,42 +1918,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4698,
+          "line": 5589,
           "original": "85.206.161.198,443,true,LT,N/A,-,Pirma alokacija,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8135,
+          "line": 9417,
           "original": "85.206.161.198,443,LT,Pirma alokacija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8134,
+          "line": 9416,
           "original": "85.206.161.198 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 33,
+          "line": 40,
           "original": "85.206.161.198 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5510,
-          "original": "| <pre><code>85.206.161.198</code></pre> | Pirma alokacija | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6804,
+          "original": "| <pre><code>85.206.161.198</code></pre> | Pirma alokacija | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4698,
+            "line": 5589,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -1555,42 +1975,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4699,
+          "line": 5590,
           "original": "85.206.161.200,443,true,LT,N/A,-,Pirma alokacija,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8136,
+          "line": 9418,
           "original": "85.206.161.200,443,LT,Pirma alokacija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8135,
+          "line": 9417,
           "original": "85.206.161.200 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 34,
+          "line": 41,
           "original": "85.206.161.200 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5511,
-          "original": "| <pre><code>85.206.161.200</code></pre> | Pirma alokacija | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6803,
+          "original": "| <pre><code>85.206.161.200</code></pre> | Pirma alokacija | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4699,
+            "line": 5590,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -1612,42 +2032,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4700,
+          "line": 5591,
           "original": "89.125.248.243,443,true,LT,N/A,-,Baxet Group Inc,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8137,
+          "line": 9419,
           "original": "89.125.248.243,443,LT,Baxet Group Inc",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8136,
+          "line": 9418,
           "original": "89.125.248.243 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 35,
+          "line": 42,
           "original": "89.125.248.243 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5508,
-          "original": "| <pre><code>89.125.248.243</code></pre> | Baxet Group Inc. | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6799,
+          "original": "| <pre><code>89.125.248.243</code></pre> | Baxet Group Inc. | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4700,
+            "line": 5591,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -1669,42 +2089,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4701,
+          "line": 5592,
           "original": "89.40.15.168,443,true,LT,N/A,-,UAB Interneto vizija,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8138,
+          "line": 9420,
           "original": "89.40.15.168,443,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8137,
+          "line": 9419,
           "original": "89.40.15.168 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 36,
+          "line": 43,
           "original": "89.40.15.168 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5506,
-          "original": "| <pre><code>89.40.15.168</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6800,
+          "original": "| <pre><code>89.40.15.168</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4701,
+            "line": 5592,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -1726,42 +2146,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4702,
+          "line": 5593,
           "original": "93.115.25.111,443,true,LT,N/A,-,UAB Cherry Servers,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8139,
+          "line": 9421,
           "original": "93.115.25.111,443,LT,UAB Cherry Servers",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8138,
+          "line": 9420,
           "original": "93.115.25.111 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 37,
+          "line": 44,
           "original": "93.115.25.111 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5512,
-          "original": "| <pre><code>93.115.25.111</code></pre> | UAB Cherry Servers | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6805,
+          "original": "| <pre><code>93.115.25.111</code></pre> | UAB Cherry Servers | Siauliai, Šiauliai | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4702,
+            "line": 5593,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -1783,42 +2203,42 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 4703,
+          "line": 5594,
           "original": "94.176.235.22,443,true,LT,N/A,-,UAB Interneto vizija,-",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 8140,
+          "line": 9422,
           "original": "94.176.235.22,443,LT,UAB Interneto vizija",
           "source_country_label": "LT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 8139,
+          "line": 9421,
           "original": "94.176.235.22 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 38,
+          "line": 45,
           "original": "94.176.235.22 443",
           "source_country_label": "LT",
           "source_path": "sub/country_proxies/LT.txt"
         },
         {
           "checked_at": null,
-          "line": 5509,
-          "original": "| <pre><code>94.176.235.22</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 6806,
+          "original": "| <pre><code>94.176.235.22</code></pre> | UAB Interneto vizija | Vilnius, Vilnius | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4703,
+            "line": 5594,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇱🇹 Lithuania (21 proxies)",
+          "section": "🇱🇹 Lithuania (30 proxies)",
           "source_country_label": "LT",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true

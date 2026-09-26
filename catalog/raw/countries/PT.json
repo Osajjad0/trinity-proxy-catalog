@@ -1,6 +1,42 @@
 {
   "endpoints": [
     {
+      "address": "194.9.62.133",
+      "checked_at": null,
+      "country_claims": [
+        "PT"
+      ],
+      "endpoint": "194.9.62.133:8443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 14345,
+          "original": "194.9.62.133,8443,PT,Euronodes Ltd",
+          "source_country_label": "PT",
+          "source_path": "edge/assets/p-legacies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 14344,
+          "original": "194.9.62.133 8443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 1,
+          "original": "194.9.62.133 8443",
+          "source_country_label": "PT",
+          "source_path": "sub/country_proxies/PT.txt"
+        }
+      ],
+      "kind": "IPV4",
+      "port": 8443,
+      "runtime_health": "unknown",
+      "trinity_verified": false,
+      "unrecognized_labels": []
+    },
+    {
       "address": "195.133.92.20",
       "checked_at": null,
       "country_claims": [
@@ -10,38 +46,38 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 7114,
+          "line": 8332,
           "original": "195.133.92.20,443,true,PT,N/A,-,Baxet Group Inc,-",
           "source_country_label": "PT",
           "source_path": "sub/country_proxies/02_proxies.csv"
         },
         {
           "checked_at": null,
-          "line": 12631,
+          "line": 14346,
           "original": "195.133.92.20,443,PT,Baxet Group Inc",
           "source_country_label": "PT",
           "source_path": "edge/assets/p-legacies.csv"
         },
         {
           "checked_at": null,
-          "line": 12630,
+          "line": 14345,
           "original": "195.133.92.20 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 1,
+          "line": 2,
           "original": "195.133.92.20 443",
           "source_country_label": "PT",
           "source_path": "sub/country_proxies/PT.txt"
         },
         {
           "checked_at": null,
-          "line": 7889,
-          "original": "| <pre><code>195.133.92.20</code></pre> | Baxet Group Inc. | Porto, Porto | <img src=\"https://img.shields.io/badge/-100-8B1E1E\" /> |",
+          "line": 9665,
+          "original": "| <pre><code>195.133.92.20</code></pre> | Baxet Group Inc. | Porto, Porto | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 7114,
+            "line": 8332,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
