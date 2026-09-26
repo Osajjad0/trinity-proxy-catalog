@@ -2,46 +2,6 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "146.70.30.18",
-   "port": 443,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 40,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-25T17:19:49Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "passthrough",
-   "success_ratio": 1.0,
-   "quality_rank": 1
-  },
-  {
-   "address": "146.70.30.23",
-   "port": 443,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 40,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-25T17:19:49Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "passthrough",
-   "success_ratio": 1.0,
-   "quality_rank": 2
-  },
-  {
    "address": "146.70.30.31",
    "port": 443,
    "observed_country": "GB",
@@ -59,7 +19,7 @@
    "status": "verified",
    "capability": "passthrough",
    "success_ratio": 1.0,
-   "quality_rank": 3
+   "quality_rank": 1
   },
   {
    "address": "146.70.30.39",
@@ -79,7 +39,7 @@
    "status": "verified",
    "capability": "passthrough",
    "success_ratio": 1.0,
-   "quality_rank": 4
+   "quality_rank": 2
   },
   {
    "address": "146.70.30.43",
@@ -99,7 +59,7 @@
    "status": "verified",
    "capability": "passthrough",
    "success_ratio": 1.0,
-   "quality_rank": 5
+   "quality_rank": 3
   },
   {
    "address": "146.70.30.53",
@@ -119,7 +79,7 @@
    "status": "verified",
    "capability": "passthrough",
    "success_ratio": 1.0,
-   "quality_rank": 6
+   "quality_rank": 4
   },
   {
    "address": "146.70.30.54",
@@ -139,11 +99,11 @@
    "status": "verified",
    "capability": "passthrough",
    "success_ratio": 1.0,
-   "quality_rank": 7
+   "quality_rank": 5
   },
   {
-   "address": "145.241.230.227",
-   "port": 2053,
+   "address": "159.65.93.241",
+   "port": 443,
    "observed_country": "GB",
    "source_countries": [
     "GB"
@@ -151,13 +111,53 @@
    "sources": [
     "catalog:GB"
    ],
-   "score": 15,
+   "score": 40,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-26T17:48:32Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "passthrough",
+   "success_ratio": 1.0,
+   "quality_rank": 6
+  },
+  {
+   "address": "146.70.30.18",
+   "port": 443,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 36,
    "last_rtt_ms": null,
    "last_success": "2026-09-25T17:19:49Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
-   "capability": "cf-relay",
+   "capability": "passthrough",
+   "success_ratio": 1.0,
+   "quality_rank": 7
+  },
+  {
+   "address": "146.70.30.23",
+   "port": 443,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 36,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-25T17:19:49Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "passthrough",
    "success_ratio": 1.0,
    "quality_rank": 8
   },
@@ -382,8 +382,8 @@
    "quality_rank": 19
   },
   {
-   "address": "138.68.152.227",
-   "port": 2053,
+   "address": "159.65.94.176",
+   "port": 8080,
    "observed_country": "GB",
    "source_countries": [
     "GB"
@@ -391,19 +391,19 @@
    "sources": [
     "catalog:GB"
    ],
-   "score": 11,
+   "score": 15,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
+   "last_success": "2026-09-26T17:48:32Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
-   "capability": "unverified",
+   "capability": "cf-relay",
    "success_ratio": 1.0,
    "quality_rank": 20
   },
   {
-   "address": "138.68.152.227",
-   "port": 2083,
+   "address": "138.68.178.185",
+   "port": 2087,
    "observed_country": "GB",
    "source_countries": [
     "GB"
@@ -413,7 +413,7 @@
    ],
    "score": 11,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
+   "last_success": "2026-09-24T20:44:54Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
@@ -422,8 +422,8 @@
    "quality_rank": 21
   },
   {
-   "address": "138.68.152.227",
-   "port": 2087,
+   "address": "138.68.178.185",
+   "port": 2096,
    "observed_country": "GB",
    "source_countries": [
     "GB"
@@ -433,7 +433,7 @@
    ],
    "score": 11,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
+   "last_success": "2026-09-24T20:44:54Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
@@ -442,8 +442,8 @@
    "quality_rank": 22
   },
   {
-   "address": "138.68.152.227",
-   "port": 2096,
+   "address": "138.68.178.185",
+   "port": 443,
    "observed_country": "GB",
    "source_countries": [
     "GB"
@@ -453,7 +453,7 @@
    ],
    "score": 11,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
+   "last_success": "2026-09-24T20:44:54Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
@@ -462,8 +462,8 @@
    "quality_rank": 23
   },
   {
-   "address": "138.68.152.227",
-   "port": 443,
+   "address": "138.68.178.185",
+   "port": 8443,
    "observed_country": "GB",
    "source_countries": [
     "GB"
@@ -473,7 +473,7 @@
    ],
    "score": 11,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
+   "last_success": "2026-09-24T20:44:54Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
@@ -482,8 +482,8 @@
    "quality_rank": 24
   },
   {
-   "address": "138.68.152.227",
-   "port": 8443,
+   "address": "138.68.179.125",
+   "port": 2053,
    "observed_country": "GB",
    "source_countries": [
     "GB"
@@ -493,7 +493,7 @@
    ],
    "score": 11,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
+   "last_success": "2026-09-24T20:44:54Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
@@ -502,8 +502,8 @@
    "quality_rank": 25
   },
   {
-   "address": "138.68.154.57",
-   "port": 443,
+   "address": "138.68.179.125",
+   "port": 2083,
    "observed_country": "GB",
    "source_countries": [
     "GB"
@@ -513,7 +513,7 @@
    ],
    "score": 11,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
+   "last_success": "2026-09-24T20:44:54Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
@@ -522,8 +522,8 @@
    "quality_rank": 26
   },
   {
-   "address": "138.68.158.110",
-   "port": 443,
+   "address": "138.68.179.125",
+   "port": 2087,
    "observed_country": "GB",
    "source_countries": [
     "GB"
@@ -533,7 +533,7 @@
    ],
    "score": 11,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
+   "last_success": "2026-09-24T20:44:54Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
@@ -542,8 +542,8 @@
    "quality_rank": 27
   },
   {
-   "address": "138.68.160.78",
-   "port": 443,
+   "address": "138.68.179.125",
+   "port": 2096,
    "observed_country": "GB",
    "source_countries": [
     "GB"
@@ -553,7 +553,7 @@
    ],
    "score": 11,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
+   "last_success": "2026-09-24T20:44:54Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
@@ -562,7 +562,7 @@
    "quality_rank": 28
   },
   {
-   "address": "138.68.161.226",
+   "address": "138.68.179.125",
    "port": 443,
    "observed_country": "GB",
    "source_countries": [
@@ -573,7 +573,7 @@
    ],
    "score": 11,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
+   "last_success": "2026-09-24T20:44:54Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
@@ -582,8 +582,8 @@
    "quality_rank": 29
   },
   {
-   "address": "138.68.162.133",
-   "port": 443,
+   "address": "138.68.179.125",
+   "port": 8443,
    "observed_country": "GB",
    "source_countries": [
     "GB"
@@ -593,293 +593,13 @@
    ],
    "score": 11,
    "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
+   "last_success": "2026-09-24T20:44:54Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
    "capability": "unverified",
    "success_ratio": 1.0,
    "quality_rank": 30
-  },
-  {
-   "address": "138.68.166.125",
-   "port": 443,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 31
-  },
-  {
-   "address": "138.68.171.126",
-   "port": 443,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 32
-  },
-  {
-   "address": "138.68.178.185",
-   "port": 2053,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 33
-  },
-  {
-   "address": "138.68.178.185",
-   "port": 2083,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T15:48:17Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 34
-  },
-  {
-   "address": "138.68.178.185",
-   "port": 2087,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 35
-  },
-  {
-   "address": "138.68.178.185",
-   "port": 2096,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 36
-  },
-  {
-   "address": "138.68.178.185",
-   "port": 443,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 37
-  },
-  {
-   "address": "138.68.178.185",
-   "port": 8443,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 38
-  },
-  {
-   "address": "138.68.179.125",
-   "port": 2053,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 39
-  },
-  {
-   "address": "138.68.179.125",
-   "port": 2083,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 40
-  },
-  {
-   "address": "138.68.179.125",
-   "port": 2087,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 41
-  },
-  {
-   "address": "138.68.179.125",
-   "port": 2096,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 42
-  },
-  {
-   "address": "138.68.179.125",
-   "port": 443,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 43
-  },
-  {
-   "address": "138.68.179.125",
-   "port": 8443,
-   "observed_country": "GB",
-   "source_countries": [
-    "GB"
-   ],
-   "sources": [
-    "catalog:GB"
-   ],
-   "score": 11,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-24T20:44:54Z",
-   "success_count": 1,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "unverified",
-   "success_ratio": 1.0,
-   "quality_rank": 44
   },
   {
    "address": "138.68.184.166",
@@ -899,7 +619,7 @@
    "status": "verified",
    "capability": "unverified",
    "success_ratio": 1.0,
-   "quality_rank": 45
+   "quality_rank": 31
   },
   {
    "address": "138.68.184.48",
@@ -919,7 +639,7 @@
    "status": "verified",
    "capability": "unverified",
    "success_ratio": 1.0,
-   "quality_rank": 46
+   "quality_rank": 32
   },
   {
    "address": "138.68.188.142",
@@ -939,7 +659,7 @@
    "status": "verified",
    "capability": "unverified",
    "success_ratio": 1.0,
-   "quality_rank": 47
+   "quality_rank": 33
   },
   {
    "address": "139.59.177.252",
@@ -959,7 +679,7 @@
    "status": "verified",
    "capability": "unverified",
    "success_ratio": 1.0,
-   "quality_rank": 48
+   "quality_rank": 34
   },
   {
    "address": "139.59.180.89",
@@ -979,7 +699,27 @@
    "status": "verified",
    "capability": "unverified",
    "success_ratio": 1.0,
-   "quality_rank": 49
+   "quality_rank": 35
+  },
+  {
+   "address": "145.241.230.227",
+   "port": 2053,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 11,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-25T17:19:49Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "success_ratio": 1.0,
+   "quality_rank": 36
   },
   {
    "address": "139.59.183.33",
@@ -999,7 +739,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 50
+   "quality_rank": 37
   },
   {
    "address": "139.59.183.33",
@@ -1019,7 +759,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 51
+   "quality_rank": 38
   },
   {
    "address": "139.59.183.33",
@@ -1039,7 +779,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 52
+   "quality_rank": 39
   },
   {
    "address": "139.59.183.33",
@@ -1059,7 +799,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 53
+   "quality_rank": 40
   },
   {
    "address": "139.59.183.33",
@@ -1079,7 +819,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 54
+   "quality_rank": 41
   },
   {
    "address": "139.59.183.33",
@@ -1099,7 +839,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 55
+   "quality_rank": 42
   },
   {
    "address": "139.59.184.201",
@@ -1119,7 +859,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 56
+   "quality_rank": 43
   },
   {
    "address": "139.59.186.54",
@@ -1139,7 +879,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 57
+   "quality_rank": 44
   },
   {
    "address": "139.59.187.72",
@@ -1159,7 +899,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 58
+   "quality_rank": 45
   },
   {
    "address": "139.59.188.85",
@@ -1179,7 +919,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 59
+   "quality_rank": 46
   },
   {
    "address": "139.59.189.127",
@@ -1199,7 +939,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 60
+   "quality_rank": 47
   },
   {
    "address": "139.59.190.23",
@@ -1219,7 +959,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 61
+   "quality_rank": 48
   },
   {
    "address": "139.59.190.23",
@@ -1239,7 +979,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 62
+   "quality_rank": 49
   },
   {
    "address": "139.59.190.23",
@@ -1259,7 +999,7 @@
    "status": "verified",
    "capability": "sni-terminate",
    "success_ratio": 1.0,
-   "quality_rank": 63
+   "quality_rank": 50
   },
   {
    "address": "139.59.190.23",
@@ -1274,6 +1014,266 @@
    "score": 0,
    "last_rtt_ms": null,
    "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 51
+  },
+  {
+   "address": "139.59.190.23",
+   "port": 443,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T21:28:11Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 52
+  },
+  {
+   "address": "139.59.190.23",
+   "port": 8443,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 53
+  },
+  {
+   "address": "142.93.34.208",
+   "port": 443,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 54
+  },
+  {
+   "address": "142.93.34.72",
+   "port": 2053,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 55
+  },
+  {
+   "address": "142.93.34.72",
+   "port": 2083,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 56
+  },
+  {
+   "address": "142.93.34.72",
+   "port": 2087,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 57
+  },
+  {
+   "address": "142.93.34.72",
+   "port": 2096,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 58
+  },
+  {
+   "address": "142.93.34.72",
+   "port": 443,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 59
+  },
+  {
+   "address": "142.93.34.72",
+   "port": 8443,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 60
+  },
+  {
+   "address": "142.93.42.57",
+   "port": 443,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 61
+  },
+  {
+   "address": "142.93.47.157",
+   "port": 443,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 62
+  },
+  {
+   "address": "143.110.160.185",
+   "port": 443,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
+   "success_count": 1,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "success_ratio": 1.0,
+   "quality_rank": 63
+  },
+  {
+   "address": "143.110.161.220",
+   "port": 2053,
+   "observed_country": "GB",
+   "source_countries": [
+    "GB"
+   ],
+   "sources": [
+    "catalog:GB"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-24T23:15:48Z",
    "success_count": 1,
    "failure_count": 0,
    "status": "verified",
