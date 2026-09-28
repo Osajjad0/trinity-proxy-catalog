@@ -79,6 +79,34 @@ class _TmpDir:
         self._tmp.cleanup()
 
 
+class TestCountryBatches(unittest.TestCase):
+    def test_stalest_and_passthrough_verified_first(self):
+        # The 12h geo gate needs fresh evidence for pool members; a pure cursor
+        # rotation can leave the country's passthrough candidate unverified for
+        # ~13h. The window must verify the stalest evidence first and put
+        # passthrough candidates ahead of equal-staleness others.
+        def cand(addr, cap=None, last=None):
+            return {"address": addr, "port": 443, "source_countries": ["ZZ"]}
+        state = {"candidates": {
+            "a:443": {"last_success": "2020-01-01T00:00:00Z",
+                      "capability": "cf-relay"},
+            "b:443": {"last_success": "2026-09-28T18:00:00Z",
+                      "capability": "cf-relay"},
+            "c:443": {"last_success": "2026-09-28T18:00:00Z",
+                      "capability": "passthrough"},
+            "d:443": {"capability": "cf-relay"},  # never probed
+        }}
+        cands = [cand("b"), cand("c"), cand("a"), cand("d")]
+        picked, meta = scan.country_batches(cands, state, "2026-09-28T18:30:00Z")
+        order = [f'{c["address"]}:{c["port"]}' for c in picked]
+        # passthrough first; then unknown/stalest-first among cf-relay
+        # (never-probed = oldest), freshest last.
+        self.assertEqual(order[0], "c:443")
+        self.assertEqual(order[1], "d:443")
+        self.assertEqual(order[2], "a:443")
+        self.assertEqual(order[3], "b:443")
+
+
 class TestPolicyAndScoring(unittest.TestCase):
     def test_provider_exclusion_uses_observed_metadata(self):
         policy = {"deny": [{"match": "Oracle"}], "warn": []}

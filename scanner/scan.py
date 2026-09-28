@@ -781,6 +781,30 @@ def country_batches(
         budget = min(DAILY_BUDGET_PER_COUNTRY, len(pool))
         window = [pool[(cursor + k) % len(pool)] for k in range(budget)]
         st["cursor"] = (cursor + budget) % max(len(pool), 1)
+        # Fresh-egress gate support (Bug #1/#2): verify the STALEST evidence
+        # first, and re-verify passthrough candidates before equal-staleness
+        # others. The cursor alone can leave a country's only full-capability
+        # candidates unverified for ~13h — long enough for the 12h geo gate
+        # to empty the pool of exactly the candidates that can serve every
+        # protocol. Staleness comes from the persistent record; unknown
+        # records count as oldest (never probed) so new inventory gets a
+        # first verdict promptly.
+        recs = (state.get("candidates") or {})
+
+        def _age(c: dict) -> float:
+            rec = recs.get(f'{c["address"]}:{c["port"]}') or {}
+            at = rec.get("last_success") or ""
+            try:
+                return max(0.0, time.time() - datetime.fromisoformat(
+                    at.replace("Z", "+00:00")).timestamp()) if at else 1e18
+            except Exception:
+                return 1e18
+
+        def _passthrough(c: dict) -> int:
+            rec = recs.get(f'{c["address"]}:{c["port"]}') or {}
+            return rec.get("capability") != "passthrough"
+
+        window.sort(key=lambda c: (_passthrough(c), -_age(c)))
         st["last_scan_at"] = now
         st["source_candidate_count"] = len(pool)
         meta[cc] = {"source": len(pool), "scanned": budget}
