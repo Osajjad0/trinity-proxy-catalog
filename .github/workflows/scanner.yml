@@ -2,12 +2,11 @@ name: refresh-verified
 
 on:
   schedule:
-    - cron: '23 0-22/2 * * *'  # every 2 hours at :23 UTC — sync + worker-vantage verify
+    - cron: '23 0-22/2 * * *'  # every 2 hours at :23 UTC — scan -> validate -> publish -> commit
   workflow_dispatch:
 
 permissions:
   contents: write   # the scan publishes verified results to the repo
-  id-token: write   # the Trinity sync/verify authenticate as this workflow (OIDC)
 
 # One scan at a time: a second scheduled run supersedes any queued one
 # instead of racing it (no overlapping full scans).
@@ -18,14 +17,21 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    # scan (up to 45) + sync + worker-vantage verify loop (~15) with headroom
-    timeout-minutes: 75
+    # scan (up to 45) + commit, with headroom
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: DoH re-evaluation (daily ~03:23 UTC, Phase 7)
+        # Bounded bench (5 resolvers x 5 domains). Result lands in the feed
+        # commit; the emitters keep AdGuard until this bench says otherwise.
+        if: github.event.schedule == '23 0 * * *' || github.event_name == 'workflow_dispatch'
+        run: |
+          python scripts/doh_bench.py --json catalog/doh_bench.json || echo "doh bench failed (non-fatal)"
 
       - name: Run scanner (country-fair, every source country daily)
         run: |
@@ -65,125 +71,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'scanner: verified catalog refresh [skip ci]'
-          file_pattern: 'catalog/verified/** scanner/state.json'
-
-      - name: Trinity sync (OIDC machine-to-machine, no panel password)
-        run: |
-          python - <<'EOF'
-          # V24.7: the panel password is gone from GitHub entirely. This job
-          # fetches its GitHub-issued OIDC identity token (audience bound to
-          # the Trinity sync endpoint), which the Worker verifies against
-          # GitHub's JWKS. No secret to configure, no login, no cookie.
-          import json, os, urllib.parse, urllib.request
-          base = "https://trinity-fresh3.tmplbertohr.workers.dev/90418d70acf87f56"
-          feed = json.load(open("catalog/verified/feed.json"))
-          new_rev = feed["content_revision"]
-          # Exchange the runner's identity for the signed OIDC token.
-          tok_url = (os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"] + "&audience="
-                     + urllib.parse.quote("trinity-catalog-sync"))
-          tok_req = urllib.request.Request(tok_url, headers={
-              "Authorization": "Bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
-          oidc = json.loads(urllib.request.urlopen(tok_req, timeout=30).read())["value"]
-          req = urllib.request.Request(base + "/api/catalog-sync-github",
-              data=b"{}", headers={"Authorization": "Bearer " + oidc,
-              "Content-Type": "application/json",
-              "User-Agent": "trinity-catalog-sync/1.0 (github-actions)"},
-              method="POST")
-          # Bounded safe retry: two attempts, short backoff. A red run leaves
-          # the previous catalog active in Trinity (the Worker only persists a
-          # fully validated snapshot), and the feed commit below is skipped.
-          report = None
-          for attempt in (1, 2):
-              try:
-                  resp = urllib.request.urlopen(req, timeout=120)
-                  report = json.loads(resp.read())
-                  break
-              except Exception as exc:
-                  print(f"trinity sync attempt {attempt} failed: {exc}")
-                  if attempt == 2:
-                      raise
-                  import time; time.sleep(10)
-          print("trinity sync ok:", report.get("ok"),
-                "| changed:", report.get("changed"),
-                "| countries:", report.get("countryCount"),
-                "| endpoints:", report.get("endpointCount"))
-          if not report.get("ok"):
-              raise SystemExit("trinity sync refused: " + str(report.get("error")))
-          # Post-sync verification straight from the Worker's own sync report
-          # (the meta endpoint is session-gated — never used machine-to-machine).
-          if report.get("contentRevision") != new_rev:
-              raise SystemExit(f"post-sync revision mismatch: trinity="
-                               f"{report.get('contentRevision')!r} feed={new_rev!r}")
-          exp_cc = len(feed["countries"])
-          exp_ep = feed["counts"]["verified"]
-          if (report.get("countryCount") != exp_cc
-                  or report.get("endpointCount") != exp_ep):
-              raise SystemExit(f"post-sync count mismatch: trinity="
-                               f"{report.get('countryCount')}c/{report.get('endpointCount')}e "
-                               f"feed={exp_cc}c/{exp_ep}e")
-          print("post-sync verified: revision + counts match"
-                + ("" if report.get("changed") else " (no-op: same revision)"))
-          EOF
-
-      - name: Trinity worker-vantage verify (bounded loop, every 2h)
-        run: |
-          python - <<'EOF'
-          # The scanner's health is SOURCE evidence only. The decisive
-          # verdict is a TCP connect FROM the Worker's own egress — the
-          # vantage that will dial the candidate at runtime. Bounded passes
-          # (40 probes each, stateless cursor) until every catalog candidate
-          # carries a fresh verdict: this is what stops "GitHub says healthy,
-          # Trinity says unreachable" from ever producing an active pool.
-          import json, os, time, urllib.parse, urllib.request
-          base = "https://trinity-fresh3.tmplbertohr.workers.dev/90418d70acf87f56"
-          tok_url = (os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"] + "&audience="
-                     + urllib.parse.quote("trinity-catalog-sync"))
-          tok_req = urllib.request.Request(tok_url, headers={
-              "Authorization": "Bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
-          oidc = json.loads(urllib.request.urlopen(tok_req, timeout=30).read())["value"]
-          cursor, probed, reachable, total, report = 0, 0, 0, 0, {}
-          for i in range(120):
-              req = urllib.request.Request(
-                  base + f"/api/verify-catalog?cursor={cursor}&budget=40",
-                  data=b"{}", headers={
-                      "Authorization": "Bearer " + oidc,
-                      "Content-Type": "application/json",
-                      "User-Agent": "trinity-catalog-sync/1.0 (github-actions)"},
-                  method="POST")
-              try:
-                  resp = urllib.request.urlopen(req, timeout=180)
-                  report = json.loads(resp.read())
-              except urllib.error.HTTPError as exc:
-                  body = exc.read().decode(errors="replace")[:300]
-                  # A stale/rejected identity: remint once and retry this pass.
-                  print(f"verify pass HTTP {exc.code}: {body}")
-                  tok_req = urllib.request.Request(tok_url, headers={
-                      "Authorization": "Bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
-                  oidc = json.loads(urllib.request.urlopen(tok_req, timeout=30).read())["value"]
-                  req = urllib.request.Request(
-                      base + f"/api/verify-catalog?cursor={cursor}&budget=40",
-                      data=b"{}", headers={
-                          "Authorization": "Bearer " + oidc,
-                          "Content-Type": "application/json",
-                          "User-Agent": "trinity-catalog-sync/1.0 (github-actions)"},
-                      method="POST")
-                  report = json.loads(urllib.request.urlopen(req, timeout=180).read())
-              if not report.get("ok"):
-                  raise SystemExit("verify pass refused: " + str(report))
-              cursor = report["cursor"]
-              probed += report["probed"]
-              reachable += report["reachable"]
-              total = report["total"]
-              if report.get("done"):
-                  break
-              time.sleep(1)
-          else:
-              raise SystemExit("verify loop hit 120 passes without finishing")
-          print(f"worker-vantage verify ok: {probed} probed ({reachable} reachable)"
-                f" of {total} candidates")
-          counts = report.get("counts", {})
-          for cc in ("US", "DE", "SG"):
-              c = counts.get(cc, {})
-              print(f"  {cc}: discovered={c.get('discovered')} trinityReachable="
-                    f"{c.get('trinityReachable')} quarantined={c.get('quarantined')}")
-          EOF
+          file_pattern: 'catalog/verified/** scanner/state.json catalog/doh_bench.json'

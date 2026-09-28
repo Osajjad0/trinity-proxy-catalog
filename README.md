@@ -1,4 +1,4 @@
-# Trinity proxy catalog
+# Proxy-IP verified catalog
 
 Candidate **public-source ProxyIP catalog** scraped from the public
 [NiREvil/vless](https://github.com/NiREvil/vless) repository. No endpoint is ever
@@ -43,7 +43,7 @@ evidence is kept.
 Every endpoint row: `endpoint`, `address`, `port`, `kind` (IPV4/IPV6/HOST),
 `country_claims`, `unrecognized_labels`, full `evidence` (source path, line,
 verbatim original, source label, resolved-port mapping), `runtime_health:
-"unknown"`, `trinity_verified: false`. There are **zero healthy claims** in
+"unknown"`, `consumer_verified: false`. There are **zero healthy claims** in
 this catalog; no per-row check timestamp exists anywhere — sources are dated
 only by source-reported `feed_generated_at` / `source_updated_raw` (raw string
 preserved; not parsed into a checked-time claim) and `checked_at` is always
@@ -82,10 +82,10 @@ stages; a candidate is *verified* only with evidence from both:
 
 - **Stage A** — TCP connect, TLS handshake with SNI `speed.cloudflare.com`,
   HTTP `/cdn-cgi/trace` via that TLS session.
-- **Stage B** — same candidate IP, TLS with SNI/Host = the Trinity Worker
-  hostname, `/cdn-cgi/trace` through it.
+- **Stage B** — same candidate IP, TLS with SNI/Host = an independent
+  Cloudflare-served hostname, `/cdn-cgi/trace` through it.
 
-`catalog/verified/feed.json` is the **only** artifact Trinity consumes. It
+`catalog/verified/feed.json` is the machine-readable artifact consumers pull. It
 carries `schema_version`, `content_revision` (deterministic sha256 over the
 sorted verified set), `generated_at`, per-country metadata, and the compact
 runtime map `countries: CC -> [[address, port], ...]` (IPv4 and IPv6 literals
@@ -102,13 +102,12 @@ publish; a collapsed scan (near-total loss vs the previous healthy feed) is
 refused — the previous feed is retained and the run fails loudly. An invalid
 scan never deletes the last-known-good feed.
 
-**Trinity sync (automatic, OIDC — nothing to configure):** the workflow posts
-`/api/catalog-sync-github` with its GitHub-issued OIDC identity (audience
-`trinity-catalog-sync`); the Worker verifies the token against GitHub's JWKS
-and runs the same fail-closed sync. The sync report's revision and
-country/endpoint counts must match the feed or the run fails — identical
-revision ⇒ zero writes (idempotent — reruns are no-ops). No panel password is
-stored in GitHub (see SECRETS_SETUP.md).
+**Fully independent publishing:** the workflow ends at
+scan -> validate -> publish -> commit. It never calls any consumer system —
+no push, no sync endpoints, no credentials (see SECRETS_SETUP.md). A consumer
+that wants the catalog fetches `catalog/verified/feed.json` on its own
+schedule, validates it, and activates it; verification from the consumer's
+own egress is likewise the consumer's responsibility.
 
 **Limits (scanner):**
 - Verification reflects GitHub runner egress at scan time, not Cloudflare

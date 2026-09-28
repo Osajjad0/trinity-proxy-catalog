@@ -63,7 +63,7 @@ def build(files, revision, config):
                     source_country_label=label, checked_at=None, **extra)
 
     def reject(ev, reason):
-        rejected.append(dict(ev, reason=reason, runtime_health='unknown', trinity_verified=False))
+        rejected.append(dict(ev, reason=reason, runtime_health='unknown', consumer_verified=False))
 
     def add(address, port, label, ev):
         try:
@@ -75,7 +75,7 @@ def build(files, revision, config):
         if key not in rows:
             rows[key] = dict(endpoint=key, address=host, port=port, kind=kind,
                              country_claims=[], unrecognized_labels=[], evidence=[],
-                             runtime_health='unknown', checked_at=None, trinity_verified=False)
+                             runtime_health='unknown', checked_at=None, consumer_verified=False)
         row = rows[key]
         if label:
             field = 'country_claims' if label in COUNTRIES else 'unrecognized_labels'
@@ -168,7 +168,7 @@ def build(files, revision, config):
             continue
         mapping = first.get(host)
         if not mapping:
-            unresolved.append(dict(ev, address=host, port=None, reason='no public first-seen scanner input port; secret/DNS inputs not consulted', runtime_health='unknown', trinity_verified=False))
+            unresolved.append(dict(ev, address=host, port=None, reason='no public first-seen scanner input port; secret/DNS inputs not consulted', runtime_health='unknown', consumer_verified=False))
         else:
             ev['port_resolution'] = mapping
             add(address, str(mapping['port']), label, ev)
@@ -197,7 +197,7 @@ def build(files, revision, config):
                   rejected=len(rejected), unresolved=len(unresolved), healthy=0,
                   evidence=sum(len(r['evidence']) for r in rows.values()), daily_rows=daily_rows)
     index = dict(schema_version=1, upstream_revision=revision, sources=sources, counts=counts,
-                 runtime_health='unknown', trinity_verified=False,
+                 runtime_health='unknown', consumer_verified=False,
                  files={p: dict(sha256=digest(encoded(d)), count=len(d.get('endpoints', d.get('rows')))) for p, d in sorted(docs.items())})
     index['content_revision'] = digest(encoded(index))
     docs['index.json'] = index
@@ -228,7 +228,7 @@ def validate(docs):
         if not condition:
             raise ValueError(message)
     idx = docs['index.json']
-    require(idx['schema_version'] == 1 and idx['runtime_health'] == 'unknown' and idx['trinity_verified'] is False, 'invalid index schema/health')
+    require(idx['schema_version'] == 1 and idx['runtime_health'] == 'unknown' and idx['consumer_verified'] is False, 'invalid index schema/health')
     require(re.fullmatch('[0-9a-f]{40}', idx['upstream_revision']), 'invalid revision')
     unhashed = {k: v for k, v in idx.items() if k not in {'content_revision', 'generated_at'}}
     require(digest(encoded(unhashed)) == idx['content_revision'], 'content revision mismatch')
@@ -257,7 +257,7 @@ def validate(docs):
             key = ('[' + host + ']' if kind == 'IPV6' else host) + ':' + str(port)
             require(key == row['endpoint'] and kind == row['kind'] and key not in seen, 'invalid/duplicate endpoint')
             seen.add(key)
-            require(row['runtime_health'] == 'unknown' and row['checked_at'] is None and row['trinity_verified'] is False, 'runtime health claim forbidden')
+            require(row['runtime_health'] == 'unknown' and row['checked_at'] is None and row['consumer_verified'] is False, 'runtime health claim forbidden')
             claims = row['country_claims']
             require(claims == sorted(set(claims)) and all(c in COUNTRIES for c in claims), 'invalid country claims')
             expected = ('conflicts.json' if len(claims) > 1 else 'unassigned.json' if not claims or row['unrecognized_labels'] else 'countries/' + claims[0] + '.json')
@@ -286,7 +286,7 @@ def validate(docs):
                     re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z', feed['generated_at']), 'invalid feed generated_at')
     audit_rows = docs['rejected.json']['rows'] + docs['unresolved.json']['rows']
     for row in audit_rows:
-        require(row['runtime_health'] == 'unknown' and row['trinity_verified'] is False and row['checked_at'] is None, 'audit health claim forbidden')
+        require(row['runtime_health'] == 'unknown' and row['consumer_verified'] is False and row['checked_at'] is None, 'audit health claim forbidden')
         require(row['source_path'] in idx['sources'] and isinstance(row['original'], str) and bool(row['reason']), 'invalid audit evidence')
     observed_daily = sum(ev['source_path'] == DAILY for doc in docs.values() for row in doc.get('endpoints', []) for ev in row['evidence']) + sum(row['source_path'] == DAILY for row in audit_rows)
     require(counts['daily_rows'] == observed_daily, 'daily row count mismatch')
@@ -377,7 +377,7 @@ def fetch(url, limit=MAX_FILE, deadline=None):
             remaining = deadline - time.monotonic()
             if remaining <= 0:
                 raise TimeoutError('snapshot deadline exceeded')
-            request = urllib.request.Request(url, headers={'User-Agent': 'trinity-proxy-catalog/1', 'Accept': 'application/vnd.github+json' if url.startswith(API) else '*/*'})
+            request = urllib.request.Request(url, headers={'User-Agent': 'proxy-ip-catalog/1', 'Accept': 'application/vnd.github+json' if url.startswith(API) else '*/*'})
             with opener.open(request, timeout=min(20, remaining)) as response:
                 if not allowed_url(response.url):
                     raise ValueError('response URL outside upstream allowlist')
@@ -471,7 +471,7 @@ def read_catalog(directory):
 def refresh(root, loader=snapshot):
     root = Path(root)
     # Raw discovery build lives in catalog/raw/ — catalog/verified/ is scan.py's
-    # exclusive published tree (Trinity's runtime feed), never to be clobbered here.
+    # exclusive published tree (the verified runtime feed), never to be clobbered here.
     target, backup = root / 'catalog' / 'raw', root / '.catalog-backup'
     if backup.exists():
         raise ValueError('interrupted publish backup exists; recover/review it before refresh')

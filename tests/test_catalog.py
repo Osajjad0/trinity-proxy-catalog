@@ -107,7 +107,7 @@ class BoundaryTests(unittest.TestCase):
         for name in ['unresolved.json', 'rejected.json']:
             for row in docs[name]['rows']:
                 self.assertEqual(row.get('runtime_health'), 'unknown')
-                self.assertIs(row.get('trinity_verified'), False)
+                self.assertIs(row.get('consumer_verified'), False)
         # Rehash deliberately to test semantic validation, not only integrity.
         docs['index.json']['counts']['daily_rows'] += 1
         base = {k:v for k,v in docs['index.json'].items() if k != 'content_revision'}

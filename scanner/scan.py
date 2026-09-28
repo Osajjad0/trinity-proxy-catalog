@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Trinity verified-catalog scanner (V24.4).
+"""Verified-catalog scanner (V24.9, fully independent).
 
 Discovery -> scan -> verify -> publish, Python stdlib only.
 
 Pipeline (all bounded):
   sources.json domains + catalog/countries/*.json  ->  candidate queue
   Stage A: TCP + TLS(SNI=speed.cloudflare.com) + GET /cdn-cgi/trace
-  Stage B: same socket path, SNI/Host = Trinity Worker hostname (TRINITY_HOST)
+  Stage B: same socket path, SNI/Host = stage B host (independent CDN host)
   verified = Stage A ok AND Stage B ok, country from probe observation
 
   Capability (v1.9.5): Stage A+B prove CF-RELAY capability only (the
@@ -17,6 +17,8 @@ Pipeline (all bounded):
 Dial IP, SNI, and Host stay separate: the candidate IP:port is always the
 TCP destination; SNI/Host are the test hostname. A candidate is "verified"
 only on full Stage A+B evidence — never because a source listed it.
+This scanner is fully independent: it publishes the verified feed and stops.
+Runtime reachability from a consumer's own egress is the consumer's job.
 
 Usage:
   python scanner/scan.py --dry-run [--limit N] [--state scanner/state.json]
@@ -36,6 +38,14 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
+from scanner.ip_quality import (
+    _speed_probe,
+    merge_speed,
+    reputation_many,
+    reputation_penalty,
+    speed_bonus,
+)
+
 REPO = Path(__file__).resolve().parent.parent
 SOURCES = REPO / "scanner" / "sources.json"
 POLICY = REPO / "scanner" / "provider_policy.json"
@@ -50,6 +60,16 @@ CF_TEST_SNI = "speed.cloudflare.com"
 SCAN_DEADLINE_S = 1500
 PER_COUNTRY_PUBLISH_CAP = 64
 VERIFIED_TTL_H = 48
+# Bug #1 (egress country mismatch): a candidate's `observed_country` is the
+# EXIT country measured through the box at probe time — not a permanent
+# property. Reseller boxes rotate their outbound egress (155.103.71.111 was
+# observed TR at 09-27 23:1x and exited IT 09-28 16:4x — inside the 48 h
+# candidate TTL). Country-pool membership therefore requires FRESHER egress
+# evidence than general publication does: a candidate keeps its health /
+# quality / speed records for 48 h, but only enters a country's enforced
+# pool while its exit was measured within GEO_TTL_H. Old evidence cannot
+# vouch for a rotating exit.
+GEO_TTL_H = 12
 # V24.6 country-fair scheduling: every source country gets a verification
 # opportunity daily. Budget per country per run; countries below target are
 # prioritized (§10-11).
@@ -191,7 +211,7 @@ def probe_stage(address: str, port: int, sni: str, host: str) -> dict:
         result["tls_ok"] = True
         result["tls_ms"] = int((time.monotonic() - tls0) * 1000)
         req = (f"GET /cdn-cgi/trace HTTP/1.1\r\nHost: {host}\r\n"
-               f"User-Agent: trinity-scan/1.0\r\nAccept: */*\r\n"
+               f"User-Agent: proxy-catalog-scan/1.0\r\nAccept: */*\r\n"
                f"Connection: close\r\n\r\n")
         app0 = time.monotonic()
         sock.sendall(req.encode())
@@ -229,7 +249,7 @@ def probe_stage(address: str, port: int, sni: str, host: str) -> dict:
 #   true passthrough            -> completes TLS with a VALID certificate for
 #                                  the tested hostname and relays the request
 # The tested hostname must be a real, non-Cloudflare-fronted HTTPS host with no
-# Trinity relationship. www.rfc-editor.org: independent operator, plain CDN.
+# consumer relationship. www.rfc-editor.org: independent operator, plain CDN.
 FOREIGN_SNI = "www.postgresql.org"
 # A claimed passthrough must confirm on a SECOND independent destination
 # before the class is granted. One destination can coincide with a front's
@@ -260,7 +280,7 @@ def _foreign_probe(address: str, port: int, sni: str) -> tuple[str, str]:
         # actually fetching through it.
         try:
             req = (f"GET / HTTP/1.1\r\nHost: {sni}\r\n"
-                   f"User-Agent: trinity-scan/1.0\r\nAccept: */*\r\n"
+                   f"User-Agent: proxy-catalog-scan/1.0\r\nAccept: */*\r\n"
                    f"Connection: close\r\n\r\n")
             sock.sendall(req.encode())
             n, text = _recv_response(sock)
@@ -285,7 +305,7 @@ def _foreign_probe(address: str, port: int, sni: str) -> tuple[str, str]:
 def classify_capability(address: str, port: int) -> str:
     """Stage C: foreign-SNI TLS probe, certificate-verified, double-confirmed.
 
-    A candidate is only called passthrough when TWO independent non-Trinity
+    A candidate is only called passthrough when TWO independent non-consumer
     destinations both complete with valid certificates and honest HTTP
     statuses. Anything less keeps the conservative lower class.
     """
@@ -305,12 +325,12 @@ def classify_capability(address: str, port: int) -> str:
     return "passthrough" if confirm == "passthrough" else confirm
 
 
-def probe_candidate(c: dict, trinity_host: str) -> dict:
-    """Stage A (generic CF compatibility) then Stage B (Trinity host)."""
+def probe_candidate(c: dict, stage_b_host: str) -> dict:
+    """Stage A (generic CF compatibility) then Stage B (independent CDN host)."""
     a = probe_stage(c["address"], c["port"], CF_TEST_SNI, CF_TEST_SNI)
     if not a["app_ok"]:
         return {**c, **a, "stage": "A", "verified": False}
-    b = probe_stage(c["address"], c["port"], trinity_host, trinity_host)
+    b = probe_stage(c["address"], c["port"], stage_b_host, stage_b_host)
     ok = b["app_ok"]
     # Stage C only for source-verified candidates: classification costs one
     # TLS handshake and is meaningless for a candidate that cannot even serve
@@ -321,7 +341,7 @@ def probe_candidate(c: dict, trinity_host: str) -> dict:
         "capability": capability,
         "cf_country": a["country"], "cf_colo": a["colo"],
         "cf_tcp_ms": a["tcp_ms"], "cf_app_ms": a["app_ms"],
-        "error": None if ok else (b["error"] or "trinity stage failed"),
+        "error": None if ok else (b["error"] or "stage B failed"),
     }
 
 
@@ -403,6 +423,11 @@ def score(rec: dict, now_ts: float | None = None) -> int:
         # certificate check fails for every destination it fronts. Rank it
         # below everything that can actually relay.
         s -= 15
+    # v1.9.6 per-IP quality (spec §1-5, §13-14): reputation risk and measured
+    # throughput, both stored evidence from ip_quality adapters. Absent
+    # signals contribute 0 — unknown is never bad (§4/§25).
+    s += reputation_penalty(rec.get("ip_quality") or {})
+    s += speed_bonus(rec.get("speed_dl_bps"), rec.get("speed_ul_bps"))
     return max(0, min(100, s))
 
 
@@ -438,6 +463,15 @@ def merge_state(state: dict, results: list[dict], now: str) -> dict:
             if r.get("capability"):
                 rec["capability"] = r["capability"]
                 rec["capability_checked_at"] = now
+            # v1.9.6: reputation verdict rides on the probe result (fetched by
+            # the enrichment pass against the persistent store).
+            if r.get("ip_quality"):
+                rec["ip_quality"] = r["ip_quality"]
+                rec["ip_quality_at"] = now
+            # v1.9.6: measured throughput sample (already fetched by the
+            # sampling pass; carried on the probe result when present).
+            if r.get("_speed_probe"):
+                merge_speed(rec, r["_speed_probe"])
         else:
             rec["failure_count"] += 1
             rec["last_failure"] = now
@@ -464,6 +498,17 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
         country = rec.get("observed_country")
         if not country or len(country) != 2:
             continue
+        # Bug #1: the exit country is only as trustworthy as its evidence is
+        # fresh. A candidate probed 47 h ago keeps its published record (the
+        # 48 h TTL above) but does NOT enter a country pool: its egress may
+        # have rotated since. Dropped candidates stay in the state for the
+        # next probe cycle — nothing is deleted.
+        if ts < time.time() - GEO_TTL_H * 3600:
+            stale.append(key)
+            continue
+        # v1.9.6: stale reputation decays to unmeasured (never published as a
+        # fresh verdict) — old evidence must not outrank current evidence.
+        _iq = rec.get("ip_quality") if _rep_fresh(rec) else None
         entry = {
             "address": key.rsplit(":", 1)[0],
             "port": int(key.rsplit(":", 1)[1]),
@@ -479,6 +524,16 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
             # Stage C classification (may be absent on records classified
             # before this field existed — readers must default).
             "capability": rec.get("capability", "unverified"),
+            # v1.9.6 per-IP quality (§2/§4/§5): absent = unmeasured, never bad.
+            # Stale verdicts (older than the verified TTL) decay to unmeasured:
+            # old reputation must not outrank or outshout fresh evidence.
+            "risk": (_iq or {}).get("risk", "unknown"),
+            "ip_type": (_iq or {}).get("ip_type", "unknown"),
+            # Phase 3 store format: type carries confidence + source.
+            "confidence": (_iq or {}).get("confidence", "unknown"),
+            "source": (_iq or {}).get("source", "unknown"),
+            **({"speed_dl_bps": rec["speed_dl_bps"]} if rec.get("speed_dl_bps") else {}),
+            **({"speed_ul_bps": rec["speed_ul_bps"]} if rec.get("speed_ul_bps") else {}),
         }
         # V24.6.1 §17/23: compact per-endpoint quality metadata. success_ratio
         # is measured (successes / attempts); nothing derived from source lists.
@@ -514,6 +569,20 @@ def _upstream_revision() -> str:
         pass
     blob = (SOURCES.read_bytes() + (REPO / "scanner" / "state.json").read_bytes())
     return hashlib.sha1(blob).hexdigest()
+
+
+def _rep_fresh(rec: dict) -> bool:
+    """Reputation verdicts are evidence with a shelf life (§: freshness).
+    Older than the verified TTL (48 h) -> treat as unmeasured, so stale
+    reputation can never keep ranking a candidate the way current evidence
+    would. Absent timestamp = unknown freshness = do not publish a verdict."""
+    at = rec.get("ip_quality_at")
+    if not at:
+        return False
+    try:
+        return _age_hours(at) < VERIFIED_TTL_H
+    except Exception:
+        return False
 
 
 def _parse_iso(s: str) -> float:
@@ -593,7 +662,7 @@ def publish(pools: dict, state: dict, report: dict, stats: dict,
         # universal relays; generic-forward capability would need a Stage C
         # probe against non-CF destinations and a source that provides it.
         "capability": "cf-relay",
-        # Trinity's client validates these two fields. The upstream of a
+        # Consumers validate these two fields. The upstream of a
         # VERIFIED feed is the scanner's own evidence state + sources; in CI
         # this equals the commit SHA of the run's checkout.
         "upstream_revision": _upstream_revision(),
@@ -632,6 +701,17 @@ def publish(pools: dict, state: dict, report: dict, stats: dict,
             for entries in pools.values() for e in entries
             if e.get("capability") in ("passthrough", "cf-relay", "sni-terminate")
         },
+        # v1.9.6 Phase 2/3/4: per-endpoint quality verdict for the panel.
+        # Compact value = risk|type|confidence|source. Absent key = unmeasured
+        # (the runtime treats absence as unknown, never bad).
+        "quality_by_endpoint": {
+            f'{e["address"]}:{e["port"]}':
+                "/".join((e.get("risk", "unknown"), e.get("ip_type", "unknown"),
+                          e.get("confidence", "unknown"), e.get("source", "unknown")))
+            for entries in pools.values() for e in entries
+            if e.get("risk", "unknown") != "unknown"
+            or e.get("ip_type", "unknown") != "unknown"
+        },
         # The feed-wide verdict. Entries are CF-relay-dominated by source
         # construction; per-country counts carry the detail.
         "capability_note": ("Stage A+B verify Cloudflare-relay behavior; "
@@ -642,7 +722,7 @@ def publish(pools: dict, state: dict, report: dict, stats: dict,
     (tmp / "feed.json").write_text(json.dumps(feed, indent=1), encoding="utf-8")
     (tmp / "index.json").write_text(json.dumps({
         "schema_version": 1, "runtime_health": "verified",
-        "trinity_verified": True, "generated_at": feed["generated_at"],
+        "verified_published": True, "generated_at": feed["generated_at"],
         "counts": {"verified": total, "countries": len(pools)},
     }, indent=1), encoding="utf-8")
     (tmp / "scan-report.json").write_text(json.dumps(report, indent=1),
@@ -720,7 +800,7 @@ def main() -> int:
                     help="V24.6 country-fair mode: every source country gets a "
                          "bounded verification batch per run (no global window)")
     ap.add_argument("--state", default=str(REPO / "scanner" / "state.json"))
-    ap.add_argument("--trinity-host", default="trinity-fresh3.tmplbertohr.workers.dev")
+    ap.add_argument("--stage-b-host", default="www.cloudflare.com")
     args = ap.parse_args()
 
     sources = json.loads(SOURCES.read_text(encoding="utf-8"))
@@ -773,7 +853,7 @@ def main() -> int:
     results = []
     deadline = time.monotonic() + SCAN_DEADLINE_S
     with ThreadPoolExecutor(max_workers=MAX_CONCURRENCY) as pool:
-        futures = {pool.submit(probe_candidate, c, args.trinity_host): c
+        futures = {pool.submit(probe_candidate, c, args.stage_b_host): c
                    for c in candidates}
         for fut in as_completed(futures):
             if time.monotonic() > deadline:
@@ -800,6 +880,7 @@ def main() -> int:
     # Observed-country attribution for tested stages; country_meta carries the
     # source-side counts from country_batches.
     funnel: dict[str, dict] = {}
+    country_meta = country_meta if args.per_country else {}
     for cc, m in sorted((country_meta or {}).items()):
         funnel[cc] = {"source": m["source"], "tested": m["scanned"],
                       "tcp_ok": 0, "tls_ok": 0, "app_ok": 0, "verified": 0}
@@ -814,11 +895,71 @@ def main() -> int:
         if r.get("verified"): f["verified"] += 1
     elapsed = int(time.monotonic() - started)
     print(f"tested={len(results)} tcp={tcp_ok} tls={tls_ok} app={app_ok} "
-          f"trinity_verified={len(verified)} in {elapsed}s")
+          f"verified={len(verified)} in {elapsed}s")
     print(f"by country: {json.dumps(by_country, sort_keys=True)}")
 
     now = now_iso()
+    # ---- v1.9.6 enrichment pass (§1-5, §13-14): bounded, sampled, cached ----
+    # Reputation for the verified set (bounded by 45/min provider limit, kept
+    # small per run), speed sample for a rotated subset. Every probe is
+    # failure-isolated; a provider outage costs nothing but "unknown".
+    # One store, one load: reuse the already-loaded persistent_state instead of
+    # a second load_state() — a second copy would silently drop enrichment from
+    # the saved state whenever this run's results didn't carry it.
+    store = persistent_state.setdefault("candidates", {})
+    verified_keys = [f"{r['address']}:{r['port']}" for r in verified]
+    REP_BUDGET = 100  # one ip-api batch call (max 100 IPs); <24h cache skipped below
+    rep_done = 0
+    need_rep = []
+    for key in verified_keys:
+        if len(need_rep) >= REP_BUDGET:
+            break
+        rec = store.get(key)
+        if not rec:
+            continue
+        cached = rec.get("ip_quality")
+        if cached and rec.get("ip_quality_at"):
+            age_h = (time.time() - _parse_iso(rec["ip_quality_at"])) / 3600
+            if age_h < 24:
+                continue  # cached <24h: skip (bounded provider use)
+        need_rep.append(key)
+    # ONE keyless batch call for all uncached IPs (45/min budget, ~2s total),
+    # then a bounded ipwho.is cross-check per verdict (failure-isolated).
+    rep_map = reputation_many([k.rsplit(":", 1)[0] for k in need_rep]) \
+        if need_rep else {}
+    for key in need_rep:
+        rec = store.get(key)
+        rep = rep_map.get(key.rsplit(":", 1)[0])
+        if rep is None:
+            continue  # provider gave no verdict: leave old record untouched
+        rec["ip_quality"] = rep
+        rec["ip_quality_at"] = now
+        rep_done += 1
+    # Speed sample: rotate over verified candidates, ~12 per run (512+256 KB
+    # each = ~9 MB total traffic, bounded), results EMA-merged into state.
+    SPEED_BUDGET = 12
+    start_idx = int(time.time()) % max(len(verified_keys), 1)
+    sample = [verified_keys[(start_idx + k) % len(verified_keys)]
+              for k in range(min(SPEED_BUDGET, len(verified_keys)))]
+    speed_done = 0
+    for key in sample:
+        rec = store.get(key)
+        if not rec:
+            continue
+        probe = _speed_probe(key.rsplit(":", 1)[0], int(key.rsplit(":", 1)[1]))
+        merge_speed(rec, probe)
+        speed_done += 1
+    # carry enrichment onto this run's probe results so merge_state folds it in
+    for r in results:
+        rec = store.get(f"{r['address']}:{r['port']}")
+        if rec and rec.get("ip_quality"):
+            r["ip_quality"] = rec["ip_quality"]
+    print(f"enrichment: reputation={rep_done} speed_samples={speed_done}")
     state = merge_state(persistent_state, results, now)
+    # Persist evidence state even without --publish: enrichment (reputation +
+    # speed samples) is expensive evidence, not a publish artifact. Same file
+    # publish() writes, so no new state location.
+    (Path(args.state)).write_text(json.dumps(state, indent=1), encoding="utf-8")
     pools, stale_info = build_verified(state, now)
     report = {
         "scan_started_at": now,
@@ -827,7 +968,7 @@ def main() -> int:
         "candidate_count": len(candidates),
         "tested_count": len(results),
         "tcp_ok": tcp_ok, "tls_ok": tls_ok, "application_ok": app_ok,
-        "trinity_verified": len(verified),
+        "verified_count": len(verified),
         "capability": "cf-relay",
         "capability_note": ("Stage A+B verify Cloudflare-relay capability only; "
                             "generic TCP forwarding is NOT verified by this feed"),

@@ -139,6 +139,75 @@ class TestStateAndVerified(unittest.TestCase):
         pools, _ = scan.build_verified(state, now)
         self.assertEqual(len(pools["DE"]), scan.PER_COUNTRY_PUBLISH_CAP)
 
+    def test_stale_egress_evidence_excluded_from_country_pool(self):
+        # Bug #1: a candidate whose last success is inside the 48 h candidate
+        # TTL but older than GEO_TTL_H must NOT enter a country pool — its
+        # exit country may have rotated since the probe. It is reported
+        # stale-for-pooling, not deleted.
+        import time as _t
+        now = _t.time()
+        fmt = lambda ts: _t.strftime("%Y-%m-%dT%H:%M:%SZ", _t.gmtime(ts))
+        recent = fmt(now - 3600)          # 1 h old -> pools
+        mid = fmt(now - (scan.GEO_TTL_H + 2) * 3600)   # > GEO_TTL_H, < 48 h
+        state = {"candidates": {
+            "203.0.113.1:443": {
+                "first_seen": recent, "last_seen": recent,
+                "last_success": recent, "success_count": 1,
+                "observed_country": "DE", "sources": ["x"],
+                "source_countries": [],
+            },
+            "203.0.113.2:443": {
+                "first_seen": mid, "last_seen": mid,
+                "last_success": mid, "success_count": 1,
+                "observed_country": "TR", "sources": ["x"],
+                "source_countries": [],
+            },
+        }}
+        pools, stale = scan.build_verified(state, fmt(now))
+        self.assertIn("DE", pools)
+        self.assertNotIn("TR", pools)
+        self.assertNotIn("203.0.113.1:443", stale["stale"])
+        self.assertIn("203.0.113.2:443", stale["stale"])
+
+    def test_stale_reputation_decays_to_unknown(self):
+        import time as _t
+        now = _t.strftime("%Y-%m-%dT%H:%M:%SZ", _t.gmtime())
+        old_ts = "2026-08-01T00:00:00Z"  # far older than VERIFIED_TTL_H
+        state = {"candidates": {
+            "203.0.113.1:443": {
+                "first_seen": now, "last_seen": now, "last_success": now,
+                "success_count": 1, "observed_country": "DE",
+                "sources": ["x"], "source_countries": [],
+                "ip_quality": {"risk": "high", "ip_type": "datacenter",
+                               "confidence": "high", "source": "ip-api"},
+                "ip_quality_at": old_ts,
+            },
+            "203.0.113.2:443": {
+                "first_seen": now, "last_seen": now, "last_success": now,
+                "success_count": 1, "observed_country": "DE",
+                "sources": ["x"], "source_countries": [],
+                "ip_quality": {"risk": "low", "ip_type": "residential",
+                               "confidence": "high", "source": "ip-api"},
+                "ip_quality_at": now,
+            },
+        }}
+        pools, _ = scan.build_verified(state, now)
+        by_addr = {e["address"]: e for e in pools["DE"]}
+        # Stale verdict decays to unmeasured (never published as current).
+        self.assertEqual(by_addr["203.0.113.1"]["risk"], "unknown")
+        # Fresh verdict keeps its value.
+        self.assertEqual(by_addr["203.0.113.2"]["risk"], "low")
+        # And the feed map (same comprehension publish() uses) only carries
+        # the fresh verdict.
+        feed_q = {
+            f'{e["address"]}:{e["port"]}': e["risk"]
+            for entries in pools.values() for e in entries
+            if e.get("risk", "unknown") != "unknown"
+            or e.get("ip_type", "unknown") != "unknown"
+        }
+        self.assertNotIn("203.0.113.1:443", feed_q)
+        self.assertIn("203.0.113.2:443", feed_q)
+
 
 class TestFeedValidation(unittest.TestCase):
     def _feed(self, **over):
