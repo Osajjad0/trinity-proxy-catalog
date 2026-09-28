@@ -1,11 +1,11 @@
 {
- "measured_at": "2026-09-28T18:22:50Z",
+ "measured_at": "2026-09-28T18:41:56Z",
  "note": "vantage-dependent: run location determines what this proves",
  "resolvers": {
   "adguard": {
    "success_rate": 1.0,
    "error_rate": 0.0,
-   "median_latency_ms": 69,
+   "median_latency_ms": 32,
    "blocked_ads": [
     "adnxs.com",
     "doubleclick.net",
@@ -18,23 +18,29 @@
   "adguard-unfiltered": {
    "success_rate": 1.0,
    "error_rate": 0.0,
-   "median_latency_ms": 68,
+   "median_latency_ms": 32,
    "blocked_ads": [],
    "ad_block_effective": false,
    "queries": 42
   },
   "controld-p2": {
-   "success_rate": 0.0,
-   "error_rate": 1.0,
-   "median_latency_ms": 4005,
-   "blocked_ads": [],
-   "ad_block_effective": false,
+   "success_rate": 1.0,
+   "error_rate": 0.0,
+   "median_latency_ms": 13,
+   "blocked_ads": [
+    "adnxs.com",
+    "doubleclick.net",
+    "google-analytics.com",
+    "googleadservices.com",
+    "scorecardresearch.com"
+   ],
+   "ad_block_effective": true,
    "queries": 42
   },
   "cloudflare": {
    "success_rate": 1.0,
    "error_rate": 0.0,
-   "median_latency_ms": 25,
+   "median_latency_ms": 15,
    "blocked_ads": [],
    "ad_block_effective": false,
    "queries": 42
@@ -42,7 +48,7 @@
   "quad9": {
    "success_rate": 0.0,
    "error_rate": 1.0,
-   "median_latency_ms": 20,
+   "median_latency_ms": 33,
    "blocked_ads": [],
    "ad_block_effective": false,
    "queries": 42
