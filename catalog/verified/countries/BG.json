@@ -2,7 +2,7 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "169.40.15.123",
+   "address": "82.118.230.42",
    "port": 8443,
    "observed_country": "BG",
    "source_countries": [
@@ -11,22 +11,24 @@
    "sources": [
     "catalog:BG"
    ],
-   "score": 20,
+   "score": 26,
    "last_rtt_ms": null,
-   "last_success": "2026-09-28T18:23:45Z",
+   "last_success": "2026-09-28T18:48:53Z",
    "success_count": 10,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
    "risk": "low",
-   "ip_type": "datacenter",
+   "ip_type": "isp",
    "confidence": "high",
    "source": "ip-api+ipwho",
+   "speed_dl_bps": 492528,
+   "speed_ul_bps": 425936,
    "success_ratio": 1.0,
    "quality_rank": 1
   },
   {
-   "address": "185.141.61.113",
+   "address": "91.215.152.37",
    "port": 443,
    "observed_country": "BG",
    "source_countries": [
@@ -35,9 +37,9 @@
    "sources": [
     "catalog:BG"
    ],
-   "score": 20,
+   "score": 26,
    "last_rtt_ms": null,
-   "last_success": "2026-09-28T18:23:45Z",
+   "last_success": "2026-09-28T18:48:53Z",
    "success_count": 10,
    "failure_count": 0,
    "status": "verified",
@@ -46,11 +48,13 @@
    "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
+   "speed_dl_bps": 499317,
+   "speed_ul_bps": 424579,
    "success_ratio": 1.0,
    "quality_rank": 2
   },
   {
-   "address": "185.148.146.9",
+   "address": "83.147.241.197",
    "port": 443,
    "observed_country": "BG",
    "source_countries": [
@@ -59,9 +63,9 @@
    "sources": [
     "catalog:BG"
    ],
-   "score": 20,
+   "score": 24,
    "last_rtt_ms": null,
-   "last_success": "2026-09-28T18:23:45Z",
+   "last_success": "2026-09-28T18:48:53Z",
    "success_count": 10,
    "failure_count": 0,
    "status": "verified",
@@ -70,12 +74,14 @@
    "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
+   "speed_dl_bps": 467054,
+   "speed_ul_bps": 199638,
    "success_ratio": 1.0,
    "quality_rank": 3
   },
   {
-   "address": "185.190.250.99",
-   "port": 443,
+   "address": "169.40.15.123",
+   "port": 8443,
    "observed_country": "BG",
    "source_countries": [
     "BG"
@@ -98,7 +104,7 @@
    "quality_rank": 4
   },
   {
-   "address": "185.205.210.144",
+   "address": "185.141.61.113",
    "port": 443,
    "observed_country": "BG",
    "source_countries": [
@@ -122,7 +128,7 @@
    "quality_rank": 5
   },
   {
-   "address": "185.205.210.83",
+   "address": "185.148.146.9",
    "port": 443,
    "observed_country": "BG",
    "source_countries": [
@@ -146,7 +152,7 @@
    "quality_rank": 6
   },
   {
-   "address": "185.214.99.235",
+   "address": "185.190.250.99",
    "port": 443,
    "observed_country": "BG",
    "source_countries": [
@@ -170,8 +176,8 @@
    "quality_rank": 7
   },
   {
-   "address": "185.214.99.241",
-   "port": 8443,
+   "address": "185.205.210.144",
+   "port": 443,
    "observed_country": "BG",
    "source_countries": [
     "BG"
@@ -194,7 +200,7 @@
    "quality_rank": 8
   },
   {
-   "address": "185.232.170.111",
+   "address": "185.205.210.83",
    "port": 443,
    "observed_country": "BG",
    "source_countries": [
@@ -218,6 +224,78 @@
    "quality_rank": 9
   },
   {
+   "address": "185.214.99.235",
+   "port": 443,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 20,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:23:45Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 10
+  },
+  {
+   "address": "185.214.99.241",
+   "port": 8443,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 20,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:23:45Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 11
+  },
+  {
+   "address": "185.232.170.111",
+   "port": 443,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 20,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:23:45Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 12
+  },
+  {
    "address": "193.239.160.89",
    "port": 443,
    "observed_country": "BG",
@@ -239,7 +317,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 10
+   "quality_rank": 13
   },
   {
    "address": "195.123.225.28",
@@ -263,7 +341,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 11
+   "quality_rank": 14
   },
   {
    "address": "2.27.105.199",
@@ -287,7 +365,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 12
+   "quality_rank": 15
   },
   {
    "address": "31.13.248.201",
@@ -311,7 +389,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 13
+   "quality_rank": 16
   },
   {
    "address": "78.128.99.216",
@@ -335,7 +413,175 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 14
+   "quality_rank": 17
+  },
+  {
+   "address": "85.217.170.89",
+   "port": 2087,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 20,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:48:53Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 18
+  },
+  {
+   "address": "89.44.197.64",
+   "port": 8443,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 20,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:48:53Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 19
+  },
+  {
+   "address": "91.215.152.98",
+   "port": 443,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 20,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:48:53Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 20
+  },
+  {
+   "address": "91.215.154.48",
+   "port": 443,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 20,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:48:53Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 21
+  },
+  {
+   "address": "91.215.154.80",
+   "port": 443,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 20,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:48:53Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 22
+  },
+  {
+   "address": "91.215.154.88",
+   "port": 443,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 20,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:48:53Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 23
+  },
+  {
+   "address": "91.215.155.140",
+   "port": 443,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 20,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:48:53Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 24
   },
   {
    "address": "185.141.61.113",
@@ -359,7 +605,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 0.9,
-   "quality_rank": 15
+   "quality_rank": 25
   },
   {
    "address": "185.232.170.226",
@@ -383,7 +629,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 0.9,
-   "quality_rank": 16
+   "quality_rank": 26
   },
   {
    "address": "185.232.171.125",
@@ -407,7 +653,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 0.9,
-   "quality_rank": 17
+   "quality_rank": 27
   },
   {
    "address": "185.232.171.125",
@@ -431,7 +677,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 0.9,
-   "quality_rank": 18
+   "quality_rank": 28
   },
   {
    "address": "103.249.134.29",
@@ -455,7 +701,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 19
+   "quality_rank": 29
   },
   {
    "address": "104.143.206.87",
@@ -479,7 +725,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 20
+   "quality_rank": 30
   },
   {
    "address": "104.152.48.248",
@@ -503,7 +749,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 21
+   "quality_rank": 31
   },
   {
    "address": "13.140.29.170",
@@ -527,7 +773,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 22
+   "quality_rank": 32
   },
   {
    "address": "13.140.29.253",
@@ -551,7 +797,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 23
+   "quality_rank": 33
   },
   {
    "address": "13.140.29.45",
@@ -575,31 +821,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 24
-  },
-  {
-   "address": "91.215.155.140",
-   "port": 443,
-   "observed_country": "BG",
-   "source_countries": [
-    "BG"
-   ],
-   "sources": [
-    "catalog:BG"
-   ],
-   "score": 15,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-28T14:10:34Z",
-   "success_count": 9,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "success_ratio": 1.0,
-   "quality_rank": 25
+   "quality_rank": 34
   },
   {
    "address": "91.247.36.168",
@@ -623,7 +845,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 26
+   "quality_rank": 35
   },
   {
    "address": "91.247.36.169",
@@ -647,7 +869,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 27
+   "quality_rank": 36
   },
   {
    "address": "91.247.37.172",
@@ -671,7 +893,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 28
+   "quality_rank": 37
   },
   {
    "address": "91.247.37.58",
@@ -695,7 +917,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 29
+   "quality_rank": 38
   },
   {
    "address": "94.156.189.144",
@@ -719,7 +941,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 30
+   "quality_rank": 39
   },
   {
    "address": "94.72.140.210",
@@ -743,7 +965,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 31
+   "quality_rank": 40
   },
   {
    "address": "148.253.214.189",
@@ -767,7 +989,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 0.8,
-   "quality_rank": 32
+   "quality_rank": 41
   },
   {
    "address": "108.165.233.223",
@@ -791,7 +1013,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 0.7,
-   "quality_rank": 33
+   "quality_rank": 42
   },
   {
    "address": "185.203.116.174",
@@ -815,7 +1037,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 34
+   "quality_rank": 43
   },
   {
    "address": "185.204.53.58",
@@ -839,7 +1061,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 35
+   "quality_rank": 44
   },
   {
    "address": "185.82.218.224",
@@ -863,7 +1085,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 36
+   "quality_rank": 45
   },
   {
    "address": "185.82.218.224",
@@ -887,7 +1109,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 37
+   "quality_rank": 46
   },
   {
    "address": "185.82.218.224",
@@ -911,7 +1133,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 38
+   "quality_rank": 47
   },
   {
    "address": "193.239.160.134",
@@ -935,7 +1157,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 39
+   "quality_rank": 48
   },
   {
    "address": "195.123.225.224",
@@ -959,7 +1181,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 40
+   "quality_rank": 49
   },
   {
    "address": "195.123.225.224",
@@ -983,7 +1205,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 41
+   "quality_rank": 50
   },
   {
    "address": "31.13.248.113",
@@ -1007,7 +1229,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 42
+   "quality_rank": 51
   },
   {
    "address": "45.39.241.116",
@@ -1031,7 +1253,107 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 43
+   "quality_rank": 52
+  },
+  {
+   "address": "79.124.7.236",
+   "port": 444,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:48:53Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 500294,
+   "speed_ul_bps": 416639,
+   "success_ratio": 1.0,
+   "quality_rank": 53
+  },
+  {
+   "address": "83.147.241.139",
+   "port": 2096,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:48:53Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 54
+  },
+  {
+   "address": "91.210.166.221",
+   "port": 443,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:48:53Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 55
+  },
+  {
+   "address": "91.215.153.143",
+   "port": 443,
+   "observed_country": "BG",
+   "source_countries": [
+    "BG"
+   ],
+   "sources": [
+    "catalog:BG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-28T18:48:53Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 521475,
+   "speed_ul_bps": 440339,
+   "success_ratio": 1.0,
+   "quality_rank": 56
   }
  ]
 }
