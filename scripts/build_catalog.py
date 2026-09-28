@@ -228,7 +228,7 @@ def validate(docs):
         if not condition:
             raise ValueError(message)
     idx = docs['index.json']
-    require(idx['schema_version'] == 1 and idx['runtime_health'] == 'unknown' and idx['consumer_verified'] is False, 'invalid index schema/health')
+    require(idx['schema_version'] == 1 and idx['runtime_health'] == 'unknown' and consumer_flag(idx) is False, 'invalid index schema/health')
     require(re.fullmatch('[0-9a-f]{40}', idx['upstream_revision']), 'invalid revision')
     unhashed = {k: v for k, v in idx.items() if k not in {'content_revision', 'generated_at'}}
     require(digest(encoded(unhashed)) == idx['content_revision'], 'content revision mismatch')
@@ -257,7 +257,7 @@ def validate(docs):
             key = ('[' + host + ']' if kind == 'IPV6' else host) + ':' + str(port)
             require(key == row['endpoint'] and kind == row['kind'] and key not in seen, 'invalid/duplicate endpoint')
             seen.add(key)
-            require(row['runtime_health'] == 'unknown' and row['checked_at'] is None and row['consumer_verified'] is False, 'runtime health claim forbidden')
+            require(row['runtime_health'] == 'unknown' and row['checked_at'] is None and row_consumer_flag(row) is False, 'runtime health claim forbidden')
             claims = row['country_claims']
             require(claims == sorted(set(claims)) and all(c in COUNTRIES for c in claims), 'invalid country claims')
             expected = ('conflicts.json' if len(claims) > 1 else 'unassigned.json' if not claims or row['unrecognized_labels'] else 'countries/' + claims[0] + '.json')
@@ -286,7 +286,7 @@ def validate(docs):
                     re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z', feed['generated_at']), 'invalid feed generated_at')
     audit_rows = docs['rejected.json']['rows'] + docs['unresolved.json']['rows']
     for row in audit_rows:
-        require(row['runtime_health'] == 'unknown' and row['consumer_verified'] is False and row['checked_at'] is None, 'audit health claim forbidden')
+        require(row['runtime_health'] == 'unknown' and row_consumer_flag(row) is False and row['checked_at'] is None, 'audit health claim forbidden')
         require(row['source_path'] in idx['sources'] and isinstance(row['original'], str) and bool(row['reason']), 'invalid audit evidence')
     observed_daily = sum(ev['source_path'] == DAILY for doc in docs.values() for row in doc.get('endpoints', []) for ev in row['evidence']) + sum(row['source_path'] == DAILY for row in audit_rows)
     require(counts['daily_rows'] == observed_daily, 'daily row count mismatch')
@@ -463,9 +463,32 @@ def read_catalog(directory):
     # catalog/verified/ (scan.py's published tree) and catalog/discovery/ (its live
     # work queue) live inside catalog/ but are not the raw build: they must not enter
     # the manifest, or every scanner run invalidates raw-catalog validation.
-    return {p.relative_to(directory).as_posix(): json.loads(p.read_bytes())
+    docs = {p.relative_to(directory).as_posix(): json.loads(p.read_bytes())
             for p in directory.rglob('*.json')
             if not {'verified', 'discovery'} & set(p.relative_to(directory).parts)}
+    # De-Trinity migration: raw builds made before the rename carry
+    # `trinity_verified`; the schema field is `consumer_verified`. Normalization
+    # must NOT mutate the parsed documents — the content_revision digest covers
+    # the original key set — so callers hash what was stored, while schema
+    # checks read through `consumer_flag(doc)`.
+    return docs
+
+
+def consumer_flag(doc):
+    """Read the consumer-verified flag across both field generations."""
+    if not isinstance(doc, dict):
+        return None
+    if 'consumer_verified' in doc:
+        return doc['consumer_verified']
+    return doc.get('trinity_verified')
+
+
+def row_consumer_flag(row):
+    if not isinstance(row, dict):
+        return None
+    if 'consumer_verified' in row:
+        return row['consumer_verified']
+    return row.get('trinity_verified')
 
 
 def refresh(root, loader=snapshot):
