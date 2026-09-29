@@ -269,6 +269,13 @@ def probe_egress_consensus(address: str, port: int) -> dict:
                 ip, cc = _parse_egress(kind, text)
                 if cc:
                     verdicts[name] = (ip, cc)
+                    # Early exit: two independent targets agreeing IS a high-
+                    # confidence verdict; the remaining targets cannot raise it
+                    # (only de-agree). ip-api runs last, so the slow plain-HTTP
+                    # tail only happens when the TLS targets disagreed/were
+                    # unreadable — exactly when the extra source is needed.
+                    if len(verdicts) >= 2 and len({c for _, c in verdicts.values()}) == 1:
+                        break
         except (ssl.SSLError, OSError):
             pass
         finally:
@@ -699,7 +706,10 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
             "status": "verified",
             # Stage C classification (may be absent on records classified
             # before this field existed — readers must default).
-            "capability": rec.get("capability", "unverified"),
+            "capability": (
+                "passthrough+http" if rec.get("capability") == "passthrough"
+                and rec.get("http_forwarding") is True
+                else rec.get("capability", "unverified")),
             "http_forwarding": rec.get("http_forwarding"),
             "http_forwarding": rec.get("http_forwarding"),
             # v1.9.6 per-IP quality (§2/§4/§5): absent = unmeasured, never bad.
