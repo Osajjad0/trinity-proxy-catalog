@@ -247,9 +247,15 @@ def probe_egress_consensus(address: str, port: int) -> dict:
            "country_confidence": "none", "verification_sources": [],
            "country_conflict": False, "egress_verdicts": {}}
     verdicts: dict[str, tuple[str | None, str]] = {}
+    deadline = time.time() + 12.0  # ponytail: hard per-candidate ceiling; a
+    # source-routing box that hangs plain HTTP burns at most 12s total, not
+    # 4 × (connect + read) timeouts.
     for name, sni, host, path, kind in EGRESS_TARGETS:
+        if time.time() > deadline:
+            break
         try:
-            raw = socket.create_connection((address, port), timeout=8)
+            budget_s = max(2, int(deadline - time.time()))
+            raw = socket.create_connection((address, port), timeout=min(8, budget_s))
         except OSError:
             continue
         try:
