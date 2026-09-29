@@ -173,6 +173,20 @@ class TestStateAndVerified(unittest.TestCase):
         pools, _ = scan.build_verified(state, now)
         self.assertEqual(len(pools["DE"]), scan.PER_COUNTRY_PUBLISH_CAP)
 
+    def test_ipapi_target_parsed_and_consensus_extended(self):
+        """4-source consensus: ip-api (plain HTTP) verdict counts toward agreement."""
+        ip, cc = scan._parse_egress(
+            "ipapi",
+            'HTTP/1.1 200 OK\r\n\r\n{"query":"1.2.3.4","countryCode":"TR","as":"AS9121","isp":"TT"}')
+        self.assertEqual((ip, cc), ("1.2.3.4", "TR"))
+        ip, cc = scan._parse_egress(
+            "ipapi",
+            'HTTP/1.1 200 OK\r\n\r\n{"query":"1.2.3.4","countryCode":"IT"}')
+        self.assertEqual((ip, cc), ("1.2.3.4", "IT"))
+        # malformed -> unreadable, never a wrong verdict
+        ip, cc = scan._parse_egress("ipapi", 'HTTP/1.1 200 OK\r\n\r\nnot json')
+        self.assertEqual((ip, cc), (None, None))
+
     def test_stale_egress_evidence_excluded_from_country_pool(self):
         # Bug #1: a candidate whose last success is inside the 48 h candidate
         # TTL but older than GEO_TTL_H must NOT enter a country pool — its

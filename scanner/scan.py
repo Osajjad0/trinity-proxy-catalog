@@ -221,6 +221,12 @@ def _parse_egress(kind: str, text: str) -> tuple[str | None, str | None]:
         return None, None
     if not isinstance(doc, dict):
         return None, None
+    if kind == "ipapi":
+        ip = doc.get("query")
+        cc = doc.get("countryCode")
+        if isinstance(cc, str) and len(cc) == 2 and cc.isalpha():
+            return ip, cc.upper()
+        return ip, None
     ip = doc.get("ip")
     cc = doc.get("country_code") or doc.get("country")
     if isinstance(cc, str) and len(cc) == 2 and cc.isalpha():
@@ -247,10 +253,13 @@ def probe_egress_consensus(address: str, port: int) -> dict:
         except OSError:
             continue
         try:
-            ctx = ssl.create_default_context()
-            ctx.check_hostname = False
-            ctx.verify_mode = ssl.CERT_NONE
-            sock = ctx.wrap_socket(raw, server_hostname=sni)
+            if sni is None:
+                sock = raw  # plain-HTTP target (no TLS layer)
+            else:
+                ctx = ssl.create_default_context()
+                ctx.check_hostname = False
+                ctx.verify_mode = ssl.CERT_NONE
+                sock = ctx.wrap_socket(raw, server_hostname=sni)
             req = (f"GET {path} HTTP/1.1\r\nHost: {host}\r\n"
                    f"User-Agent: proxy-catalog-scan/1.0\r\nAccept: */*\r\n"
                    f"Connection: close\r\n\r\n")
@@ -642,6 +651,8 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
             "country_confidence": confidence,
             "verification_sources": rec.get("verification_sources", []),
             "verification_timestamp": rec.get("verification_timestamp"),
+            "verification_age_s": (int(time.time() - ts)
+                                   if rec.get("verification_timestamp") else None),
             "source_countries": rec.get("source_countries", []),
             "sources": rec.get("sources", []),
             "score": score(rec, time.time()),
