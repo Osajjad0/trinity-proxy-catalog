@@ -247,7 +247,7 @@ def probe_egress_consensus(address: str, port: int) -> dict:
            "country_confidence": "none", "verification_sources": [],
            "country_conflict": False, "egress_verdicts": {}}
     verdicts: dict[str, tuple[str | None, str]] = {}
-    deadline = time.time() + 12.0  # ponytail: hard per-candidate ceiling; a
+    deadline = time.time() + 9.0  # ponytail: hard per-candidate ceiling; a
     # source-routing box that hangs plain HTTP burns at most 12s total, not
     # 4 × (connect + read) timeouts.
     for name, sni, host, path, kind in EGRESS_TARGETS:
@@ -391,6 +391,7 @@ def probe_http_forward(address: str, port: int) -> bool:
         raw = socket.create_connection((address, port), timeout=TCP_TIMEOUT_S)
     except OSError:
         return False
+    raw.settimeout(4)  # ponytail: hung plain-HTTP relay burns 5s max, not 8
     try:
         req = (b"GET / HTTP/1.1\r\nHost: example.com\r\n"
                b"User-Agent: proxy-catalog-scan/1.0\r\n"
