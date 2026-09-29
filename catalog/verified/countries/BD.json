@@ -2,9 +2,17 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "103.81.172.34",
+   "address": "103.115.253.253",
    "port": 443,
    "observed_country": "BD",
+   "egress_ip": "103.115.253.253",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipinfo",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T11:01:03Z",
    "source_countries": [
     "BD"
    ],
@@ -13,8 +21,8 @@
    ],
    "score": 45,
    "last_rtt_ms": null,
-   "last_success": "2026-09-29T08:41:54Z",
-   "success_count": 39,
+   "last_success": "2026-09-29T11:01:03Z",
+   "success_count": 40,
    "failure_count": 0,
    "status": "verified",
    "capability": "passthrough",
@@ -26,50 +34,66 @@
    "quality_rank": 1
   },
   {
-   "address": "103.115.253.253",
+   "address": "103.159.170.124",
    "port": 443,
    "observed_country": "BD",
+   "egress_ip": "103.159.170.124",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipinfo",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T11:01:03Z",
    "source_countries": [
     "BD"
    ],
    "sources": [
     "catalog:BD"
    ],
-   "score": 40,
+   "score": 45,
    "last_rtt_ms": null,
-   "last_success": "2026-09-29T08:41:54Z",
-   "success_count": 39,
+   "last_success": "2026-09-29T11:01:03Z",
+   "success_count": 40,
    "failure_count": 0,
    "status": "verified",
    "capability": "passthrough",
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
    "success_ratio": 1.0,
    "quality_rank": 2
   },
   {
-   "address": "103.159.170.124",
+   "address": "103.81.172.34",
    "port": 443,
    "observed_country": "BD",
+   "egress_ip": "103.81.172.34",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipinfo",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T11:01:03Z",
    "source_countries": [
     "BD"
    ],
    "sources": [
     "catalog:BD"
    ],
-   "score": 40,
+   "score": 20,
    "last_rtt_ms": null,
-   "last_success": "2026-09-29T08:41:54Z",
-   "success_count": 39,
+   "last_success": "2026-09-29T11:01:03Z",
+   "success_count": 40,
    "failure_count": 0,
    "status": "verified",
-   "capability": "passthrough",
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
+   "capability": "tls-error",
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
    "success_ratio": 1.0,
    "quality_rank": 3
   }

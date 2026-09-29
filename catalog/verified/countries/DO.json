@@ -3,8 +3,15 @@
  "endpoints": [
   {
    "address": "181.36.229.212",
-   "port": 2053,
+   "port": 443,
    "observed_country": "DO",
+   "egress_ip": "181.36.229.211",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T11:01:03Z",
    "source_countries": [
     "DO"
    ],
@@ -13,8 +20,8 @@
    ],
    "score": 0,
    "last_rtt_ms": null,
-   "last_success": "2026-09-29T08:41:54Z",
-   "success_count": 38,
+   "last_success": "2026-09-29T11:01:03Z",
+   "success_count": 39,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
@@ -24,126 +31,6 @@
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
    "quality_rank": 1
-  },
-  {
-   "address": "181.36.229.212",
-   "port": 2083,
-   "observed_country": "DO",
-   "source_countries": [
-    "DO"
-   ],
-   "sources": [
-    "catalog:DO"
-   ],
-   "score": 0,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-29T08:41:54Z",
-   "success_count": 38,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "risk": "high",
-   "ip_type": "vpn/proxy",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 2
-  },
-  {
-   "address": "181.36.229.212",
-   "port": 2087,
-   "observed_country": "DO",
-   "source_countries": [
-    "DO"
-   ],
-   "sources": [
-    "catalog:DO"
-   ],
-   "score": 0,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-29T08:41:54Z",
-   "success_count": 38,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "risk": "high",
-   "ip_type": "vpn/proxy",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 3
-  },
-  {
-   "address": "181.36.229.212",
-   "port": 2096,
-   "observed_country": "DO",
-   "source_countries": [
-    "DO"
-   ],
-   "sources": [
-    "catalog:DO"
-   ],
-   "score": 0,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-29T08:41:54Z",
-   "success_count": 38,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "risk": "high",
-   "ip_type": "vpn/proxy",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 4
-  },
-  {
-   "address": "181.36.229.212",
-   "port": 443,
-   "observed_country": "DO",
-   "source_countries": [
-    "DO"
-   ],
-   "sources": [
-    "catalog:DO"
-   ],
-   "score": 0,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-29T08:41:54Z",
-   "success_count": 38,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "risk": "high",
-   "ip_type": "vpn/proxy",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 5
-  },
-  {
-   "address": "181.36.229.212",
-   "port": 8443,
-   "observed_country": "DO",
-   "source_countries": [
-    "DO"
-   ],
-   "sources": [
-    "catalog:DO"
-   ],
-   "score": 0,
-   "last_rtt_ms": null,
-   "last_success": "2026-09-29T08:41:54Z",
-   "success_count": 38,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "risk": "high",
-   "ip_type": "vpn/proxy",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 6
   }
  ]
 }
