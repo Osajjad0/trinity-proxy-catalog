@@ -399,7 +399,13 @@ def probe_http_forward(address: str, port: int) -> bool:
         raw.sendall(req)
         n, text = _recv_response(raw)
         parts = text.split(" ", 2)
-        return len(parts) > 1 and parts[1].startswith(("2", "3"))
+        # Relay semantics, not just any 2xx: HTTP servers with a fixed backend
+        # (client portals / captive appliances) happily return their own page
+        # with 200 for any Host — that 200 fooled the plain-status check
+        # (proven: one box served the same 10 KiB portal for every Host).
+        # example.com's real answer carries its distinctive marker; require it.
+        return (len(parts) > 1 and parts[1].startswith(("2", "3"))
+                and b"Example Domain" in text.encode("utf-8", "replace"))
     except (OSError, ssl.SSLError):
         return False
     finally:

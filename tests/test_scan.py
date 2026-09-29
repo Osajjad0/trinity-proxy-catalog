@@ -174,10 +174,13 @@ class TestStateAndVerified(unittest.TestCase):
         self.assertEqual(len(pools["DE"]), scan.PER_COUNTRY_PUBLISH_CAP)
 
     def test_http_forward_probe(self):
-        """http_forwarding probe: relayed 2xx/3xx = True, 4xx/drop = False."""
+        """http_forwarding probe: example.com relay with marker = True, else False."""
         import socket as _s, threading
-        for payload, expect in ((b"HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n", True),
-                                (b"HTTP/1.1 403 Forbidden\r\nContent-Length: 0\r\n\r\n", False)):
+        # Real relay (example.com page carrying its marker) = True.
+        for payload, expect in ((b"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<html>Example Domain</html>", True),
+                                (b"HTTP/1.1 403 Forbidden\r\nContent-Length: 0\r\n\r\n", False),
+                                # Appliance false-positive class: 200 for ANY Host but no marker.
+                                (b"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<html>Client Portal v9</html>", False)):
             srv=_s.socket(); srv.setsockopt(_s.SOL_SOCKET,_s.SO_REUSEADDR,1)
             srv.bind(("127.0.0.1",0)); srv.listen(1); port=srv.getsockname()[1]
             def run(srv=srv,payload=payload):
