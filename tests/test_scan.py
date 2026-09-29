@@ -161,6 +161,12 @@ class TestStateAndVerified(unittest.TestCase):
             state["candidates"][f"203.0.113.{i}:443"] = {
                 "first_seen": now, "last_seen": now, "last_success": now,
                 "success_count": 1, "observed_country": "DE",
+                "egress_country": "DE",
+                "egress_verdicts": {"cloudflare-trace": "DE", "ipwho": "DE"},
+                "country_confidence": "high",
+                "country_conflict": False,
+                "verification_sources": ["cloudflare-trace", "ipwho"],
+                "verification_timestamp": now,
                 "sources": ["x"], "source_countries": [],
                 "last_rtt_ms": 100 + i,
             }
@@ -183,12 +189,24 @@ class TestStateAndVerified(unittest.TestCase):
                 "last_success": recent, "success_count": 1,
                 "observed_country": "DE", "sources": ["x"],
                 "source_countries": [],
+                "egress_country": "DE",
+                "egress_verdicts": {"cloudflare-trace": "DE", "ipwho": "DE"},
+                "country_confidence": "high",
+                "country_conflict": False,
+                "verification_sources": ["cloudflare-trace", "ipwho"],
+                "verification_timestamp": recent,
             },
             "203.0.113.2:443": {
                 "first_seen": mid, "last_seen": mid,
                 "last_success": mid, "success_count": 1,
                 "observed_country": "TR", "sources": ["x"],
                 "source_countries": [],
+                "egress_country": "TR",
+                "egress_verdicts": {"cloudflare-trace": "TR", "ipwho": "TR"},
+                "country_confidence": "high",
+                "country_conflict": False,
+                "verification_sources": ["cloudflare-trace", "ipwho"],
+                "verification_timestamp": mid,
             },
         }}
         pools, stale = scan.build_verified(state, fmt(now))
@@ -196,6 +214,80 @@ class TestStateAndVerified(unittest.TestCase):
         self.assertNotIn("TR", pools)
         self.assertNotIn("203.0.113.1:443", stale["stale"])
         self.assertIn("203.0.113.2:443", stale["stale"])
+
+    def test_country_conflict_bars_strict_pool(self):
+        # Bug #1 v2: cloudflare says TR but ipwho/ipinfo say IT -> conflict ->
+        # the candidate must NOT enter any country pool, even though the CF
+        # trace alone said TR and the record is fresh. Correctness > count.
+        import time as _t
+        now = _t.strftime("%Y-%m-%dT%H:%M:%SZ", _t.gmtime())
+        state = {"candidates": {
+            "203.0.113.9:443": {
+                "first_seen": now, "last_seen": now, "last_success": now,
+                "success_count": 1,
+                "observed_country": "TR",          # CF-trace verdict
+                "egress_country": "TR",
+                "egress_verdicts": {"cloudflare-trace": "TR", "ipwho": "IT"},
+                "country_confidence": "conflict",
+                "country_conflict": True,
+                "verification_sources": ["cloudflare-trace"],
+                "verification_timestamp": now,
+                "sources": ["x"], "source_countries": [],
+            },
+        }}
+        pools, stale = scan.build_verified(state, now)
+        self.assertEqual(pools, {}, "conflicting egress must not serve a country")
+        self.assertIn("203.0.113.9:443", stale["stale"])
+
+    def test_consensus_agreement_publishes_confidence(self):
+        # Two independent targets agreeing => high confidence => pool member,
+        # with the consensus fields carried into the feed entry.
+        import time as _t
+        now = _t.strftime("%Y-%m-%dT%H:%M:%SZ", _t.gmtime())
+        state = {"candidates": {
+            "203.0.113.10:443": {
+                "first_seen": now, "last_seen": now, "last_success": now,
+                "success_count": 1,
+                "observed_country": "TR",
+                "egress_country": "TR",
+                "egress_ip": "203.0.113.10",
+                "egress_verdicts": {"cloudflare-trace": "TR", "ipwho": "TR"},
+                "country_confidence": "high",
+                "country_conflict": False,
+                "verification_sources": ["cloudflare-trace", "ipwho"],
+                "verification_timestamp": now,
+                "sources": ["x"], "source_countries": [],
+            },
+        }}
+        pools, stale = scan.build_verified(state, now)
+        self.assertIn("TR", pools)
+        entry = pools["TR"][0]
+        self.assertEqual(entry["country_confidence"], "high")
+        self.assertEqual(entry["egress_ip"], "203.0.113.10")
+        self.assertEqual(entry["verification_sources"], ["cloudflare-trace", "ipwho"])
+        self.assertNotIn("203.0.113.10:443", stale["stale"])
+
+    def test_single_source_low_confidence_bars_pool(self):
+        # One readable verdict alone is "low": real traffic could take another
+        # upstream. Never serve a strict country on single-source evidence.
+        import time as _t
+        now = _t.strftime("%Y-%m-%dT%H:%M:%SZ", _t.gmtime())
+        state = {"candidates": {
+            "203.0.113.11:443": {
+                "first_seen": now, "last_seen": now, "last_success": now,
+                "success_count": 1, "observed_country": "TR",
+                "egress_country": "TR",
+                "egress_verdicts": {"cloudflare-trace": "TR"},
+                "country_confidence": "low",
+                "country_conflict": False,
+                "verification_sources": ["cloudflare-trace"],
+                "verification_timestamp": now,
+                "sources": ["x"], "source_countries": [],
+            },
+        }}
+        pools, stale = scan.build_verified(state, now)
+        self.assertNotIn("TR", pools)
+        self.assertIn("203.0.113.11:443", stale["stale"])
 
     def test_stale_reputation_decays_to_unknown(self):
         import time as _t
@@ -205,6 +297,12 @@ class TestStateAndVerified(unittest.TestCase):
             "203.0.113.1:443": {
                 "first_seen": now, "last_seen": now, "last_success": now,
                 "success_count": 1, "observed_country": "DE",
+                "egress_country": "DE",
+                "egress_verdicts": {"cloudflare-trace": "DE", "ipwho": "DE"},
+                "country_confidence": "high",
+                "country_conflict": False,
+                "verification_sources": ["cloudflare-trace", "ipwho"],
+                "verification_timestamp": now,
                 "sources": ["x"], "source_countries": [],
                 "ip_quality": {"risk": "high", "ip_type": "datacenter",
                                "confidence": "high", "source": "ip-api"},
@@ -213,6 +311,12 @@ class TestStateAndVerified(unittest.TestCase):
             "203.0.113.2:443": {
                 "first_seen": now, "last_seen": now, "last_success": now,
                 "success_count": 1, "observed_country": "DE",
+                "egress_country": "DE",
+                "egress_verdicts": {"cloudflare-trace": "DE", "ipwho": "DE"},
+                "country_confidence": "high",
+                "country_conflict": False,
+                "verification_sources": ["cloudflare-trace", "ipwho"],
+                "verification_timestamp": now,
                 "sources": ["x"], "source_countries": [],
                 "ip_quality": {"risk": "low", "ip_type": "residential",
                                "confidence": "high", "source": "ip-api"},

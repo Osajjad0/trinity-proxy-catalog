@@ -190,6 +190,103 @@ def _parse_trace(text: str) -> dict:
     return fields
 
 
+# ---------------------------------------------------------------- Bug #1 v2: multi-destination egress consensus
+# A box's egress country is per-SNI/per-destination: a multi-upstream box can
+# answer the CF trace probe from a TR upstream while real (other-SNI) traffic
+# leaves through IT. A single-SNI verdict can therefore lie. Consensus over
+# independent neutral targets — each probed with the TARGET's own SNI/Host,
+# exactly like real client traffic — is the minimum trustworthy evidence.
+EGRESS_TARGETS = [
+    # (name, sni, host_header, path, parser kind)
+    ("cloudflare-trace", "www.cloudflare.com", "www.cloudflare.com", "/cdn-cgi/trace", "cf"),
+    ("ipwho", "ipwho.is", "ipwho.is", "/", "ipwho"),
+    ("ipinfo", "ipinfo.io", "ipinfo.io", "/json", "ipinfo"),
+]
+
+
+def _parse_egress(kind: str, text: str) -> tuple[str | None, str | None]:
+    """Extract (ip, ISO-2 country) from a target's response. None = unreadable."""
+    if kind == "cf":
+        fields = {}
+        for line in text.splitlines():
+            if "=" in line:
+                k, v = line.split("=", 1)
+                fields[k.strip()] = v.strip()
+        return fields.get("ip"), (fields.get("loc") or None)
+    # JSON targets; find the body (headers may still be present)
+    body = text.split("\r\n\r\n", 1)[-1] if "\r\n\r\n" in text else text
+    try:
+        doc = json.loads(body)
+    except ValueError:
+        return None, None
+    if not isinstance(doc, dict):
+        return None, None
+    ip = doc.get("ip")
+    cc = doc.get("country_code") or doc.get("country")
+    if isinstance(cc, str) and len(cc) == 2 and cc.isalpha():
+        return ip, cc.upper()
+    return ip, None
+
+
+def probe_egress_consensus(address: str, port: int) -> dict:
+    """Multi-destination egress verification (Bug #1 v2).
+
+    One TLS+GET per neutral target, each with the TARGET's own SNI/Host.
+    Consensus: >=2 agreeing readable verdicts confirm the country (high);
+    one readable verdict alone is low confidence; disagreement between
+    readable verdicts sets country_conflict — the candidate leaves strict
+    country pools. Bounded: 3 handshakes max, APP_TIMEOUT_S each.
+    """
+    out = {"egress_ip": None, "egress_country": None,
+           "country_confidence": "none", "verification_sources": [],
+           "country_conflict": False, "egress_verdicts": {}}
+    verdicts: dict[str, tuple[str | None, str]] = {}
+    for name, sni, host, path, kind in EGRESS_TARGETS:
+        try:
+            raw = socket.create_connection((address, port), timeout=8)
+        except OSError:
+            continue
+        try:
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            sock = ctx.wrap_socket(raw, server_hostname=sni)
+            req = (f"GET {path} HTTP/1.1\r\nHost: {host}\r\n"
+                   f"User-Agent: proxy-catalog-scan/1.0\r\nAccept: */*\r\n"
+                   f"Connection: close\r\n\r\n")
+            sock.sendall(req.encode())
+            n, text = _recv_response(sock)
+            if n:
+                ip, cc = _parse_egress(kind, text)
+                if cc:
+                    verdicts[name] = (ip, cc)
+        except (ssl.SSLError, OSError):
+            pass
+        finally:
+            try:
+                raw.close()
+            except OSError:
+                pass
+    out["egress_verdicts"] = {k: v[1] for k, v in verdicts.items()}
+    if not verdicts:
+        return out
+    codes = [cc for _, cc in verdicts.values()]
+    top = max(set(codes), key=codes.count)
+    out["egress_country"] = top
+    out["verification_sources"] = sorted(k for k, v in verdicts.items() if v[1] == top)
+    if len(set(codes)) > 1:
+        out["country_conflict"] = True
+        out["country_confidence"] = "conflict"
+    elif len(codes) >= 2:
+        out["country_confidence"] = "high"
+    else:
+        out["country_confidence"] = "low"
+    ips = {ip for ip, _ in verdicts.values() if ip}
+    if len(ips) == 1:
+        out["egress_ip"] = next(iter(ips))
+    return out
+
+
 def probe_stage(address: str, port: int, sni: str, host: str) -> dict:
     """One socket: TCP connect -> TLS(SNI=sni) -> GET /cdn-cgi/trace (Host: host).
 
@@ -340,11 +437,16 @@ def probe_candidate(c: dict, stage_b_host: str) -> dict:
     # TLS handshake and is meaningless for a candidate that cannot even serve
     # its own edge.
     capability = classify_capability(c["address"], c["port"]) if ok else "unverified"
+    # Bug #1 v2: multi-destination egress consensus. Only for verified
+    # candidates — an unverifiable edge has no egress worth measuring. Adds
+    # 3 bounded TLS+GET round trips per candidate per scan.
+    egress = probe_egress_consensus(c["address"], c["port"]) if ok else {}
     return {
         **c, **b, "stage": "B", "verified": ok,
         "capability": capability,
         "cf_country": a["country"], "cf_colo": a["colo"],
         "cf_tcp_ms": a["tcp_ms"], "cf_app_ms": a["app_ms"],
+        **egress,
         "error": None if ok else (b["error"] or "stage B failed"),
     }
 
@@ -462,6 +564,17 @@ def merge_state(state: dict, results: list[dict], now: str) -> dict:
             rec["last_rtt_ms"] = r.get("total_ms")
             rec["observed_country"] = r.get("country")
             rec["observed_provider"] = rec.get("observed_provider") or r.get("observed_provider")
+            # Bug #1 v2: multi-destination egress consensus. The verified
+            # country is the CONSENSUS verdict (not the CF-trace loc=), and a
+            # conflict bars the candidate from strict pools until a clean
+            # consensus re-verification.
+            rec["egress_country"] = r.get("egress_country")
+            rec["egress_ip"] = r.get("egress_ip")
+            rec["egress_verdicts"] = r.get("egress_verdicts") or {}
+            rec["country_confidence"] = r.get("country_confidence", "none")
+            rec["country_conflict"] = bool(r.get("country_conflict"))
+            rec["verification_sources"] = r.get("verification_sources") or []
+            rec["verification_timestamp"] = now
             # Relay capability is re-measured every scan (Stage C); keep the
             # freshest verdict on the record.
             if r.get("capability"):
@@ -499,7 +612,7 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
         if ts < cutoff:
             stale.append(key)
             continue
-        country = rec.get("observed_country")
+        country = rec.get("egress_country") or rec.get("observed_country")
         if not country or len(country) != 2:
             continue
         # Bug #1: the exit country is only as trustworthy as its evidence is
@@ -510,6 +623,14 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
         if ts < time.time() - GEO_TTL_H * 3600:
             stale.append(key)
             continue
+        # Bug #1 v2: consensus quality gate. A multi-target CONFLICT (or a
+        # single-source "low" verdict, where one neutral target said one thing
+        # and no other could be read) never enters a strict country pool.
+        # Correctness > availability: fewer candidates, never wrong-country.
+        confidence = rec.get("country_confidence", "none")
+        if rec.get("country_conflict") or confidence not in ("high",):
+            stale.append(key)
+            continue
         # v1.9.6: stale reputation decays to unmeasured (never published as a
         # fresh verdict) — old evidence must not outrank current evidence.
         _iq = rec.get("ip_quality") if _rep_fresh(rec) else None
@@ -517,6 +638,10 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
             "address": key.rsplit(":", 1)[0],
             "port": int(key.rsplit(":", 1)[1]),
             "observed_country": country,
+            "egress_ip": rec.get("egress_ip"),
+            "country_confidence": confidence,
+            "verification_sources": rec.get("verification_sources", []),
+            "verification_timestamp": rec.get("verification_timestamp"),
             "source_countries": rec.get("source_countries", []),
             "sources": rec.get("sources", []),
             "score": score(rec, time.time()),
