@@ -2,6 +2,40 @@
  "schema_version": 1,
  "endpoints": [
   {
+   "address": "168.138.189.91",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "168.138.189.91",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG",
+    "domain:ProxyIP.SG.CMLiussss.net"
+   ],
+   "score": 40,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 3,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "passthrough",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
    "address": "164.52.2.100",
    "port": 443,
    "observed_country": "SG",
@@ -13,6 +47,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -27,12 +62,13 @@
    "failure_count": 1,
    "status": "verified",
    "capability": "passthrough",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 0.75,
-   "quality_rank": 1
+   "quality_rank": 2
   },
   {
    "address": "164.52.2.98",
@@ -46,6 +82,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -60,12 +97,13 @@
    "failure_count": 1,
    "status": "verified",
    "capability": "passthrough",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 0.67,
-   "quality_rank": 2
+   "quality_rank": 3
   },
   {
    "address": "157.245.155.10",
@@ -78,6 +116,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -91,12 +130,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 3
+   "quality_rank": 4
   },
   {
    "address": "157.245.203.240",
@@ -109,6 +149,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -122,12 +163,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 4
+   "quality_rank": 5
   },
   {
    "address": "157.245.56.32",
@@ -140,6 +182,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -153,12 +196,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 5
+   "quality_rank": 6
   },
   {
    "address": "158.178.230.113",
@@ -171,6 +215,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -184,12 +229,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 6
+   "quality_rank": 7
   },
   {
    "address": "159.223.36.150",
@@ -202,6 +248,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -215,12 +262,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 7
+   "quality_rank": 8
   },
   {
    "address": "159.223.88.166",
@@ -233,6 +281,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -246,12 +295,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 8
+   "quality_rank": 9
   },
   {
    "address": "159.65.1.74",
@@ -264,6 +314,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -278,12 +329,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 9
+   "quality_rank": 10
   },
   {
    "address": "160.187.141.61",
@@ -296,6 +348,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -309,12 +362,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 10
+   "quality_rank": 11
   },
   {
    "address": "161.117.181.127",
@@ -327,6 +381,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -340,12 +395,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 11
+   "quality_rank": 12
   },
   {
    "address": "161.118.195.117",
@@ -358,6 +414,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -371,12 +428,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 12
+   "quality_rank": 13
   },
   {
    "address": "161.118.200.170",
@@ -389,6 +447,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -402,12 +461,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 13
+   "quality_rank": 14
   },
   {
    "address": "161.118.210.121",
@@ -420,6 +480,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -433,12 +494,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 14
+   "quality_rank": 15
   },
   {
    "address": "161.118.223.30",
@@ -451,6 +513,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -464,12 +527,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 15
+   "quality_rank": 16
   },
   {
    "address": "162.128.72.114",
@@ -482,6 +546,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -496,12 +561,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 16
+   "quality_rank": 17
   },
   {
    "address": "165.22.99.110",
@@ -514,6 +580,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -527,12 +594,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 17
+   "quality_rank": 18
   },
   {
    "address": "165.232.173.161",
@@ -545,6 +613,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -558,12 +627,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 18
+   "quality_rank": 19
   },
   {
    "address": "167.150.100.46",
@@ -576,6 +646,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -589,12 +660,213 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 19
+   "quality_rank": 20
+  },
+  {
+   "address": "167.71.198.82",
+   "port": 8443,
+   "observed_country": "SG",
+   "egress_ip": "167.71.198.82",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 15,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 21
+  },
+  {
+   "address": "168.138.165.174",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "168.138.165.174",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG",
+    "domain:ProxyIP.SG.CMLiussss.net"
+   ],
+   "score": 15,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 3,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 22
+  },
+  {
+   "address": "168.138.176.180",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2a09:bac5:55f8:30c8::4dc:35",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 15,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 23
+  },
+  {
+   "address": "168.144.100.103",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "168.144.100.103",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG",
+    "domain:ProxyIP.SG.CMLiussss.net"
+   ],
+   "score": 15,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 24
+  },
+  {
+   "address": "168.144.102.226",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2400:6180:0:d2:0:2:db9f:f000",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 15,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 25
+  },
+  {
+   "address": "168.144.109.68",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2400:6180:0:d2:0:2:e044:d000",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 15,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 26
   },
   {
    "address": "157.230.44.151",
@@ -607,6 +879,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -620,12 +893,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 20
+   "quality_rank": 27
   },
   {
    "address": "157.245.144.174",
@@ -638,6 +912,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -651,12 +926,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 21
+   "quality_rank": 28
   },
   {
    "address": "157.245.159.88",
@@ -669,6 +945,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -682,12 +959,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 22
+   "quality_rank": 29
   },
   {
    "address": "157.245.198.117",
@@ -700,6 +978,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -713,12 +992,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 23
+   "quality_rank": 30
   },
   {
    "address": "159.223.33.4",
@@ -731,6 +1011,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -744,12 +1025,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 24
+   "quality_rank": 31
   },
   {
    "address": "159.223.78.76",
@@ -762,6 +1044,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -775,12 +1058,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 25
+   "quality_rank": 32
   },
   {
    "address": "159.223.79.119",
@@ -793,6 +1077,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -806,12 +1091,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 26
+   "quality_rank": 33
   },
   {
    "address": "159.65.10.227",
@@ -824,6 +1110,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -837,12 +1124,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 27
+   "quality_rank": 34
   },
   {
    "address": "159.65.141.109",
@@ -855,6 +1143,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:01:03Z",
+   "verification_age_s": 7140,
    "source_countries": [
     "SG"
    ],
@@ -868,12 +1157,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 28
+   "quality_rank": 35
   },
   {
    "address": "159.65.143.223",
@@ -886,6 +1176,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -899,12 +1190,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 29
+   "quality_rank": 36
   },
   {
    "address": "159.65.15.18",
@@ -917,6 +1209,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -930,12 +1223,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 30
+   "quality_rank": 37
   },
   {
    "address": "159.65.8.14",
@@ -948,6 +1242,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -961,12 +1256,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 31
+   "quality_rank": 38
   },
   {
    "address": "159.89.200.153",
@@ -979,6 +1275,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -992,12 +1289,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 32
+   "quality_rank": 39
   },
   {
    "address": "159.89.203.141",
@@ -1010,6 +1308,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -1023,12 +1322,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 33
+   "quality_rank": 40
   },
   {
    "address": "165.22.102.89",
@@ -1041,6 +1341,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -1054,12 +1355,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 34
+   "quality_rank": 41
   },
   {
    "address": "165.22.104.36",
@@ -1072,6 +1374,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:09:57Z",
+   "verification_age_s": 6606,
    "source_countries": [
     "SG"
    ],
@@ -1085,12 +1388,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 35
+   "quality_rank": 42
   },
   {
    "address": "165.22.106.244",
@@ -1103,6 +1407,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1116,12 +1421,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 36
+   "quality_rank": 43
   },
   {
    "address": "165.22.59.251",
@@ -1134,6 +1440,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1147,12 +1454,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 37
+   "quality_rank": 44
   },
   {
    "address": "165.22.99.214",
@@ -1165,6 +1473,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1178,12 +1487,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 38
+   "quality_rank": 45
   },
   {
    "address": "165.232.165.200",
@@ -1196,6 +1506,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1209,12 +1520,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 39
+   "quality_rank": 46
   },
   {
    "address": "165.232.175.180",
@@ -1227,6 +1539,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1240,12 +1553,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 40
+   "quality_rank": 47
   },
   {
    "address": "165.245.178.114",
@@ -1258,6 +1572,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1271,12 +1586,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 41
+   "quality_rank": 48
   },
   {
    "address": "165.245.181.78",
@@ -1289,6 +1605,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1302,12 +1619,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 42
+   "quality_rank": 49
   },
   {
    "address": "165.245.182.116",
@@ -1320,6 +1638,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1333,12 +1652,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 43
+   "quality_rank": 50
   },
   {
    "address": "165.245.184.76",
@@ -1351,6 +1671,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1364,12 +1685,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 44
+   "quality_rank": 51
   },
   {
    "address": "165.245.190.53",
@@ -1382,6 +1704,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1395,12 +1718,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 45
+   "quality_rank": 52
   },
   {
    "address": "167.172.65.175",
@@ -1413,6 +1737,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1426,12 +1751,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 46
+   "quality_rank": 53
   },
   {
    "address": "167.172.68.31",
@@ -1444,6 +1770,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1457,12 +1784,13 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 47
+   "quality_rank": 54
   },
   {
    "address": "167.172.75.2",
@@ -1475,6 +1803,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-09-29T11:31:21Z",
+   "verification_age_s": 5322,
    "source_countries": [
     "SG"
    ],
@@ -1488,12 +1817,310 @@
    "failure_count": 0,
    "status": "verified",
    "capability": "sni-terminate",
+   "http_forwarding": null,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 48
+   "quality_rank": 55
+  },
+  {
+   "address": "167.172.90.175",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2400:6180:0:d2:0:2:c89f:4000",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 56
+  },
+  {
+   "address": "167.71.203.125",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2400:6180:0:d2:0:2:c821:d000",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 57
+  },
+  {
+   "address": "167.71.213.95",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2400:6180:0:d2:0:2:6668:e000",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 58
+  },
+  {
+   "address": "167.71.217.55",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2400:6180:0:d2:0:2:d85d:1000",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 59
+  },
+  {
+   "address": "167.71.220.89",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2400:6180:0:d2:0:2:c89f:3000",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 60
+  },
+  {
+   "address": "167.99.69.85",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2400:6180:0:d2:0:2:bc41:9000",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 61
+  },
+  {
+   "address": "167.99.71.38",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2400:6180:0:d2:0:2:c821:6000",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 62
+  },
+  {
+   "address": "167.99.77.156",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2400:6180:0:d2:0:2:c821:8000",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 63
+  },
+  {
+   "address": "168.144.103.195",
+   "port": 443,
+   "observed_country": "SG",
+   "egress_ip": "2400:6180:0:d2:0:2:ffb9:1000",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-09-29T12:45:35Z",
+   "verification_age_s": 868,
+   "source_countries": [
+    "SG"
+   ],
+   "sources": [
+    "catalog:SG"
+   ],
+   "score": 0,
+   "last_rtt_ms": null,
+   "last_success": "2026-09-29T12:45:35Z",
+   "success_count": 2,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 64
   }
  ]
 }
