@@ -846,7 +846,10 @@ def publish(pools: dict, state: dict, report: dict, stats: dict,
         "capability_note": ("Stage A+B verify Cloudflare-relay behavior; "
                             "Stage C classifies cf-relay / sni-terminate / "
                             "passthrough per candidate. Only 'passthrough' "
-                            "proves generic TCP forwarding."),
+                            "proves generic TCP forwarding. Egress country is "
+                            "consensus-verified from scanner vantage; some boxes "
+                            "route upstreams by connection source, so egress from "
+                            "a different vantage (e.g. CF Workers) may differ."),
     }
     (tmp / "feed.json").write_text(json.dumps(feed, indent=1), encoding="utf-8")
     (tmp / "index.json").write_text(json.dumps({
