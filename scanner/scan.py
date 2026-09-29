@@ -369,6 +369,32 @@ FOREIGN_SNI = "www.postgresql.org"
 FOREIGN_SNI_CONFIRM = "www.rfc-editor.org"
 
 
+def probe_http_forward(address: str, port: int) -> bool:
+    """Plain-HTTP forwarding probe (Bug #2): can the box relay a NON-TLS HTTP
+    request to a neutral host? This is exactly the class of traffic Speedtest
+    latency probes use (:8080 plain HTTP). cf-relay fronts (TLS-only to CF)
+    fail this; true passthroughs pass. One bounded request."""
+    try:
+        raw = socket.create_connection((address, port), timeout=TCP_TIMEOUT_S)
+    except OSError:
+        return False
+    try:
+        req = (b"GET / HTTP/1.1\r\nHost: example.com\r\n"
+               b"User-Agent: proxy-catalog-scan/1.0\r\n"
+               b"Accept: */*\r\nConnection: close\r\n\r\n")
+        raw.sendall(req)
+        n, text = _recv_response(raw)
+        parts = text.split(" ", 2)
+        return len(parts) > 1 and parts[1].startswith(("2", "3"))
+    except (OSError, ssl.SSLError):
+        return False
+    finally:
+        try:
+            raw.close()
+        except OSError:
+            pass
+
+
 def _foreign_probe(address: str, port: int, sni: str) -> tuple[str, str]:
     """One foreign-SNI TLS+HTTP probe. Returns (class, evidence-status)."""
     raw = socket.create_connection((address, port), timeout=TCP_TIMEOUT_S)
@@ -589,6 +615,16 @@ def merge_state(state: dict, results: list[dict], now: str) -> dict:
             if r.get("capability"):
                 rec["capability"] = r["capability"]
                 rec["capability_checked_at"] = now
+            # Bug #2: plain-HTTP forwarding capability (Speedtest latency class).
+            # Only probed for boxes that just answered the app probe — dead boxes
+            # keep their previous capability data instead of burning a probe.
+            if r.get("app_ok"):
+                rec["http_forwarding"] = probe_http_forward(r["address"], r["port"])
+            # Bug #2: plain-HTTP forwarding capability (Speedtest latency class).
+            # Only probed for boxes that just answered the app probe — dead boxes
+            # keep their previous capability data instead of burning a probe.
+            if r.get("app_ok"):
+                rec["http_forwarding"] = probe_http_forward(r["address"], r["port"])
             # v1.9.6: reputation verdict rides on the probe result (fetched by
             # the enrichment pass against the persistent store).
             if r.get("ip_quality"):
@@ -664,6 +700,8 @@ def build_verified(state: dict, now: str) -> tuple[dict, dict]:
             # Stage C classification (may be absent on records classified
             # before this field existed — readers must default).
             "capability": rec.get("capability", "unverified"),
+            "http_forwarding": rec.get("http_forwarding"),
+            "http_forwarding": rec.get("http_forwarding"),
             # v1.9.6 per-IP quality (§2/§4/§5): absent = unmeasured, never bad.
             # Stale verdicts (older than the verified TTL) decay to unmeasured:
             # old reputation must not outrank or outshout fresh evidence.

@@ -173,6 +173,21 @@ class TestStateAndVerified(unittest.TestCase):
         pools, _ = scan.build_verified(state, now)
         self.assertEqual(len(pools["DE"]), scan.PER_COUNTRY_PUBLISH_CAP)
 
+    def test_http_forward_probe(self):
+        """http_forwarding probe: relayed 2xx/3xx = True, 4xx/drop = False."""
+        import socket as _s, threading
+        for payload, expect in ((b"HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n", True),
+                                (b"HTTP/1.1 403 Forbidden\r\nContent-Length: 0\r\n\r\n", False)):
+            srv=_s.socket(); srv.setsockopt(_s.SOL_SOCKET,_s.SO_REUSEADDR,1)
+            srv.bind(("127.0.0.1",0)); srv.listen(1); port=srv.getsockname()[1]
+            def run(srv=srv,payload=payload):
+                c,_=srv.accept(); c.recv(4096); c.sendall(payload); c.close()
+            th=threading.Thread(target=run); th.start()
+            got=scan.probe_http_forward("127.0.0.1",port)
+            th.join(); srv.close()
+            self.assertEqual(got,expect)
+        self.assertFalse(scan.probe_http_forward("127.0.0.1",1))  # nothing listens
+
     def test_ipapi_target_parsed_and_consensus_extended(self):
         """4-source consensus: ip-api (plain HTTP) verdict counts toward agreement."""
         ip, cc = scan._parse_egress(
