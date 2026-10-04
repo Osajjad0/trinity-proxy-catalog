@@ -2,10 +2,10 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "91.250.248.151",
+   "address": "41.76.42.118",
    "port": 443,
-   "observed_country": "GR",
-   "egress_ip": "91.250.248.151",
+   "observed_country": "MU",
+   "egress_ip": "102.117.239.172",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
@@ -14,33 +14,31 @@
    "verification_timestamp": "2026-10-04T23:18:31Z",
    "verification_age_s": 728,
    "source_countries": [
-    "GR"
+    "MU"
    ],
    "sources": [
-    "catalog:GR"
+    "catalog:MU"
    ],
-   "score": 26,
+   "score": 33,
    "last_rtt_ms": null,
    "last_success": "2026-10-04T23:18:31Z",
-   "success_count": 66,
-   "failure_count": 0,
+   "success_count": 61,
+   "failure_count": 5,
    "status": "verified",
-   "capability": "cf-relay",
+   "capability": "passthrough",
    "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "speed_dl_bps": 478537,
-   "speed_ul_bps": 404969,
-   "success_ratio": 1.0,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 0.92,
    "quality_rank": 1
   },
   {
-   "address": "38.54.29.210",
-   "port": 2053,
-   "observed_country": "GR",
-   "egress_ip": "38.54.29.210",
+   "address": "41.76.42.116",
+   "port": 443,
+   "observed_country": "MU",
+   "egress_ip": "102.117.239.172",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
@@ -49,26 +47,24 @@
    "verification_timestamp": "2026-10-04T23:18:31Z",
    "verification_age_s": 728,
    "source_countries": [
-    "GR"
+    "MU"
    ],
    "sources": [
-    "catalog:GR"
+    "catalog:MU"
    ],
-   "score": 25,
+   "score": 29,
    "last_rtt_ms": null,
    "last_success": "2026-10-04T23:18:31Z",
-   "success_count": 66,
-   "failure_count": 0,
+   "success_count": 58,
+   "failure_count": 8,
    "status": "verified",
-   "capability": "cf-relay",
+   "capability": "passthrough",
    "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "speed_dl_bps": 457556,
-   "speed_ul_bps": 389980,
-   "success_ratio": 1.0,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 0.88,
    "quality_rank": 2
   }
  ]
