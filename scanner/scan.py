@@ -340,6 +340,12 @@ def probe_stage(address: str, port: int, sni: str, host: str) -> dict:
         sock.sendall(req.encode())
         n, text = _recv_response(sock)
         result["app_ms"] = int((time.monotonic() - app0) * 1000)
+        # Declared in the result shape and read by the scorer, but never
+        # assigned: every candidate's last_rtt_ms stayed None, so the speed
+        # term could never fire and ranking ignored latency entirely. The
+        # full dial cost is the honest number for a candidate (TCP + TLS +
+        # first byte), which is what "how expensive is this dial" means.
+        result["total_ms"] = int((time.monotonic() - t0) * 1000)
         sock.close()
         if n == 0:
             result["error"] = "app: empty response"

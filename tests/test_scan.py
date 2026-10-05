@@ -137,6 +137,55 @@ class TestStateAndVerified(unittest.TestCase):
         self.assertEqual(rec["success_count"], 1)
         self.assertEqual(rec["observed_country"], "DE")
         self.assertIn("last_success", rec)
+        # Latency must actually reach the record. `total_ms` was declared in
+        # the probe's result shape and read by the scorer, but probe_stage
+        # never assigned it -- so every candidate carried last_rtt_ms=None and
+        # the scorer's speed term (+0..+20) could never fire. This assertion
+        # is what that bug would have tripped.
+        self.assertEqual(rec["last_rtt_ms"], 140)
+
+    def test_probe_reports_total_rtt(self):
+        """probe_stage must fill total_ms, not only its components.
+
+        Guards the regression directly against the real function: the merge
+        test above proves the plumbing, this proves the producer. Without
+        total_ms, latency silently ranks nothing.
+        """
+        import socket as _s
+
+        class FakeSock:
+            def __init__(self):
+                self.sent = b""
+            def sendall(self, b):
+                self.sent += b
+            def close(self):
+                pass
+
+        body = (b"HTTP/1.1 200 OK\r\nContent-Length: 46\r\n\r\n"
+                b"loc=US\r\ncolo=IAD\r\nip=203.0.113.9\r\n")
+
+        def fake_recv(sock):
+            return len(body), body.decode()
+
+        orig_conn = _s.create_connection
+        orig_recv = scan._recv_response
+        orig_ctx = scan.ssl.create_default_context
+        try:
+            _s.create_connection = lambda *a, **k: FakeSock()
+            scan._recv_response = fake_recv
+            class Ctx:
+                def wrap_socket(self, raw, server_hostname=None):
+                    return raw
+            scan.ssl.create_default_context = lambda *a, **k: Ctx()
+            res = scan.probe_stage("203.0.113.7", 443, "speed.cloudflare.com", "speed.cloudflare.com")
+        finally:
+            _s.create_connection = orig_conn
+            scan._recv_response = orig_recv
+            scan.ssl.create_default_context = orig_ctx
+        self.assertTrue(res["app_ok"], res.get("error"))
+        self.assertIsNotNone(res["total_ms"],
+                             "probe_stage must report a total round trip")
+        self.assertIsInstance(res["total_ms"], int)
 
     def test_verified_requires_recent_success_and_country(self):
         # Old success beyond TTL -> stale, not published.
