@@ -2,10 +2,10 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "43.174.194.1",
+   "address": "91.187.93.166",
    "port": 443,
-   "observed_country": "CO",
-   "egress_ip": "43.152.184.124",
+   "observed_country": "AD",
+   "egress_ip": "91.187.93.147",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
@@ -14,24 +14,24 @@
    "verification_timestamp": "2026-10-05T14:57:36Z",
    "verification_age_s": 711,
    "source_countries": [
-    "CO"
+    "AD"
    ],
    "sources": [
-    "catalog:CO"
+    "catalog:AD"
    ],
-   "score": 20,
-   "last_rtt_ms": 538,
+   "score": 31,
+   "last_rtt_ms": 6931,
    "last_success": "2026-10-05T14:57:36Z",
-   "success_count": 69,
-   "failure_count": 0,
+   "success_count": 58,
+   "failure_count": 14,
    "status": "verified",
-   "capability": "cf-relay",
+   "capability": "passthrough",
    "http_forwarding": false,
    "risk": "low",
-   "ip_type": "datacenter",
+   "ip_type": "isp",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
+   "success_ratio": 0.81,
    "quality_rank": 1
   }
  ]
