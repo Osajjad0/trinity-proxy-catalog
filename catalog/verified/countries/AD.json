@@ -2,36 +2,36 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "161.29.46.212",
+   "address": "91.187.93.166",
    "port": 443,
-   "observed_country": "NZ",
-   "egress_ip": "2404:4408:67b5:1900::1",
+   "observed_country": "AD",
+   "egress_ip": "91.187.93.147",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
-    "ipwho"
+    "ipinfo"
    ],
    "verification_timestamp": "2026-10-06T06:32:29Z",
    "verification_age_s": 668,
    "source_countries": [
-    "NZ"
+    "AD"
    ],
    "sources": [
-    "catalog:NZ"
+    "catalog:AD"
    ],
-   "score": 15,
-   "last_rtt_ms": 2232,
+   "score": 6,
+   "last_rtt_ms": 8344,
    "last_success": "2026-10-06T06:32:29Z",
-   "success_count": 70,
-   "failure_count": 0,
+   "success_count": 60,
+   "failure_count": 14,
    "status": "verified",
-   "capability": "cf-relay",
+   "capability": "tls-error",
    "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "success_ratio": 1.0,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 0.81,
    "quality_rank": 1
   }
  ]
