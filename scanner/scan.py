@@ -983,23 +983,33 @@ def country_batches(
     for cc in sorted(by_cc):
         pool = by_cc[cc]
         st = cstate.setdefault(cc, {"cursor": 0})
-        cursor = int(st.get("cursor", 0)) % max(len(pool), 1)
         budget = min(DAILY_BUDGET_PER_COUNTRY, len(pool))
-        window = [pool[(cursor + k) % len(pool)] for k in range(budget)]
-        st["cursor"] = (cursor + budget) % max(len(pool), 1)
         # Fresh-egress gate support (Bug #1/#2): verify the STALEST evidence
-        # first, and re-verify passthrough candidates before equal-staleness
-        # others. The cursor alone can leave a country's only full-capability
-        # candidates unverified for ~13h — long enough for the 12h geo gate
-        # to empty the pool of exactly the candidates that can serve every
-        # protocol. Staleness comes from the persistent record; unknown
-        # records count as oldest (never probed) so new inventory gets a
-        # first verdict promptly.
+        # first, and re-verify passthrough candidates before equal-priority
+        # others. A pure cursor rotation picks an arbitrary 16-slice per run,
+        # which leaves a country's only full-capability candidates unverified
+        # for days — far past the 12h geo gate — so known-generic candidates
+        # silently vanish from the published feed (measured: 99/144
+        # passthrough excluded by age alone). The priority below therefore
+        # runs over the WHOLE pool, not a cursor slice:
+        #   1. passthrough first (the scarce generic-capable class must
+        #      re-verify often enough to stay inside the 12h geo gate);
+        #   2. least-recently-ATTEMPTED first. Ordering by last *attempt*
+        #      (not last success) is what keeps dead candidates from pinning
+        #      the window: a box that just failed goes to the back of the
+        #      rotation instead of hammering every run, while unknown records
+        #      (never attempted) count as oldest so new inventory gets a
+        #      first verdict promptly.
+        # `last_seen` is written by merge_state on every attempt, success or
+        # failure, so attempt age is a fair rotation clock.
         recs = (state.get("candidates") or {})
 
-        def _age(c: dict) -> float:
-            rec = recs.get(f'{c["address"]}:{c["port"]}') or {}
-            at = rec.get("last_success") or ""
+        def _key(c: dict) -> str:
+            return f'{c["address"]}:{c["port"]}'
+
+        def _attempt_age(c: dict) -> float:
+            rec = recs.get(_key(c)) or {}
+            at = rec.get("last_seen") or rec.get("last_success") or ""
             try:
                 return max(0.0, time.time() - datetime.fromisoformat(
                     at.replace("Z", "+00:00")).timestamp()) if at else 1e18
@@ -1007,10 +1017,15 @@ def country_batches(
                 return 1e18
 
         def _passthrough(c: dict) -> int:
-            rec = recs.get(f'{c["address"]}:{c["port"]}') or {}
+            rec = recs.get(_key(c)) or {}
             return rec.get("capability") != "passthrough"
 
-        window.sort(key=lambda c: (_passthrough(c), -_age(c)))
+        pool_sorted = sorted(pool, key=lambda c: (_passthrough(c), -_attempt_age(c), _key(c)))
+        window = pool_sorted[:budget]
+        # The cursor keeps advancing for reporting/compat; selection no longer
+        # depends on it — rotation now follows attempt age, which advances on
+        # every run by construction.
+        st["cursor"] = (int(st.get("cursor", 0)) + budget) % max(len(pool), 1)
         st["last_scan_at"] = now
         st["source_candidate_count"] = len(pool)
         meta[cc] = {"source": len(pool), "scanned": budget}

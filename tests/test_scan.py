@@ -106,6 +106,53 @@ class TestCountryBatches(unittest.TestCase):
         self.assertEqual(order[2], "a:443")
         self.assertEqual(order[3], "b:443")
 
+    def test_passthrough_selected_across_pool_not_only_cursor_window(self):
+        # Regression: the old code picked a cursor slice FIRST and only then
+        # sorted it, so a passthrough candidate sitting outside the slice was
+        # never selected (measured: 99/144 passthrough excluded from the
+        # published feed by age alone). With a per-country budget of 16 and a
+        # pool larger than that, an expired passthrough at position 40 must
+        # still be picked ahead of fresher cf-relay candidates in any slice.
+        def cand(addr):
+            return {"address": addr, "port": 443, "source_countries": ["ZZ"]}
+        state = {"candidates": {
+            # 40 cf-relay boxes, recently attempted (would win any slice race)
+            **{f"f{i}:443": {"last_seen": "2026-09-28T17:30:00Z",
+                             "last_success": "2026-09-28T17:30:00Z",
+                             "capability": "cf-relay"}
+               for i in range(40)},
+            # the country's only passthrough: expired evidence, never attempted
+            "p:443": {"last_success": "2026-09-26T18:30:00Z",
+                      "capability": "passthrough"},
+        }}
+        cands = [cand(f"f{i}") for i in range(40)] + [cand("p")]
+        picked, meta = scan.country_batches(cands, state, "2026-09-28T18:30:00Z")
+        order = [f'{c["address"]}:{c["port"]}' for c in picked]
+        self.assertEqual(len(picked), scan.DAILY_BUDGET_PER_COUNTRY)
+        self.assertEqual(order[0], "p:443",
+                         "expired passthrough outside any cursor slice must be selected")
+
+    def test_failed_candidate_rotates_not_hammers(self):
+        # A candidate that failed its last attempt must go to the back of the
+        # rotation (attempt-age clock), or a dead box pins the window every
+        # run and the feed membership freezes. Two cf-relay boxes: one failed
+        # an hour ago, one succeeded 30h ago and was last attempted 20h ago.
+        def cand(addr):
+            return {"address": addr, "port": 443, "source_countries": ["ZZ"]}
+        state = {"candidates": {
+            "dead:443": {"last_seen": "2026-09-28T17:30:00Z",
+                         "last_success": "2026-09-20T18:30:00Z",
+                         "capability": "cf-relay"},
+            "live:443": {"last_seen": "2026-09-27T22:30:00Z",
+                         "last_success": "2026-09-27T12:30:00Z",
+                         "capability": "cf-relay"},
+        }}
+        picked, _ = scan.country_batches([cand("dead"), cand("live")],
+                                         state, "2026-09-28T18:30:00Z")
+        order = [f'{c["address"]}:{c["port"]}' for c in picked]
+        self.assertEqual(order[0], "live:443",
+                         "recently-failed box must yield to the stale live one")
+
 
 class TestPolicyAndScoring(unittest.TestCase):
     def test_provider_exclusion_uses_observed_metadata(self):
