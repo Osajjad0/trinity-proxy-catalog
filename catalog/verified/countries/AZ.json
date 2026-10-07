@@ -2,6 +2,41 @@
  "schema_version": 1,
  "endpoints": [
   {
+   "address": "85.185.86.111",
+   "port": 2053,
+   "observed_country": "AZ",
+   "egress_ip": null,
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-07T01:39:48Z",
+   "verification_age_s": 747,
+   "source_countries": [
+    "AZ"
+   ],
+   "sources": [
+    "catalog:AZ"
+   ],
+   "score": 6,
+   "last_rtt_ms": 2411,
+   "last_success": "2026-10-07T01:39:48Z",
+   "success_count": 53,
+   "failure_count": 21,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 308390,
+   "speed_ul_bps": 186833,
+   "success_ratio": 0.72,
+   "quality_rank": 1
+  },
+  {
    "address": "180.149.44.124",
    "port": 8443,
    "observed_country": "AZ",
@@ -11,8 +46,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-06T21:03:54Z",
-   "verification_age_s": 692,
+   "verification_timestamp": "2026-10-07T01:39:48Z",
+   "verification_age_s": 747,
    "source_countries": [
     "AZ"
    ],
@@ -20,9 +55,9 @@
     "catalog:AZ"
    ],
    "score": 0,
-   "last_rtt_ms": 1688,
-   "last_success": "2026-10-06T21:03:54Z",
-   "success_count": 70,
+   "last_rtt_ms": 2367,
+   "last_success": "2026-10-07T01:39:48Z",
+   "success_count": 71,
    "failure_count": 3,
    "status": "verified",
    "capability": "cf-relay",
@@ -32,7 +67,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 0.96,
-   "quality_rank": 1
+   "quality_rank": 2
   }
  ]
 }
