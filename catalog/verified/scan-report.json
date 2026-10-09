@@ -1,95 +1,94 @@
 {
- "scan_started_at": "2026-10-09T00:29:12Z",
- "scan_finished_at": "2026-10-09T00:41:44Z",
+ "scan_started_at": "2026-10-09T09:15:43Z",
+ "scan_finished_at": "2026-10-09T09:28:58Z",
  "scanner_revision": "v1.775",
  "candidate_count": 775,
  "tested_count": 775,
- "tcp_ok": 642,
- "tls_ok": 584,
- "application_ok": 578,
- "verified_count": 578,
+ "tcp_ok": 648,
+ "tls_ok": 580,
+ "application_ok": 570,
+ "verified_count": 570,
  "capability": "cf-relay",
  "capability_note": "Stage A+B verify Cloudflare-relay capability only; generic TCP forwarding is NOT verified by this feed",
  "countries": {
-  "CA": 16,
-  "BE": 5,
-  "BY": 8,
-  "AT": 3,
-  "BG": 12,
+  "CA": 14,
   "AU": 12,
-  "GB": 15,
-  "BR": 8,
-  "AR": 2,
+  "BE": 5,
+  "BG": 16,
+  "AT": 5,
+  "BR": 6,
+  "BY": 9,
   "AL": 4,
+  "AR": 2,
   "BA": 1,
   "AM": 8,
-  "AZ": 1,
   "AE": 15,
-  "BH": 1,
+  "GB": 15,
+  "AZ": 1,
+  "US": 19,
   "CH": 11,
   "CO": 1,
   "CL": 4,
-  "US": 20,
   "CZ": 13,
   "CY": 5,
-  "DE": 18,
-  "DO": 6,
-  "DK": 13,
-  "ES": 12,
+  "DE": 16,
+  "FR": 7,
   "BD": 3,
-  "EE": 9,
-  "FI": 14,
-  "FR": 5,
+  "DK": 12,
+  "DO": 6,
+  "ES": 14,
+  "EE": 12,
+  "FI": 9,
+  "HK": 12,
   "GR": 2,
+  "IE": 14,
   "GE": 5,
-  "IE": 13,
   "HU": 6,
-  "HK": 15,
-  "IL": 9,
   "ID": 4,
-  "IS": 9,
-  "IN": 15,
-  "IT": 13,
+  "IL": 9,
   "CN": 2,
-  "JP": 14,
+  "AD": 1,
+  "IN": 11,
+  "IS": 9,
+  "IT": 13,
+  "JP": 12,
+  "KR": 8,
   "IR": 1,
-  "KR": 10,
   "KG": 3,
-  "LT": 12,
   "LU": 1,
-  "KZ": 12,
-  "LV": 14,
+  "LT": 10,
+  "LV": 13,
+  "KZ": 13,
   "MX": 7,
   "MD": 8,
   "MK": 1,
-  "NL": 15,
-  "NO": 8,
   "KH": 1,
-  "MY": 6,
+  "NL": 15,
+  "MY": 4,
   "NZ": 1,
-  "PL": 9,
-  "PT": 1,
-  "RO": 15,
-  "NG": 1,
+  "NO": 7,
   "PH": 3,
+  "PL": 14,
+  "PT": 1,
+  "NG": 1,
+  "RO": 14,
   "RS": 8,
-  "RU": 12,
+  "RU": 9,
   "JO": 8,
-  "SE": 8,
-  "AD": 1,
-  "SA": 2,
+  "SE": 10,
   "SK": 7,
+  "SA": 2,
   "SI": 1,
-  "TR": 6,
-  "TW": 10,
-  "MU": 2,
   "TH": 3,
-  "UA": 5,
+  "TW": 9,
+  "TR": 12,
   "SG": 14,
-  "SY": 1,
+  "UA": 5,
+  "MU": 2,
   "VN": 1,
+  "SY": 1,
   "UZ": 1,
-  "ZA": 7
+  "ZA": 6
  },
  "country_funnel": {
   "AD": {
@@ -134,11 +133,11 @@
   },
   "AT": {
    "source": 88,
-   "tested": 19,
-   "tcp_ok": 3,
-   "tls_ok": 3,
-   "app_ok": 3,
-   "verified": 3
+   "tested": 21,
+   "tcp_ok": 5,
+   "tls_ok": 5,
+   "app_ok": 5,
+   "verified": 5
   },
   "AU": {
    "source": 40,
@@ -182,43 +181,43 @@
   },
   "BG": {
    "source": 63,
-   "tested": 28,
-   "tcp_ok": 12,
-   "tls_ok": 12,
-   "app_ok": 12,
-   "verified": 12
-  },
-  "BH": {
-   "source": 2,
-   "tested": 3,
-   "tcp_ok": 1,
-   "tls_ok": 1,
-   "app_ok": 1,
-   "verified": 1
-  },
-  "BR": {
-   "source": 9,
-   "tested": 17,
-   "tcp_ok": 8,
-   "tls_ok": 8,
-   "app_ok": 8,
-   "verified": 8
-  },
-  "BY": {
-   "source": 9,
-   "tested": 17,
-   "tcp_ok": 8,
-   "tls_ok": 8,
-   "app_ok": 8,
-   "verified": 8
-  },
-  "CA": {
-   "source": 81,
    "tested": 32,
    "tcp_ok": 16,
    "tls_ok": 16,
    "app_ok": 16,
    "verified": 16
+  },
+  "BH": {
+   "source": 2,
+   "tested": 2,
+   "tcp_ok": 0,
+   "tls_ok": 0,
+   "app_ok": 0,
+   "verified": 0
+  },
+  "BR": {
+   "source": 9,
+   "tested": 15,
+   "tcp_ok": 6,
+   "tls_ok": 6,
+   "app_ok": 6,
+   "verified": 6
+  },
+  "BY": {
+   "source": 9,
+   "tested": 18,
+   "tcp_ok": 9,
+   "tls_ok": 9,
+   "app_ok": 9,
+   "verified": 9
+  },
+  "CA": {
+   "source": 81,
+   "tested": 30,
+   "tcp_ok": 14,
+   "tls_ok": 14,
+   "app_ok": 14,
+   "verified": 14
   },
   "CH": {
    "source": 179,
@@ -269,20 +268,20 @@
    "verified": 13
   },
   "DE": {
-   "source": 3687,
-   "tested": 34,
-   "tcp_ok": 18,
-   "tls_ok": 18,
-   "app_ok": 18,
-   "verified": 18
+   "source": 3681,
+   "tested": 32,
+   "tcp_ok": 16,
+   "tls_ok": 16,
+   "app_ok": 16,
+   "verified": 16
   },
   "DK": {
    "source": 43,
-   "tested": 29,
-   "tcp_ok": 13,
-   "tls_ok": 13,
-   "app_ok": 13,
-   "verified": 13
+   "tested": 28,
+   "tcp_ok": 12,
+   "tls_ok": 12,
+   "app_ok": 12,
+   "verified": 12
   },
   "DO": {
    "source": 6,
@@ -294,35 +293,35 @@
   },
   "EE": {
    "source": 136,
-   "tested": 25,
-   "tcp_ok": 9,
-   "tls_ok": 9,
-   "app_ok": 9,
-   "verified": 9
-  },
-  "ES": {
-   "source": 140,
    "tested": 28,
    "tcp_ok": 12,
    "tls_ok": 12,
    "app_ok": 12,
    "verified": 12
   },
-  "FI": {
-   "source": 1113,
+  "ES": {
+   "source": 140,
    "tested": 30,
    "tcp_ok": 14,
    "tls_ok": 14,
    "app_ok": 14,
    "verified": 14
   },
+  "FI": {
+   "source": 1113,
+   "tested": 25,
+   "tcp_ok": 9,
+   "tls_ok": 9,
+   "app_ok": 9,
+   "verified": 9
+  },
   "FR": {
    "source": 579,
-   "tested": 21,
-   "tcp_ok": 5,
-   "tls_ok": 5,
-   "app_ok": 5,
-   "verified": 5
+   "tested": 23,
+   "tcp_ok": 7,
+   "tls_ok": 7,
+   "app_ok": 7,
+   "verified": 7
   },
   "GB": {
    "source": 1094,
@@ -357,12 +356,12 @@
    "verified": 2
   },
   "HK": {
-   "source": 186,
-   "tested": 31,
-   "tcp_ok": 15,
-   "tls_ok": 15,
-   "app_ok": 15,
-   "verified": 15
+   "source": 187,
+   "tested": 28,
+   "tcp_ok": 12,
+   "tls_ok": 12,
+   "app_ok": 12,
+   "verified": 12
   },
   "HR": {
    "source": 1,
@@ -390,11 +389,11 @@
   },
   "IE": {
    "source": 22,
-   "tested": 29,
-   "tcp_ok": 13,
-   "tls_ok": 13,
-   "app_ok": 13,
-   "verified": 13
+   "tested": 30,
+   "tcp_ok": 14,
+   "tls_ok": 14,
+   "app_ok": 14,
+   "verified": 14
   },
   "IL": {
    "source": 12,
@@ -406,11 +405,11 @@
   },
   "IN": {
    "source": 46,
-   "tested": 31,
-   "tcp_ok": 15,
-   "tls_ok": 15,
-   "app_ok": 15,
-   "verified": 15
+   "tested": 27,
+   "tcp_ok": 11,
+   "tls_ok": 11,
+   "app_ok": 11,
+   "verified": 11
   },
   "IQ": {
    "source": 1,
@@ -453,12 +452,12 @@
    "verified": 8
   },
   "JP": {
-   "source": 405,
-   "tested": 30,
-   "tcp_ok": 14,
-   "tls_ok": 14,
-   "app_ok": 14,
-   "verified": 14
+   "source": 406,
+   "tested": 28,
+   "tcp_ok": 12,
+   "tls_ok": 12,
+   "app_ok": 12,
+   "verified": 12
   },
   "KE": {
    "source": 1,
@@ -486,11 +485,11 @@
   },
   "KR": {
    "source": 76,
-   "tested": 26,
-   "tcp_ok": 10,
-   "tls_ok": 10,
-   "app_ok": 10,
-   "verified": 10
+   "tested": 24,
+   "tcp_ok": 8,
+   "tls_ok": 8,
+   "app_ok": 8,
+   "verified": 8
   },
   "KW": {
    "source": 1,
@@ -502,11 +501,11 @@
   },
   "KZ": {
    "source": 89,
-   "tested": 28,
-   "tcp_ok": 12,
-   "tls_ok": 12,
-   "app_ok": 12,
-   "verified": 12
+   "tested": 29,
+   "tcp_ok": 13,
+   "tls_ok": 13,
+   "app_ok": 13,
+   "verified": 13
   },
   "LI": {
    "source": 1,
@@ -518,11 +517,11 @@
   },
   "LT": {
    "source": 38,
-   "tested": 28,
-   "tcp_ok": 12,
-   "tls_ok": 12,
-   "app_ok": 12,
-   "verified": 12
+   "tested": 26,
+   "tcp_ok": 10,
+   "tls_ok": 10,
+   "app_ok": 10,
+   "verified": 10
   },
   "LU": {
    "source": 1,
@@ -534,11 +533,11 @@
   },
   "LV": {
    "source": 492,
-   "tested": 30,
-   "tcp_ok": 14,
-   "tls_ok": 14,
-   "app_ok": 14,
-   "verified": 14
+   "tested": 29,
+   "tcp_ok": 13,
+   "tls_ok": 13,
+   "app_ok": 13,
+   "verified": 13
   },
   "MA": {
    "source": 1,
@@ -590,11 +589,11 @@
   },
   "MY": {
    "source": 9,
-   "tested": 15,
-   "tcp_ok": 6,
-   "tls_ok": 6,
-   "app_ok": 6,
-   "verified": 6
+   "tested": 13,
+   "tcp_ok": 4,
+   "tls_ok": 4,
+   "app_ok": 4,
+   "verified": 4
   },
   "NG": {
    "source": 2,
@@ -614,11 +613,11 @@
   },
   "NO": {
    "source": 14,
-   "tested": 22,
-   "tcp_ok": 8,
-   "tls_ok": 8,
-   "app_ok": 8,
-   "verified": 8
+   "tested": 21,
+   "tcp_ok": 7,
+   "tls_ok": 7,
+   "app_ok": 7,
+   "verified": 7
   },
   "NP": {
    "source": 1,
@@ -654,11 +653,11 @@
   },
   "PL": {
    "source": 229,
-   "tested": 25,
-   "tcp_ok": 9,
-   "tls_ok": 9,
-   "app_ok": 9,
-   "verified": 9
+   "tested": 30,
+   "tcp_ok": 14,
+   "tls_ok": 14,
+   "app_ok": 14,
+   "verified": 14
   },
   "PR": {
    "source": 1,
@@ -686,11 +685,11 @@
   },
   "RO": {
    "source": 32,
-   "tested": 31,
-   "tcp_ok": 15,
-   "tls_ok": 15,
-   "app_ok": 15,
-   "verified": 15
+   "tested": 30,
+   "tcp_ok": 14,
+   "tls_ok": 14,
+   "app_ok": 14,
+   "verified": 14
   },
   "RS": {
    "source": 12,
@@ -702,11 +701,11 @@
   },
   "RU": {
    "source": 349,
-   "tested": 28,
-   "tcp_ok": 12,
-   "tls_ok": 12,
-   "app_ok": 12,
-   "verified": 12
+   "tested": 25,
+   "tcp_ok": 9,
+   "tls_ok": 9,
+   "app_ok": 9,
+   "verified": 9
   },
   "SA": {
    "source": 2,
@@ -718,14 +717,14 @@
   },
   "SE": {
    "source": 223,
-   "tested": 24,
-   "tcp_ok": 8,
-   "tls_ok": 8,
-   "app_ok": 8,
-   "verified": 8
+   "tested": 26,
+   "tcp_ok": 10,
+   "tls_ok": 10,
+   "app_ok": 10,
+   "verified": 10
   },
   "SG": {
-   "source": 437,
+   "source": 438,
    "tested": 30,
    "tcp_ok": 14,
    "tls_ok": 14,
@@ -774,19 +773,19 @@
   },
   "TR": {
    "source": 104,
-   "tested": 22,
-   "tcp_ok": 6,
-   "tls_ok": 6,
-   "app_ok": 6,
-   "verified": 6
+   "tested": 28,
+   "tcp_ok": 12,
+   "tls_ok": 12,
+   "app_ok": 12,
+   "verified": 12
   },
   "TW": {
    "source": 21,
-   "tested": 26,
-   "tcp_ok": 10,
-   "tls_ok": 10,
-   "app_ok": 10,
-   "verified": 10
+   "tested": 25,
+   "tcp_ok": 9,
+   "tls_ok": 9,
+   "app_ok": 9,
+   "verified": 9
   },
   "UA": {
    "source": 12,
@@ -797,12 +796,12 @@
    "verified": 5
   },
   "US": {
-   "source": 1538,
-   "tested": 36,
-   "tcp_ok": 20,
-   "tls_ok": 20,
-   "app_ok": 20,
-   "verified": 20
+   "source": 1542,
+   "tested": 35,
+   "tcp_ok": 19,
+   "tls_ok": 19,
+   "app_ok": 19,
+   "verified": 19
   },
   "UZ": {
    "source": 1,
@@ -822,11 +821,11 @@
   },
   "ZA": {
    "source": 9,
-   "tested": 16,
-   "tcp_ok": 7,
-   "tls_ok": 7,
-   "app_ok": 7,
-   "verified": 7
+   "tested": 15,
+   "tcp_ok": 6,
+   "tls_ok": 6,
+   "app_ok": 6,
+   "verified": 6
   },
   "ZW": {
    "source": 1,
@@ -838,92 +837,92 @@
   },
   "??": {
    "source": 0,
-   "tested": 197,
-   "tcp_ok": 64,
-   "tls_ok": 6,
+   "tested": 205,
+   "tcp_ok": 78,
+   "tls_ok": 10,
    "app_ok": 0,
    "verified": 0
   }
  },
- "duration_s": 73,
+ "duration_s": 72,
  "pool_sizes": {
   "AD": 1,
   "AE": 15,
   "AL": 4,
   "AM": 8,
   "AR": 2,
-  "AT": 5,
-  "AU": 32,
+  "AT": 8,
+  "AU": 23,
   "AZ": 1,
   "BA": 1,
   "BD": 3,
   "BE": 5,
-  "BG": 39,
-  "BR": 8,
+  "BG": 27,
+  "BR": 7,
   "BY": 9,
-  "CA": 37,
-  "CH": 32,
+  "CA": 26,
+  "CH": 19,
   "CL": 4,
   "CN": 1,
   "CO": 1,
   "CY": 5,
-  "CZ": 35,
-  "DE": 38,
-  "DK": 28,
+  "CZ": 26,
+  "DE": 28,
+  "DK": 21,
   "DO": 1,
-  "EE": 34,
-  "ES": 40,
-  "FI": 27,
-  "FR": 6,
-  "GB": 15,
+  "EE": 20,
+  "ES": 26,
+  "FI": 13,
+  "FR": 5,
+  "GB": 14,
   "GE": 5,
   "GR": 2,
-  "HK": 25,
+  "HK": 18,
   "HU": 6,
   "ID": 4,
   "IE": 12,
   "IL": 8,
-  "IN": 25,
+  "IN": 19,
   "IR": 1,
   "IS": 9,
-  "IT": 31,
+  "IT": 20,
   "JO": 8,
-  "JP": 35,
+  "JP": 22,
   "KG": 3,
   "KH": 1,
-  "KR": 28,
-  "KZ": 34,
-  "LT": 27,
+  "KR": 14,
+  "KZ": 24,
+  "LT": 22,
   "LU": 1,
-  "LV": 39,
+  "LV": 26,
   "MD": 8,
   "MK": 1,
   "MU": 2,
-  "MX": 7,
+  "MX": 6,
   "MY": 6,
   "NG": 1,
-  "NL": 36,
+  "NL": 27,
   "NO": 8,
   "NZ": 1,
   "PH": 2,
-  "PL": 22,
+  "PL": 15,
   "PT": 1,
   "RO": 29,
   "RS": 8,
-  "RU": 30,
+  "RU": 20,
   "SA": 2,
-  "SE": 26,
+  "SE": 15,
   "SG": 14,
   "SI": 1,
   "SK": 7,
   "SY": 1,
   "TH": 3,
-  "TR": 18,
+  "TR": 16,
   "TW": 11,
   "UA": 5,
-  "US": 22,
+  "US": 21,
   "UZ": 1,
   "VN": 1,
-  "ZA": 8
+  "ZA": 7
  }
 }
