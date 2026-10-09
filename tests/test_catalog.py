@@ -1,6 +1,7 @@
 import importlib.util
 import json
 import pathlib
+import time
 import unittest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -222,7 +223,8 @@ class FeedTests(unittest.TestCase):
         docs = self.build(m)
         feed, idx = docs['feed.json'], docs['index.json']
         self.assertEqual(set(feed), {'schema_version', 'upstream_revision', 'content_revision',
-                                     'counts', 'countries', 'unassigned', 'auto'})
+                                             'counts', 'countries', 'unassigned', 'auto',
+                                             'quality_metrics_by_endpoint'})
         self.assertEqual(feed['schema_version'], 1)
         self.assertEqual(feed['upstream_revision'], 'a' * 40)
         self.assertEqual(feed['content_revision'], idx['content_revision'])
@@ -353,3 +355,115 @@ class GenericRelaySourceTests(unittest.TestCase):
         self.assertFalse(m.relevant('sub/generic_relays/jo.txt'))
         self.assertFalse(m.relevant('sub/generic_relays/JOH.txt'))
         self.assertFalse(m.relevant('sub/generic_relays/JO.json'))
+
+
+class EndpointMetricsTests(unittest.TestCase):
+    """Phase 1: per-endpoint measurements reach the feed honestly.
+
+    The failure these guard against is not a crash but a lie: a missing or
+    stale measurement publishing as 0, or a unit error turning bytes/sec into
+    bits/sec. Both would let an unmeasured candidate look like a fast one.
+    """
+
+    def row(self, **kw):
+        base = {'address': '1.2.3.4', 'port': 443}
+        base.update(kw)
+        return base
+
+    def fresh(self):
+        return time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+
+    def test_publishes_all_five_fields(self):
+        m = module()
+        seen = self.fresh()
+        got = m._endpoint_metrics(self.row(
+            last_success=seen, last_rtt_ms=1031, speed_dl_bps=406288,
+            speed_ul_bps=120000, success_ratio=0.75))
+        self.assertEqual(got, [1031, 406288, 120000, 0.75, seen])
+
+    def test_units_are_bytes_per_second_not_bits(self):
+        """A bits/sec value would be 8x wrong and must not pass silently."""
+        m = module()
+        got = m._endpoint_metrics(self.row(last_success=self.fresh(), speed_dl_bps=406288))
+        self.assertEqual(got[1], 406288)
+        self.assertNotEqual(got[1], 406288 * 8)
+
+    def test_stale_measurement_is_not_published(self):
+        """Older than the freshness window: absent, not stale-with-a-value."""
+        m = module()
+        old = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(time.time() - 40 * 3600))
+        self.assertIsNone(m._endpoint_metrics(
+            self.row(last_success=old, last_rtt_ms=100, speed_dl_bps=500000)))
+
+    def test_missing_measurement_is_null_within_a_real_row(self):
+        """One measurement present, the rest absent -> the absent ones are
+        null. That distinguishes 'measured, and this part unknown' from the
+        all-invalid case, which drops the endpoint entirely."""
+        m = module()
+        got = m._endpoint_metrics(self.row(last_success=self.fresh(), last_rtt_ms=900))
+        self.assertEqual(got[0], 900)
+        self.assertEqual(got[1], None, 'no speed sample, and NOT zero')
+        self.assertEqual(got[2], None)
+        self.assertIsNotNone(got[4], 'the observation time is still true')
+
+    def test_endpoint_with_no_measurement_is_absent_entirely(self):
+        m = module()
+        self.assertIsNone(m._endpoint_metrics(self.row(capability='cf-relay')))
+        self.assertIsNone(m._endpoint_metrics(self.row(last_success='')))
+
+    def test_implausible_values_are_dropped_not_clamped(self):
+        m = module()
+        seen = self.fresh()
+        self.assertIsNone(m._endpoint_metrics(
+            self.row(last_success=seen, speed_dl_bps=10 ** 12, last_rtt_ms=10 ** 9)),
+            'both absurd: publish nothing rather than clamp')
+
+    def test_zero_and_negative_are_not_measurements(self):
+        """Nothing valid survives, so the endpoint is absent, not all-null:
+        a row of nulls would still read as 'measured, but zero'."""
+        m = module()
+        self.assertIsNone(m._endpoint_metrics(self.row(last_success=self.fresh(),
+                                                       speed_dl_bps=0, last_rtt_ms=-5)))
+
+    def test_future_timestamp_is_rejected(self):
+        """A clock-skewed 'success in the future' is not fresh evidence."""
+        m = module()
+        ahead = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(time.time() + 7200))
+        self.assertIsNone(m._endpoint_metrics(self.row(last_success=ahead, speed_dl_bps=100)))
+
+    def test_malformed_timestamp_is_rejected(self):
+        m = module()
+        self.assertIsNone(m._endpoint_metrics(self.row(last_success='not-a-date',
+                                                       speed_dl_bps=100)))
+
+    def test_boolean_is_not_a_number(self):
+        """bool is an int subclass; True must not become 1 ms."""
+        m = module()
+        got = m._endpoint_metrics(self.row(last_success=self.fresh(),
+                                           last_rtt_ms=True, success_ratio=True,
+                                           speed_dl_bps=100))
+        self.assertEqual(got[0], None, 'True is not 1 ms')
+        self.assertEqual(got[3], None, 'True is not a 100% success ratio')
+
+    def test_out_of_range_success_ratio_is_dropped(self):
+        m = module()
+        got = m._endpoint_metrics(self.row(last_success=self.fresh(),
+                                           success_ratio=1.4, speed_dl_bps=100))
+        self.assertEqual(got[3], None, 'a ratio above 1.0 is rejected, the rest stands')
+
+    def test_keys_are_lowercase_to_match_capability_map(self):
+        m = module()
+        key = m._endpoint_key({'address': '1A2B::99', 'port': 8443})
+        self.assertEqual(key, '1a2b::99:8443')
+
+    def test_feed_contains_metrics_for_measured_endpoints_only(self):
+        m = module()
+        docs = FeedTests('test_feed_schema_matches_catalog_documents').build(m)
+        feed = docs['feed.json']
+        self.assertIn('quality_metrics_by_endpoint', feed)
+        metrics = feed['quality_metrics_by_endpoint']
+        self.assertEqual(set(feed), set(docs['feed.json']))
+        for key, value in metrics.items():
+            self.assertRegex(key, r'^[0-9a-f:.]+:\d+$')
+            self.assertEqual(len(value), 5, 'five positional fields')
+            self.assertIsInstance(value[4], str, 'observation time is always present')

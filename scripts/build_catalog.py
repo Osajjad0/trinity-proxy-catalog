@@ -1,6 +1,7 @@
 """Public-source candidate catalog. No endpoint connections or DNS lookups."""
 import ipaddress
 import re
+import time
 import csv
 import datetime as dt
 import hashlib
@@ -202,25 +203,99 @@ def build(files, revision, config):
     index['content_revision'] = digest(encoded(index))
     docs['index.json'] = index
     # Feed mirrors published docs; content_revision copies index (feed bytes can't hash into index without a cycle).
-    # V24.6.6 §15: runtime consumes feed.json directly, so country pools must carry the
-    # quality order (quality_rank, then address/port for determinism) — lexicographic
-    # ordering was discarding the scanner's ranking at the feed boundary.
+    # Country pools stay [host, port] pairs (the wire shape every existing
+    # consumer expects) and carry the scanner's quality ORDER; the per-endpoint
+    # measurements ride alongside in quality_metrics_by_endpoint so nothing is
+    # lost at the feed boundary. A compact
+    # `ip:port -> [rtt_ms, dl_bps, ul_bps, success_ratio, last_success]` array
+    # keeps ~800 endpoints well inside MAX_FEED_BYTES, and an endpoint with no
+    # measurement is simply absent from the map: unknown, never zero.
+    quality_metrics = {}
     countries_feed = {}
     for p, d in docs.items():
         if not p.startswith('countries/'):
             continue
-        # V24.6.6 §15: runtime consumes feed.json directly, so country pools must carry the
-        # scanner's quality order — lexicographic ordering discarded it at the feed boundary.
-        # quality_rank comes from scan.py; synthetic test rows without it keep insertion order.
+        # quality_rank comes from scan.py; synthetic test rows without it keep
+        # insertion order.
         ranked = sorted(d['endpoints'], key=lambda r: (r.get('quality_rank', 0), r['address'], r['port']))
         countries_feed[p[10:-5]] = [[r['address'], r['port']] for r in ranked]
+        for r in ranked:
+            metrics = _endpoint_metrics(r)
+            if metrics is not None:
+                quality_metrics[_endpoint_key(r)] = metrics
     docs['feed.json'] = dict(
         schema_version=1, upstream_revision=revision, content_revision=index['content_revision'], counts=counts,
         countries=countries_feed,
+        quality_metrics_by_endpoint=quality_metrics,
         unassigned=sorted(([r['address'], r['port']] for r in docs['unassigned.json']['endpoints']), key=lambda pair: (pair[0], pair[1])),
         auto=[pair for cc in sorted(countries_feed) for pair in countries_feed[cc][:2]][:48])
     validate(docs)
     return docs
+
+
+
+# Fields are [rtt_ms, dl_bps, ul_bps, success_ratio, last_success]. Compact
+# positional array, not a dict per endpoint: ~800 endpoints would otherwise
+# triple the feed for the same information.
+METRIC_FIELDS = ('rtt_ms', 'dl_bps', 'ul_bps', 'success_ratio', 'last_success')
+# A measurement older than this is not published at all. The scanner already
+# gates eligibility on GEO_TTL_H=12h; publishing an older number anyway would
+# let a stale observation reach the runtime, where "has a key" reads as
+# "measured". Absent is honest, stale is not.
+METRICS_MAX_AGE_H = 12
+
+
+def _endpoint_key(row):
+    """Feed keys are lowercase ip:port everywhere else; match that exactly."""
+    return f"{row['address'].lower()}:{row['port']}"
+
+
+def _endpoint_metrics(row):
+    """Per-endpoint measurements, or None when there is nothing true to publish.
+
+    Units, verified against scanner/ip_quality.py:
+      - last_rtt_ms is milliseconds, from the scanner's own TCP connect.
+      - speed_dl_bps / speed_ul_bps are BYTES per second, an EMA of a bounded
+        512 KB / 256 KB sample taken THROUGH the candidate on the CF-relay path
+        to speed.cloudflare.com. It is the candidate's own throughput, NOT a
+        user's end-to-end speed through Trinity, and the runtime must not
+        present it as one.
+      - success_ratio is successes/attempts over the scanner's history.
+    Any non-positive or absurd value is dropped rather than clamped: a bad
+    sample is a measurement error, not a slow candidate.
+    """
+    def positive_int(value, ceiling):
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            return None
+        if value <= 0 or value > ceiling:
+            return None
+        return int(value)
+
+    seen = row.get('last_success')
+    if not isinstance(seen, str) or not seen:
+        return None
+    try:
+        age_h = (time.time() - dt.datetime.strptime(seen, '%Y-%m-%dT%H:%M:%SZ')
+                 .replace(tzinfo=dt.timezone.utc).timestamp()) / 3600
+    except ValueError:
+        return None
+    if age_h < 0 or age_h > METRICS_MAX_AGE_H:
+        return None
+
+    metrics = [
+        positive_int(row.get('last_rtt_ms'), 60000),
+        positive_int(row.get('speed_dl_bps'), 100_000_000),
+        positive_int(row.get('speed_ul_bps'), 100_000_000),
+    ]
+    ratio = row.get('success_ratio')
+    metrics.append(round(float(ratio), 2)
+                   if isinstance(ratio, (int, float)) and not isinstance(ratio, bool)
+                   and 0.0 <= ratio <= 1.0 else None)
+    metrics.append(seen)
+    # No usable measurement at all -> publish nothing rather than an all-null row.
+    if all(m is None for m in metrics[:4]):
+        return None
+    return metrics
 
 
 def validate(docs):
@@ -274,9 +349,17 @@ def validate(docs):
         # Feed is derived, not manifest-hashed (its bytes depend on content_revision); recompute from docs + index.
         countries_feed = {p[10:-5]: sorted([r['address'], r['port']] for r in d['endpoints'])
                           for p, d in docs.items() if p.startswith('countries/')}
+        rebuilt_metrics = {}
+        for p, d in docs.items():
+            if not p.startswith('countries/'):
+                continue
+            for r in d['endpoints']:
+                m = _endpoint_metrics(r)
+                if m is not None:
+                    rebuilt_metrics[_endpoint_key(r)] = m
         rebuilt = dict(
             schema_version=1, upstream_revision=idx['upstream_revision'], content_revision=idx['content_revision'],
-            counts=counts, countries=countries_feed,
+            counts=counts, countries=countries_feed, quality_metrics_by_endpoint=rebuilt_metrics,
             unassigned=sorted(([r['address'], r['port']] for r in docs['unassigned.json']['endpoints']), key=lambda pair: (pair[0], pair[1])),
             auto=[pair for cc in sorted(countries_feed) for pair in countries_feed[cc][:2]][:48])
         if {k: v for k, v in docs['feed.json'].items() if k != 'generated_at'} != rebuilt:
