@@ -2,12 +2,14 @@
 import ipaddress
 import re
 import time
+import sys
 import csv
 import datetime as dt
 import hashlib
 import io
 import json
 from urllib.parse import unquote
+
 
 COUNTRIES = set('AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW'.split())
 BASE = 'https://raw.githubusercontent.com/NiREvil/vless/'
@@ -242,62 +244,6 @@ METRIC_FIELDS = ('rtt_ms', 'dl_bps', 'ul_bps', 'success_ratio', 'last_success')
 # gates eligibility on GEO_TTL_H=12h; publishing an older number anyway would
 # let a stale observation reach the runtime, where "has a key" reads as
 # "measured". Absent is honest, stale is not.
-METRICS_MAX_AGE_H = 12
-
-
-def _endpoint_key(row):
-    """Feed keys are lowercase ip:port everywhere else; match that exactly."""
-    return f"{row['address'].lower()}:{row['port']}"
-
-
-def _endpoint_metrics(row):
-    """Per-endpoint measurements, or None when there is nothing true to publish.
-
-    Units, verified against scanner/ip_quality.py:
-      - last_rtt_ms is milliseconds, from the scanner's own TCP connect.
-      - speed_dl_bps / speed_ul_bps are BYTES per second, an EMA of a bounded
-        512 KB / 256 KB sample taken THROUGH the candidate on the CF-relay path
-        to speed.cloudflare.com. It is the candidate's own throughput, NOT a
-        user's end-to-end speed through Trinity, and the runtime must not
-        present it as one.
-      - success_ratio is successes/attempts over the scanner's history.
-    Any non-positive or absurd value is dropped rather than clamped: a bad
-    sample is a measurement error, not a slow candidate.
-    """
-    def positive_int(value, ceiling):
-        if isinstance(value, bool) or not isinstance(value, (int, float)):
-            return None
-        if value <= 0 or value > ceiling:
-            return None
-        return int(value)
-
-    seen = row.get('last_success')
-    if not isinstance(seen, str) or not seen:
-        return None
-    try:
-        age_h = (time.time() - dt.datetime.strptime(seen, '%Y-%m-%dT%H:%M:%SZ')
-                 .replace(tzinfo=dt.timezone.utc).timestamp()) / 3600
-    except ValueError:
-        return None
-    if age_h < 0 or age_h > METRICS_MAX_AGE_H:
-        return None
-
-    metrics = [
-        positive_int(row.get('last_rtt_ms'), 60000),
-        positive_int(row.get('speed_dl_bps'), 100_000_000),
-        positive_int(row.get('speed_ul_bps'), 100_000_000),
-    ]
-    ratio = row.get('success_ratio')
-    metrics.append(round(float(ratio), 2)
-                   if isinstance(ratio, (int, float)) and not isinstance(ratio, bool)
-                   and 0.0 <= ratio <= 1.0 else None)
-    metrics.append(seen)
-    # No usable measurement at all -> publish nothing rather than an all-null row.
-    if all(m is None for m in metrics[:4]):
-        return None
-    return metrics
-
-
 def validate(docs):
     def require(condition, message):
         if not condition:
@@ -406,6 +352,11 @@ import argparse
 import concurrent.futures
 import os
 from pathlib import Path
+
+# The scanner owns the feed's measurement semantics; one definition, imported here
+# so the validator can never drift from the producer it checks.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'scanner'))
+from scan import _endpoint_metrics, _endpoint_key, METRICS_MAX_AGE_H  # noqa: E402
 import shutil
 import sys
 import tempfile

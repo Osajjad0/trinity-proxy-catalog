@@ -38,6 +38,61 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
+METRICS_MAX_AGE_H = 12
+
+
+def _endpoint_key(row):
+    """Feed keys are lowercase ip:port everywhere else; match that exactly."""
+    return f"{row['address'].lower()}:{row['port']}"
+
+
+def _endpoint_metrics(row):
+    """Per-endpoint measurements, or None when there is nothing true to publish.
+
+    Units, verified against scanner/ip_quality.py:
+      - last_rtt_ms is milliseconds, from the scanner's own TCP connect.
+      - speed_dl_bps / speed_ul_bps are BYTES per second, an EMA of a bounded
+        512 KB / 256 KB sample taken THROUGH the candidate on the CF-relay path
+        to speed.cloudflare.com. It is the candidate's own throughput, NOT a
+        user's end-to-end speed through Trinity, and the runtime must not
+        present it as one.
+      - success_ratio is successes/attempts over the scanner's history.
+    Any non-positive or absurd value is dropped rather than clamped: a bad
+    sample is a measurement error, not a slow candidate.
+    """
+    def positive_int(value, ceiling):
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            return None
+        if value <= 0 or value > ceiling:
+            return None
+        return int(value)
+
+    seen = row.get('last_success')
+    if not isinstance(seen, str) or not seen:
+        return None
+    try:
+        age_h = (time.time() - datetime.strptime(seen, '%Y-%m-%dT%H:%M:%SZ')
+                 .replace(tzinfo=timezone.utc).timestamp()) / 3600
+    except ValueError:
+        return None
+    if age_h < 0 or age_h > METRICS_MAX_AGE_H:
+        return None
+
+    metrics = [
+        positive_int(row.get('last_rtt_ms'), 60000),
+        positive_int(row.get('speed_dl_bps'), 100_000_000),
+        positive_int(row.get('speed_ul_bps'), 100_000_000),
+    ]
+    ratio = row.get('success_ratio')
+    metrics.append(round(float(ratio), 2)
+                   if isinstance(ratio, (int, float)) and not isinstance(ratio, bool)
+                   and 0.0 <= ratio <= 1.0 else None)
+    metrics.append(seen)
+    # No usable measurement at all -> publish nothing rather than an all-null row.
+    if all(m is None for m in metrics[:4]):
+        return None
+    return metrics
+
 import sys as _sys
 from pathlib import Path as _Path
 
@@ -929,6 +984,19 @@ def publish(pools: dict, state: dict, report: dict, stats: dict,
                             "route upstreams by connection source, so egress from "
                             "a different vantage (e.g. CF Workers) may differ."),
     }
+    # Phase 1: per-endpoint measurements ride alongside the country pools.
+    # The pools stay [host, port] pairs in the scanner's quality ORDER, so
+    # nothing existing changes shape; this map is purely additive. An endpoint
+    # with nothing fresh inside METRICS_MAX_AGE_H is ABSENT -- unknown, never
+    # zero. speed_*_bps are the CANDIDATE's own bytes/sec on the CF-relay path,
+    # not a user's throughput through Trinity.
+    metrics_by_endpoint = {}
+    for cc, entries in pools.items():
+        for e in entries:
+            m = _endpoint_metrics(e)
+            if m is not None:
+                metrics_by_endpoint[_endpoint_key(e)] = m
+    feed["quality_metrics_by_endpoint"] = metrics_by_endpoint
     (tmp / "feed.json").write_text(json.dumps(feed, indent=1), encoding="utf-8")
     (tmp / "index.json").write_text(json.dumps({
         "schema_version": 1, "runtime_health": "verified",
