@@ -2,16 +2,16 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "77.110.106.113",
+   "address": "134.209.19.200",
    "port": 443,
    "observed_country": "FR",
-   "egress_ip": "2a01:e5c0:223a::2",
+   "egress_ip": "172.232.41.237",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-11T19:00:35Z",
+   "verification_timestamp": "2026-10-11T23:45:46Z",
    "verification_age_s": 753,
    "source_countries": [
     "FR"
@@ -20,9 +20,9 @@
     "catalog:FR"
    ],
    "score": 45,
-   "last_rtt_ms": 1161,
-   "last_success": "2026-10-11T19:00:35Z",
-   "success_count": 19,
+   "last_rtt_ms": 1029,
+   "last_success": "2026-10-11T23:45:46Z",
+   "success_count": 20,
    "failure_count": 0,
    "status": "verified",
    "capability": "passthrough",
@@ -35,39 +35,6 @@
    "quality_rank": 1
   },
   {
-   "address": "134.209.19.200",
-   "port": 443,
-   "observed_country": "FR",
-   "egress_ip": "172.232.41.237",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
-   "source_countries": [
-    "FR"
-   ],
-   "sources": [
-    "catalog:FR"
-   ],
-   "score": 45,
-   "last_rtt_ms": 1171,
-   "last_success": "2026-10-11T19:00:35Z",
-   "success_count": 19,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "passthrough",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 2
-  },
-  {
    "address": "185.208.206.40",
    "port": 443,
    "observed_country": "FR",
@@ -77,7 +44,7 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-11T19:00:35Z",
+   "verification_timestamp": "2026-10-11T23:45:46Z",
    "verification_age_s": 753,
    "source_countries": [
     "FR"
@@ -86,13 +53,46 @@
     "catalog:FR"
    ],
    "score": 45,
-   "last_rtt_ms": 1186,
-   "last_success": "2026-10-11T19:00:35Z",
-   "success_count": 19,
+   "last_rtt_ms": 1063,
+   "last_success": "2026-10-11T23:45:46Z",
+   "success_count": 20,
    "failure_count": 0,
    "status": "verified",
    "capability": "passthrough+http",
    "http_forwarding": true,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 2
+  },
+  {
+   "address": "77.110.106.113",
+   "port": 443,
+   "observed_country": "FR",
+   "egress_ip": "2a01:e5c0:223a::2",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-11T23:45:46Z",
+   "verification_age_s": 753,
+   "source_countries": [
+    "FR"
+   ],
+   "sources": [
+    "catalog:FR"
+   ],
+   "score": 45,
+   "last_rtt_ms": 1198,
+   "last_success": "2026-10-11T23:45:46Z",
+   "success_count": 20,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "passthrough",
+   "http_forwarding": false,
    "risk": "low",
    "ip_type": "datacenter",
    "confidence": "high",
@@ -110,7 +110,7 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-11T19:00:35Z",
+   "verification_timestamp": "2026-10-11T23:45:46Z",
    "verification_age_s": 753,
    "source_countries": [
     "FR"
@@ -119,9 +119,9 @@
     "catalog:FR"
    ],
    "score": 44,
-   "last_rtt_ms": 1428,
-   "last_success": "2026-10-11T19:00:35Z",
-   "success_count": 19,
+   "last_rtt_ms": 1110,
+   "last_success": "2026-10-11T23:45:46Z",
+   "success_count": 20,
    "failure_count": 0,
    "status": "verified",
    "capability": "passthrough",
@@ -145,7 +145,7 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-11T19:00:35Z",
+   "verification_timestamp": "2026-10-11T23:45:46Z",
    "verification_age_s": 753,
    "source_countries": [
     "FR"
@@ -154,9 +154,9 @@
     "catalog:FR"
    ],
    "score": 21,
-   "last_rtt_ms": 1064,
-   "last_success": "2026-10-11T19:00:35Z",
-   "success_count": 19,
+   "last_rtt_ms": 880,
+   "last_success": "2026-10-11T23:45:46Z",
+   "success_count": 20,
    "failure_count": 0,
    "status": "verified",
    "capability": "passthrough",
@@ -181,7 +181,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T13:05:40Z",
-   "verification_age_s": 22048,
+   "verification_age_s": 39159,
    "source_countries": [
     "FR"
    ],
@@ -214,7 +214,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T13:05:40Z",
-   "verification_age_s": 22048,
+   "verification_age_s": 39159,
    "source_countries": [
     "FR"
    ],
@@ -247,7 +247,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T13:05:40Z",
-   "verification_age_s": 22048,
+   "verification_age_s": 39159,
    "source_countries": [
     "FR"
    ],
@@ -280,7 +280,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T13:05:40Z",
-   "verification_age_s": 22048,
+   "verification_age_s": 39159,
    "source_countries": [
     "FR"
    ],
@@ -313,7 +313,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T13:05:40Z",
-   "verification_age_s": 22048,
+   "verification_age_s": 39159,
    "source_countries": [
     "FR"
    ],
@@ -346,7 +346,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T13:05:40Z",
-   "verification_age_s": 22048,
+   "verification_age_s": 39159,
    "source_countries": [
     "FR"
    ],
@@ -379,7 +379,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T13:05:40Z",
-   "verification_age_s": 22048,
+   "verification_age_s": 39159,
    "source_countries": [
     "FR"
    ],
@@ -412,7 +412,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T13:05:40Z",
-   "verification_age_s": 22048,
+   "verification_age_s": 39159,
    "source_countries": [
     "FR"
    ],
@@ -445,7 +445,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
+   "verification_age_s": 17864,
    "source_countries": [
     "FR"
    ],
@@ -478,7 +478,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
+   "verification_age_s": 17864,
    "source_countries": [
     "FR"
    ],
@@ -511,7 +511,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
+   "verification_age_s": 17864,
    "source_countries": [
     "FR"
    ],
@@ -544,7 +544,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
+   "verification_age_s": 17864,
    "source_countries": [
     "FR"
    ],
@@ -577,7 +577,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
+   "verification_age_s": 17864,
    "source_countries": [
     "FR"
    ],
@@ -610,7 +610,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
+   "verification_age_s": 17864,
    "source_countries": [
     "FR"
    ],
@@ -643,7 +643,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
+   "verification_age_s": 17864,
    "source_countries": [
     "FR"
    ],
@@ -676,7 +676,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
+   "verification_age_s": 17864,
    "source_countries": [
     "FR"
    ],
@@ -709,7 +709,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
+   "verification_age_s": 17864,
    "source_countries": [
     "FR"
    ],
@@ -742,7 +742,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T13:05:40Z",
-   "verification_age_s": 22048,
+   "verification_age_s": 39159,
    "source_countries": [
     "FR"
    ],
@@ -775,7 +775,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
+   "verification_age_s": 17864,
    "source_countries": [
     "FR"
    ],
@@ -808,7 +808,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-11T19:00:35Z",
-   "verification_age_s": 753,
+   "verification_age_s": 17864,
    "source_countries": [
     "FR"
    ],
