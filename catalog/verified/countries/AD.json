@@ -1,0 +1,40 @@
+{
+ "schema_version": 1,
+ "endpoints": [
+  {
+   "address": "91.187.93.166",
+   "port": 443,
+   "observed_country": "AD",
+   "egress_ip": "91.187.93.147",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-13T06:54:30Z",
+   "verification_age_s": 684,
+   "source_countries": [
+    "AD"
+   ],
+   "sources": [
+    "catalog:AD"
+   ],
+   "score": 38,
+   "last_rtt_ms": 2013,
+   "last_success": "2026-10-13T06:54:30Z",
+   "success_count": 83,
+   "failure_count": 17,
+   "status": "verified",
+   "capability": "passthrough",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 503050,
+   "speed_ul_bps": 428371,
+   "success_ratio": 0.83,
+   "quality_rank": 1
+  }
+ ]
+}
