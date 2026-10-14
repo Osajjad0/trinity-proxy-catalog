@@ -2,41 +2,6 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "195.123.209.7",
-   "port": 8443,
-   "observed_country": "LV",
-   "egress_ip": "195.123.209.7",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-14T07:48:01Z",
-   "verification_age_s": 40078,
-   "source_countries": [
-    "LV"
-   ],
-   "sources": [
-    "catalog:LV"
-   ],
-   "score": 21,
-   "last_rtt_ms": 1624,
-   "last_success": "2026-10-14T07:48:01Z",
-   "success_count": 4,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "speed_dl_bps": 525397,
-   "speed_ul_bps": 376850,
-   "success_ratio": 1.0,
-   "quality_rank": 1
-  },
-  {
    "address": "195.135.253.121",
    "port": 443,
    "observed_country": "LV",
@@ -47,7 +12,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -67,42 +32,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 2
-  },
-  {
-   "address": "195.123.209.217",
-   "port": 8443,
-   "observed_country": "LV",
-   "egress_ip": "195.123.209.217",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-14T07:48:01Z",
-   "verification_age_s": 40078,
-   "source_countries": [
-    "LV"
-   ],
-   "sources": [
-    "catalog:LV"
-   ],
-   "score": 19,
-   "last_rtt_ms": 1788,
-   "last_success": "2026-10-14T07:48:01Z",
-   "success_count": 4,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "speed_dl_bps": 425249,
-   "speed_ul_bps": 193238,
-   "success_ratio": 1.0,
-   "quality_rank": 3
+   "quality_rank": 1
   },
   {
    "address": "217.19.4.161",
@@ -115,7 +45,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T18:44:28Z",
-   "verification_age_s": 691,
+   "verification_age_s": 17184,
    "source_countries": [
     "LV"
    ],
@@ -137,7 +67,7 @@
    "speed_dl_bps": 370388,
    "speed_ul_bps": 321821,
    "success_ratio": 1.0,
-   "quality_rank": 4
+   "quality_rank": 2
   },
   {
    "address": "217.19.4.161",
@@ -150,7 +80,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T18:44:28Z",
-   "verification_age_s": 691,
+   "verification_age_s": 17184,
    "source_countries": [
     "LV"
    ],
@@ -172,304 +102,77 @@
    "speed_dl_bps": 362393,
    "speed_ul_bps": 325479,
    "success_ratio": 1.0,
+   "quality_rank": 3
+  },
+  {
+   "address": "216.173.68.33",
+   "port": 443,
+   "observed_country": "LV",
+   "egress_ip": "2a0c:16c0:510:79f::bac3",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-14T23:19:04Z",
+   "verification_age_s": 708,
+   "source_countries": [
+    "LV"
+   ],
+   "sources": [
+    "catalog:LV"
+   ],
+   "score": 19,
+   "last_rtt_ms": 793,
+   "last_success": "2026-10-14T23:19:04Z",
+   "success_count": 4,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "speed_dl_bps": 357834,
+   "speed_ul_bps": 309554,
+   "success_ratio": 1.0,
+   "quality_rank": 4
+  },
+  {
+   "address": "216.173.68.133",
+   "port": 2087,
+   "observed_country": "LV",
+   "egress_ip": "2a0c:16c0:510:710::36e9",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-14T23:19:04Z",
+   "verification_age_s": 708,
+   "source_countries": [
+    "LV"
+   ],
+   "sources": [
+    "catalog:LV"
+   ],
+   "score": 19,
+   "last_rtt_ms": 865,
+   "last_success": "2026-10-14T23:19:04Z",
+   "success_count": 4,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "speed_dl_bps": 375550,
+   "speed_ul_bps": 313026,
+   "success_ratio": 1.0,
    "quality_rank": 5
-  },
-  {
-   "address": "194.58.34.139",
-   "port": 443,
-   "observed_country": "LV",
-   "egress_ip": "194.58.34.139",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-14T07:48:01Z",
-   "verification_age_s": 40078,
-   "source_countries": [
-    "LV"
-   ],
-   "sources": [
-    "catalog:LV"
-   ],
-   "score": 15,
-   "last_rtt_ms": 1438,
-   "last_success": "2026-10-14T07:48:01Z",
-   "success_count": 4,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "success_ratio": 1.0,
-   "quality_rank": 6
-  },
-  {
-   "address": "195.135.255.116",
-   "port": 8443,
-   "observed_country": "LV",
-   "egress_ip": "2a0c:16c0:505:6f0::5e62",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-14T07:48:01Z",
-   "verification_age_s": 40078,
-   "source_countries": [
-    "LV"
-   ],
-   "sources": [
-    "catalog:LV"
-   ],
-   "score": 15,
-   "last_rtt_ms": 1525,
-   "last_success": "2026-10-14T07:48:01Z",
-   "success_count": 4,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "success_ratio": 1.0,
-   "quality_rank": 7
-  },
-  {
-   "address": "195.123.209.166",
-   "port": 443,
-   "observed_country": "LV",
-   "egress_ip": "2a02:27ac::f01",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-14T07:48:01Z",
-   "verification_age_s": 40078,
-   "source_countries": [
-    "LV"
-   ],
-   "sources": [
-    "catalog:LV"
-   ],
-   "score": 15,
-   "last_rtt_ms": 1597,
-   "last_success": "2026-10-14T07:48:01Z",
-   "success_count": 4,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "success_ratio": 1.0,
-   "quality_rank": 8
-  },
-  {
-   "address": "195.123.209.7",
-   "port": 2053,
-   "observed_country": "LV",
-   "egress_ip": "195.123.209.7",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-14T07:48:01Z",
-   "verification_age_s": 40078,
-   "source_countries": [
-    "LV"
-   ],
-   "sources": [
-    "catalog:LV"
-   ],
-   "score": 15,
-   "last_rtt_ms": 1608,
-   "last_success": "2026-10-14T07:48:01Z",
-   "success_count": 4,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "success_ratio": 1.0,
-   "quality_rank": 9
-  },
-  {
-   "address": "195.123.209.217",
-   "port": 2053,
-   "observed_country": "LV",
-   "egress_ip": "195.123.209.217",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-14T07:48:01Z",
-   "verification_age_s": 40078,
-   "source_countries": [
-    "LV"
-   ],
-   "sources": [
-    "catalog:LV"
-   ],
-   "score": 15,
-   "last_rtt_ms": 1625,
-   "last_success": "2026-10-14T07:48:01Z",
-   "success_count": 4,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "success_ratio": 1.0,
-   "quality_rank": 10
-  },
-  {
-   "address": "195.123.210.109",
-   "port": 443,
-   "observed_country": "LV",
-   "egress_ip": "2a02:27ac::1ac1",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-14T07:48:01Z",
-   "verification_age_s": 40078,
-   "source_countries": [
-    "LV"
-   ],
-   "sources": [
-    "catalog:LV"
-   ],
-   "score": 15,
-   "last_rtt_ms": 1677,
-   "last_success": "2026-10-14T07:48:01Z",
-   "success_count": 4,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "success_ratio": 1.0,
-   "quality_rank": 11
-  },
-  {
-   "address": "194.87.89.41",
-   "port": 443,
-   "observed_country": "LV",
-   "egress_ip": "2605:e440:13::16e",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-14T07:48:01Z",
-   "verification_age_s": 40078,
-   "source_countries": [
-    "LV"
-   ],
-   "sources": [
-    "catalog:LV"
-   ],
-   "score": 15,
-   "last_rtt_ms": 1693,
-   "last_success": "2026-10-14T07:48:01Z",
-   "success_count": 4,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "success_ratio": 1.0,
-   "quality_rank": 12
-  },
-  {
-   "address": "195.123.210.147",
-   "port": 443,
-   "observed_country": "LV",
-   "egress_ip": "2a02:27ac::9d9",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-14T07:48:01Z",
-   "verification_age_s": 40078,
-   "source_countries": [
-    "LV"
-   ],
-   "sources": [
-    "catalog:LV"
-   ],
-   "score": 15,
-   "last_rtt_ms": 1848,
-   "last_success": "2026-10-14T07:48:01Z",
-   "success_count": 4,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "success_ratio": 1.0,
-   "quality_rank": 13
-  },
-  {
-   "address": "195.135.254.168",
-   "port": 443,
-   "observed_country": "LV",
-   "egress_ip": "2a0c:16c0:505:62c::a39b",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-14T07:48:01Z",
-   "verification_age_s": 40078,
-   "source_countries": [
-    "LV"
-   ],
-   "sources": [
-    "catalog:LV"
-   ],
-   "score": 15,
-   "last_rtt_ms": 1880,
-   "last_success": "2026-10-14T07:48:01Z",
-   "success_count": 4,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "success_ratio": 1.0,
-   "quality_rank": 14
   },
   {
    "address": "195.135.254.135",
@@ -482,7 +185,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -502,7 +205,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 15
+   "quality_rank": 6
   },
   {
    "address": "195.123.212.222",
@@ -515,7 +218,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -535,7 +238,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 16
+   "quality_rank": 7
   },
   {
    "address": "195.123.212.222",
@@ -548,7 +251,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -568,7 +271,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 17
+   "quality_rank": 8
   },
   {
    "address": "195.135.253.236",
@@ -581,7 +284,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -601,7 +304,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 18
+   "quality_rank": 9
   },
   {
    "address": "195.135.253.236",
@@ -614,7 +317,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -634,7 +337,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 19
+   "quality_rank": 10
   },
   {
    "address": "195.135.253.236",
@@ -647,7 +350,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -667,7 +370,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 20
+   "quality_rank": 11
   },
   {
    "address": "195.123.211.180",
@@ -680,7 +383,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -700,7 +403,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 21
+   "quality_rank": 12
   },
   {
    "address": "195.123.211.204",
@@ -713,7 +416,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -733,7 +436,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 22
+   "quality_rank": 13
   },
   {
    "address": "213.232.204.148",
@@ -746,7 +449,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -766,7 +469,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 23
+   "quality_rank": 14
   },
   {
    "address": "213.232.204.28",
@@ -779,7 +482,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -799,7 +502,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 24
+   "quality_rank": 15
   },
   {
    "address": "213.232.204.28",
@@ -812,7 +515,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -832,7 +535,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 25
+   "quality_rank": 16
   },
   {
    "address": "195.135.255.129",
@@ -845,7 +548,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T18:44:28Z",
-   "verification_age_s": 691,
+   "verification_age_s": 17184,
    "source_countries": [
     "LV"
    ],
@@ -865,7 +568,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 26
+   "quality_rank": 17
   },
   {
    "address": "212.6.44.68",
@@ -878,7 +581,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T18:44:28Z",
-   "verification_age_s": 691,
+   "verification_age_s": 17184,
    "source_countries": [
     "LV"
    ],
@@ -898,7 +601,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 27
+   "quality_rank": 18
   },
   {
    "address": "195.20.208.4",
@@ -911,7 +614,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T18:44:28Z",
-   "verification_age_s": 691,
+   "verification_age_s": 17184,
    "source_countries": [
     "LV"
    ],
@@ -931,7 +634,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 28
+   "quality_rank": 19
   },
   {
    "address": "212.6.44.140",
@@ -944,7 +647,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T18:44:28Z",
-   "verification_age_s": 691,
+   "verification_age_s": 17184,
    "source_countries": [
     "LV"
    ],
@@ -964,7 +667,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 29
+   "quality_rank": 20
   },
   {
    "address": "195.20.208.235",
@@ -977,7 +680,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T18:44:28Z",
-   "verification_age_s": 691,
+   "verification_age_s": 17184,
    "source_countries": [
     "LV"
    ],
@@ -997,7 +700,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 30
+   "quality_rank": 21
   },
   {
    "address": "212.6.44.140",
@@ -1010,7 +713,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T18:44:28Z",
-   "verification_age_s": 691,
+   "verification_age_s": 17184,
    "source_countries": [
     "LV"
    ],
@@ -1030,7 +733,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 31
+   "quality_rank": 22
   },
   {
    "address": "212.6.44.140",
@@ -1043,7 +746,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T18:44:28Z",
-   "verification_age_s": 691,
+   "verification_age_s": 17184,
    "source_countries": [
     "LV"
    ],
@@ -1063,7 +766,172 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 32
+   "quality_rank": 23
+  },
+  {
+   "address": "217.60.60.5",
+   "port": 2053,
+   "observed_country": "LV",
+   "egress_ip": "217.60.60.5",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-14T23:19:04Z",
+   "verification_age_s": 708,
+   "source_countries": [
+    "LV"
+   ],
+   "sources": [
+    "catalog:LV"
+   ],
+   "score": 15,
+   "last_rtt_ms": 749,
+   "last_success": "2026-10-14T23:19:04Z",
+   "success_count": 4,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 24
+  },
+  {
+   "address": "217.177.34.98",
+   "port": 443,
+   "observed_country": "LV",
+   "egress_ip": "217.177.34.98",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-14T23:19:04Z",
+   "verification_age_s": 708,
+   "source_countries": [
+    "LV"
+   ],
+   "sources": [
+    "catalog:LV"
+   ],
+   "score": 15,
+   "last_rtt_ms": 766,
+   "last_success": "2026-10-14T23:19:04Z",
+   "success_count": 4,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 25
+  },
+  {
+   "address": "217.60.60.5",
+   "port": 8443,
+   "observed_country": "LV",
+   "egress_ip": "217.60.60.5",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-14T23:19:04Z",
+   "verification_age_s": 708,
+   "source_countries": [
+    "LV"
+   ],
+   "sources": [
+    "catalog:LV"
+   ],
+   "score": 15,
+   "last_rtt_ms": 807,
+   "last_success": "2026-10-14T23:19:04Z",
+   "success_count": 4,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 26
+  },
+  {
+   "address": "216.173.71.171",
+   "port": 443,
+   "observed_country": "LV",
+   "egress_ip": "2a0c:16c0:510:a34::279c",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-14T23:19:04Z",
+   "verification_age_s": 708,
+   "source_countries": [
+    "LV"
+   ],
+   "sources": [
+    "catalog:LV"
+   ],
+   "score": 15,
+   "last_rtt_ms": 828,
+   "last_success": "2026-10-14T23:19:04Z",
+   "success_count": 4,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 27
+  },
+  {
+   "address": "217.60.60.83",
+   "port": 443,
+   "observed_country": "LV",
+   "egress_ip": "2a13:7c00:6:101:f816:3eff:fe5e:5760",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-14T23:19:04Z",
+   "verification_age_s": 708,
+   "source_countries": [
+    "LV"
+   ],
+   "sources": [
+    "catalog:LV"
+   ],
+   "score": 15,
+   "last_rtt_ms": 846,
+   "last_success": "2026-10-14T23:19:04Z",
+   "success_count": 4,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 28
   },
   {
    "address": "195.135.252.148",
@@ -1076,7 +944,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -1096,7 +964,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 0.75,
-   "quality_rank": 33
+   "quality_rank": 29
   },
   {
    "address": "195.135.252.148",
@@ -1109,7 +977,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-14T13:51:11Z",
-   "verification_age_s": 18288,
+   "verification_age_s": 34781,
    "source_countries": [
     "LV"
    ],
@@ -1129,7 +997,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 0.75,
-   "quality_rank": 34
+   "quality_rank": 30
   }
  ]
 }
