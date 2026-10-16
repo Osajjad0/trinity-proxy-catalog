@@ -11,8 +11,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-16T13:21:27Z",
-   "verification_age_s": 689,
+   "verification_timestamp": "2026-10-16T18:10:50Z",
+   "verification_age_s": 761,
    "source_countries": [
     "CN"
    ],
@@ -20,9 +20,9 @@
     "catalog:CN"
    ],
    "score": 35,
-   "last_rtt_ms": 614,
-   "last_success": "2026-10-16T13:21:27Z",
-   "success_count": 111,
+   "last_rtt_ms": 607,
+   "last_success": "2026-10-16T18:10:50Z",
+   "success_count": 112,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
@@ -46,8 +46,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-16T13:21:27Z",
-   "verification_age_s": 689,
+   "verification_timestamp": "2026-10-16T18:10:50Z",
+   "verification_age_s": 761,
    "source_countries": [
     "CN"
    ],
@@ -55,9 +55,9 @@
     "catalog:CN"
    ],
    "score": 31,
-   "last_rtt_ms": 2342,
-   "last_success": "2026-10-16T13:21:27Z",
-   "success_count": 78,
+   "last_rtt_ms": 2244,
+   "last_success": "2026-10-16T18:10:50Z",
+   "success_count": 79,
    "failure_count": 33,
    "status": "verified",
    "capability": "passthrough",
@@ -68,8 +68,43 @@
    "source": "ip-api+ipwho",
    "speed_dl_bps": 270191,
    "speed_ul_bps": 202968,
-   "success_ratio": 0.7,
+   "success_ratio": 0.71,
    "quality_rank": 2
+  },
+  {
+   "address": "39.98.224.123",
+   "port": 443,
+   "observed_country": "CN",
+   "egress_ip": "39.98.224.123",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipinfo"
+   ],
+   "verification_timestamp": "2026-10-16T18:10:50Z",
+   "verification_age_s": 761,
+   "source_countries": [
+    "CN"
+   ],
+   "sources": [
+    "catalog:CN"
+   ],
+   "score": 2,
+   "last_rtt_ms": 2388,
+   "last_success": "2026-10-16T18:10:50Z",
+   "success_count": 78,
+   "failure_count": 34,
+   "status": "verified",
+   "capability": "tls-error",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 49861,
+   "speed_ul_bps": 37444,
+   "success_ratio": 0.7,
+   "quality_rank": 3
   }
  ]
 }
