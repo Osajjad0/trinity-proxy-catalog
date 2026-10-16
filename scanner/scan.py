@@ -132,7 +132,20 @@ GEO_TTL_H = 12
 # V24.6 country-fair scheduling: every source country gets a verification
 # opportunity daily. Budget per country per run; countries below target are
 # prioritized (§10-11).
+#
+# The flat budget starved exactly the countries with the most to prove. DE
+# (3700 source candidates) and NL (3825) were held at the same 16/run as AD
+# (1 candidate). With 2-hourly runs that is ~190 DE candidates per day against
+# a pool of 3700, and 4527 source candidates had never been probed at all --
+# while DE, the operator's own setting, publishes only 4 passthrough.
+# Measured cost is ~775 candidates in 71 s of a 1500 s deadline, so time is not
+# the constraint. The budget now scales with the untested backlog: the floor
+# still guarantees every country a daily attempt, the cap keeps the scan
+# bounded on the largest pools.
 DAILY_BUDGET_PER_COUNTRY = 16
+# Backlog headroom per run. Raise when scan duration approaches SCAN_DEADLINE_S.
+BACKLOG_BUDGET_PER_RUN = 64
+DAILY_BUDGET_MAX_PER_COUNTRY = 256
 MIN_VERIFIED_PER_COUNTRY = 8
 
 
@@ -1045,13 +1058,30 @@ def country_batches(
         for cc in c.get("source_countries") or []:
             if len(cc) == 2 and cc.isupper():
                 by_cc.setdefault(cc, []).append(c)
+
+    def _key(c: dict) -> str:
+        return f'{c["address"]}:{c["port"]}'
     cstate = state.setdefault("countries", {})
     picked: list[dict] = []
     meta: dict[str, dict] = {}
+    recs = state.get("candidates") or {}
     for cc in sorted(by_cc):
         pool = by_cc[cc]
         st = cstate.setdefault(cc, {"cursor": 0})
-        budget = min(DAILY_BUDGET_PER_COUNTRY, len(pool))
+        # Backlog = source candidates this scanner has never recorded at all.
+        # A country with an untested backlog earns a bigger window than the
+        # daily floor, so NL/DE drain instead of trickling 16 candidates per run
+        # against thousands (see DAILY_BUDGET_PER_COUNTRY for the measurement).
+        # A fully explored country keeps the floor, which is the rotation that
+        # re-verifies evidence that already exists.
+        untested = sum(
+            1 for c in pool if _key(c) not in recs
+        )
+        budget = min(
+            len(pool),
+            DAILY_BUDGET_MAX_PER_COUNTRY,
+            max(DAILY_BUDGET_PER_COUNTRY, min(untested, BACKLOG_BUDGET_PER_RUN)),
+        )
         # Fresh-egress gate support (Bug #1/#2): verify the STALEST evidence
         # first, and re-verify passthrough candidates before equal-priority
         # others. A pure cursor rotation picks an arbitrary 16-slice per run,
