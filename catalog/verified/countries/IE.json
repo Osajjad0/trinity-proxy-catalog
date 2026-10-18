@@ -2,41 +2,6 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "54.77.206.41",
-   "port": 443,
-   "observed_country": "IE",
-   "egress_ip": "54.77.206.41",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-18T18:43:41Z",
-   "verification_age_s": 752,
-   "source_countries": [
-    "IE"
-   ],
-   "sources": [
-    "catalog:IE"
-   ],
-   "score": 53,
-   "last_rtt_ms": 909,
-   "last_success": "2026-10-18T18:43:41Z",
-   "success_count": 101,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "passthrough",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "speed_dl_bps": 628445,
-   "speed_ul_bps": 462813,
-   "success_ratio": 1.0,
-   "quality_rank": 1
-  },
-  {
    "address": "54.247.36.82",
    "port": 443,
    "observed_country": "IE",
@@ -46,8 +11,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-18T18:43:41Z",
-   "verification_age_s": 752,
+   "verification_timestamp": "2026-10-18T22:29:39Z",
+   "verification_age_s": 730,
    "source_countries": [
     "IE"
    ],
@@ -55,9 +20,9 @@
     "catalog:IE"
    ],
    "score": 53,
-   "last_rtt_ms": 1184,
-   "last_success": "2026-10-18T18:43:41Z",
-   "success_count": 102,
+   "last_rtt_ms": 680,
+   "last_success": "2026-10-18T22:29:39Z",
+   "success_count": 103,
    "failure_count": 0,
    "status": "verified",
    "capability": "passthrough",
@@ -68,6 +33,41 @@
    "source": "ip-api+ipwho",
    "speed_dl_bps": 632588,
    "speed_ul_bps": 416275,
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
+   "address": "54.77.206.41",
+   "port": 443,
+   "observed_country": "IE",
+   "egress_ip": "54.77.206.41",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-18T22:29:39Z",
+   "verification_age_s": 730,
+   "source_countries": [
+    "IE"
+   ],
+   "sources": [
+    "catalog:IE"
+   ],
+   "score": 53,
+   "last_rtt_ms": 684,
+   "last_success": "2026-10-18T22:29:39Z",
+   "success_count": 102,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "passthrough",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 628445,
+   "speed_ul_bps": 462813,
    "success_ratio": 1.0,
    "quality_rank": 2
   },
@@ -82,7 +82,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-18T18:43:41Z",
-   "verification_age_s": 752,
+   "verification_age_s": 14288,
    "source_countries": [
     "IE"
    ],
@@ -105,17 +105,17 @@
    "quality_rank": 3
   },
   {
-   "address": "107.150.20.112",
+   "address": "54.229.164.147",
    "port": 8443,
    "observed_country": "IE",
-   "egress_ip": "2605:6f0a:2000:13::5c46:3350",
+   "egress_ip": "54.229.164.147",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-18T15:59:45Z",
-   "verification_age_s": 10588,
+   "verification_timestamp": "2026-10-18T22:29:39Z",
+   "verification_age_s": 730,
    "source_countries": [
     "IE"
    ],
@@ -123,10 +123,10 @@
     "catalog:IE"
    ],
    "score": 0,
-   "last_rtt_ms": 1093,
-   "last_success": "2026-10-18T15:59:45Z",
-   "success_count": 77,
-   "failure_count": 1,
+   "last_rtt_ms": 513,
+   "last_success": "2026-10-18T22:29:39Z",
+   "success_count": 103,
+   "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
    "http_forwarding": false,
@@ -134,7 +134,9 @@
    "ip_type": "vpn/proxy",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "success_ratio": 0.99,
+   "speed_dl_bps": 465359,
+   "speed_ul_bps": 180858,
+   "success_ratio": 1.0,
    "quality_rank": 4
   },
   {
@@ -147,8 +149,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-18T18:43:41Z",
-   "verification_age_s": 752,
+   "verification_timestamp": "2026-10-18T22:29:39Z",
+   "verification_age_s": 730,
    "source_countries": [
     "IE"
    ],
@@ -156,9 +158,9 @@
     "catalog:IE"
    ],
    "score": 0,
-   "last_rtt_ms": 1042,
-   "last_success": "2026-10-18T18:43:41Z",
-   "success_count": 102,
+   "last_rtt_ms": 551,
+   "last_success": "2026-10-18T22:29:39Z",
+   "success_count": 103,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
@@ -171,17 +173,17 @@
    "quality_rank": 5
   },
   {
-   "address": "54.229.164.147",
+   "address": "107.150.20.112",
    "port": 8443,
    "observed_country": "IE",
-   "egress_ip": "54.229.164.147",
+   "egress_ip": "2605:6f0a:2000:13::5c46:3350",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-18T18:43:41Z",
-   "verification_age_s": 752,
+   "verification_timestamp": "2026-10-18T22:29:39Z",
+   "verification_age_s": 730,
    "source_countries": [
     "IE"
    ],
@@ -189,10 +191,10 @@
     "catalog:IE"
    ],
    "score": 0,
-   "last_rtt_ms": 1122,
-   "last_success": "2026-10-18T18:43:41Z",
-   "success_count": 102,
-   "failure_count": 0,
+   "last_rtt_ms": 557,
+   "last_success": "2026-10-18T22:29:39Z",
+   "success_count": 78,
+   "failure_count": 1,
    "status": "verified",
    "capability": "cf-relay",
    "http_forwarding": false,
@@ -200,9 +202,7 @@
    "ip_type": "vpn/proxy",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "speed_dl_bps": 465359,
-   "speed_ul_bps": 180858,
-   "success_ratio": 1.0,
+   "success_ratio": 0.99,
    "quality_rank": 6
   }
  ]
