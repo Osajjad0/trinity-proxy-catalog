@@ -153,6 +153,38 @@ class TestCountryBatches(unittest.TestCase):
         self.assertEqual(order[0], "live:443",
                          "recently-failed box must yield to the stale live one")
 
+    def test_untested_backlog_earns_a_bigger_window(self):
+        # Measured starvation: DE (3700 source candidates) and NL (3825) were
+        # capped at the same 16/run as a 1-candidate country, so 4527 source
+        # candidates were never probed at all and DE published 4 passthrough.
+        # A country with an untested backlog must get more than the daily
+        # floor; a fully probed country must not.
+        def cand(addr, cc):
+            return {"address": addr, "port": 443, "source_countries": [cc]}
+
+        pool_size = scan.DAILY_BUDGET_MAX_PER_COUNTRY + 50
+        big = [cand(f"b{i}", "DE") for i in range(pool_size)]
+        _, meta = scan.country_batches(big, {"candidates": {}},
+                                       "2026-09-28T18:30:00Z")
+        self.assertEqual(meta["DE"]["scanned"],
+                         min(pool_size, scan.BACKLOG_BUDGET_PER_RUN))
+        self.assertGreater(meta["DE"]["scanned"], scan.DAILY_BUDGET_PER_COUNTRY)
+
+        state = {"candidates": {f'b{i}:443': {"last_seen": "2026-09-28T18:00:00Z"}
+                                for i in range(pool_size)}}
+        _, meta = scan.country_batches(big, state, "2026-09-28T18:30:00Z")
+        self.assertEqual(meta["DE"]["scanned"], scan.DAILY_BUDGET_PER_COUNTRY)
+
+    def test_backlog_window_never_exceeds_the_cap(self):
+        def cand(addr, cc):
+            return {"address": addr, "port": 443, "source_countries": [cc]}
+        pool = [cand(f"b{i}", "NL")
+                for i in range(scan.BACKLOG_BUDGET_PER_RUN * 10)]
+        _, meta = scan.country_batches(pool, {"candidates": {}},
+                                       "2026-09-28T18:30:00Z")
+        self.assertLessEqual(meta["NL"]["scanned"],
+                             scan.DAILY_BUDGET_MAX_PER_COUNTRY)
+
 
 class TestPolicyAndScoring(unittest.TestCase):
     def test_provider_exclusion_uses_observed_metadata(self):
