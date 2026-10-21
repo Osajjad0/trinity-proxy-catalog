@@ -12,7 +12,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-21T07:49:01Z",
-   "verification_age_s": 22799,
+   "verification_age_s": 40140,
    "source_countries": [
     "AT"
    ],
@@ -47,7 +47,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-21T07:49:01Z",
-   "verification_age_s": 22799,
+   "verification_age_s": 40140,
    "source_countries": [
     "AT"
    ],
@@ -82,7 +82,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-21T07:49:01Z",
-   "verification_age_s": 22799,
+   "verification_age_s": 40140,
    "source_countries": [
     "AT"
    ],
@@ -117,7 +117,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-21T07:49:01Z",
-   "verification_age_s": 22799,
+   "verification_age_s": 40140,
    "source_countries": [
     "AT"
    ],
@@ -140,6 +140,39 @@
    "quality_rank": 4
   },
   {
+   "address": "152.53.112.170",
+   "port": 2053,
+   "observed_country": "AT",
+   "egress_ip": "2a0a:4cc0:80:41d4:68a5:25ff:fe96:ed43",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-21T18:45:48Z",
+   "verification_age_s": 733,
+   "source_countries": [
+    "AT"
+   ],
+   "sources": [
+    "catalog:AT"
+   ],
+   "score": 20,
+   "last_rtt_ms": 838,
+   "last_success": "2026-10-21T18:45:48Z",
+   "success_count": 27,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 5
+  },
+  {
    "address": "185.119.117.146",
    "port": 8443,
    "observed_country": "AT",
@@ -150,7 +183,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-21T07:49:01Z",
-   "verification_age_s": 22799,
+   "verification_age_s": 40140,
    "source_countries": [
     "AT"
    ],
@@ -170,7 +203,40 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 5
+   "quality_rank": 6
+  },
+  {
+   "address": "152.53.111.168",
+   "port": 443,
+   "observed_country": "AT",
+   "egress_ip": "2a0a:4cc0:80:3e47:18d1:ceff:fe2c:3d9b",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-21T18:45:48Z",
+   "verification_age_s": 733,
+   "source_countries": [
+    "AT"
+   ],
+   "sources": [
+    "catalog:AT"
+   ],
+   "score": 0,
+   "last_rtt_ms": 747,
+   "last_success": "2026-10-21T18:45:48Z",
+   "success_count": 13,
+   "failure_count": 14,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 0.48,
+   "quality_rank": 7
   }
  ]
 }
