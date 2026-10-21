@@ -2,41 +2,6 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "91.250.248.151",
-   "port": 443,
-   "observed_country": "GR",
-   "egress_ip": "91.250.248.151",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-21T07:49:01Z",
-   "verification_age_s": 769,
-   "source_countries": [
-    "GR"
-   ],
-   "sources": [
-    "catalog:GR"
-   ],
-   "score": 24,
-   "last_rtt_ms": 827,
-   "last_success": "2026-10-21T07:49:01Z",
-   "success_count": 133,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "speed_dl_bps": 379041,
-   "speed_ul_bps": 320325,
-   "success_ratio": 1.0,
-   "quality_rank": 1
-  },
-  {
    "address": "38.54.29.210",
    "port": 2053,
    "observed_country": "GR",
@@ -46,8 +11,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-21T07:49:01Z",
-   "verification_age_s": 769,
+   "verification_timestamp": "2026-10-21T13:56:54Z",
+   "verification_age_s": 726,
    "source_countries": [
     "GR"
    ],
@@ -55,9 +20,9 @@
     "catalog:GR"
    ],
    "score": 24,
-   "last_rtt_ms": 830,
-   "last_success": "2026-10-21T07:49:01Z",
-   "success_count": 133,
+   "last_rtt_ms": 688,
+   "last_success": "2026-10-21T13:56:54Z",
+   "success_count": 134,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
@@ -68,6 +33,41 @@
    "source": "ip-api+ipwho",
    "speed_dl_bps": 335833,
    "speed_ul_bps": 290079,
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
+   "address": "91.250.248.151",
+   "port": 443,
+   "observed_country": "GR",
+   "egress_ip": "91.250.248.151",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-21T13:56:54Z",
+   "verification_age_s": 726,
+   "source_countries": [
+    "GR"
+   ],
+   "sources": [
+    "catalog:GR"
+   ],
+   "score": 24,
+   "last_rtt_ms": 744,
+   "last_success": "2026-10-21T13:56:54Z",
+   "success_count": 134,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 379041,
+   "speed_ul_bps": 320325,
    "success_ratio": 1.0,
    "quality_rank": 2
   }
