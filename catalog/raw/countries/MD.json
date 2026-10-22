@@ -11,7 +11,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5856,
+          "line": 1566,
           "original": "146.19.213.60,443,true,MD,N/A,-,ALEXHOST SRL,-",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -25,7 +25,7 @@
         },
         {
           "checked_at": null,
-          "line": 9937,
+          "line": 2540,
           "original": "146.19.213.60 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
@@ -39,10 +39,10 @@
         },
         {
           "checked_at": null,
-          "line": 2997,
+          "line": 2969,
           "original": "| <pre><code>146.19.213.60</code></pre> | ALEXHOST SRL | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-17-BE8B25\" /> |",
           "port_resolution": {
-            "line": 5856,
+            "line": 1566,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
@@ -75,7 +75,7 @@
         },
         {
           "checked_at": null,
-          "line": 9938,
+          "line": 2541,
           "original": "178.17.174.137 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
@@ -104,7 +104,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5857,
+          "line": 1567,
           "original": "185.153.198.86,443,true,MD,N/A,-,IT FRUIT SRL,-",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -118,7 +118,7 @@
         },
         {
           "checked_at": null,
-          "line": 9939,
+          "line": 2542,
           "original": "185.153.198.86 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
@@ -132,10 +132,10 @@
         },
         {
           "checked_at": null,
-          "line": 2990,
+          "line": 2967,
           "original": "| <pre><code>185.153.198.86</code></pre> | ''IT FRUIT'' S.R.L. | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 5857,
+            "line": 1567,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
@@ -161,31 +161,10 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5858,
-          "original": "185.163.45.40,443,true,MD,N/A,-,MivoCloud SRL,-",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/02_proxies.csv"
-        },
-        {
-          "checked_at": null,
           "line": 4540,
           "original": "185.163.45.40,443,MD,MivoCloud SRL",
           "source_country_label": "MD",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 9940,
-          "original": "185.163.45.40 443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 4,
-          "original": "185.163.45.40 443",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/MD.txt"
         }
       ],
       "kind": "IPV4",
@@ -211,14 +190,14 @@
         },
         {
           "checked_at": null,
-          "line": 9941,
+          "line": 2543,
           "original": "185.216.68.218 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 5,
+          "line": 4,
           "original": "185.216.68.218 8443",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/MD.txt"
@@ -226,6 +205,56 @@
       ],
       "kind": "IPV4",
       "port": 8443,
+      "runtime_health": "unknown",
+      "unrecognized_labels": []
+    },
+    {
+      "address": "185.225.17.13",
+      "checked_at": null,
+      "consumer_verified": false,
+      "country_claims": [
+        "MD"
+      ],
+      "endpoint": "185.225.17.13:443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 1568,
+          "original": "185.225.17.13,443,true,MD,N/A,-,MivoCloud,-",
+          "source_country_label": "MD",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 2544,
+          "original": "185.225.17.13 443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 5,
+          "original": "185.225.17.13 443",
+          "source_country_label": "MD",
+          "source_path": "sub/country_proxies/MD.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 2968,
+          "original": "| <pre><code>185.225.17.13</code></pre> | MivoCloud | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
+          "port_resolution": {
+            "line": 1568,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇲🇩 Moldova (12 proxies)",
+          "source_country_label": "MD",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
+        }
+      ],
+      "kind": "IPV4",
+      "port": 443,
       "runtime_health": "unknown",
       "unrecognized_labels": []
     },
@@ -240,7 +269,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5859,
+          "line": 1569,
           "original": "193.36.38.17,443,true,MD,N/A,-,IT FRUIT SRL,-",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -254,7 +283,7 @@
         },
         {
           "checked_at": null,
-          "line": 9942,
+          "line": 2545,
           "original": "193.36.38.17 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
@@ -268,10 +297,10 @@
         },
         {
           "checked_at": null,
-          "line": 2991,
+          "line": 2963,
           "original": "| <pre><code>193.36.38.17</code></pre> | ''IT FRUIT'' S.R.L. | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 5859,
+            "line": 1569,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
@@ -297,31 +326,10 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5860,
-          "original": "193.36.38.222,443,true,MD,N/A,-,IT FRUIT SRL,-",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/02_proxies.csv"
-        },
-        {
-          "checked_at": null,
           "line": 4543,
           "original": "193.36.38.222,443,MD,IT FRUIT SRL",
           "source_country_label": "MD",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 9943,
-          "original": "193.36.38.222 443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 7,
-          "original": "193.36.38.222 443",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/MD.txt"
         }
       ],
       "kind": "IPV4",
@@ -340,7 +348,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5861,
+          "line": 1570,
           "original": "194.102.104.18,443,true,MD,N/A,-,Cloudflare London LLC,-",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -354,38 +362,38 @@
         },
         {
           "checked_at": null,
-          "line": 9944,
+          "line": 2546,
           "original": "194.102.104.18 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 8,
+          "line": 7,
           "original": "194.102.104.18 443",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/MD.txt"
         },
         {
           "checked_at": null,
-          "line": 105,
+          "line": 107,
           "original": "| <pre><code>194.102.104.18</code></pre> | Cloudflare London, LLC | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 5861,
+            "line": 1570,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "<img alt=\"Cloudflare\" src=\"https://www.google.com/s2/favicons?sz=24&domain_url=cloudflare.com\" /> Cloudflare (29)",
+          "section": "<img alt=\"Cloudflare\" src=\"https://www.google.com/s2/favicons?sz=24&domain_url=cloudflare.com\" /> Cloudflare (30)",
           "source_country_label": null,
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
         },
         {
           "checked_at": null,
-          "line": 2994,
+          "line": 2964,
           "original": "| <pre><code>194.102.104.18</code></pre> | Cloudflare London, LLC | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 5861,
+            "line": 1570,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
@@ -411,7 +419,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5862,
+          "line": 1571,
           "original": "194.180.191.123,443,true,MD,N/A,-,MivoCloud,-",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -425,24 +433,24 @@
         },
         {
           "checked_at": null,
-          "line": 9945,
+          "line": 2547,
           "original": "194.180.191.123 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 9,
+          "line": 8,
           "original": "194.180.191.123 443",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/MD.txt"
         },
         {
           "checked_at": null,
-          "line": 2992,
+          "line": 2962,
           "original": "| <pre><code>194.180.191.123</code></pre> | MivoCloud | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 5862,
+            "line": 1571,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
@@ -468,7 +476,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5863,
+          "line": 1572,
           "original": "194.180.191.249,443,true,MD,N/A,-,MivoCloud,-",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -482,14 +490,14 @@
         },
         {
           "checked_at": null,
-          "line": 9946,
+          "line": 2548,
           "original": "194.180.191.249 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 10,
+          "line": 9,
           "original": "194.180.191.249 443",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/MD.txt"
@@ -518,14 +526,14 @@
         },
         {
           "checked_at": null,
-          "line": 9947,
+          "line": 2549,
           "original": "213.232.235.54 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 11,
+          "line": 10,
           "original": "213.232.235.54 8443",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/MD.txt"
@@ -547,31 +555,10 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5864,
-          "original": "217.156.65.62,443,true,MD,N/A,-,ALEXHOST SRL,-",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/02_proxies.csv"
-        },
-        {
-          "checked_at": null,
           "line": 4548,
           "original": "217.156.65.62,443,MD,ALEXHOST SRL",
           "source_country_label": "MD",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 9948,
-          "original": "217.156.65.62 443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 12,
-          "original": "217.156.65.62 443",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/MD.txt"
         }
       ],
       "kind": "IPV4",
@@ -590,7 +577,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5865,
+          "line": 1573,
           "original": "217.156.67.53,443,true,MD,N/A,-,AlexHost SRL,-",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -604,24 +591,24 @@
         },
         {
           "checked_at": null,
-          "line": 9949,
+          "line": 2550,
           "original": "217.156.67.53 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 13,
+          "line": 11,
           "original": "217.156.67.53 443",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/MD.txt"
         },
         {
           "checked_at": null,
-          "line": 2993,
+          "line": 2965,
           "original": "| <pre><code>217.156.67.53</code></pre> | AlexHost SRL | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 5865,
+            "line": 1573,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
@@ -669,6 +656,13 @@
       "evidence": [
         {
           "checked_at": null,
+          "line": 1574,
+          "original": "5.181.158.96,443,true,MD,N/A,-,MivoCloud,-",
+          "source_country_label": "MD",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
           "line": 4551,
           "original": "5.181.158.96,443,MD,MivoCloud",
           "source_country_label": "MD",
@@ -676,12 +670,105 @@
         },
         {
           "checked_at": null,
-          "line": 2995,
+          "line": 2551,
+          "original": "5.181.158.96 443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 12,
+          "original": "5.181.158.96 443",
+          "source_country_label": "MD",
+          "source_path": "sub/country_proxies/MD.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 2966,
           "original": "| <pre><code>5.181.158.96</code></pre> | MivoCloud | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 4551,
+            "line": 1574,
             "port": 443,
-            "source_path": "edge/assets/p-legacies.csv"
+            "source_path": "sub/country_proxies/02_proxies.csv"
+          },
+          "section": "🇲🇩 Moldova (12 proxies)",
+          "source_country_label": "MD",
+          "source_path": "sub/ProxyIP-Daily.md",
+          "source_reported_check": true
+        }
+      ],
+      "kind": "IPV4",
+      "port": 443,
+      "runtime_health": "unknown",
+      "unrecognized_labels": []
+    },
+    {
+      "address": "5.252.178.146",
+      "checked_at": null,
+      "consumer_verified": false,
+      "country_claims": [
+        "MD"
+      ],
+      "endpoint": "5.252.178.146:8443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 2552,
+          "original": "5.252.178.146 8443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 13,
+          "original": "5.252.178.146 8443",
+          "source_country_label": "MD",
+          "source_path": "sub/country_proxies/MD.txt"
+        }
+      ],
+      "kind": "IPV4",
+      "port": 8443,
+      "runtime_health": "unknown",
+      "unrecognized_labels": []
+    },
+    {
+      "address": "5.252.178.67",
+      "checked_at": null,
+      "consumer_verified": false,
+      "country_claims": [
+        "MD"
+      ],
+      "endpoint": "5.252.178.67:443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 1575,
+          "original": "5.252.178.67,443,true,MD,N/A,-,MivoCloud,-",
+          "source_country_label": "MD",
+          "source_path": "sub/country_proxies/02_proxies.csv"
+        },
+        {
+          "checked_at": null,
+          "line": 2553,
+          "original": "5.252.178.67 443",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 14,
+          "original": "5.252.178.67 443",
+          "source_country_label": "MD",
+          "source_path": "sub/country_proxies/MD.txt"
+        },
+        {
+          "checked_at": null,
+          "line": 2973,
+          "original": "| <pre><code>5.252.178.67</code></pre> | MivoCloud | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-57-A55621\" /> |",
+          "port_resolution": {
+            "line": 1575,
+            "port": 443,
+            "source_path": "sub/country_proxies/02_proxies.csv"
           },
           "section": "🇲🇩 Moldova (12 proxies)",
           "source_country_label": "MD",
@@ -705,31 +792,10 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5866,
-          "original": "80.96.113.48,443,true,MD,N/A,-,ALEXHOST SRL,-",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/02_proxies.csv"
-        },
-        {
-          "checked_at": null,
           "line": 4552,
           "original": "80.96.113.48,443,MD,ALEXHOST SRL",
           "source_country_label": "MD",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 9950,
-          "original": "80.96.113.48 443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 14,
-          "original": "80.96.113.48 443",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/MD.txt"
         }
       ],
       "kind": "IPV4",
@@ -748,7 +814,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5867,
+          "line": 1576,
           "original": "85.121.176.226,443,true,MD,N/A,-,AlexHost SRL,-",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -762,7 +828,7 @@
         },
         {
           "checked_at": null,
-          "line": 9951,
+          "line": 2554,
           "original": "85.121.176.226 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
@@ -776,10 +842,10 @@
         },
         {
           "checked_at": null,
-          "line": 2999,
+          "line": 2970,
           "original": "| <pre><code>85.121.176.226</code></pre> | AlexHost SRL | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-17-BE8B25\" /> |",
           "port_resolution": {
-            "line": 5867,
+            "line": 1576,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
@@ -809,20 +875,6 @@
           "original": "85.121.177.192,2053,MD,AlexHost SRL",
           "source_country_label": "MD",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 9952,
-          "original": "85.121.177.192 2053",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 16,
-          "original": "85.121.177.192 2053",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/MD.txt"
         }
       ],
       "kind": "IPV4",
@@ -845,20 +897,6 @@
           "original": "85.121.177.192,8443,MD,AlexHost SRL",
           "source_country_label": "MD",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 9953,
-          "original": "85.121.177.192 8443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 17,
-          "original": "85.121.177.192 8443",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/MD.txt"
         }
       ],
       "kind": "IPV4",
@@ -877,7 +915,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5868,
+          "line": 1577,
           "original": "85.121.5.147,443,true,MD,N/A,-,AlexHost SRL,-",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -891,24 +929,24 @@
         },
         {
           "checked_at": null,
-          "line": 9954,
+          "line": 2555,
           "original": "85.121.5.147 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 18,
+          "line": 16,
           "original": "85.121.5.147 443",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/MD.txt"
         },
         {
           "checked_at": null,
-          "line": 2998,
+          "line": 2971,
           "original": "| <pre><code>85.121.5.147</code></pre> | AlexHost SRL | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-17-BE8B25\" /> |",
           "port_resolution": {
-            "line": 5868,
+            "line": 1577,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
@@ -934,31 +972,10 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5869,
-          "original": "93.185.165.175,443,true,MD,N/A,-,SC INFOTECHGRUP SRL,-",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/02_proxies.csv"
-        },
-        {
-          "checked_at": null,
           "line": 4558,
           "original": "93.185.165.175,443,MD,SC INFOTECHGRUP SRL",
           "source_country_label": "MD",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 9955,
-          "original": "93.185.165.175 443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 19,
-          "original": "93.185.165.175 443",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/MD.txt"
         }
       ],
       "kind": "IPV4",
@@ -981,20 +998,6 @@
           "original": "93.185.165.175,8443,MD,SC INFOTECHGRUP SRL",
           "source_country_label": "MD",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 9956,
-          "original": "93.185.165.175 8443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 20,
-          "original": "93.185.165.175 8443",
-          "source_country_label": "MD",
-          "source_path": "sub/country_proxies/MD.txt"
         }
       ],
       "kind": "IPV4",
@@ -1013,7 +1016,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 5870,
+          "line": 1578,
           "original": "94.103.188.145,443,true,MD,N/A,-,ALEXHOST SRL,-",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -1027,24 +1030,24 @@
         },
         {
           "checked_at": null,
-          "line": 9957,
+          "line": 2556,
           "original": "94.103.188.145 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 21,
+          "line": 17,
           "original": "94.103.188.145 443",
           "source_country_label": "MD",
           "source_path": "sub/country_proxies/MD.txt"
         },
         {
           "checked_at": null,
-          "line": 3000,
+          "line": 2972,
           "original": "| <pre><code>94.103.188.145</code></pre> | ALEXHOST SRL | Chișinău Municipality, Chisinau | <img src=\"https://img.shields.io/badge/-17-BE8B25\" /> |",
           "port_resolution": {
-            "line": 5870,
+            "line": 1578,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },

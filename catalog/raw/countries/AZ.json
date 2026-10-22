@@ -18,7 +18,7 @@
         },
         {
           "checked_at": null,
-          "line": 204,
+          "line": 118,
           "original": "180.149.44.124 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
@@ -37,35 +37,6 @@
       "unrecognized_labels": []
     },
     {
-      "address": "31.58.237.197",
-      "checked_at": null,
-      "consumer_verified": false,
-      "country_claims": [
-        "AZ"
-      ],
-      "endpoint": "31.58.237.197:2096",
-      "evidence": [
-        {
-          "checked_at": null,
-          "line": 205,
-          "original": "31.58.237.197 2096",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 2,
-          "original": "31.58.237.197 2096",
-          "source_country_label": "AZ",
-          "source_path": "sub/country_proxies/AZ.txt"
-        }
-      ],
-      "kind": "IPV4",
-      "port": 2096,
-      "runtime_health": "unknown",
-      "unrecognized_labels": []
-    },
-    {
       "address": "85.185.86.111",
       "checked_at": null,
       "consumer_verified": false,
@@ -80,20 +51,6 @@
           "original": "85.185.86.111,2053,AZ,Leased IPv4 Blocks",
           "source_country_label": "AZ",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 209,
-          "original": "85.185.86.111 2053",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 6,
-          "original": "85.185.86.111 2053",
-          "source_country_label": "AZ",
-          "source_path": "sub/country_proxies/AZ.txt"
         }
       ],
       "kind": "IPV4",
@@ -112,7 +69,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 106,
+          "line": 88,
           "original": "94.20.154.66,443,true,AZ,N/A,-,Leased IPv4 Blocks,-",
           "source_country_label": "AZ",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -126,24 +83,24 @@
         },
         {
           "checked_at": null,
-          "line": 210,
+          "line": 119,
           "original": "94.20.154.66 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 7,
+          "line": 2,
           "original": "94.20.154.66 443",
           "source_country_label": "AZ",
           "source_path": "sub/country_proxies/AZ.txt"
         },
         {
           "checked_at": null,
-          "line": 416,
+          "line": 413,
           "original": "| <pre><code>94.20.154.66</code></pre> | Leased IPv4 Blocks | Baki, Baku | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 106,
+            "line": 88,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },

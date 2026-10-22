@@ -11,35 +11,72 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8165,
-          "original": "194.32.107.150,443,true,NO,N/A,-,Gigahost AS,-",
-          "source_country_label": "NO",
-          "source_path": "sub/country_proxies/02_proxies.csv"
-        },
-        {
-          "checked_at": null,
           "line": 4982,
           "original": "194.32.107.150,443,NO,Gigahost AS",
           "source_country_label": "NO",
           "source_path": "edge/assets/p-legacies.csv"
+        }
+      ],
+      "kind": "IPV4",
+      "port": 443,
+      "runtime_health": "unknown",
+      "unrecognized_labels": []
+    },
+    {
+      "address": "194.5.98.105",
+      "checked_at": null,
+      "consumer_verified": false,
+      "country_claims": [
+        "NO"
+      ],
+      "endpoint": "194.5.98.105:2053",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 2846,
+          "original": "194.5.98.105 2053",
+          "source_country_label": null,
+          "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 14048,
-          "original": "194.32.107.150 443",
+          "line": 1,
+          "original": "194.5.98.105 2053",
+          "source_country_label": "NO",
+          "source_path": "sub/country_proxies/NO.txt"
+        }
+      ],
+      "kind": "IPV4",
+      "port": 2053,
+      "runtime_health": "unknown",
+      "unrecognized_labels": []
+    },
+    {
+      "address": "194.5.98.105",
+      "checked_at": null,
+      "consumer_verified": false,
+      "country_claims": [
+        "NO"
+      ],
+      "endpoint": "194.5.98.105:8443",
+      "evidence": [
+        {
+          "checked_at": null,
+          "line": 2847,
+          "original": "194.5.98.105 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
           "line": 2,
-          "original": "194.32.107.150 443",
+          "original": "194.5.98.105 8443",
           "source_country_label": "NO",
           "source_path": "sub/country_proxies/NO.txt"
         }
       ],
       "kind": "IPV4",
-      "port": 443,
+      "port": 8443,
       "runtime_health": "unknown",
       "unrecognized_labels": []
     },
@@ -54,45 +91,10 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8166,
-          "original": "194.5.98.17,443,true,NO,N/A,-,WebHorizon IT Broadband Limited Norway,-",
-          "source_country_label": "NO",
-          "source_path": "sub/country_proxies/02_proxies.csv"
-        },
-        {
-          "checked_at": null,
           "line": 4983,
           "original": "194.5.98.17,443,NO,WebHorizon IT Broadband Limited Norway",
           "source_country_label": "NO",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 14049,
-          "original": "194.5.98.17 443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 3,
-          "original": "194.5.98.17 443",
-          "source_country_label": "NO",
-          "source_path": "sub/country_proxies/NO.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 3257,
-          "original": "| <pre><code>194.5.98.17</code></pre> | WebHorizon IT Broadband Limited Norway | Vestfold, Sandefjord | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
-          "port_resolution": {
-            "line": 8166,
-            "port": 443,
-            "source_path": "sub/country_proxies/02_proxies.csv"
-          },
-          "section": "🇳🇴 Norway (4 proxies)",
-          "source_country_label": "NO",
-          "source_path": "sub/ProxyIP-Daily.md",
-          "source_reported_check": true
         }
       ],
       "kind": "IPV4",
@@ -111,7 +113,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8167,
+          "line": 1720,
           "original": "194.68.32.99,443,true,NO,N/A,-,EDIS IPv6 Infrastructure in Norway,-",
           "source_country_label": "NO",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -125,28 +127,28 @@
         },
         {
           "checked_at": null,
-          "line": 14050,
+          "line": 2848,
           "original": "194.68.32.99 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 4,
+          "line": 3,
           "original": "194.68.32.99 443",
           "source_country_label": "NO",
           "source_path": "sub/country_proxies/NO.txt"
         },
         {
           "checked_at": null,
-          "line": 3260,
+          "line": 3226,
           "original": "| <pre><code>194.68.32.99</code></pre> | EDIS IPv6 Infrastructure in Norway | Oslo, Oslo | <img src=\"https://img.shields.io/badge/-29-B77B24\" /> |",
           "port_resolution": {
-            "line": 8167,
+            "line": 1720,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇳🇴 Norway (4 proxies)",
+          "section": "🇳🇴 Norway (3 proxies)",
           "source_country_label": "NO",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -172,20 +174,6 @@
           "original": "195.54.170.148,8443,NO,IROKO Networks Corporation",
           "source_country_label": "NO",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 14051,
-          "original": "195.54.170.148 8443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 5,
-          "original": "195.54.170.148 8443",
-          "source_country_label": "NO",
-          "source_path": "sub/country_proxies/NO.txt"
         }
       ],
       "kind": "IPV4",
@@ -204,31 +192,10 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8168,
-          "original": "195.54.170.43,443,true,NO,N/A,-,IROKO Networks Corporation,-",
-          "source_country_label": "NO",
-          "source_path": "sub/country_proxies/02_proxies.csv"
-        },
-        {
-          "checked_at": null,
           "line": 4986,
           "original": "195.54.170.43,443,NO,IROKO Networks Corporation",
           "source_country_label": "NO",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 14052,
-          "original": "195.54.170.43 443",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 6,
-          "original": "195.54.170.43 443",
-          "source_country_label": "NO",
-          "source_path": "sub/country_proxies/NO.txt"
         }
       ],
       "kind": "IPV4",
@@ -247,7 +214,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8169,
+          "line": 1721,
           "original": "202.50.55.76,443,true,NO,N/A,-,H4FNET,-",
           "source_country_label": "NO",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -261,28 +228,28 @@
         },
         {
           "checked_at": null,
-          "line": 14053,
+          "line": 2849,
           "original": "202.50.55.76 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 7,
+          "line": 4,
           "original": "202.50.55.76 443",
           "source_country_label": "NO",
           "source_path": "sub/country_proxies/NO.txt"
         },
         {
           "checked_at": null,
-          "line": 3258,
+          "line": 3224,
           "original": "| <pre><code>202.50.55.76</code></pre> | H4F.NET | Vestfold, Sandefjord | <img src=\"https://img.shields.io/badge/-0-C9A227\" /> |",
           "port_resolution": {
-            "line": 8169,
+            "line": 1721,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇳🇴 Norway (4 proxies)",
+          "section": "🇳🇴 Norway (3 proxies)",
           "source_country_label": "NO",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -304,7 +271,7 @@
       "evidence": [
         {
           "checked_at": null,
-          "line": 8170,
+          "line": 1722,
           "original": "81.29.149.210,443,true,NO,N/A,-,Baxet Group Inc,-",
           "source_country_label": "NO",
           "source_path": "sub/country_proxies/02_proxies.csv"
@@ -318,28 +285,28 @@
         },
         {
           "checked_at": null,
-          "line": 14054,
+          "line": 2850,
           "original": "81.29.149.210 443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 8,
+          "line": 5,
           "original": "81.29.149.210 443",
           "source_country_label": "NO",
           "source_path": "sub/country_proxies/NO.txt"
         },
         {
           "checked_at": null,
-          "line": 3259,
+          "line": 3225,
           "original": "| <pre><code>81.29.149.210</code></pre> | Baxet Group Inc. | Oslo, Oslo | <img src=\"https://img.shields.io/badge/-26-B87F24\" /> |",
           "port_resolution": {
-            "line": 8170,
+            "line": 1722,
             "port": 443,
             "source_path": "sub/country_proxies/02_proxies.csv"
           },
-          "section": "🇳🇴 Norway (4 proxies)",
+          "section": "🇳🇴 Norway (3 proxies)",
           "source_country_label": "NO",
           "source_path": "sub/ProxyIP-Daily.md",
           "source_reported_check": true
@@ -368,14 +335,14 @@
         },
         {
           "checked_at": null,
-          "line": 14055,
+          "line": 2852,
           "original": "81.29.149.219 2053",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 9,
+          "line": 7,
           "original": "81.29.149.219 2053",
           "source_country_label": "NO",
           "source_path": "sub/country_proxies/NO.txt"
@@ -404,14 +371,14 @@
         },
         {
           "checked_at": null,
-          "line": 14056,
+          "line": 2851,
           "original": "81.29.149.219 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 10,
+          "line": 6,
           "original": "81.29.149.219 8443",
           "source_country_label": "NO",
           "source_path": "sub/country_proxies/NO.txt"
@@ -440,14 +407,14 @@
         },
         {
           "checked_at": null,
-          "line": 14057,
+          "line": 2853,
           "original": "84.208.211.208 8443",
           "source_country_label": null,
           "source_path": "sub/country_proxies/03_proxies.txt"
         },
         {
           "checked_at": null,
-          "line": 11,
+          "line": 8,
           "original": "84.208.211.208 8443",
           "source_country_label": "NO",
           "source_path": "sub/country_proxies/NO.txt"
@@ -473,20 +440,6 @@
           "original": "91.190.155.173,2083,NO,Prinode AB",
           "source_country_label": "NO",
           "source_path": "edge/assets/p-legacies.csv"
-        },
-        {
-          "checked_at": null,
-          "line": 14058,
-          "original": "91.190.155.173 2083",
-          "source_country_label": null,
-          "source_path": "sub/country_proxies/03_proxies.txt"
-        },
-        {
-          "checked_at": null,
-          "line": 12,
-          "original": "91.190.155.173 2083",
-          "source_country_label": "NO",
-          "source_path": "sub/country_proxies/NO.txt"
         }
       ],
       "kind": "IPV4",
