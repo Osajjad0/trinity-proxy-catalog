@@ -11,21 +11,21 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-24T18:52:06Z",
-   "verification_age_s": 765,
+   "verification_timestamp": "2026-10-24T22:35:08Z",
+   "verification_age_s": 640,
    "source_countries": [
     "CN"
    ],
    "sources": [
     "catalog:CN"
    ],
-   "score": 5,
-   "last_rtt_ms": 2236,
-   "last_success": "2026-10-24T18:52:06Z",
-   "success_count": 117,
+   "score": 30,
+   "last_rtt_ms": 1862,
+   "last_success": "2026-10-24T22:35:08Z",
+   "success_count": 118,
    "failure_count": 33,
    "status": "verified",
-   "capability": "tls-error",
+   "capability": "passthrough",
    "http_forwarding": false,
    "risk": "low",
    "ip_type": "isp",
@@ -46,8 +46,8 @@
     "cloudflare-trace",
     "ipinfo"
    ],
-   "verification_timestamp": "2026-10-24T18:52:06Z",
-   "verification_age_s": 765,
+   "verification_timestamp": "2026-10-24T22:35:08Z",
+   "verification_age_s": 640,
    "source_countries": [
     "CN"
    ],
@@ -55,9 +55,9 @@
     "catalog:CN"
    ],
    "score": 4,
-   "last_rtt_ms": 2251,
-   "last_success": "2026-10-24T18:52:06Z",
-   "success_count": 116,
+   "last_rtt_ms": 3439,
+   "last_success": "2026-10-24T22:35:08Z",
+   "success_count": 117,
    "failure_count": 34,
    "status": "verified",
    "capability": "tls-error",
@@ -70,6 +70,41 @@
    "speed_ul_bps": 37444,
    "success_ratio": 0.77,
    "quality_rank": 2
+  },
+  {
+   "address": "43.161.254.71",
+   "port": 443,
+   "observed_country": "CN",
+   "egress_ip": "240d:c000:f000:a000:96dc:dd4:2a30:0",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-24T22:35:08Z",
+   "verification_age_s": 640,
+   "source_countries": [
+    "HK"
+   ],
+   "sources": [
+    "catalog:HK"
+   ],
+   "score": 0,
+   "last_rtt_ms": 939,
+   "last_success": "2026-10-24T22:35:08Z",
+   "success_count": 10,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 299635,
+   "speed_ul_bps": 248248,
+   "success_ratio": 1.0,
+   "quality_rank": 3
   }
  ]
 }
