@@ -2,52 +2,86 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "47.239.4.246",
+   "address": "219.76.13.177",
    "port": 443,
    "observed_country": "HK",
-   "egress_ip": "47.239.4.246",
+   "egress_ip": "219.76.13.177",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-26T07:55:47Z",
-   "verification_age_s": 27254,
+   "verification_timestamp": "2026-10-26T21:05:39Z",
+   "verification_age_s": 713,
    "source_countries": [
     "HK"
    ],
    "sources": [
     "catalog:HK",
-    "domain:ProxyIP.HK.CMLiussss.net",
-    "domain:proxyip.aliyun.hw.090227.xyz"
+    "domain:ProxyIP.HK.CMLiussss.net"
    ],
-   "score": 20,
-   "last_rtt_ms": 1861,
-   "last_success": "2026-10-26T07:55:47Z",
-   "success_count": 12,
+   "score": 45,
+   "last_rtt_ms": 976,
+   "last_success": "2026-10-26T21:05:39Z",
+   "success_count": 71,
    "failure_count": 0,
    "status": "verified",
-   "capability": "cf-relay",
+   "capability": "passthrough",
    "http_forwarding": false,
    "risk": "low",
-   "ip_type": "datacenter",
+   "ip_type": "isp",
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
    "quality_rank": 1
   },
   {
-   "address": "103.39.78.118",
-   "port": 8443,
+   "address": "151.243.229.150",
+   "port": 443,
    "observed_country": "HK",
-   "egress_ip": "2401:b60:12:40::2",
+   "egress_ip": "2a0e:97c0:3f0:1::156c",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-26T07:55:47Z",
-   "verification_age_s": 27254,
+   "verification_timestamp": "2026-10-26T21:05:39Z",
+   "verification_age_s": 713,
+   "source_countries": [
+    "HK"
+   ],
+   "sources": [
+    "catalog:HK"
+   ],
+   "score": 23,
+   "last_rtt_ms": 1096,
+   "last_success": "2026-10-26T21:05:39Z",
+   "success_count": 11,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 254244,
+   "speed_ul_bps": 326136,
+   "success_ratio": 1.0,
+   "quality_rank": 2
+  },
+  {
+   "address": "103.193.172.196",
+   "port": 443,
+   "observed_country": "HK",
+   "egress_ip": "2404:8c80:ff00::40",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-26T21:05:39Z",
+   "verification_age_s": 713,
    "source_countries": [
     "HK"
    ],
@@ -55,8 +89,8 @@
     "catalog:HK"
    ],
    "score": 20,
-   "last_rtt_ms": 2122,
-   "last_success": "2026-10-26T07:55:47Z",
+   "last_rtt_ms": 743,
+   "last_success": "2026-10-26T21:05:39Z",
    "success_count": 11,
    "failure_count": 0,
    "status": "verified",
@@ -67,20 +101,20 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 2
+   "quality_rank": 3
   },
   {
-   "address": "103.118.254.37",
+   "address": "151.242.125.102",
    "port": 443,
    "observed_country": "HK",
-   "egress_ip": "2404:8c80:85:1084::a6",
+   "egress_ip": "2a0e:97c0:7da:0:7048:b724:1114:5985",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-26T07:55:47Z",
-   "verification_age_s": 27254,
+   "verification_timestamp": "2026-10-26T21:05:39Z",
+   "verification_age_s": 713,
    "source_countries": [
     "HK"
    ],
@@ -88,9 +122,9 @@
     "catalog:HK"
    ],
    "score": 20,
-   "last_rtt_ms": 2331,
-   "last_success": "2026-10-26T07:55:47Z",
-   "success_count": 11,
+   "last_rtt_ms": 912,
+   "last_success": "2026-10-26T21:05:39Z",
+   "success_count": 12,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
@@ -99,8 +133,43 @@
    "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
+   "speed_dl_bps": 94133,
+   "speed_ul_bps": 109540,
    "success_ratio": 1.0,
-   "quality_rank": 3
+   "quality_rank": 4
+  },
+  {
+   "address": "149.104.29.237",
+   "port": 443,
+   "observed_country": "HK",
+   "egress_ip": "2001:df1:7880:2::18e7",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-26T21:05:39Z",
+   "verification_age_s": 713,
+   "source_countries": [
+    "HK"
+   ],
+   "sources": [
+    "catalog:HK"
+   ],
+   "score": 17,
+   "last_rtt_ms": 702,
+   "last_success": "2026-10-26T21:05:39Z",
+   "success_count": 11,
+   "failure_count": 1,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 0.92,
+   "quality_rank": 5
   },
   {
    "address": "219.76.13.181",
@@ -112,8 +181,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-26T15:18:10Z",
-   "verification_age_s": 711,
+   "verification_timestamp": "2026-10-26T21:05:39Z",
+   "verification_age_s": 713,
    "source_countries": [
     "HK"
    ],
@@ -122,9 +191,9 @@
     "domain:ProxyIP.HK.CMLiussss.net"
    ],
    "score": 17,
-   "last_rtt_ms": 1219,
-   "last_success": "2026-10-26T15:18:10Z",
-   "success_count": 73,
+   "last_rtt_ms": 938,
+   "last_success": "2026-10-26T21:05:39Z",
+   "success_count": 74,
    "failure_count": 1,
    "status": "verified",
    "capability": "passthrough",
@@ -136,40 +205,40 @@
    "speed_dl_bps": 370963,
    "speed_ul_bps": 313306,
    "success_ratio": 0.99,
-   "quality_rank": 4
+   "quality_rank": 6
   },
   {
-   "address": "103.97.200.42",
+   "address": "149.104.31.208",
    "port": 443,
    "observed_country": "HK",
-   "egress_ip": "2a0e:97c0:3f0:1::8a4",
+   "egress_ip": "2001:df1:7880:2::1908",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-26T07:55:47Z",
-   "verification_age_s": 27254,
+   "verification_timestamp": "2026-10-26T21:05:39Z",
+   "verification_age_s": 713,
    "source_countries": [
     "HK"
    ],
    "sources": [
     "catalog:HK"
    ],
-   "score": 14,
-   "last_rtt_ms": 2159,
-   "last_success": "2026-10-26T07:55:47Z",
-   "success_count": 9,
-   "failure_count": 2,
+   "score": 17,
+   "last_rtt_ms": 11775,
+   "last_success": "2026-10-26T21:05:39Z",
+   "success_count": 10,
+   "failure_count": 1,
    "status": "verified",
    "capability": "cf-relay",
    "http_forwarding": false,
    "risk": "low",
-   "ip_type": "isp",
+   "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "success_ratio": 0.82,
-   "quality_rank": 5
+   "success_ratio": 0.91,
+   "quality_rank": 7
   },
   {
    "address": "8.210.29.68",
@@ -181,8 +250,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-26T15:18:10Z",
-   "verification_age_s": 711,
+   "verification_timestamp": "2026-10-26T21:05:39Z",
+   "verification_age_s": 713,
    "source_countries": [
     "HK"
    ],
@@ -191,9 +260,9 @@
     "domain:ProxyIP.HK.CMLiussss.net"
    ],
    "score": 14,
-   "last_rtt_ms": 1247,
-   "last_success": "2026-10-26T15:18:10Z",
-   "success_count": 88,
+   "last_rtt_ms": 783,
+   "last_success": "2026-10-26T21:05:39Z",
+   "success_count": 89,
    "failure_count": 3,
    "status": "verified",
    "capability": "passthrough",
@@ -205,7 +274,7 @@
    "speed_dl_bps": 291028,
    "speed_ul_bps": 327889,
    "success_ratio": 0.97,
-   "quality_rank": 6
+   "quality_rank": 8
   },
   {
    "address": "103.244.90.20",
@@ -218,7 +287,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-26T15:18:10Z",
-   "verification_age_s": 711,
+   "verification_age_s": 21562,
    "source_countries": [
     "HK"
    ],
@@ -238,7 +307,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 7
+   "quality_rank": 9
   },
   {
    "address": "154.16.183.190",
@@ -251,7 +320,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-26T15:18:10Z",
-   "verification_age_s": 711,
+   "verification_age_s": 21562,
    "source_countries": [
     "HK"
    ],
@@ -273,7 +342,75 @@
    "speed_dl_bps": 405619,
    "speed_ul_bps": 350152,
    "success_ratio": 0.91,
-   "quality_rank": 8
+   "quality_rank": 10
+  },
+  {
+   "address": "149.104.6.78",
+   "port": 8443,
+   "observed_country": "HK",
+   "egress_ip": "2400:f880:49e:e722::34dd",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-26T21:05:39Z",
+   "verification_age_s": 713,
+   "source_countries": [
+    "HK"
+   ],
+   "sources": [
+    "catalog:HK"
+   ],
+   "score": 0,
+   "last_rtt_ms": 957,
+   "last_success": "2026-10-26T21:05:39Z",
+   "success_count": 12,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 396713,
+   "speed_ul_bps": 220352,
+   "success_ratio": 1.0,
+   "quality_rank": 11
+  },
+  {
+   "address": "149.104.6.15",
+   "port": 443,
+   "observed_country": "HK",
+   "egress_ip": "2400:f880:49e:e722::3f7d",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-26T21:05:39Z",
+   "verification_age_s": 713,
+   "source_countries": [
+    "HK"
+   ],
+   "sources": [
+    "catalog:HK"
+   ],
+   "score": 0,
+   "last_rtt_ms": 962,
+   "last_success": "2026-10-26T21:05:39Z",
+   "success_count": 9,
+   "failure_count": 2,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 0.82,
+   "quality_rank": 12
   }
  ]
 }
