@@ -3,41 +3,6 @@
  "endpoints": [
   {
    "address": "130.94.58.215",
-   "port": 8443,
-   "observed_country": "SA",
-   "egress_ip": "130.94.58.215",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-30T00:00:32Z",
-   "verification_age_s": 658,
-   "source_countries": [
-    "SA"
-   ],
-   "sources": [
-    "catalog:SA"
-   ],
-   "score": 6,
-   "last_rtt_ms": 992,
-   "last_success": "2026-10-30T00:00:32Z",
-   "success_count": 155,
-   "failure_count": 15,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "speed_dl_bps": 267850,
-   "speed_ul_bps": 219922,
-   "success_ratio": 0.91,
-   "quality_rank": 1
-  },
-  {
-   "address": "130.94.58.215",
    "port": 443,
    "observed_country": "SA",
    "egress_ip": "130.94.58.215",
@@ -46,8 +11,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-30T00:00:32Z",
-   "verification_age_s": 658,
+   "verification_timestamp": "2026-10-30T06:00:41Z",
+   "verification_age_s": 648,
    "source_countries": [
     "SA"
    ],
@@ -55,9 +20,9 @@
     "catalog:SA"
    ],
    "score": 6,
-   "last_rtt_ms": 1016,
-   "last_success": "2026-10-30T00:00:32Z",
-   "success_count": 148,
+   "last_rtt_ms": 911,
+   "last_success": "2026-10-30T06:00:41Z",
+   "success_count": 149,
    "failure_count": 22,
    "status": "verified",
    "capability": "cf-relay",
@@ -69,6 +34,41 @@
    "speed_dl_bps": 319090,
    "speed_ul_bps": 260240,
    "success_ratio": 0.87,
+   "quality_rank": 1
+  },
+  {
+   "address": "130.94.58.215",
+   "port": 8443,
+   "observed_country": "SA",
+   "egress_ip": "130.94.58.215",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-30T06:00:41Z",
+   "verification_age_s": 648,
+   "source_countries": [
+    "SA"
+   ],
+   "sources": [
+    "catalog:SA"
+   ],
+   "score": 6,
+   "last_rtt_ms": 934,
+   "last_success": "2026-10-30T06:00:41Z",
+   "success_count": 156,
+   "failure_count": 15,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "speed_dl_bps": 267850,
+   "speed_ul_bps": 219922,
+   "success_ratio": 0.91,
    "quality_rank": 2
   }
  ]
