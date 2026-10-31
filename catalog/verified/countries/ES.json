@@ -2,6 +2,105 @@
  "schema_version": 1,
  "endpoints": [
   {
+   "address": "65.20.105.75",
+   "port": 443,
+   "observed_country": "ES",
+   "egress_ip": "2a05:f480:2800:2caa:5400:6ff:fe7c:1cf6",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-31T12:47:31Z",
+   "verification_age_s": 610,
+   "source_countries": [
+    "ES"
+   ],
+   "sources": [
+    "catalog:ES"
+   ],
+   "score": 26,
+   "last_rtt_ms": 369,
+   "last_success": "2026-10-31T12:47:31Z",
+   "success_count": 21,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
+   "address": "82.223.109.250",
+   "port": 443,
+   "observed_country": "ES",
+   "egress_ip": "82.223.109.250",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-31T12:47:31Z",
+   "verification_age_s": 610,
+   "source_countries": [
+    "ES"
+   ],
+   "sources": [
+    "catalog:ES"
+   ],
+   "score": 24,
+   "last_rtt_ms": 415,
+   "last_success": "2026-10-31T12:47:31Z",
+   "success_count": 21,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 2
+  },
+  {
+   "address": "78.138.9.206",
+   "port": 8443,
+   "observed_country": "ES",
+   "egress_ip": "2a0b:7140:9:1:5054:ff:fe40:49e7",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-31T12:47:31Z",
+   "verification_age_s": 610,
+   "source_countries": [
+    "ES"
+   ],
+   "sources": [
+    "catalog:ES"
+   ],
+   "score": 23,
+   "last_rtt_ms": 448,
+   "last_success": "2026-10-31T12:47:31Z",
+   "success_count": 21,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 3
+  },
+  {
    "address": "91.149.242.134",
    "port": 443,
    "observed_country": "ES",
@@ -12,7 +111,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-31T05:56:22Z",
-   "verification_age_s": 643,
+   "verification_age_s": 25279,
    "source_countries": [
     "ES"
    ],
@@ -32,73 +131,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 1
-  },
-  {
-   "address": "94.143.138.159",
-   "port": 443,
-   "observed_country": "ES",
-   "egress_ip": "94.143.138.159",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-30T23:54:32Z",
-   "verification_age_s": 22353,
-   "source_countries": [
-    "ES"
-   ],
-   "sources": [
-    "catalog:ES"
-   ],
-   "score": 20,
-   "last_rtt_ms": 622,
-   "last_success": "2026-10-30T23:54:32Z",
-   "success_count": 21,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 2
-  },
-  {
-   "address": "93.93.118.60",
-   "port": 8443,
-   "observed_country": "ES",
-   "egress_ip": "2001:ba0:215:7500::1",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-30T23:54:32Z",
-   "verification_age_s": 22353,
-   "source_countries": [
-    "ES"
-   ],
-   "sources": [
-    "catalog:ES"
-   ],
-   "score": 20,
-   "last_rtt_ms": 626,
-   "last_success": "2026-10-30T23:54:32Z",
-   "success_count": 21,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 3
+   "quality_rank": 4
   },
   {
    "address": "82.223.196.199",
@@ -111,7 +144,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-10-31T05:56:22Z",
-   "verification_age_s": 643,
+   "verification_age_s": 25279,
    "source_countries": [
     "ES"
    ],
@@ -131,20 +164,20 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 4
+   "quality_rank": 5
   },
   {
-   "address": "93.93.119.91",
+   "address": "45.86.229.28",
    "port": 443,
    "observed_country": "ES",
-   "egress_ip": "93.93.119.91",
+   "egress_ip": "2a10:1fc0:3::e23b:504b",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-30T23:54:32Z",
-   "verification_age_s": 22353,
+   "verification_timestamp": "2026-10-31T12:47:31Z",
+   "verification_age_s": 610,
    "source_countries": [
     "ES"
    ],
@@ -152,8 +185,8 @@
     "catalog:ES"
    ],
    "score": 0,
-   "last_rtt_ms": 619,
-   "last_success": "2026-10-30T23:54:32Z",
+   "last_rtt_ms": 329,
+   "last_success": "2026-10-31T12:47:31Z",
    "success_count": 21,
    "failure_count": 0,
    "status": "verified",
@@ -164,39 +197,6 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 5
-  },
-  {
-   "address": "95.85.89.70",
-   "port": 81,
-   "observed_country": "ES",
-   "egress_ip": "95.85.89.70",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-30T23:54:32Z",
-   "verification_age_s": 22353,
-   "source_countries": [
-    "ES"
-   ],
-   "sources": [
-    "catalog:ES"
-   ],
-   "score": 0,
-   "last_rtt_ms": 709,
-   "last_success": "2026-10-30T23:54:32Z",
-   "success_count": 19,
-   "failure_count": 2,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "high",
-   "ip_type": "vpn/proxy",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 0.9,
    "quality_rank": 6
   }
  ]

@@ -2,6 +2,41 @@
  "schema_version": 1,
  "endpoints": [
   {
+   "address": "91.239.6.51",
+   "port": 8443,
+   "observed_country": "AL",
+   "egress_ip": "2001:67c:fd0:102:43::a",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-10-31T12:47:31Z",
+   "verification_age_s": 610,
+   "source_countries": [
+    "AL"
+   ],
+   "sources": [
+    "catalog:AL"
+   ],
+   "score": 19,
+   "last_rtt_ms": 530,
+   "last_success": "2026-10-31T12:47:31Z",
+   "success_count": 171,
+   "failure_count": 7,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 512268,
+   "speed_ul_bps": 404813,
+   "success_ratio": 0.96,
+   "quality_rank": 1
+  },
+  {
    "address": "89.125.139.115",
    "port": 443,
    "observed_country": "AL",
@@ -11,8 +46,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-31T05:56:22Z",
-   "verification_age_s": 643,
+   "verification_timestamp": "2026-10-31T12:47:31Z",
+   "verification_age_s": 610,
    "source_countries": [
     "AL"
    ],
@@ -20,9 +55,9 @@
     "catalog:AL"
    ],
    "score": 18,
-   "last_rtt_ms": 702,
-   "last_success": "2026-10-31T05:56:22Z",
-   "success_count": 175,
+   "last_rtt_ms": 532,
+   "last_success": "2026-10-31T12:47:31Z",
+   "success_count": 176,
    "failure_count": 2,
    "status": "verified",
    "capability": "cf-relay",
@@ -34,41 +69,6 @@
    "speed_dl_bps": 79967,
    "speed_ul_bps": 358088,
    "success_ratio": 0.99,
-   "quality_rank": 1
-  },
-  {
-   "address": "91.239.6.51",
-   "port": 8443,
-   "observed_country": "AL",
-   "egress_ip": "2001:67c:fd0:102:43::a",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T05:56:22Z",
-   "verification_age_s": 643,
-   "source_countries": [
-    "AL"
-   ],
-   "sources": [
-    "catalog:AL"
-   ],
-   "score": 17,
-   "last_rtt_ms": 688,
-   "last_success": "2026-10-31T05:56:22Z",
-   "success_count": 170,
-   "failure_count": 7,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "speed_dl_bps": 461007,
-   "speed_ul_bps": 385072,
-   "success_ratio": 0.96,
    "quality_rank": 2
   },
   {
@@ -81,8 +81,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-31T05:56:22Z",
-   "verification_age_s": 643,
+   "verification_timestamp": "2026-10-31T12:47:31Z",
+   "verification_age_s": 610,
    "source_countries": [
     "AL"
    ],
@@ -90,9 +90,9 @@
     "catalog:AL"
    ],
    "score": 0,
-   "last_rtt_ms": 621,
-   "last_success": "2026-10-31T05:56:22Z",
-   "success_count": 177,
+   "last_rtt_ms": 532,
+   "last_success": "2026-10-31T12:47:31Z",
+   "success_count": 178,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
