@@ -2,26 +2,61 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "91.184.249.100",
-   "port": 8443,
+   "address": "132.243.237.53",
+   "port": 443,
    "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1::209",
+   "egress_ip": "132.243.237.53",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-31T23:29:00Z",
-   "verification_age_s": 25505,
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
    "source_countries": [
     "CZ"
    ],
    "sources": [
     "catalog:CZ"
    ],
-   "score": 26,
-   "last_rtt_ms": 666,
-   "last_success": "2026-10-31T23:29:00Z",
+   "score": 27,
+   "last_rtt_ms": 450,
+   "last_success": "2026-11-01T13:40:12Z",
+   "success_count": 25,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 482990,
+   "speed_ul_bps": 356971,
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
+   "address": "91.184.248.98",
+   "port": 8443,
+   "observed_country": "CZ",
+   "egress_ip": "2a11:3b80:1::28f9",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
+   "source_countries": [
+    "CZ"
+   ],
+   "sources": [
+    "catalog:CZ"
+   ],
+   "score": 27,
+   "last_rtt_ms": 485,
+   "last_success": "2026-11-01T13:40:12Z",
    "success_count": 26,
    "failure_count": 0,
    "status": "verified",
@@ -31,10 +66,10 @@
    "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "speed_dl_bps": 498877,
-   "speed_ul_bps": 417660,
+   "speed_dl_bps": 506608,
+   "speed_ul_bps": 397745,
    "success_ratio": 1.0,
-   "quality_rank": 1
+   "quality_rank": 2
   },
   {
    "address": "92.61.71.112",
@@ -47,7 +82,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-01T06:24:09Z",
-   "verification_age_s": 596,
+   "verification_age_s": 26786,
    "source_countries": [
     "CZ"
    ],
@@ -69,7 +104,7 @@
    "speed_dl_bps": 521456,
    "speed_ul_bps": 390616,
    "success_ratio": 1.0,
-   "quality_rank": 2
+   "quality_rank": 3
   },
   {
    "address": "92.61.70.205",
@@ -82,7 +117,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-01T06:24:09Z",
-   "verification_age_s": 596,
+   "verification_age_s": 26786,
    "source_countries": [
     "CZ"
    ],
@@ -104,42 +139,42 @@
    "speed_dl_bps": 507883,
    "speed_ul_bps": 379994,
    "success_ratio": 1.0,
-   "quality_rank": 3
+   "quality_rank": 4
   },
   {
-   "address": "91.199.154.161",
-   "port": 8443,
+   "address": "141.133.175.133",
+   "port": 443,
    "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1::4969",
+   "egress_ip": "2a11:3b80:1::70a1",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-31T23:29:00Z",
-   "verification_age_s": 25505,
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
    "source_countries": [
     "CZ"
    ],
    "sources": [
     "catalog:CZ"
    ],
-   "score": 25,
-   "last_rtt_ms": 633,
-   "last_success": "2026-10-31T23:29:00Z",
-   "success_count": 26,
+   "score": 26,
+   "last_rtt_ms": 763,
+   "last_success": "2026-11-01T13:40:12Z",
+   "success_count": 25,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
    "http_forwarding": false,
    "risk": "low",
-   "ip_type": "datacenter",
+   "ip_type": "isp",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "speed_dl_bps": 468142,
-   "speed_ul_bps": 390456,
+   "speed_dl_bps": 537468,
+   "speed_ul_bps": 382834,
    "success_ratio": 1.0,
-   "quality_rank": 4
+   "quality_rank": 5
   },
   {
    "address": "91.199.160.39",
@@ -152,7 +187,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-01T06:24:09Z",
-   "verification_age_s": 596,
+   "verification_age_s": 26786,
    "source_countries": [
     "CZ"
    ],
@@ -174,77 +209,7 @@
    "speed_dl_bps": 489500,
    "speed_ul_bps": 376431,
    "success_ratio": 1.0,
-   "quality_rank": 5
-  },
-  {
-   "address": "178.208.91.177",
-   "port": 443,
-   "observed_country": "CZ",
-   "egress_ip": "178.208.91.177",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T18:39:02Z",
-   "verification_age_s": 42903,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 24,
-   "last_rtt_ms": 651,
-   "last_success": "2026-10-31T18:39:02Z",
-   "success_count": 25,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "speed_dl_bps": 394059,
-   "speed_ul_bps": 381357,
-   "success_ratio": 1.0,
    "quality_rank": 6
-  },
-  {
-   "address": "91.184.249.146",
-   "port": 443,
-   "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1::42d1",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T23:29:00Z",
-   "verification_age_s": 25505,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 23,
-   "last_rtt_ms": 692,
-   "last_success": "2026-10-31T23:29:00Z",
-   "success_count": 25,
-   "failure_count": 1,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "speed_dl_bps": 433509,
-   "speed_ul_bps": 388400,
-   "success_ratio": 0.96,
-   "quality_rank": 7
   },
   {
    "address": "91.199.160.38",
@@ -257,7 +222,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-01T06:24:09Z",
-   "verification_age_s": 596,
+   "verification_age_s": 26786,
    "source_countries": [
     "CZ"
    ],
@@ -279,30 +244,63 @@
    "speed_dl_bps": 493044,
    "speed_ul_bps": 391769,
    "success_ratio": 0.96,
-   "quality_rank": 8
+   "quality_rank": 7
   },
   {
-   "address": "87.236.146.203",
-   "port": 8443,
+   "address": "89.125.106.157",
+   "port": 443,
    "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1::63d9",
+   "egress_ip": "2605:e440:a::7f",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-31T18:39:02Z",
-   "verification_age_s": 42903,
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
    "source_countries": [
     "CZ"
    ],
    "sources": [
     "catalog:CZ"
    ],
-   "score": 20,
-   "last_rtt_ms": 603,
-   "last_success": "2026-10-31T18:39:02Z",
+   "score": 23,
+   "last_rtt_ms": 441,
+   "last_success": "2026-11-01T13:40:12Z",
    "success_count": 26,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 8
+  },
+  {
+   "address": "109.238.95.54",
+   "port": 443,
+   "observed_country": "CZ",
+   "egress_ip": "2a11:3b80:1::7de9",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
+   "source_countries": [
+    "CZ"
+   ],
+   "sources": [
+    "catalog:CZ"
+   ],
+   "score": 21,
+   "last_rtt_ms": 484,
+   "last_success": "2026-11-01T13:40:12Z",
+   "success_count": 25,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
@@ -315,26 +313,26 @@
    "quality_rank": 9
   },
   {
-   "address": "85.255.6.88",
+   "address": "85.137.167.180",
    "port": 443,
    "observed_country": "CZ",
-   "egress_ip": "2001:15e8:110:7d00::3bb",
+   "egress_ip": "2a11:3b80:1::5139",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-31T18:39:02Z",
-   "verification_age_s": 42903,
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
    "source_countries": [
     "CZ"
    ],
    "sources": [
     "catalog:CZ"
    ],
-   "score": 20,
-   "last_rtt_ms": 626,
-   "last_success": "2026-10-31T18:39:02Z",
+   "score": 21,
+   "last_rtt_ms": 496,
+   "last_success": "2026-11-01T13:40:12Z",
    "success_count": 26,
    "failure_count": 0,
    "status": "verified",
@@ -348,336 +346,6 @@
    "quality_rank": 10
   },
   {
-   "address": "87.236.146.111",
-   "port": 443,
-   "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1::2fa9",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T18:39:02Z",
-   "verification_age_s": 42903,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 20,
-   "last_rtt_ms": 638,
-   "last_success": "2026-10-31T18:39:02Z",
-   "success_count": 26,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 11
-  },
-  {
-   "address": "85.137.167.21",
-   "port": 443,
-   "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1::4501",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T18:39:02Z",
-   "verification_age_s": 42903,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 20,
-   "last_rtt_ms": 645,
-   "last_success": "2026-10-31T18:39:02Z",
-   "success_count": 26,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 12
-  },
-  {
-   "address": "87.236.146.43",
-   "port": 443,
-   "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1:0:39::1",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T18:39:02Z",
-   "verification_age_s": 42903,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 20,
-   "last_rtt_ms": 645,
-   "last_success": "2026-10-31T18:39:02Z",
-   "success_count": 26,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 13
-  },
-  {
-   "address": "178.208.75.153",
-   "port": 443,
-   "observed_country": "CZ",
-   "egress_ip": "178.208.75.153",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T18:39:02Z",
-   "verification_age_s": 42903,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 20,
-   "last_rtt_ms": 655,
-   "last_success": "2026-10-31T18:39:02Z",
-   "success_count": 25,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 14
-  },
-  {
-   "address": "87.236.146.76",
-   "port": 443,
-   "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1::6219",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T18:39:02Z",
-   "verification_age_s": 42903,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 20,
-   "last_rtt_ms": 660,
-   "last_success": "2026-10-31T18:39:02Z",
-   "success_count": 26,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 15
-  },
-  {
-   "address": "85.137.167.53",
-   "port": 443,
-   "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1::4dd1",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T18:39:02Z",
-   "verification_age_s": 42903,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 20,
-   "last_rtt_ms": 668,
-   "last_success": "2026-10-31T18:39:02Z",
-   "success_count": 26,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 16
-  },
-  {
-   "address": "91.199.147.23",
-   "port": 443,
-   "observed_country": "CZ",
-   "egress_ip": "91.199.147.23",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T23:29:00Z",
-   "verification_age_s": 25505,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 20,
-   "last_rtt_ms": 662,
-   "last_success": "2026-10-31T23:29:00Z",
-   "success_count": 26,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 17
-  },
-  {
-   "address": "176.74.219.73",
-   "port": 8443,
-   "observed_country": "CZ",
-   "egress_ip": "176.74.219.73",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T23:29:00Z",
-   "verification_age_s": 25505,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 20,
-   "last_rtt_ms": 678,
-   "last_success": "2026-10-31T23:29:00Z",
-   "success_count": 25,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 18
-  },
-  {
-   "address": "91.199.147.228",
-   "port": 8443,
-   "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1::39a1",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T23:29:00Z",
-   "verification_age_s": 25505,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 20,
-   "last_rtt_ms": 694,
-   "last_success": "2026-10-31T23:29:00Z",
-   "success_count": 26,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 19
-  },
-  {
-   "address": "91.199.147.241",
-   "port": 8443,
-   "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1:0:1b6::1",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T23:29:00Z",
-   "verification_age_s": 25505,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 20,
-   "last_rtt_ms": 708,
-   "last_success": "2026-10-31T23:29:00Z",
-   "success_count": 26,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 20
-  },
-  {
    "address": "109.172.8.80",
    "port": 443,
    "observed_country": "CZ",
@@ -688,7 +356,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-01T06:24:09Z",
-   "verification_age_s": 596,
+   "verification_age_s": 26786,
    "source_countries": [
     "CZ"
    ],
@@ -708,7 +376,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 21
+   "quality_rank": 11
   },
   {
    "address": "109.172.8.74",
@@ -721,7 +389,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-01T06:24:09Z",
-   "verification_age_s": 596,
+   "verification_age_s": 26786,
    "source_countries": [
     "CZ"
    ],
@@ -741,7 +409,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 22
+   "quality_rank": 12
   },
   {
    "address": "109.172.8.73",
@@ -754,7 +422,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-01T06:24:09Z",
-   "verification_age_s": 596,
+   "verification_age_s": 26786,
    "source_countries": [
     "CZ"
    ],
@@ -774,7 +442,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 23
+   "quality_rank": 13
   },
   {
    "address": "92.61.71.49",
@@ -787,7 +455,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-01T06:24:09Z",
-   "verification_age_s": 596,
+   "verification_age_s": 26786,
    "source_countries": [
     "CZ"
    ],
@@ -807,7 +475,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 24
+   "quality_rank": 14
   },
   {
    "address": "109.172.9.38",
@@ -820,7 +488,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-01T06:24:09Z",
-   "verification_age_s": 596,
+   "verification_age_s": 26786,
    "source_countries": [
     "CZ"
    ],
@@ -840,7 +508,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 25
+   "quality_rank": 15
   },
   {
    "address": "109.172.9.242",
@@ -853,7 +521,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-01T06:24:09Z",
-   "verification_age_s": 596,
+   "verification_age_s": 26786,
    "source_countries": [
     "CZ"
    ],
@@ -873,7 +541,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 26
+   "quality_rank": 16
   },
   {
    "address": "92.61.71.90",
@@ -886,7 +554,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-01T06:24:09Z",
-   "verification_age_s": 596,
+   "verification_age_s": 26786,
    "source_countries": [
     "CZ"
    ],
@@ -906,53 +574,152 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 27
+   "quality_rank": 17
   },
   {
-   "address": "185.21.223.42",
-   "port": 8443,
+   "address": "91.184.248.36",
+   "port": 443,
    "observed_country": "CZ",
-   "egress_ip": "2a00:5c20:200:16:8647:9ff:fe2f:6143",
+   "egress_ip": "2a11:3b80:1:0:117::1",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-31T18:39:02Z",
-   "verification_age_s": 42903,
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
    "source_countries": [
     "CZ"
    ],
    "sources": [
     "catalog:CZ"
    ],
-   "score": 18,
-   "last_rtt_ms": 619,
-   "last_success": "2026-10-31T18:39:02Z",
+   "score": 20,
+   "last_rtt_ms": 501,
+   "last_success": "2026-11-01T13:40:12Z",
+   "success_count": 26,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 18
+  },
+  {
+   "address": "109.234.32.32",
+   "port": 443,
+   "observed_country": "CZ",
+   "egress_ip": "109.234.32.32",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
+   "source_countries": [
+    "CZ"
+   ],
+   "sources": [
+    "catalog:CZ"
+   ],
+   "score": 20,
+   "last_rtt_ms": 768,
+   "last_success": "2026-11-01T13:40:12Z",
+   "success_count": 25,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 19
+  },
+  {
+   "address": "91.184.248.209",
+   "port": 8443,
+   "observed_country": "CZ",
+   "egress_ip": "2a11:3b80:1::2251",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
+   "source_countries": [
+    "CZ"
+   ],
+   "sources": [
+    "catalog:CZ"
+   ],
+   "score": 19,
+   "last_rtt_ms": 477,
+   "last_success": "2026-11-01T13:40:12Z",
+   "success_count": 25,
+   "failure_count": 1,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 0.96,
+   "quality_rank": 20
+  },
+  {
+   "address": "109.238.95.229",
+   "port": 443,
+   "observed_country": "CZ",
+   "egress_ip": "2a11:3b80:1::7d81",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
+   "source_countries": [
+    "CZ"
+   ],
+   "sources": [
+    "catalog:CZ"
+   ],
+   "score": 19,
+   "last_rtt_ms": 491,
+   "last_success": "2026-11-01T13:40:12Z",
    "success_count": 24,
    "failure_count": 1,
    "status": "verified",
    "capability": "cf-relay",
    "http_forwarding": false,
    "risk": "low",
-   "ip_type": "isp",
+   "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 0.96,
-   "quality_rank": 28
+   "quality_rank": 21
   },
   {
-   "address": "91.199.147.41",
-   "port": 443,
+   "address": "91.184.248.209",
+   "port": 2053,
    "observed_country": "CZ",
-   "egress_ip": "2a11:3b80:1::2959",
+   "egress_ip": "2a11:3b80:1::2251",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-31T23:29:00Z",
-   "verification_age_s": 25505,
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
    "source_countries": [
     "CZ"
    ],
@@ -960,8 +727,8 @@
     "catalog:CZ"
    ],
    "score": 18,
-   "last_rtt_ms": 650,
-   "last_success": "2026-10-31T23:29:00Z",
+   "last_rtt_ms": 500,
+   "last_success": "2026-11-01T13:40:12Z",
    "success_count": 25,
    "failure_count": 1,
    "status": "verified",
@@ -972,75 +739,40 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 0.96,
-   "quality_rank": 29
+   "quality_rank": 22
   },
   {
-   "address": "85.255.15.65",
-   "port": 2053,
+   "address": "85.137.167.209",
+   "port": 443,
    "observed_country": "CZ",
-   "egress_ip": "85.255.15.65",
+   "egress_ip": "2a11:3b80:1::3739",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-10-31T18:39:02Z",
-   "verification_age_s": 42903,
+   "verification_timestamp": "2026-11-01T13:40:12Z",
+   "verification_age_s": 623,
    "source_countries": [
     "CZ"
    ],
    "sources": [
     "catalog:CZ"
    ],
-   "score": 5,
-   "last_rtt_ms": 657,
-   "last_success": "2026-10-31T18:39:02Z",
-   "success_count": 26,
-   "failure_count": 0,
+   "score": 18,
+   "last_rtt_ms": 508,
+   "last_success": "2026-11-01T13:40:12Z",
+   "success_count": 25,
+   "failure_count": 1,
    "status": "verified",
-   "capability": "sni-terminate",
+   "capability": "cf-relay",
    "http_forwarding": false,
    "risk": "low",
    "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 30
-  },
-  {
-   "address": "103.119.18.30",
-   "port": 443,
-   "observed_country": "CZ",
-   "egress_ip": "103.119.18.30",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-10-31T23:29:00Z",
-   "verification_age_s": 25505,
-   "source_countries": [
-    "CZ"
-   ],
-   "sources": [
-    "catalog:CZ"
-   ],
-   "score": 0,
-   "last_rtt_ms": 660,
-   "last_success": "2026-10-31T23:29:00Z",
-   "success_count": 25,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "high",
-   "ip_type": "vpn/proxy",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "speed_dl_bps": 470253,
-   "speed_ul_bps": 390445,
-   "success_ratio": 1.0,
-   "quality_rank": 31
+   "success_ratio": 0.96,
+   "quality_rank": 23
   }
  ]
 }
