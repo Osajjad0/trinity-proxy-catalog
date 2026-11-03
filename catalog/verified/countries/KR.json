@@ -2,6 +2,42 @@
  "schema_version": 1,
  "endpoints": [
   {
+   "address": "119.205.235.58",
+   "port": 443,
+   "observed_country": "KR",
+   "egress_ip": "119.205.235.58",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-03T19:37:21Z",
+   "verification_age_s": 720,
+   "source_countries": [
+    "KR"
+   ],
+   "sources": [
+    "catalog:KR",
+    "domain:ProxyIP.KR.CMLiussss.net"
+   ],
+   "score": 22,
+   "last_rtt_ms": 1665,
+   "last_success": "2026-11-03T19:37:21Z",
+   "success_count": 36,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 241673,
+   "speed_ul_bps": 89566,
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
    "address": "130.94.29.155",
    "port": 443,
    "observed_country": "KR",
@@ -12,7 +48,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-03T12:03:28Z",
-   "verification_age_s": 668,
+   "verification_age_s": 27953,
    "source_countries": [
     "KR"
    ],
@@ -35,140 +71,7 @@
    "speed_dl_bps": 127443,
    "speed_ul_bps": 192876,
    "success_ratio": 1.0,
-   "quality_rank": 1
-  },
-  {
-   "address": "146.56.151.92",
-   "port": 443,
-   "observed_country": "KR",
-   "egress_ip": "2603:c022:8012:623d:0:3a79:be4f:a108",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-11-03T02:27:07Z",
-   "verification_age_s": 35249,
-   "source_countries": [
-    "KR"
-   ],
-   "sources": [
-    "catalog:KR"
-   ],
-   "score": 20,
-   "last_rtt_ms": 627,
-   "last_success": "2026-11-03T02:27:07Z",
-   "success_count": 38,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
    "quality_rank": 2
-  },
-  {
-   "address": "131.186.16.166",
-   "port": 443,
-   "observed_country": "KR",
-   "egress_ip": "131.186.16.166",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-11-03T02:27:07Z",
-   "verification_age_s": 35249,
-   "source_countries": [
-    "KR"
-   ],
-   "sources": [
-    "catalog:KR",
-    "domain:ProxyIP.KR.CMLiussss.net"
-   ],
-   "score": 20,
-   "last_rtt_ms": 636,
-   "last_success": "2026-11-03T02:27:07Z",
-   "success_count": 38,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 3
-  },
-  {
-   "address": "158.247.220.241",
-   "port": 443,
-   "observed_country": "KR",
-   "egress_ip": "158.247.220.241",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-11-03T02:27:07Z",
-   "verification_age_s": 35249,
-   "source_countries": [
-    "KR"
-   ],
-   "sources": [
-    "domain:ProxyIP.KR.CMLiussss.net"
-   ],
-   "score": 20,
-   "last_rtt_ms": 641,
-   "last_success": "2026-11-03T02:27:07Z",
-   "success_count": 21,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 4
-  },
-  {
-   "address": "168.107.40.4",
-   "port": 8443,
-   "observed_country": "KR",
-   "egress_ip": "2603:c024:15:ef00:0:7a69:2f33:68a1",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-11-03T02:27:07Z",
-   "verification_age_s": 35249,
-   "source_countries": [
-    "KR"
-   ],
-   "sources": [
-    "catalog:KR"
-   ],
-   "score": 20,
-   "last_rtt_ms": 811,
-   "last_success": "2026-11-03T02:27:07Z",
-   "success_count": 37,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 5
   },
   {
    "address": "64.110.79.66",
@@ -181,7 +84,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-03T12:03:28Z",
-   "verification_age_s": 668,
+   "verification_age_s": 27953,
    "source_countries": [
     "KR"
    ],
@@ -201,7 +104,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 6
+   "quality_rank": 3
   },
   {
    "address": "152.69.229.110",
@@ -214,7 +117,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-03T12:03:28Z",
-   "verification_age_s": 668,
+   "verification_age_s": 27953,
    "source_countries": [
     "KR"
    ],
@@ -235,7 +138,40 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 7
+   "quality_rank": 4
+  },
+  {
+   "address": "158.247.253.111",
+   "port": 8443,
+   "observed_country": "KR",
+   "egress_ip": "2401:c080:1c02:21e:5400:5ff:fed7:6204",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-03T19:37:21Z",
+   "verification_age_s": 720,
+   "source_countries": [
+    "KR"
+   ],
+   "sources": [
+    "catalog:KR"
+   ],
+   "score": 20,
+   "last_rtt_ms": 576,
+   "last_success": "2026-11-03T19:37:21Z",
+   "success_count": 37,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 5
   },
   {
    "address": "61.85.1.77",
@@ -248,7 +184,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-03T12:03:28Z",
-   "verification_age_s": 668,
+   "verification_age_s": 27953,
    "source_countries": [
     "KR"
    ],
@@ -268,6 +204,73 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 0.97,
+   "quality_rank": 6
+  },
+  {
+   "address": "146.56.188.74",
+   "port": 443,
+   "observed_country": "KR",
+   "egress_ip": "146.56.188.74",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-03T19:37:21Z",
+   "verification_age_s": 720,
+   "source_countries": [
+    "KR"
+   ],
+   "sources": [
+    "catalog:KR",
+    "domain:ProxyIP.KR.CMLiussss.net"
+   ],
+   "score": 18,
+   "last_rtt_ms": 565,
+   "last_success": "2026-11-03T19:37:21Z",
+   "success_count": 37,
+   "failure_count": 1,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 0.97,
+   "quality_rank": 7
+  },
+  {
+   "address": "103.218.173.218",
+   "port": 443,
+   "observed_country": "KR",
+   "egress_ip": "103.218.173.218",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-03T19:37:21Z",
+   "verification_age_s": 720,
+   "source_countries": [
+    "KR"
+   ],
+   "sources": [
+    "domain:ProxyIP.KR.CMLiussss.net"
+   ],
+   "score": 15,
+   "last_rtt_ms": 579,
+   "last_success": "2026-11-03T19:37:21Z",
+   "success_count": 18,
+   "failure_count": 2,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 0.9,
    "quality_rank": 8
   },
   {
@@ -281,7 +284,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-03T12:03:28Z",
-   "verification_age_s": 668,
+   "verification_age_s": 27953,
    "source_countries": [
     "KR"
    ],
@@ -307,171 +310,40 @@
    "quality_rank": 9
   },
   {
-   "address": "132.226.21.116",
-   "port": 6056,
+   "address": "140.238.5.86",
+   "port": 443,
    "observed_country": "KR",
-   "egress_ip": "132.226.21.116",
+   "egress_ip": "140.238.5.86",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-03T02:27:07Z",
-   "verification_age_s": 35249,
+   "verification_timestamp": "2026-11-03T19:37:21Z",
+   "verification_age_s": 720,
    "source_countries": [
     "KR"
    ],
    "sources": [
-    "catalog:KR"
+    "catalog:KR",
+    "domain:ProxyIP.KR.CMLiussss.net"
    ],
-   "score": 0,
-   "last_rtt_ms": 620,
-   "last_success": "2026-11-03T02:27:07Z",
-   "success_count": 38,
-   "failure_count": 0,
+   "score": 7,
+   "last_rtt_ms": 557,
+   "last_success": "2026-11-03T19:37:21Z",
+   "success_count": 27,
+   "failure_count": 11,
    "status": "verified",
    "capability": "cf-relay",
    "http_forwarding": false,
-   "risk": "high",
-   "ip_type": "vpn/proxy",
+   "risk": "low",
+   "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
+   "speed_dl_bps": 325382,
+   "speed_ul_bps": 269226,
+   "success_ratio": 0.71,
    "quality_rank": 10
-  },
-  {
-   "address": "146.56.187.1",
-   "port": 8443,
-   "observed_country": "KR",
-   "egress_ip": "2603:c022:8011:3499:7b8c:e6c5:6c2b:709f",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-11-03T02:27:07Z",
-   "verification_age_s": 35249,
-   "source_countries": [
-    "KR"
-   ],
-   "sources": [
-    "catalog:KR"
-   ],
-   "score": 0,
-   "last_rtt_ms": 622,
-   "last_success": "2026-11-03T02:27:07Z",
-   "success_count": 38,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "high",
-   "ip_type": "vpn/proxy",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "speed_dl_bps": 326146,
-   "speed_ul_bps": 283323,
-   "success_ratio": 1.0,
-   "quality_rank": 11
-  },
-  {
-   "address": "146.56.42.21",
-   "port": 7777,
-   "observed_country": "KR",
-   "egress_ip": "2a09:bac5:4736:1482::20b:80",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-11-03T02:27:07Z",
-   "verification_age_s": 35249,
-   "source_countries": [
-    "KR"
-   ],
-   "sources": [
-    "catalog:KR"
-   ],
-   "score": 0,
-   "last_rtt_ms": 634,
-   "last_success": "2026-11-03T02:27:07Z",
-   "success_count": 37,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "high",
-   "ip_type": "vpn/proxy",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 12
-  },
-  {
-   "address": "132.145.84.148",
-   "port": 39567,
-   "observed_country": "KR",
-   "egress_ip": "132.145.84.148",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-11-03T02:27:07Z",
-   "verification_age_s": 35249,
-   "source_countries": [
-    "KR"
-   ],
-   "sources": [
-    "catalog:KR"
-   ],
-   "score": 0,
-   "last_rtt_ms": 636,
-   "last_success": "2026-11-03T02:27:07Z",
-   "success_count": 36,
-   "failure_count": 2,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "high",
-   "ip_type": "vpn/proxy",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 0.95,
-   "quality_rank": 13
-  },
-  {
-   "address": "146.56.99.22",
-   "port": 20443,
-   "observed_country": "KR",
-   "egress_ip": "146.56.99.22",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-11-03T02:27:07Z",
-   "verification_age_s": 35249,
-   "source_countries": [
-    "KR"
-   ],
-   "sources": [
-    "catalog:KR"
-   ],
-   "score": 0,
-   "last_rtt_ms": 728,
-   "last_success": "2026-11-03T02:27:07Z",
-   "success_count": 38,
-   "failure_count": 0,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "high",
-   "ip_type": "vpn/proxy",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "success_ratio": 1.0,
-   "quality_rank": 14
   },
   {
    "address": "54.180.151.15",
@@ -484,7 +356,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-03T12:03:28Z",
-   "verification_age_s": 668,
+   "verification_age_s": 27953,
    "source_countries": [
     "KR"
    ],
@@ -506,7 +378,7 @@
    "speed_dl_bps": 376223,
    "speed_ul_bps": 224679,
    "success_ratio": 1.0,
-   "quality_rank": 15
+   "quality_rank": 11
   },
   {
    "address": "152.67.210.234",
@@ -519,7 +391,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-03T12:03:28Z",
-   "verification_age_s": 668,
+   "verification_age_s": 27953,
    "source_countries": [
     "KR"
    ],
@@ -542,7 +414,7 @@
    "speed_dl_bps": 53986,
    "speed_ul_bps": 25010,
    "success_ratio": 1.0,
-   "quality_rank": 16
+   "quality_rank": 12
   },
   {
    "address": "144.24.73.232",
@@ -555,7 +427,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-03T12:03:28Z",
-   "verification_age_s": 668,
+   "verification_age_s": 27953,
    "source_countries": [
     "KR"
    ],
@@ -567,6 +439,140 @@
    "last_rtt_ms": 1063,
    "last_success": "2026-11-03T12:03:28Z",
    "success_count": 39,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 13
+  },
+  {
+   "address": "64.110.70.64",
+   "port": 443,
+   "observed_country": "KR",
+   "egress_ip": "2603:c022:8001:6c11:bf03:707a:ed83:fcb6",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-03T19:37:21Z",
+   "verification_age_s": 720,
+   "source_countries": [
+    "KR"
+   ],
+   "sources": [
+    "catalog:KR"
+   ],
+   "score": 0,
+   "last_rtt_ms": 545,
+   "last_success": "2026-11-03T19:37:21Z",
+   "success_count": 40,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 14
+  },
+  {
+   "address": "131.186.24.124",
+   "port": 587,
+   "observed_country": "KR",
+   "egress_ip": "131.186.24.124",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-03T19:37:21Z",
+   "verification_age_s": 720,
+   "source_countries": [
+    "KR"
+   ],
+   "sources": [
+    "catalog:KR"
+   ],
+   "score": 0,
+   "last_rtt_ms": 562,
+   "last_success": "2026-11-03T19:37:21Z",
+   "success_count": 38,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 389414,
+   "speed_ul_bps": 333248,
+   "success_ratio": 1.0,
+   "quality_rank": 15
+  },
+  {
+   "address": "158.247.250.157",
+   "port": 81,
+   "observed_country": "KR",
+   "egress_ip": "2401:c080:1c02:45c:5400:5ff:fe14:6e3a",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-03T19:37:21Z",
+   "verification_age_s": 720,
+   "source_countries": [
+    "KR"
+   ],
+   "sources": [
+    "catalog:KR"
+   ],
+   "score": 0,
+   "last_rtt_ms": 570,
+   "last_success": "2026-11-03T19:37:21Z",
+   "success_count": 39,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 16
+  },
+  {
+   "address": "144.24.87.69",
+   "port": 50001,
+   "observed_country": "KR",
+   "egress_ip": "144.24.87.69",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-03T19:37:21Z",
+   "verification_age_s": 720,
+   "source_countries": [
+    "KR"
+   ],
+   "sources": [
+    "catalog:KR"
+   ],
+   "score": 0,
+   "last_rtt_ms": 601,
+   "last_success": "2026-11-03T19:37:21Z",
+   "success_count": 38,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
