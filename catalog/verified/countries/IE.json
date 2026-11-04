@@ -2,37 +2,37 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "54.247.36.82",
-   "port": 443,
+   "address": "198.55.102.68",
+   "port": 2083,
    "observed_country": "IE",
-   "egress_ip": "54.247.36.82",
+   "egress_ip": "198.55.102.68",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "IE"
    ],
    "sources": [
     "catalog:IE"
    ],
-   "score": 59,
-   "last_rtt_ms": 346,
-   "last_success": "2026-11-04T09:28:48Z",
-   "success_count": 169,
+   "score": 28,
+   "last_rtt_ms": 723,
+   "last_success": "2026-11-04T18:04:38Z",
+   "success_count": 112,
    "failure_count": 0,
    "status": "verified",
-   "capability": "passthrough",
+   "capability": "cf-relay",
    "http_forwarding": false,
    "risk": "low",
    "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "speed_dl_bps": 629061,
-   "speed_ul_bps": 352610,
+   "speed_dl_bps": 633837,
+   "speed_ul_bps": 442037,
    "success_ratio": 1.0,
    "quality_rank": 1
   },
@@ -46,21 +46,21 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "IE"
    ],
    "sources": [
     "catalog:IE"
    ],
-   "score": 59,
-   "last_rtt_ms": 368,
-   "last_success": "2026-11-04T09:28:48Z",
-   "success_count": 168,
+   "score": 13,
+   "last_rtt_ms": 602,
+   "last_success": "2026-11-04T18:04:38Z",
+   "success_count": 169,
    "failure_count": 0,
    "status": "verified",
-   "capability": "passthrough",
+   "capability": "sni-terminate",
    "http_forwarding": false,
    "risk": "low",
    "ip_type": "datacenter",
@@ -72,37 +72,37 @@
    "quality_rank": 2
   },
   {
-   "address": "198.55.102.68",
-   "port": 2083,
+   "address": "54.247.36.82",
+   "port": 443,
    "observed_country": "IE",
-   "egress_ip": "198.55.102.68",
+   "egress_ip": "54.247.36.82",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T00:41:40Z",
-   "verification_age_s": 32285,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "IE"
    ],
    "sources": [
     "catalog:IE"
    ],
-   "score": 29,
-   "last_rtt_ms": 498,
-   "last_success": "2026-11-04T00:41:40Z",
-   "success_count": 111,
+   "score": 12,
+   "last_rtt_ms": 619,
+   "last_success": "2026-11-04T18:04:38Z",
+   "success_count": 170,
    "failure_count": 0,
    "status": "verified",
-   "capability": "cf-relay",
+   "capability": "sni-terminate",
    "http_forwarding": false,
    "risk": "low",
    "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "speed_dl_bps": 633837,
-   "speed_ul_bps": 442037,
+   "speed_dl_bps": 629061,
+   "speed_ul_bps": 352610,
    "success_ratio": 1.0,
    "quality_rank": 3
   },
@@ -116,18 +116,18 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "IE"
    ],
    "sources": [
     "catalog:IE"
    ],
-   "score": 5,
-   "last_rtt_ms": 321,
-   "last_success": "2026-11-04T09:28:48Z",
-   "success_count": 169,
+   "score": 0,
+   "last_rtt_ms": 580,
+   "last_success": "2026-11-04T18:04:38Z",
+   "success_count": 170,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
@@ -151,18 +151,18 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "IE"
    ],
    "sources": [
     "catalog:IE"
    ],
-   "score": 5,
-   "last_rtt_ms": 328,
-   "last_success": "2026-11-04T09:28:48Z",
-   "success_count": 169,
+   "score": 0,
+   "last_rtt_ms": 593,
+   "last_success": "2026-11-04T18:04:38Z",
+   "success_count": 170,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",

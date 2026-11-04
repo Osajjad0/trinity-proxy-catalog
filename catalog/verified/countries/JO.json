@@ -3,7 +3,7 @@
  "endpoints": [
   {
    "address": "138.68.78.187",
-   "port": 9377,
+   "port": 12306,
    "observed_country": "JO",
    "egress_ip": "94.127.214.97",
    "country_confidence": "high",
@@ -11,34 +11,34 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "JO"
    ],
    "sources": [
     "catalog:JO"
    ],
-   "score": 39,
-   "last_rtt_ms": 629,
-   "last_success": "2026-11-04T09:28:48Z",
+   "score": 12,
+   "last_rtt_ms": 890,
+   "last_success": "2026-11-04T18:04:38Z",
    "success_count": 183,
-   "failure_count": 6,
+   "failure_count": 7,
    "status": "verified",
-   "capability": "passthrough",
+   "capability": "tls-error",
    "http_forwarding": false,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
-   "speed_dl_bps": 501039,
-   "speed_ul_bps": 265332,
-   "success_ratio": 0.97,
+   "speed_dl_bps": 475630,
+   "speed_ul_bps": 231811,
+   "success_ratio": 0.96,
    "quality_rank": 1
   },
   {
    "address": "138.68.78.187",
-   "port": 486,
+   "port": 32225,
    "observed_country": "JO",
    "egress_ip": "94.127.214.97",
    "country_confidence": "high",
@@ -46,29 +46,29 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "JO"
    ],
    "sources": [
     "catalog:JO"
    ],
-   "score": 39,
-   "last_rtt_ms": 632,
-   "last_success": "2026-11-04T09:28:48Z",
+   "score": 0,
+   "last_rtt_ms": 869,
+   "last_success": "2026-11-04T18:04:38Z",
    "success_count": 183,
-   "failure_count": 6,
+   "failure_count": 7,
    "status": "verified",
-   "capability": "passthrough",
+   "capability": "sni-terminate",
    "http_forwarding": false,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
-   "speed_dl_bps": 513107,
-   "speed_ul_bps": 345673,
-   "success_ratio": 0.97,
+   "speed_dl_bps": 485889,
+   "speed_ul_bps": 325240,
+   "success_ratio": 0.96,
    "quality_rank": 2
   },
   {
@@ -81,21 +81,21 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "JO"
    ],
    "sources": [
     "catalog:JO"
    ],
-   "score": 39,
-   "last_rtt_ms": 653,
-   "last_success": "2026-11-04T09:28:48Z",
-   "success_count": 183,
+   "score": 0,
+   "last_rtt_ms": 879,
+   "last_success": "2026-11-04T18:04:38Z",
+   "success_count": 184,
    "failure_count": 6,
    "status": "verified",
-   "capability": "passthrough",
+   "capability": "sni-terminate",
    "http_forwarding": false,
    "risk": "unknown",
    "ip_type": "unknown",
@@ -108,7 +108,7 @@
   },
   {
    "address": "138.68.78.187",
-   "port": 4399,
+   "port": 386,
    "observed_country": "JO",
    "egress_ip": "94.127.214.97",
    "country_confidence": "high",
@@ -116,30 +116,65 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "JO"
    ],
    "sources": [
     "catalog:JO"
    ],
-   "score": 38,
-   "last_rtt_ms": 621,
-   "last_success": "2026-11-04T09:28:48Z",
-   "success_count": 183,
+   "score": 0,
+   "last_rtt_ms": 890,
+   "last_success": "2026-11-04T18:04:38Z",
+   "success_count": 184,
    "failure_count": 6,
    "status": "verified",
-   "capability": "passthrough",
+   "capability": "sni-terminate",
    "http_forwarding": false,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
-   "speed_dl_bps": 496204,
-   "speed_ul_bps": 307254,
+   "speed_dl_bps": 495711,
+   "speed_ul_bps": 324148,
    "success_ratio": 0.97,
    "quality_rank": 4
+  },
+  {
+   "address": "138.68.78.187",
+   "port": 486,
+   "observed_country": "JO",
+   "egress_ip": "94.127.214.97",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
+   "source_countries": [
+    "JO"
+   ],
+   "sources": [
+    "catalog:JO"
+   ],
+   "score": 0,
+   "last_rtt_ms": 890,
+   "last_success": "2026-11-04T18:04:38Z",
+   "success_count": 184,
+   "failure_count": 6,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "speed_dl_bps": 513107,
+   "speed_ul_bps": 345673,
+   "success_ratio": 0.97,
+   "quality_rank": 5
   },
   {
    "address": "138.68.78.187",
@@ -151,21 +186,21 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "JO"
    ],
    "sources": [
     "catalog:JO"
    ],
-   "score": 38,
-   "last_rtt_ms": 629,
-   "last_success": "2026-11-04T09:28:48Z",
-   "success_count": 183,
+   "score": 0,
+   "last_rtt_ms": 908,
+   "last_success": "2026-11-04T18:04:38Z",
+   "success_count": 184,
    "failure_count": 6,
    "status": "verified",
-   "capability": "passthrough",
+   "capability": "sni-terminate",
    "http_forwarding": false,
    "risk": "unknown",
    "ip_type": "unknown",
@@ -174,46 +209,11 @@
    "speed_dl_bps": 465252,
    "speed_ul_bps": 322624,
    "success_ratio": 0.97,
-   "quality_rank": 5
-  },
-  {
-   "address": "138.68.78.187",
-   "port": 386,
-   "observed_country": "JO",
-   "egress_ip": "94.127.214.97",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
-   "source_countries": [
-    "JO"
-   ],
-   "sources": [
-    "catalog:JO"
-   ],
-   "score": 38,
-   "last_rtt_ms": 650,
-   "last_success": "2026-11-04T09:28:48Z",
-   "success_count": 183,
-   "failure_count": 6,
-   "status": "verified",
-   "capability": "passthrough",
-   "http_forwarding": false,
-   "risk": "unknown",
-   "ip_type": "unknown",
-   "confidence": "unknown",
-   "source": "unknown",
-   "speed_dl_bps": 495711,
-   "speed_ul_bps": 324148,
-   "success_ratio": 0.97,
    "quality_rank": 6
   },
   {
    "address": "138.68.78.187",
-   "port": 32225,
+   "port": 4399,
    "observed_country": "JO",
    "egress_ip": "94.127.214.97",
    "country_confidence": "high",
@@ -221,34 +221,34 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "JO"
    ],
    "sources": [
     "catalog:JO"
    ],
-   "score": 37,
-   "last_rtt_ms": 653,
-   "last_success": "2026-11-04T09:28:48Z",
-   "success_count": 182,
-   "failure_count": 7,
+   "score": 0,
+   "last_rtt_ms": 914,
+   "last_success": "2026-11-04T18:04:38Z",
+   "success_count": 184,
+   "failure_count": 6,
    "status": "verified",
-   "capability": "passthrough",
+   "capability": "sni-terminate",
    "http_forwarding": false,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
-   "speed_dl_bps": 485889,
-   "speed_ul_bps": 325240,
-   "success_ratio": 0.96,
+   "speed_dl_bps": 496204,
+   "speed_ul_bps": 307254,
+   "success_ratio": 0.97,
    "quality_rank": 7
   },
   {
    "address": "138.68.78.187",
-   "port": 12306,
+   "port": 9377,
    "observed_country": "JO",
    "egress_ip": "94.127.214.97",
    "country_confidence": "high",
@@ -256,29 +256,29 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-04T09:28:48Z",
-   "verification_age_s": 657,
+   "verification_timestamp": "2026-11-04T18:04:38Z",
+   "verification_age_s": 637,
    "source_countries": [
     "JO"
    ],
    "sources": [
     "catalog:JO"
    ],
-   "score": 37,
-   "last_rtt_ms": 657,
-   "last_success": "2026-11-04T09:28:48Z",
-   "success_count": 182,
-   "failure_count": 7,
+   "score": 0,
+   "last_rtt_ms": 946,
+   "last_success": "2026-11-04T18:04:38Z",
+   "success_count": 184,
+   "failure_count": 6,
    "status": "verified",
-   "capability": "passthrough",
+   "capability": "sni-terminate",
    "http_forwarding": false,
    "risk": "unknown",
    "ip_type": "unknown",
    "confidence": "unknown",
    "source": "unknown",
-   "speed_dl_bps": 475630,
-   "speed_ul_bps": 231811,
-   "success_ratio": 0.96,
+   "speed_dl_bps": 501039,
+   "speed_ul_bps": 265332,
+   "success_ratio": 0.97,
    "quality_rank": 8
   }
  ]
