@@ -2,36 +2,36 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "188.240.213.40",
+   "address": "38.54.2.13",
    "port": 443,
-   "observed_country": "KG",
-   "egress_ip": "188.240.213.40",
+   "observed_country": "BH",
+   "egress_ip": "38.54.2.13",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-05T07:00:10Z",
-   "verification_age_s": 583,
+   "verification_timestamp": "2026-11-05T16:33:27Z",
+   "verification_age_s": 611,
    "source_countries": [
-    "KG"
+    "BH"
    ],
    "sources": [
-    "catalog:KG"
+    "catalog:BH"
    ],
-   "score": 14,
-   "last_rtt_ms": 884,
-   "last_success": "2026-11-05T07:00:10Z",
-   "success_count": 187,
-   "failure_count": 5,
+   "score": 0,
+   "last_rtt_ms": 1037,
+   "last_success": "2026-11-05T16:33:27Z",
+   "success_count": 23,
+   "failure_count": 171,
    "status": "verified",
    "capability": "cf-relay",
    "http_forwarding": false,
    "risk": "low",
-   "ip_type": "isp",
+   "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "success_ratio": 0.97,
+   "success_ratio": 0.12,
    "quality_rank": 1
   }
  ]

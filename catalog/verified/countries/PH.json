@@ -2,6 +2,41 @@
  "schema_version": 1,
  "endpoints": [
   {
+   "address": "38.54.81.111",
+   "port": 443,
+   "observed_country": "PH",
+   "egress_ip": "38.54.81.111",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-05T16:33:27Z",
+   "verification_age_s": 611,
+   "source_countries": [
+    "PH"
+   ],
+   "sources": [
+    "catalog:PH"
+   ],
+   "score": 18,
+   "last_rtt_ms": 6010,
+   "last_success": "2026-11-05T16:33:27Z",
+   "success_count": 193,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "speed_dl_bps": 292514,
+   "speed_ul_bps": 226433,
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
    "address": "61.245.10.8",
    "port": 443,
    "observed_country": "PH",
@@ -11,8 +46,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-05T07:00:10Z",
-   "verification_age_s": 583,
+   "verification_timestamp": "2026-11-05T16:33:27Z",
+   "verification_age_s": 611,
    "source_countries": [
     "PH"
    ],
@@ -20,9 +55,9 @@
     "catalog:PH"
    ],
    "score": 12,
-   "last_rtt_ms": 1016,
-   "last_success": "2026-11-05T07:00:10Z",
-   "success_count": 186,
+   "last_rtt_ms": 891,
+   "last_success": "2026-11-05T16:33:27Z",
+   "success_count": 187,
    "failure_count": 6,
    "status": "verified",
    "capability": "cf-relay",
@@ -34,7 +69,42 @@
    "speed_dl_bps": 346361,
    "speed_ul_bps": 281437,
    "success_ratio": 0.97,
-   "quality_rank": 1
+   "quality_rank": 2
+  },
+  {
+   "address": "61.245.11.45",
+   "port": 443,
+   "observed_country": "PH",
+   "egress_ip": "2602:fa63:800:46::2",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-05T16:33:27Z",
+   "verification_age_s": 611,
+   "source_countries": [
+    "PH"
+   ],
+   "sources": [
+    "catalog:PH"
+   ],
+   "score": 8,
+   "last_rtt_ms": 865,
+   "last_success": "2026-11-05T16:33:27Z",
+   "success_count": 182,
+   "failure_count": 11,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "speed_dl_bps": 344927,
+   "speed_ul_bps": 227311,
+   "success_ratio": 0.94,
+   "quality_rank": 3
   }
  ]
 }
