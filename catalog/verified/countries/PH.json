@@ -2,6 +2,41 @@
  "schema_version": 1,
  "endpoints": [
   {
+   "address": "38.54.81.111",
+   "port": 443,
+   "observed_country": "PH",
+   "egress_ip": "38.54.81.111",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-13T01:13:14Z",
+   "verification_age_s": 498,
+   "source_countries": [
+    "PH"
+   ],
+   "sources": [
+    "catalog:PH"
+   ],
+   "score": 19,
+   "last_rtt_ms": 6075,
+   "last_success": "2026-11-13T01:13:14Z",
+   "success_count": 218,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "speed_dl_bps": 320653,
+   "speed_ul_bps": 233778,
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
    "address": "61.245.10.8",
    "port": 443,
    "observed_country": "PH",
@@ -11,8 +46,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-12T18:25:38Z",
-   "verification_age_s": 649,
+   "verification_timestamp": "2026-11-13T01:13:14Z",
+   "verification_age_s": 498,
    "source_countries": [
     "PH"
    ],
@@ -20,9 +55,9 @@
     "catalog:PH"
    ],
    "score": 8,
-   "last_rtt_ms": 755,
-   "last_success": "2026-11-12T18:25:38Z",
-   "success_count": 206,
+   "last_rtt_ms": 958,
+   "last_success": "2026-11-13T01:13:14Z",
+   "success_count": 207,
    "failure_count": 11,
    "status": "verified",
    "capability": "cf-relay",
@@ -34,7 +69,7 @@
    "speed_dl_bps": 346361,
    "speed_ul_bps": 281437,
    "success_ratio": 0.95,
-   "quality_rank": 1
+   "quality_rank": 2
   }
  ]
 }
