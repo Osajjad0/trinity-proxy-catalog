@@ -11,8 +11,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_timestamp": "2026-11-17T02:59:33Z",
+   "verification_age_s": 559,
    "source_countries": [
     "TR"
    ],
@@ -20,9 +20,9 @@
     "catalog:TR"
    ],
    "score": 40,
-   "last_rtt_ms": 914,
-   "last_success": "2026-11-16T18:40:59Z",
-   "success_count": 140,
+   "last_rtt_ms": 942,
+   "last_success": "2026-11-17T02:59:33Z",
+   "success_count": 141,
    "failure_count": 3,
    "status": "verified",
    "capability": "passthrough",
@@ -47,18 +47,18 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "TR"
    ],
    "sources": [
     "catalog:TR"
    ],
-   "score": 25,
+   "score": 23,
    "last_rtt_ms": 925,
    "last_success": "2026-11-16T18:40:59Z",
    "success_count": 79,
-   "failure_count": 52,
+   "failure_count": 53,
    "status": "verified",
    "capability": "passthrough",
    "http_forwarding": false,
@@ -82,7 +82,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "TR"
    ],
@@ -118,7 +118,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "TR"
    ],
@@ -153,7 +153,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "TR"
    ],
@@ -189,7 +189,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "TR"
    ],
@@ -224,7 +224,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "TR"
    ],
@@ -250,6 +250,39 @@
    "quality_rank": 7
   },
   {
+   "address": "212.115.103.222",
+   "port": 8443,
+   "observed_country": "TR",
+   "egress_ip": "212.115.103.222",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-17T02:59:33Z",
+   "verification_age_s": 559,
+   "source_countries": [
+    "TR"
+   ],
+   "sources": [
+    "catalog:TR"
+   ],
+   "score": 15,
+   "last_rtt_ms": 798,
+   "last_success": "2026-11-17T02:59:33Z",
+   "success_count": 33,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 8
+  },
+  {
    "address": "185.219.132.27",
    "port": 443,
    "observed_country": "TR",
@@ -260,7 +293,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "TR"
    ],
@@ -283,7 +316,7 @@
    "speed_dl_bps": 515139,
    "speed_ul_bps": 372734,
    "success_ratio": 1.0,
-   "quality_rank": 8
+   "quality_rank": 9
   },
   {
    "address": "155.103.69.91",
@@ -296,7 +329,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "TR"
    ],
@@ -318,7 +351,43 @@
    "speed_dl_bps": 450930,
    "speed_ul_bps": 387739,
    "success_ratio": 1.0,
-   "quality_rank": 9
+   "quality_rank": 10
+  },
+  {
+   "address": "89.45.45.144",
+   "port": 443,
+   "observed_country": "TR",
+   "egress_ip": "89.45.45.144",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-17T02:59:33Z",
+   "verification_age_s": 559,
+   "source_countries": [
+    "TR"
+   ],
+   "sources": [
+    "catalog:TR",
+    "domain:tr.diam4.ggff.net"
+   ],
+   "score": 5,
+   "last_rtt_ms": 790,
+   "last_success": "2026-11-17T02:59:33Z",
+   "success_count": 32,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "speed_dl_bps": 443725,
+   "speed_ul_bps": 272940,
+   "success_ratio": 1.0,
+   "quality_rank": 11
   },
   {
    "address": "38.180.113.155",
@@ -331,7 +400,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "TR"
    ],
@@ -351,7 +420,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 0.97,
-   "quality_rank": 10
+   "quality_rank": 12
   }
  ]
 }

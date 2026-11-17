@@ -2,6 +2,41 @@
  "schema_version": 1,
  "endpoints": [
   {
+   "address": "45.144.49.146",
+   "port": 443,
+   "observed_country": "PL",
+   "egress_ip": "45.144.49.146",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-17T02:59:33Z",
+   "verification_age_s": 559,
+   "source_countries": [
+    "PL"
+   ],
+   "sources": [
+    "catalog:PL"
+   ],
+   "score": 46,
+   "last_rtt_ms": 700,
+   "last_success": "2026-11-17T02:59:33Z",
+   "success_count": 130,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "passthrough",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "speed_dl_bps": 514831,
+   "speed_ul_bps": 392106,
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
    "address": "91.196.163.185",
    "port": 443,
    "observed_country": "PL",
@@ -11,8 +46,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_timestamp": "2026-11-17T02:59:33Z",
+   "verification_age_s": 559,
    "source_countries": [
     "PL"
    ],
@@ -20,9 +55,9 @@
     "catalog:PL"
    ],
    "score": 41,
-   "last_rtt_ms": 753,
-   "last_success": "2026-11-16T18:40:59Z",
-   "success_count": 143,
+   "last_rtt_ms": 693,
+   "last_success": "2026-11-17T02:59:33Z",
+   "success_count": 144,
    "failure_count": 3,
    "status": "verified",
    "capability": "passthrough",
@@ -34,7 +69,7 @@
    "speed_dl_bps": 425511,
    "speed_ul_bps": 337929,
    "success_ratio": 0.98,
-   "quality_rank": 1
+   "quality_rank": 2
   },
   {
    "address": "141.105.130.102",
@@ -46,8 +81,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_timestamp": "2026-11-17T02:59:33Z",
+   "verification_age_s": 559,
    "source_countries": [
     "UA"
    ],
@@ -55,9 +90,9 @@
     "catalog:UA"
    ],
    "score": 16,
-   "last_rtt_ms": 997,
-   "last_success": "2026-11-16T18:40:59Z",
-   "success_count": 230,
+   "last_rtt_ms": 992,
+   "last_success": "2026-11-17T02:59:33Z",
+   "success_count": 231,
    "failure_count": 0,
    "status": "verified",
    "capability": "cf-relay",
@@ -69,7 +104,7 @@
    "speed_dl_bps": 514171,
    "speed_ul_bps": 382607,
    "success_ratio": 1.0,
-   "quality_rank": 2
+   "quality_rank": 3
   },
   {
    "address": "45.140.204.38",
@@ -82,7 +117,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "PL"
    ],
@@ -102,7 +137,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 3
+   "quality_rank": 4
   },
   {
    "address": "82.118.20.234",
@@ -115,7 +150,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "PL"
    ],
@@ -135,7 +170,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 4
+   "quality_rank": 5
   },
   {
    "address": "82.40.38.216",
@@ -148,7 +183,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "PL"
    ],
@@ -168,7 +203,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 5
+   "quality_rank": 6
   },
   {
    "address": "89.125.27.97",
@@ -181,7 +216,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "PL"
    ],
@@ -201,7 +236,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 6
+   "quality_rank": 7
   },
   {
    "address": "89.125.93.222",
@@ -214,7 +249,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "PL"
    ],
@@ -234,7 +269,106 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 1.0,
-   "quality_rank": 7
+   "quality_rank": 8
+  },
+  {
+   "address": "95.85.229.60",
+   "port": 8443,
+   "observed_country": "PL",
+   "egress_ip": "95.85.229.60",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-17T02:59:33Z",
+   "verification_age_s": 559,
+   "source_countries": [
+    "PL"
+   ],
+   "sources": [
+    "catalog:PL"
+   ],
+   "score": 15,
+   "last_rtt_ms": 712,
+   "last_success": "2026-11-17T02:59:33Z",
+   "success_count": 13,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 9
+  },
+  {
+   "address": "51.68.141.223",
+   "port": 443,
+   "observed_country": "PL",
+   "egress_ip": "51.68.141.223",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-17T02:59:33Z",
+   "verification_age_s": 559,
+   "source_countries": [
+    "PL"
+   ],
+   "sources": [
+    "catalog:PL"
+   ],
+   "score": 15,
+   "last_rtt_ms": 725,
+   "last_success": "2026-11-17T02:59:33Z",
+   "success_count": 13,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 10
+  },
+  {
+   "address": "93.95.97.23",
+   "port": 443,
+   "observed_country": "PL",
+   "egress_ip": "2001:470:70:888::2",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-17T02:59:33Z",
+   "verification_age_s": 559,
+   "source_countries": [
+    "PL"
+   ],
+   "sources": [
+    "catalog:PL"
+   ],
+   "score": 15,
+   "last_rtt_ms": 940,
+   "last_success": "2026-11-17T02:59:33Z",
+   "success_count": 13,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 1.0,
+   "quality_rank": 11
   },
   {
    "address": "87.239.135.188",
@@ -247,7 +381,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "PL"
    ],
@@ -267,7 +401,40 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 0.92,
-   "quality_rank": 8
+   "quality_rank": 12
+  },
+  {
+   "address": "92.118.150.93",
+   "port": 8443,
+   "observed_country": "PL",
+   "egress_ip": "2a0a:8c42::1fe",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-17T02:59:33Z",
+   "verification_age_s": 559,
+   "source_countries": [
+    "PL"
+   ],
+   "sources": [
+    "catalog:PL"
+   ],
+   "score": 12,
+   "last_rtt_ms": 760,
+   "last_success": "2026-11-17T02:59:33Z",
+   "success_count": 12,
+   "failure_count": 1,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "unknown",
+   "ip_type": "unknown",
+   "confidence": "unknown",
+   "source": "unknown",
+   "success_ratio": 0.92,
+   "quality_rank": 13
   },
   {
    "address": "82.38.65.242",
@@ -280,7 +447,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-16T18:40:59Z",
-   "verification_age_s": 588,
+   "verification_age_s": 30473,
    "source_countries": [
     "PL"
    ],
@@ -300,7 +467,7 @@
    "confidence": "unknown",
    "source": "unknown",
    "success_ratio": 0.85,
-   "quality_rank": 9
+   "quality_rank": 14
   }
  ]
 }
