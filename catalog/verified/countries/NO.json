@@ -2,41 +2,6 @@
  "schema_version": 1,
  "endpoints": [
   {
-   "address": "202.50.55.76",
-   "port": 443,
-   "observed_country": "NO",
-   "egress_ip": "202.50.55.76",
-   "country_confidence": "high",
-   "verification_sources": [
-    "cloudflare-trace",
-    "ipwho"
-   ],
-   "verification_timestamp": "2026-11-19T00:31:40Z",
-   "verification_age_s": 582,
-   "source_countries": [
-    "NO"
-   ],
-   "sources": [
-    "catalog:NO"
-   ],
-   "score": 13,
-   "last_rtt_ms": 663,
-   "last_success": "2026-11-19T00:31:40Z",
-   "success_count": 220,
-   "failure_count": 16,
-   "status": "verified",
-   "capability": "cf-relay",
-   "http_forwarding": false,
-   "risk": "low",
-   "ip_type": "datacenter",
-   "confidence": "high",
-   "source": "ip-api+ipwho",
-   "speed_dl_bps": 463794,
-   "speed_ul_bps": 391603,
-   "success_ratio": 0.93,
-   "quality_rank": 1
-  },
-  {
    "address": "194.5.98.105",
    "port": 2053,
    "observed_country": "NO",
@@ -46,18 +11,18 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-19T00:31:40Z",
-   "verification_age_s": 582,
+   "verification_timestamp": "2026-11-19T10:30:09Z",
+   "verification_age_s": 583,
    "source_countries": [
     "NO"
    ],
    "sources": [
     "catalog:NO"
    ],
-   "score": 6,
-   "last_rtt_ms": 667,
-   "last_success": "2026-11-19T00:31:40Z",
-   "success_count": 134,
+   "score": 8,
+   "last_rtt_ms": 471,
+   "last_success": "2026-11-19T10:30:09Z",
+   "success_count": 135,
    "failure_count": 102,
    "status": "verified",
    "capability": "cf-relay",
@@ -69,7 +34,7 @@
    "speed_dl_bps": 504975,
    "speed_ul_bps": 424893,
    "success_ratio": 0.57,
-   "quality_rank": 2
+   "quality_rank": 1
   },
   {
    "address": "194.5.98.105",
@@ -81,18 +46,18 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-19T00:31:40Z",
-   "verification_age_s": 582,
+   "verification_timestamp": "2026-11-19T10:30:09Z",
+   "verification_age_s": 583,
    "source_countries": [
     "NO"
    ],
    "sources": [
     "catalog:NO"
    ],
-   "score": 6,
-   "last_rtt_ms": 674,
-   "last_success": "2026-11-19T00:31:40Z",
-   "success_count": 134,
+   "score": 7,
+   "last_rtt_ms": 476,
+   "last_success": "2026-11-19T10:30:09Z",
+   "success_count": 135,
    "failure_count": 102,
    "status": "verified",
    "capability": "cf-relay",
@@ -104,6 +69,41 @@
    "speed_dl_bps": 511653,
    "speed_ul_bps": 481103,
    "success_ratio": 0.57,
+   "quality_rank": 2
+  },
+  {
+   "address": "202.50.55.76",
+   "port": 443,
+   "observed_country": "NO",
+   "egress_ip": "202.50.55.76",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-19T10:30:09Z",
+   "verification_age_s": 583,
+   "source_countries": [
+    "NO"
+   ],
+   "sources": [
+    "catalog:NO"
+   ],
+   "score": 0,
+   "last_rtt_ms": 480,
+   "last_success": "2026-11-19T10:30:09Z",
+   "success_count": 221,
+   "failure_count": 16,
+   "status": "verified",
+   "capability": "sni-terminate",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 463794,
+   "speed_ul_bps": 391603,
+   "success_ratio": 0.93,
    "quality_rank": 3
   },
   {
@@ -116,8 +116,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-19T00:31:40Z",
-   "verification_age_s": 582,
+   "verification_timestamp": "2026-11-19T10:30:09Z",
+   "verification_age_s": 583,
    "source_countries": [
     "NO"
    ],
@@ -125,9 +125,9 @@
     "catalog:NO"
    ],
    "score": 0,
-   "last_rtt_ms": 681,
-   "last_success": "2026-11-19T00:31:40Z",
-   "success_count": 235,
+   "last_rtt_ms": 528,
+   "last_success": "2026-11-19T10:30:09Z",
+   "success_count": 236,
    "failure_count": 1,
    "status": "verified",
    "capability": "cf-relay",
