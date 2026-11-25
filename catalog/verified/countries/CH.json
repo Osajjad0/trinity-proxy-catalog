@@ -11,8 +11,8 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
    "source_countries": [
     "CH"
    ],
@@ -20,9 +20,9 @@
     "catalog:CH"
    ],
    "score": 47,
-   "last_rtt_ms": 1372,
-   "last_success": "2026-11-24T17:57:11Z",
-   "success_count": 101,
+   "last_rtt_ms": 1030,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 102,
    "failure_count": 3,
    "status": "verified",
    "capability": "passthrough",
@@ -37,39 +37,70 @@
    "quality_rank": 1
   },
   {
-   "address": "146.70.233.25",
+   "address": "152.67.85.239",
    "port": 443,
    "observed_country": "CH",
-   "egress_ip": "146.70.233.25",
+   "egress_ip": "152.67.85.239",
    "country_confidence": "high",
    "verification_sources": [
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
    "source_countries": [
     "CH"
    ],
    "sources": [
     "catalog:CH"
    ],
-   "score": 22,
-   "last_rtt_ms": 638,
-   "last_success": "2026-11-24T17:57:11Z",
-   "success_count": 186,
+   "score": 24,
+   "last_rtt_ms": 409,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 22,
    "failure_count": 0,
    "status": "verified",
-   "capability": "passthrough",
+   "capability": "cf-relay",
    "http_forwarding": false,
-   "risk": "high",
-   "ip_type": "vpn/proxy",
+   "risk": "low",
+   "ip_type": "datacenter",
    "confidence": "high",
    "source": "ip-api+ipwho",
-   "speed_dl_bps": 587886,
-   "speed_ul_bps": 528082,
    "success_ratio": 1.0,
    "quality_rank": 2
+  },
+  {
+   "address": "185.195.69.72",
+   "port": 443,
+   "observed_country": "CH",
+   "egress_ip": "2a00:bd80:a176:10:268::1",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "CH"
+   ],
+   "sources": [
+    "catalog:CH"
+   ],
+   "score": 23,
+   "last_rtt_ms": 439,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 22,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 3
   },
   {
    "address": "140.238.208.240",
@@ -81,18 +112,18 @@
     "cloudflare-trace",
     "ipwho"
    ],
-   "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
    "source_countries": [
     "CH"
    ],
    "sources": [
     "catalog:CH"
    ],
-   "score": 21,
-   "last_rtt_ms": 613,
-   "last_success": "2026-11-24T17:57:11Z",
-   "success_count": 163,
+   "score": 23,
+   "last_rtt_ms": 458,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 164,
    "failure_count": 0,
    "status": "verified",
    "capability": "passthrough",
@@ -104,7 +135,141 @@
    "speed_dl_bps": 505450,
    "speed_ul_bps": 297002,
    "success_ratio": 1.0,
-   "quality_rank": 3
+   "quality_rank": 4
+  },
+  {
+   "address": "146.70.233.25",
+   "port": 443,
+   "observed_country": "CH",
+   "egress_ip": "146.70.233.25",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "CH"
+   ],
+   "sources": [
+    "catalog:CH"
+   ],
+   "score": 23,
+   "last_rtt_ms": 479,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 187,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "passthrough",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 587886,
+   "speed_ul_bps": 528082,
+   "success_ratio": 1.0,
+   "quality_rank": 5
+  },
+  {
+   "address": "84.234.31.84",
+   "port": 443,
+   "observed_country": "CH",
+   "egress_ip": "84.234.31.84",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "CH"
+   ],
+   "sources": [
+    "catalog:CH"
+   ],
+   "score": 22,
+   "last_rtt_ms": 455,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 22,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 6
+  },
+  {
+   "address": "84.234.17.132",
+   "port": 8443,
+   "observed_country": "CH",
+   "egress_ip": "84.234.17.132",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "CH"
+   ],
+   "sources": [
+    "catalog:CH"
+   ],
+   "score": 22,
+   "last_rtt_ms": 462,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 22,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 7
+  },
+  {
+   "address": "84.234.17.132",
+   "port": 443,
+   "observed_country": "CH",
+   "egress_ip": "84.234.17.132",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "CH"
+   ],
+   "sources": [
+    "catalog:CH"
+   ],
+   "score": 22,
+   "last_rtt_ms": 464,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 22,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "isp",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 8
   },
   {
    "address": "167.17.181.19",
@@ -117,7 +282,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "CH"
    ],
@@ -137,7 +302,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 4
+   "quality_rank": 9
   },
   {
    "address": "83.228.193.188",
@@ -150,7 +315,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "CH"
    ],
@@ -170,7 +335,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 5
+   "quality_rank": 10
   },
   {
    "address": "87.120.222.125",
@@ -183,7 +348,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "CH"
    ],
@@ -203,7 +368,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 0.95,
-   "quality_rank": 6
+   "quality_rank": 11
   },
   {
    "address": "179.255.191.82",
@@ -216,7 +381,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "CH"
    ],
@@ -236,7 +401,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 0.77,
-   "quality_rank": 7
+   "quality_rank": 12
   },
   {
    "address": "16.63.207.85",
@@ -249,7 +414,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "CH"
    ],
@@ -269,7 +434,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 8
+   "quality_rank": 13
   },
   {
    "address": "107.189.7.124",
@@ -282,7 +447,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "CH"
    ],
@@ -304,7 +469,7 @@
    "speed_dl_bps": 682665,
    "speed_ul_bps": 518012,
    "success_ratio": 1.0,
-   "quality_rank": 9
+   "quality_rank": 14
   },
   {
    "address": "83.228.193.229",
@@ -317,7 +482,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "CH"
    ],
@@ -337,7 +502,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 10
+   "quality_rank": 15
   },
   {
    "address": "83.228.193.229",
@@ -350,7 +515,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "CH"
    ],
@@ -370,7 +535,108 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 11
+   "quality_rank": 16
+  },
+  {
+   "address": "91.245.225.69",
+   "port": 443,
+   "observed_country": "CH",
+   "egress_ip": "91.245.225.69",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "CH"
+   ],
+   "sources": [
+    "catalog:CH"
+   ],
+   "score": 0,
+   "last_rtt_ms": 439,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 22,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 469544,
+   "speed_ul_bps": 393829,
+   "success_ratio": 1.0,
+   "quality_rank": 17
+  },
+  {
+   "address": "107.189.30.77",
+   "port": 443,
+   "observed_country": "CH",
+   "egress_ip": "107.189.30.77",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "CH"
+   ],
+   "sources": [
+    "catalog:CH"
+   ],
+   "score": 0,
+   "last_rtt_ms": 451,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 22,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 18
+  },
+  {
+   "address": "107.189.2.206",
+   "port": 8443,
+   "observed_country": "CH",
+   "egress_ip": "2605:6400:30:fd12:aac2:5917:a3d2:a083",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "CH"
+   ],
+   "sources": [
+    "catalog:CH"
+   ],
+   "score": 0,
+   "last_rtt_ms": 453,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 21,
+   "failure_count": 1,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 0.95,
+   "quality_rank": 19
   }
  ]
 }

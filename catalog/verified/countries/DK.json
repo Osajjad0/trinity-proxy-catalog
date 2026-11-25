@@ -2,6 +2,76 @@
  "schema_version": 1,
  "endpoints": [
   {
+   "address": "193.180.209.21",
+   "port": 443,
+   "observed_country": "DK",
+   "egress_ip": "2a0f:f01:207:116::",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "DK"
+   ],
+   "sources": [
+    "catalog:DK"
+   ],
+   "score": 27,
+   "last_rtt_ms": 471,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 88,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 417636,
+   "speed_ul_bps": 334528,
+   "success_ratio": 1.0,
+   "quality_rank": 1
+  },
+  {
+   "address": "193.180.209.28",
+   "port": 443,
+   "observed_country": "DK",
+   "egress_ip": "2a0f:f01:207:11d::",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "DK"
+   ],
+   "sources": [
+    "catalog:DK"
+   ],
+   "score": 27,
+   "last_rtt_ms": 473,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 88,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 438600,
+   "speed_ul_bps": 362150,
+   "success_ratio": 1.0,
+   "quality_rank": 2
+  },
+  {
    "address": "89.28.236.192",
    "port": 8443,
    "observed_country": "DK",
@@ -12,7 +82,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "DK"
    ],
@@ -34,7 +104,7 @@
    "speed_dl_bps": 480242,
    "speed_ul_bps": 450581,
    "success_ratio": 1.0,
-   "quality_rank": 1
+   "quality_rank": 3
   },
   {
    "address": "5.249.255.116",
@@ -47,7 +117,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "DK"
    ],
@@ -69,7 +139,7 @@
    "speed_dl_bps": 500976,
    "speed_ul_bps": 398531,
    "success_ratio": 0.99,
-   "quality_rank": 2
+   "quality_rank": 4
   },
   {
    "address": "46.29.235.56",
@@ -82,7 +152,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "DK"
    ],
@@ -104,7 +174,73 @@
    "speed_dl_bps": 406288,
    "speed_ul_bps": 355055,
    "success_ratio": 0.99,
-   "quality_rank": 3
+   "quality_rank": 5
+  },
+  {
+   "address": "193.181.211.185",
+   "port": 443,
+   "observed_country": "DK",
+   "egress_ip": "2a0f:f01:208:3ba::",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "DK"
+   ],
+   "sources": [
+    "catalog:DK"
+   ],
+   "score": 21,
+   "last_rtt_ms": 476,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 88,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 6
+  },
+  {
+   "address": "193.181.211.52",
+   "port": 2053,
+   "observed_country": "DK",
+   "egress_ip": "2a0f:f01:208:335::",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "DK"
+   ],
+   "sources": [
+    "catalog:DK"
+   ],
+   "score": 21,
+   "last_rtt_ms": 476,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 88,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "low",
+   "ip_type": "datacenter",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "success_ratio": 1.0,
+   "quality_rank": 7
   },
   {
    "address": "45.148.31.204",
@@ -117,7 +253,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "DK"
    ],
@@ -137,7 +273,7 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 1.0,
-   "quality_rank": 4
+   "quality_rank": 8
   },
   {
    "address": "193.181.212.80",
@@ -150,7 +286,7 @@
     "ipwho"
    ],
    "verification_timestamp": "2026-11-24T17:57:11Z",
-   "verification_age_s": 527,
+   "verification_age_s": 31653,
    "source_countries": [
     "DK"
    ],
@@ -170,7 +306,77 @@
    "confidence": "high",
    "source": "ip-api+ipwho",
    "success_ratio": 0.98,
-   "quality_rank": 5
+   "quality_rank": 9
+  },
+  {
+   "address": "192.36.27.150",
+   "port": 8443,
+   "observed_country": "DK",
+   "egress_ip": "2a03:f80:45:e513::1",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "DK"
+   ],
+   "sources": [
+    "catalog:DK"
+   ],
+   "score": 0,
+   "last_rtt_ms": 418,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 88,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 458900,
+   "speed_ul_bps": 270772,
+   "success_ratio": 1.0,
+   "quality_rank": 10
+  },
+  {
+   "address": "193.181.212.101",
+   "port": 443,
+   "observed_country": "DK",
+   "egress_ip": "2a0f:f01:208:466::",
+   "country_confidence": "high",
+   "verification_sources": [
+    "cloudflare-trace",
+    "ipwho"
+   ],
+   "verification_timestamp": "2026-11-25T02:36:21Z",
+   "verification_age_s": 503,
+   "source_countries": [
+    "DK"
+   ],
+   "sources": [
+    "catalog:DK"
+   ],
+   "score": 0,
+   "last_rtt_ms": 472,
+   "last_success": "2026-11-25T02:36:21Z",
+   "success_count": 88,
+   "failure_count": 0,
+   "status": "verified",
+   "capability": "cf-relay",
+   "http_forwarding": false,
+   "risk": "high",
+   "ip_type": "vpn/proxy",
+   "confidence": "high",
+   "source": "ip-api+ipwho",
+   "speed_dl_bps": 449526,
+   "speed_ul_bps": 350287,
+   "success_ratio": 1.0,
+   "quality_rank": 11
   }
  ]
 }
